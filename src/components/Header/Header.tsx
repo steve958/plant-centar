@@ -3,6 +3,7 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function Header() {
+
     return (
         <div className="header-container">
             <div className="header-wrapper">

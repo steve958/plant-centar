@@ -30,6 +30,11 @@
     justify-content: flex-end;
 }
 
+.search-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 .icon {
     cursor: pointer;
     color: #54C143 !important;
@@ -43,5 +48,10 @@
 @media screen and (max-width: 1000px) {
     .header-container {
         margin-top: 100px;
+        align-items: center !important;
+    }
+
+    .address-wrapper>p {
+        display: none;
     }
 }
