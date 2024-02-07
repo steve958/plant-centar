@@ -8,6 +8,8 @@ import MeetOurTeam from "./components/MeetOurTeam/MeetOurTeam";
 import Menu from "./components/Menu/Menu";
 import Partners from "./components/Partners/Partners";
 import WhatWeDo from "./components/WhatWeDo/WhatWeDo";
+import crops from "./assets/crops.jpg"
+import blueberry from "./assets/blueberry.jpg"
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
       <MeetOurTeam></MeetOurTeam>
       <Partners></Partners>
       <Footer></Footer>
+      <div style={{ display: 'none' }}>
+        <img src={crops} alt="" /><img src={blueberry} alt="" />
+      </div>
     </div>
   );
 }
