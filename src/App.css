@@ -13,6 +13,7 @@
   justify-content: center;
   flex-direction: column;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 .container-fluid:in-range {
