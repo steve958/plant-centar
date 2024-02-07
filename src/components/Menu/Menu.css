@@ -67,12 +67,13 @@
 }
 
 #inactive {
-    transform: rotate(360deg);
     scale: 1.2;
+    /* animation: rotate 0.5s 1; */
 }
 
 #active {
     color: #54C143;
+    animation: rotate 0.5s 1;
 }
 
 @media screen and (max-width: 1000px) {
@@ -105,5 +106,15 @@
     100% {
         width: 300px;
         opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

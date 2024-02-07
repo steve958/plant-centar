@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Menu.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import logoMain from "../../assets/PlantCLogo.jpg";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function Menu() {
     const [menuClicked, setMenuClicked] = useState<boolean>(false);
@@ -20,8 +21,12 @@ export default function Menu() {
                 <div className="menu-item">Galerija</div>
                 <div className="menu-item">Kontakt</div>
             </div>
-            <span onClick={toggleMenu} className="menu-icon" >
-                <MenuIcon id={menuClicked ? 'active' : 'inactive'} />
+            <span onClick={toggleMenu} className="menu-icon">
+                {!menuClicked ? (
+                    <MenuIcon />
+                ) : (
+                    <ArrowBackIcon id={menuClicked ? "active" : "inactive"} />
+                )}
                 <img src={logoMain} alt="" />
             </span>
             {menuClicked && (
