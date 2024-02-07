@@ -1,0 +1,17 @@
+.partners-container {
+    width: 100%;
+    background-color: #E1E1E1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 30vh;
+    animation: appear 1s 1;
+}
+
+.partners-container img {
+    width: 200px;
+    height: 100px;
+    border: 2px solid gray;
+    margin: 30px;
+}
