@@ -39,13 +39,13 @@ export default function Header() {
                 <>
                     <div className="map-container">
                         <MapContainer
-                            center={[44.746476, 19.7033064]}
+                            center={[44.7464481, 19.7058977]}
                             zoom={14}
                             scrollWheelZoom={false}
                         >
                             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                            <Marker position={[44.746476, 19.7033064]}>
-                                <Popup>Plant-centar</Popup>
+                            <Marker position={[44.7464481, 19.7058977]}>
+                                <Popup>Plant-centar Vojvode Janka Stojićevića 22</Popup>
                             </Marker>
                         </MapContainer>
                         <p className="close-map" onClick={() => setShowMap(false)}>zatvori mapu</p>
