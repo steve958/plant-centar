@@ -63,8 +63,12 @@ export default function Menu() {
       </span>
       {menuClicked && (
         <div className="small-screen-wrapper">
-          <div className="small-menu-item">Početna</div>
-          <div className="small-menu-item">O nama</div>
+          <div className="small-menu-item" onClick={() => navigate('/početna')}>
+            Početna
+          </div>
+          <div className="small-menu-item" onClick={() => navigate('/o-nama')}>
+            O nama
+          </div>
           <div
             className="small-menu-item"
             onMouseEnter={hoverIn}
