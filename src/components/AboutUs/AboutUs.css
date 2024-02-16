@@ -3,6 +3,8 @@
   display: flex;
   min-height: 50vh;
   margin-bottom: 35px;
+  border-top: 4px double #54c143;
+  border-bottom: 4px double #54c143;
 }
 
 .about-us-description-wrapper {
@@ -18,12 +20,15 @@
   width: 50%;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .about-us-img-wrapper > img {
   width: 500px;
   height: auto;
   border-radius: 10px;
+  border: 1px solid #54c143;
+  filter: drop-shadow(0 0 0.75rem #54c143);
 }
 
 .about-us-description-wrapper > p {
@@ -32,6 +37,20 @@
   font-size: 18px;
   background-color: white;
   padding: 30px;
+}
+
+.about-us-logo {
+  position: absolute;
+  left: 0;
+  top: 120px;
+  width: 150px !important;
+  height: auto !important;
+}
+
+@media screen and (max-width: 1660px) {
+  .about-us-logo {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1100px) {

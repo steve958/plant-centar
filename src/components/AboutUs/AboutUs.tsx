@@ -1,5 +1,6 @@
 import './AboutUs.css';
 import store from '../../assets/store.jpg';
+import logo from '../../assets/logo.jpg';
 
 export default function AboutUs() {
   return (
@@ -25,7 +26,9 @@ export default function AboutUs() {
       </div>
       <div className="about-us-img-wrapper">
         <img src={store} alt="" />
-        <div className="details-wrapper"></div>
+        <span>
+          <img src={logo} alt="" className="about-us-logo" />
+        </span>
       </div>
     </div>
   );
