@@ -4,8 +4,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import logoMain from '../../assets/PlantCLogo.jpg';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useNavigate } from 'react-router-dom';
 
 export default function Menu() {
+  const navigate = useNavigate();
+
   const [menuClicked, setMenuClicked] = useState<boolean>(false);
   const [categoriesHover, setCategoriesHover] = useState<boolean>(false);
 
@@ -25,8 +28,12 @@ export default function Menu() {
   return (
     <div className="menu-container">
       <div className="menu-wrapper">
-        <div className="menu-item">Početna</div>
-        <div className="menu-item">O nama</div>
+        <div className="menu-item" onClick={() => navigate('/početna')}>
+          Početna
+        </div>
+        <div className="menu-item" onClick={() => navigate('/o-nama')}>
+          O nama
+        </div>
         <div
           className="menu-item"
           onMouseEnter={hoverIn}
