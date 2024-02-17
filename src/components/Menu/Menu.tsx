@@ -50,7 +50,9 @@ export default function Menu() {
             </div>
           )}
         </div>
-        <div className="menu-item">Galerija</div>
+        <div className="menu-item" onClick={() => navigate('/galerija')}>
+          Galerija
+        </div>
         <div className="menu-item">Kontakt</div>
       </div>
       <span onClick={toggleMenu} className="menu-icon">
