@@ -3,9 +3,12 @@ import fruits from '../../assets/jagode/zasad1.jpg';
 import company from '../../assets/firma/firma1.jpg';
 import vegetables from '../../assets/povrce/zasad1.jpg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Gallery() {
   const [categoryHover, setCategoryHover] = useState<string>('');
+
+  const navigate = useNavigate();
 
   function categoryHovered(category: string) {
     setCategoryHover(category);
@@ -25,6 +28,7 @@ export default function Gallery() {
           className="gallery-category"
           onMouseEnter={() => categoryHovered('company')}
           onMouseLeave={hoverEnd}
+          onClick={() => navigate('/galerija/kompanija')}
         >
           <img src={company} alt="" />
           {categoryHover === 'company' && <p>naša kompanija</p>}

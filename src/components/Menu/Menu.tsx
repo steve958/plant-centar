@@ -53,7 +53,9 @@ export default function Menu() {
         <div className="menu-item" onClick={() => navigate('/galerija')}>
           Galerija
         </div>
-        <div className="menu-item">Kontakt</div>
+        <div className="menu-item" onClick={() => navigate('/kontakt')}>
+          Kontakt
+        </div>
       </div>
       <span onClick={toggleMenu} className="menu-icon">
         {!menuClicked ? (
@@ -87,8 +89,15 @@ export default function Menu() {
               </div>
             )}
           </div>
-          <div className="small-menu-item">Galerija</div>
-          <div className="small-menu-item">Kontakt</div>
+          <div
+            className="small-menu-item"
+            onClick={() => navigate('/galerija')}
+          >
+            Galerija
+          </div>
+          <div className="small-menu-item" onClick={() => navigate('/kontakt')}>
+            Kontakt
+          </div>
         </div>
       )}
     </div>
