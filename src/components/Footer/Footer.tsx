@@ -1,27 +1,37 @@
-import './Footer.css'
+import './Footer.css';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
-    return (
-        <footer className="footer-container">
-            <div className="footer-content">
-                <div className="footer-section">
-                    <h3>Kontakt</h3>
-                    <p>Email: info@example.com</p>
-                    <p>Telefon: +1 (123) 456-7890</p>
-                </div>
-                <div className="footer-section">
-                    <h3>Follow Us</h3>
-                </div>
-                <div className="footer-section">
-                    <h3>Adresa</h3>
-                    <p>Vojvode Janka Stojićevića 22, Šabac</p>
-                </div>
-            </div>
-            <div className="footer-bottom">
-                <p>&copy; 2024 SN. All rights reserved.</p>
-            </div>
-        </footer>
-    );
+  return (
+    <footer className="footer-container">
+      <div className="footer-content">
+        <div className="footer-section">
+          <h3>Kontakt</h3>
+          <p>Email: info@example.com</p>
+          <p>Telefon: +1 (123) 456-7890</p>
+        </div>
+        <div className="footer-section">
+          <h3>Pratite nas</h3>
+          <span>
+            <a href="https://www.facebook.com/people/Plant-centar/61556143327941/?mibextid=ZbWKwL">
+              <FacebookIcon className="icon" />
+            </a>
+            <a href="https://www.instagram.com/plant_centar/?utm_source=qr&igsh=MWRhZzM5Yzl3ZTlnaQ%3D%3D">
+              <InstagramIcon className="icon" />
+            </a>
+          </span>
+        </div>
+        <div className="footer-section">
+          <h3>Adresa</h3>
+          <p>Vojvode Janka Stojićevića 22, Šabac</p>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p>&copy; 2024 SN. All rights reserved.</p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
