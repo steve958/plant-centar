@@ -7,21 +7,25 @@ export default function AboutUs() {
     <div className="about-us-container">
       <div className="about-us-description-wrapper">
         <p>
-          <b>Plant centar doo Šabac</b> je preduzeće osnovano sa jasnim ciljem,
-          cilj predstavlja uspeh i održivost poljprivredne proizvodnje. Nas tim
-          čine iskusni agronomi koji Vam mogu preneti najnovija tehnoloska
-          rešenja u samoj poljoprivrednoj proizvodnji a takodje i pomoći u
-          prevazilaženju izazova koji su prisutni usled sve izraženijih
-          klimatskih promena.
+          U srcu naseg poslovanja je posvećenost prirodi i održivosti poljoprivredne
+          poizvodnje.
         </p>
         <p>
-          Centrala preduzeća i glavni maloprodajni objekat nalaze se u Šapcu
-          odakle teritorijarno pokrivamo Mačvanski i Sremski okrug. U ponudi
-          imamo vodeće brendove iz oblasti zaštite i ishrane bilja, kao i
-          ishrane domaćih životinja i kućnih ljubimaca. Pored navedenih
-          sredstava imamo širok izbor alata i oruđa neophodnih u samoj
-          poljoprivrednoj proizvodnji, a značajan segment predstavlja i oprema
-          za bašte i dvorišta kao i ukrasno bilje.
+          Blisko sarađujemo sa poljoprivrednim proizvođačima i dobavljačima,
+          promovišući praksu poštene trgovine i strucne podrške, trudeći se da naši
+          proizvodi i usluge ispunjavaju najstrožije standarde kvaliteta.
+        </p>
+        <p>
+          Naš tim izdvaja pružanje personalizovane podrške poljoprivrednicima, nudeći im
+          vredne savete, novosti sa tržišta i pristup najsavremenijim tehnologijama za
+          povećanje produktivnosti u samoj poljoprivrednoj proizvodnji.
+        </p>
+        <p>
+          Osnovan sa strašću za podsticanje održive poljoprivrede i osiguravanje
+          snabdevanja kvalitetnim repromaterijalima, <b>Plant Centar</b> je posvećen podršci
+          poljoprivrednim proizvođačima u proizvodnji kvalitetne i zdravstveno ispravne
+          hrane, strogo vodeći računa o zaštiti životne sredine i umanjenju dejstva
+          klimatskih promena.
         </p>
       </div>
       <div className="about-us-img-wrapper">
