@@ -5,6 +5,7 @@ import ContactUs from './components/ContactUs/ContactUs';
 import Company from './components/Gallery/Company/Company';
 import Gallery from './components/Gallery/Gallery';
 import Homepage from './components/Homepage/Homepage';
+import WebShop from './components/WebShop/WebShop';
 
 export const router = createHashRouter([
   {
@@ -30,6 +31,10 @@ export const router = createHashRouter([
       {
         path: '/kontakt',
         element: <ContactUs />,
+      },
+      {
+        path: '/prodavnica',
+        element: <WebShop />,
       },
     ],
   },

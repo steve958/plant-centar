@@ -56,6 +56,9 @@ export default function Menu() {
         <div className="menu-item" onClick={() => navigate('/kontakt')}>
           Kontakt
         </div>
+        <div className="menu-item" onClick={() => navigate('/prodavnica')}>
+          Prodavnica
+        </div>
       </div>
       <span onClick={toggleMenu} className="menu-icon">
         {!menuClicked ? (
@@ -97,6 +100,9 @@ export default function Menu() {
           </div>
           <div className="small-menu-item" onClick={() => navigate('/kontakt')}>
             Kontakt
+          </div>
+          <div className="small-menu-item" onClick={() => navigate('/prodavnica')}>
+            Prodavnica
           </div>
         </div>
       )}

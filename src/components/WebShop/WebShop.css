@@ -1,0 +1,70 @@
+.web-shop-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 4px double #54c143;
+    border-bottom: 4px double #54c143;
+  }
+  
+  .item-card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 30px;
+  }
+  
+  .shop-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1140px;; /* Set to 100% to match the parent container width */
+    max-width: calc(5 * 1fr + 4 * 20px + 60px); /* 5 columns + 4 gaps + padding */
+    padding: 20px;
+  }
+  
+  .filter-cart-icon-wrapper {
+    display: flex;
+    gap: 30px; 
+  }
+  
+  .search-container {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-wrapper {
+    position: relative;
+    width: 500px; 
+  }
+  
+  .search-wrapper input {
+    width: 100%;
+    padding: 8px 40px 8px 8px; 
+    border: 1px solid #54C143;
+    border-radius: 20px;
+    background-color: #DBDDDE;
+  }
+  
+  .search-icon-container {
+    position: absolute;
+    right: 12px; 
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sort-container select {
+    display: flex;
+    align-items: center;
+    width: 190px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #54C143;
+    background-color: #DBDDDE;
+  }
+  
