@@ -6,6 +6,9 @@ import Company from './components/Gallery/Company/Company';
 import Gallery from './components/Gallery/Gallery';
 import Homepage from './components/Homepage/Homepage';
 import WebShop from './components/WebShop/WebShop';
+import AdminLogIn from './components/WebShop/Admin/AdminLogIn/AdminLogIn';
+import AdminPanel from './components/WebShop/Admin/AdminPanel/AdminPanel';
+import PrivateRoute from './components/WebShop/Admin/PrivateRoute/PrivateRoute'; // Importuj PrivateRoute
 
 export const router = createHashRouter([
   {
@@ -35,6 +38,20 @@ export const router = createHashRouter([
       {
         path: '/prodavnica',
         element: <WebShop />,
+      },
+      {
+        path: '/admin',
+        element: <AdminLogIn />,
+      },
+      {
+        path: '/admin/panel',
+        element: <PrivateRoute />, // Zaštiti /admin/panel koristeći PrivateRoute
+        children: [
+          {
+            path: '',
+            element: <AdminPanel />,
+          },
+        ],
       },
     ],
   },

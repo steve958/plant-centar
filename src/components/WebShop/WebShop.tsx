@@ -1,4 +1,3 @@
-// WebShop.tsx
 import { useEffect, useState } from "react";
 import "./WebShop.css";
 import { Item } from "./ShopComponents/models/item";
@@ -9,11 +8,18 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 export default function WebShop() {
   const [itemsData, setItemsData] = useState<Item[]>([]);
+  const [displayedItems, setDisplayedItems] = useState<Item[]>([]);
   const [sortOrder, setSortOrder] = useState<string>("priceDesc");
+  const [searchInput, setSearchInput] = useState<string>("");
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    // Filter and sort items whenever searchInput or sortOrder changes
+    filterAndSortItems();
+  }, [searchInput, sortOrder]);
 
   const fetchData = async () => {
     try {
@@ -23,38 +29,43 @@ export default function WebShop() {
       }
       const data: Item[] = await response.json();
       setItemsData(data);
+      setDisplayedItems(data); // Postavite prikazane stavke na sve stavke
     } catch (error) {
       console.error("There was a problem fetching items:", error);
     }
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newSortOrder = event.target.value;
-    setSortOrder(newSortOrder);
-    sortItems(newSortOrder);
+    setSortOrder(event.target.value);
   };
 
-  const sortItems = (order: string) => {
-    let sortedItems = [...itemsData];
+  const filterAndSortItems = () => {
+    let filteredItems = itemsData.filter(item =>
+      item.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
 
-    switch (order) {
+    switch (sortOrder) {
       case "priceDesc":
-        sortedItems.sort((a, b) => b.price - a.price);
+        filteredItems.sort((a, b) => b.price - a.price);
         break;
       case "priceAsc":
-        sortedItems.sort((a, b) => a.price - b.price);
+        filteredItems.sort((a, b) => a.price - b.price);
         break;
       case "alphabeticalAsc":
-        sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+        filteredItems.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case "alphabeticalDesc":
-        sortedItems.sort((a, b) => b.name.localeCompare(a.name));
+        filteredItems.sort((a, b) => b.name.localeCompare(a.name));
         break;
       default:
         break;
     }
 
-    setItemsData(sortedItems);
+    setDisplayedItems(filteredItems);
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
   };
 
   return (
@@ -62,21 +73,26 @@ export default function WebShop() {
       <div className="shop-header-container">
         <div className="sort-container">
           <select onChange={handleSortChange} value={sortOrder}>
-            <option value="priceDesc">Cena: Najveća-Najmanja</option>
-            <option value="priceAsc">Cena: Najmanja-Najveća</option>
+            <option value="priceDesc">Cena: najveća-najmanja</option>
+            <option value="priceAsc">Cena: najmanja-najveća</option>
             <option value="alphabeticalAsc">A-Z</option>
             <option value="alphabeticalDesc">Z-A</option>
           </select>
         </div>
 
         <div className="search-container">
-  <div className="search-wrapper">
-    <input type="text" />
-    <div className="search-icon-container">
-      <SearchOutlinedIcon className="search-icon" />
-    </div>
-  </div>
-</div>
+          <div className="search-wrapper">
+            <input
+              type="text"
+              onChange={handleSearchChange}
+              value={searchInput}
+              placeholder="Pretraži..."
+            />
+            <div className="search-icon-container">
+              <SearchOutlinedIcon className="search-icon" />
+            </div>
+          </div>
+        </div>
 
         <div className="filter-cart-icon-wrapper">
           <div className="filter-icon-container">
@@ -89,7 +105,7 @@ export default function WebShop() {
       </div>
 
       <div className="item-card-wrapper">
-        {itemsData.map((item) => (
+        {displayedItems.map((item) => (
           <ItemCard
             key={item.id}
             image={item.image}
