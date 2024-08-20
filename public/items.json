@@ -1,82 +1,93 @@
 [
-  {
+    {
       "id": "1",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Roundup Herbicidessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
       "description": "Efikasan herbicid za suzbijanje korova.",
       "quantity_in_stock": 45,
-      "price": 150000
-  },
-  {
+      "price": 150000,
+      "category": "Herbicide"
+    },
+    {
       "id": "2",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Biopesticide Neem Oil sasasasasasasasa",
       "description": "Prirodni insekticid na bazi neem ulja.",
       "quantity_in_stock": 60,
-      "price": 2200
-  },
-  {
+      "price": 2200,
+      "category": "Pesticide"
+    },
+    {
       "id": "3",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Organic Fertilizer",
       "description": "Organsko đubrivo za bolji prinos.",
       "quantity_in_stock": 80,
-      "price": 750
-  },
-  {
+      "price": 750,
+      "category": "Fertilizer"
+    },
+    {
       "id": "4",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Corn Seeds",
       "description": "Kvalitetno seme kukuruza za visoke prinose.",
       "quantity_in_stock": 150,
-      "price": 1200
-  },
-  {
+      "price": 1200,
+      "category": "Seeds"
+    },
+    {
       "id": "5",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Baythroid XL",
       "description": "Insekticid za zaštitu od štetnih insekata.",
       "quantity_in_stock": 50,
-      "price": 3200
-  },
-  {
+      "price": 3200,
+      "category": "Insecticide"
+    },
+    {
       "id": "6",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Actara Insecticide",
       "description": "Sistematični insekticid za voćnjake.",
       "quantity_in_stock": 30,
-      "price": 2700
-  },
-  {
+      "price": 2700,
+      "category": "Insecticide"
+    },
+    {
       "id": "7",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Liquid Plant Fertilizer",
       "description": "Tekuće đubrivo za brzo usvajanje hranljivih materija.",
       "quantity_in_stock": 100,
-      "price": 1300
-  },
-  {
+      "price": 1300,
+      "category": "Fertilizer"
+    },
+    {
       "id": "8",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Tomato Seeds",
       "description": "Seme paradajza za visoke prinose.",
       "quantity_in_stock": 200,
-      "price": 500
-  },
-  {
+      "price": 500,
+      "category": "Seeds"
+    },
+    {
       "id": "9",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "Roundup Pro",
       "description": "Profesionalni herbicid za sve vrste korova.",
       "quantity_in_stock": 40,
-      "price": 1900
-  },
-  {
+      "price": 1900,
+      "category": "Herbicide"
+    },
+    {
       "id": "10",
       "image": "https://epimage.s3.eu-central-1.amazonaws.com/images/xf/xfpamnzfccnctwakwgth",
       "name": "All-Purpose Fertilizer",
       "description": "Svestrano đubrivo za različite useve.",
       "quantity_in_stock": 75,
-      "price": 1100
-  }
-]
+      "price": 1100,
+      "category": "Fertilizer"
+    }
+  ]
+  

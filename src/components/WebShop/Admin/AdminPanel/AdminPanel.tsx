@@ -9,6 +9,7 @@ import ItemCardAdmin from "./components/ItemCardAdmin/ItemCardAdmin";
 import NewItemModal from "./components/modals/NewItemModal";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase";
+import { MoonLoader } from "react-spinners";
 
 export default function AdminPanel() {
   const [itemsData, setItemsData] = useState<Item[]>([]);
@@ -16,6 +17,7 @@ export default function AdminPanel() {
   const [sortOrder, setSortOrder] = useState<string>("priceDesc");
   const [searchInput, setSearchInput] = useState<string>("");
   const [addItemClicked, setAddItemClicked] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
@@ -26,6 +28,7 @@ export default function AdminPanel() {
   }, [searchInput, sortOrder]);
 
   const fetchData = async () => {
+    setIsLoading(true);
     try {
       const querySnapshot = await getDocs(collection(db, "items"));
       const data: Item[] = querySnapshot.docs.map((doc) => ({
@@ -36,6 +39,8 @@ export default function AdminPanel() {
       setDisplayedItems(data);
     } catch (error) {
       console.error("There was a problem fetching items:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,11 +85,11 @@ export default function AdminPanel() {
     try {
       // Add the new item to Firestore
       const itemsCollection = collection(db, "items");
-      await addDoc(itemsCollection, newItem);
+      const docRef = await addDoc(itemsCollection, newItem);
 
       // Update local state
-      setItemsData((prevItems) => [...prevItems, newItem]);
-      setDisplayedItems((prevItems) => [...prevItems, newItem]);
+      setItemsData((prevItems) => [...prevItems, { ...newItem, id: docRef.id }]);
+      setDisplayedItems((prevItems) => [...prevItems, { ...newItem, id: docRef.id }]);
       handleCloseModal();
     } catch (error) {
       console.error("Error adding document: ", error);
@@ -139,16 +144,20 @@ export default function AdminPanel() {
         <div className="add-item-card" onClick={handleAddItemClick}>
           <AddCircleIcon className="add-icon" sx={{ fontSize: 80 }} />
         </div>
-        {displayedItems.map((item) => {
-          return (
+        {isLoading ? (
+          <MoonLoader color="#1cff00" />
+        ) : (
+          displayedItems.map((item) => (
             <ItemCardAdmin
               key={item.id}
+              id={item.id!} // Ensure id is provided
               image={item.image}
               name={item.name}
               price={item.price}
+              onItemDeleted={fetchData}
             />
-          );
-        })}
+          ))
+        )}
       </div>
     </div>
   );

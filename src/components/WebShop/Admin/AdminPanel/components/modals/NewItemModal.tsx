@@ -15,6 +15,8 @@ export default function NewItemModal(props: NewItemProps) {
     const [description, setDescription] = useState("");
     const [quantity_in_stock, setQuantity_in_stock] = useState("");
     const [price, setPrice] = useState("");
+    const [category, setCategory] = useState("");
+    const [isSaving, setIsSaving] = useState(false);
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -30,12 +32,16 @@ export default function NewItemModal(props: NewItemProps) {
     };
 
     const handleSave = () => {
+        if (isSaving) return; // Prevent multiple clicks
+
+        setIsSaving(true); // Disable the button
         const newItem: Item = {
             image,
             name,
             description,
             quantity_in_stock,
             price,
+            category,
         };
         confirm(newItem);
     };
@@ -47,7 +53,7 @@ export default function NewItemModal(props: NewItemProps) {
                 <div className="new-form-group">
                     <label>Slika:</label>
                     <input
-                    className="image-input"
+                        className="image-input"
                         type="file"
                         accept="image/*"
                         onChange={handleImageChange}
@@ -55,43 +61,47 @@ export default function NewItemModal(props: NewItemProps) {
                     {image && <img src={image} alt="Selected" className="preview-image" />}
                 </div>
                 <div className="new-form-group">
-                <label>Ime</label>
-                <input
-                    type="text"
-                    placeholder="Ime"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
+                    <label>Naziv:</label>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
                 </div>
                 <div className="new-form-group">
-                <label>Opis</label>
-                <textarea
-                    placeholder="Opis"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
+                    <label>Opis:</label>
+                    <textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
                 </div>
                 <div className="new-form-group">
-                <label>Kolicina</label>
-                <input
-                    type="number"
-                    placeholder="Količna"
-                    value={quantity_in_stock}
-                    onChange={(e) => setQuantity_in_stock(e.target.value)}
-                />
+                    <label>Količina:</label>
+                    <input
+                        type="number"
+                        value={quantity_in_stock}
+                        onChange={(e) => setQuantity_in_stock(e.target.value)}
+                    />
                 </div>
                 <div className="new-form-group">
-                <label>Cena</label>
-                <input
-                    type="number"
-                    placeholder="Cena"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                />
+                    <label>Kategorija:</label>
+                    <input
+                        type="text"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    />
+                </div>
+                <div className="new-form-group">
+                    <label>Cena:</label>
+                    <input
+                        type="number"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                    />
                 </div>
                 <div className="new-item-button-wrapper">
-                <button onClick={handleSave}>Sačuvaj</button>
-                <button onClick={close}>Odustani</button>
+                    <button onClick={handleSave} disabled={isSaving}>Sačuvaj</button>
+                    <button onClick={close}>Odustani</button>
                 </div>
             </div>
         </div>
