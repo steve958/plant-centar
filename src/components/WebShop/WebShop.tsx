@@ -17,7 +17,6 @@ export default function WebShop() {
   }, []);
 
   useEffect(() => {
-    // Filter and sort items whenever searchInput or sortOrder changes
     filterAndSortItems();
   }, [searchInput, sortOrder]);
 
@@ -29,7 +28,7 @@ export default function WebShop() {
       }
       const data: Item[] = await response.json();
       setItemsData(data);
-      setDisplayedItems(data); // Postavite prikazane stavke na sve stavke
+      setDisplayedItems(data); 
     } catch (error) {
       console.error("There was a problem fetching items:", error);
     }
@@ -46,10 +45,10 @@ export default function WebShop() {
 
     switch (sortOrder) {
       case "priceDesc":
-        filteredItems.sort((a, b) => b.price - a.price);
+        filteredItems.sort((a, b) => Number(b.price) - Number(a.price));
         break;
       case "priceAsc":
-        filteredItems.sort((a, b) => a.price - b.price);
+        filteredItems.sort((a, b) => Number(a.price) - Number(b.price));
         break;
       case "alphabeticalAsc":
         filteredItems.sort((a, b) => a.name.localeCompare(b.name));

@@ -3,6 +3,6 @@ export interface Item{
     image: string,
     name: string,
     description: string;
-    quantity_in_stock: number;
-    price: number;
+    quantity_in_stock: string;
+    price: string;
 }

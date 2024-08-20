@@ -1,14 +1,13 @@
 import { Tooltip } from "@mui/material";
-import "./ItemCard.css";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-
+import "./ItemCardAdmin.css";
+import DeleteIcon from '@mui/icons-material/Delete';
 interface ItemCardProps {
   name: string;
   image: string;
   price: string;
 }
 
-export default function ItemCard(props: ItemCardProps) {
+export default function ItemCardAdmin(props: ItemCardProps) {
   const { name, image, price } = props;
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
@@ -19,8 +18,8 @@ export default function ItemCard(props: ItemCardProps) {
   }).format(Number(price));
 
   return (
-    <div className="item-card-container">
-      <div className="item-card-content">
+    <div className="admin-item-card-container">
+      <div className="admin-item-card-content">
         <img className="item-image" src={image} alt="slika proizvoda" />
         <div className="item-details">
           <Tooltip
@@ -44,8 +43,8 @@ export default function ItemCard(props: ItemCardProps) {
 
           <div className="price-icon-wrapper">
             <div className="item-price">{formattedPrice}</div>
-            <div className="cart-icon-wrapper">
-              <AddShoppingCartIcon />
+            <div className="delete-icon-wrapper">
+              <DeleteIcon />
             </div>
           </div>
         </div>
