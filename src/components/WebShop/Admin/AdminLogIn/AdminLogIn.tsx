@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./AdminLogIn.css"
+import "./AdminLogin.css";
 
 export default function AdminLogIn() {
   const [password, setPassword] = useState('');
@@ -18,6 +18,12 @@ export default function AdminLogIn() {
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleLogin();
+    }
+  };
+
   return (
     <div className="admin-page-container">
       <div className="admin-input-wrapper">
@@ -27,6 +33,7 @@ export default function AdminLogIn() {
             placeholder="Unesite sifru"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyDown} 
           />
         </div>
         <div className="login-button-container">

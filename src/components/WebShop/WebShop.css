@@ -5,8 +5,8 @@
   border-top: 4px double #54c143;
   border-bottom: 4px double #54c143;
   padding: 0 15px;
-  min-width: 1288px;
-  min-height: 672px;
+  min-height: 600px;
+  justify-content: center;
 }
 
 .item-card-wrapper {
@@ -14,6 +14,8 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   padding: 30px;
+  min-height: 500px;
+  justify-content: center;
 }
 
 .shop-header-container {
@@ -49,8 +51,9 @@
   border: 1px solid #54c143;
   border-radius: 20px;
   background-color: #dbddde;
-  font-size: 16 !important;
+  
 }
+
 
 .search-icon-container {
   position: absolute;
@@ -74,8 +77,10 @@
 }
 
 @media screen and (max-width: 1200px) {
+
   .item-card-wrapper {
     grid-template-columns: repeat(4, 1fr);
+    
   }
 
   .shop-header-container {
