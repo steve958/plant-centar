@@ -150,7 +150,7 @@ export default function AdminPanel() {
           displayedItems.map((item) => (
             <ItemCardAdmin
               key={item.id}
-              id={item.id!} // Ensure id is provided
+              id={item.id!} 
               image={item.image}
               name={item.name}
               price={item.price}

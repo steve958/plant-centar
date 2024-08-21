@@ -32,9 +32,9 @@ export default function NewItemModal(props: NewItemProps) {
     };
 
     const handleSave = () => {
-        if (isSaving) return; // Prevent multiple clicks
+        if (isSaving) return;   
 
-        setIsSaving(true); // Disable the button
+        setIsSaving(true);
         const newItem: Item = {
             image,
             name,
@@ -52,6 +52,7 @@ export default function NewItemModal(props: NewItemProps) {
                 <div className="new-item-modal-heading">Novi proizvod</div>
                 <div className="new-form-group">
                     <label>Slika:</label>
+                    <div className="image-input-container"> 
                     <input
                         className="image-input"
                         type="file"
@@ -59,6 +60,7 @@ export default function NewItemModal(props: NewItemProps) {
                         onChange={handleImageChange}
                     />
                     {image && <img src={image} alt="Selected" className="preview-image" />}
+                    </div>
                 </div>
                 <div className="new-form-group">
                     <label>Naziv:</label>
@@ -101,7 +103,7 @@ export default function NewItemModal(props: NewItemProps) {
                 </div>
                 <div className="new-item-button-wrapper">
                     <button onClick={handleSave} disabled={isSaving}>Sačuvaj</button>
-                    <button onClick={close}>Odustani</button>
+                    <button className="close-button" onClick={close}>Odustani</button>
                 </div>
             </div>
         </div>

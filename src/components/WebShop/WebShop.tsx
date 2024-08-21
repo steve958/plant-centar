@@ -5,12 +5,16 @@ import ItemCard from "./ShopComponents/ItemCard/ItemCard";
 import TuneIcon from "@mui/icons-material/Tune";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { collection, getDocs } from "firebase/firestore";
+import { MoonLoader } from "react-spinners";
+import { db } from "../firebase";
 
 export default function WebShop() {
   const [itemsData, setItemsData] = useState<Item[]>([]);
   const [displayedItems, setDisplayedItems] = useState<Item[]>([]);
   const [sortOrder, setSortOrder] = useState<string>("priceDesc");
   const [searchInput, setSearchInput] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
@@ -21,19 +25,21 @@ export default function WebShop() {
   }, [searchInput, sortOrder]);
 
   const fetchData = async () => {
+    setIsLoading(true);
     try {
-      const response: Response = await fetch("/items.json");
-      if (!response.ok) {
-        throw new Error("Failed to fetch items data");
-      }
-      const data: Item[] = await response.json();
+      const querySnapshot = await getDocs(collection(db, "items"));
+      const data: Item[] = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...(doc.data() as Item),
+      }));
       setItemsData(data);
-      setDisplayedItems(data); 
+      setDisplayedItems(data);
     } catch (error) {
       console.error("There was a problem fetching items:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
-
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOrder(event.target.value);
   };
@@ -104,7 +110,7 @@ export default function WebShop() {
       </div>
 
       <div className="item-card-wrapper">
-        {displayedItems.map((item) => (
+        {isLoading ? <MoonLoader color="#1cff00" />: displayedItems.map((item) => (
           <ItemCard
             key={item.id}
             image={item.image}
