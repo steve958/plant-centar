@@ -6,10 +6,11 @@ interface ItemCardProps {
   name: string;
   image: string;
   price: string;
+  onAddToCart: (name: string, price: string, image: string) => void;
 }
 
 export default function ItemCard(props: ItemCardProps) {
-  const { name, image, price } = props;
+  const { name, image, price, onAddToCart } = props;
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -18,10 +19,14 @@ export default function ItemCard(props: ItemCardProps) {
     maximumFractionDigits: 2,
   }).format(Number(price));
 
+  const handleAddToCart = () => {
+    onAddToCart(name, price, image);
+  };
+
   return (
     <div className="item-card-container">
       <div className="item-card-content">
-        <img className="item-image" src={image} alt="slika proizvoda" />
+        <img className="item-image" src={image} alt="Product" />
         <div className="item-details">
           <Tooltip
             title={name}
@@ -44,7 +49,7 @@ export default function ItemCard(props: ItemCardProps) {
 
           <div className="price-icon-wrapper">
             <div className="item-price">{formattedPrice}</div>
-            <div className="cart-icon-wrapper">
+            <div className="cart-icon-wrapper" onClick={handleAddToCart}>
               <AddShoppingCartIcon />
             </div>
           </div>

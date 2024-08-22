@@ -9,6 +9,7 @@ import WebShop from './components/WebShop/WebShop';
 import AdminLogIn from './components/WebShop/Admin/AdminLogIn/AdminLogIn';
 import AdminPanel from './components/WebShop/Admin/AdminPanel/AdminPanel';
 import PrivateRoute from './components/WebShop/Admin/PrivateRoute/PrivateRoute'; 
+import Cart from './components/WebShop/ShopComponents/Cart/Cart';
 
 export const router = createHashRouter([
   {
@@ -42,6 +43,10 @@ export const router = createHashRouter([
       {
         path: '/admin',
         element: <AdminLogIn />,
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
       {
         path: '/admin/panel',

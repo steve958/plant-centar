@@ -76,6 +76,19 @@
   text-align: center;
 }
 
+.cart-icon-container{
+  display: flex;
+  justify-content: center;
+}
+
+.cart-item-count{
+  display: flex;
+  align-items: center;
+  color: #54c143;
+}
+
+
+
 @media screen and (max-width: 1200px) {
 
   .item-card-wrapper {
