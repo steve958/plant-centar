@@ -91,7 +91,7 @@ const Cart: React.FC = () => {
     <div className="cart-items-container">
       <div className="cart-items-wrapper">
         {cartItems.size === 0 ? (
-          <div className="empty-cart-message">Your cart is empty</div>
+          <div className="empty-cart-message">Vaša korpa je prazna</div>
         ) : (
           Array.from(cartItems.values()).map(({ item, quantity }) => (
             <div key={item.id} className="cart-item">

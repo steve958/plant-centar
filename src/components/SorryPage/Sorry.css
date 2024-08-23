@@ -1,0 +1,9 @@
+.sorry-contanier{
+    color: white;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #54C143;
+    border:1px solid white;
+}
