@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Logo from "./components/Logo/Logo";
-//import Menu from "./components/Menu/Menu";
+import Menu from "./components/Menu/Menu";
 import { useEffect } from "react";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     <div className="container-fluid">
       <Header></Header>
       <Logo></Logo>
-      {/* <Menu></Menu> */}
+      <Menu></Menu>
       <Outlet />
       <Footer></Footer>
     </div>

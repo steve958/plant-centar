@@ -1,13 +1,14 @@
+import React, { useEffect, useState } from "react";
 import "./AdminPanel.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import TuneIcon from "@mui/icons-material/Tune";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { useEffect, useState } from "react";
 import { Item } from "../../ShopComponents/models/item";
 import ItemCardAdmin from "./components/ItemCardAdmin/ItemCardAdmin";
 import NewItemModal from "./components/modals/NewItemModal";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import DeleteItemModal from "./components/modals/DeleteItemModal";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { MoonLoader } from "react-spinners";
 
@@ -18,6 +19,7 @@ export default function AdminPanel() {
   const [searchInput, setSearchInput] = useState<string>("");
   const [addItemClicked, setAddItemClicked] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [deleteItemId, setDeleteItemId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchData();
@@ -83,13 +85,17 @@ export default function AdminPanel() {
 
   const handleConfirm = async (newItem: Item) => {
     try {
-      // Add the new item to Firestore
       const itemsCollection = collection(db, "items");
       const docRef = await addDoc(itemsCollection, newItem);
 
-      // Update local state
-      setItemsData((prevItems) => [...prevItems, { ...newItem, id: docRef.id }]);
-      setDisplayedItems((prevItems) => [...prevItems, { ...newItem, id: docRef.id }]);
+      setItemsData((prevItems) => [
+        ...prevItems,
+        { ...newItem, id: docRef.id },
+      ]);
+      setDisplayedItems((prevItems) => [
+        ...prevItems,
+        { ...newItem, id: docRef.id },
+      ]);
       handleCloseModal();
     } catch (error) {
       console.error("Error adding document: ", error);
@@ -100,10 +106,43 @@ export default function AdminPanel() {
     setAddItemClicked(true);
   };
 
+  const handleDeleteRequest = (id: string) => {
+    setDeleteItemId(id);
+  };
+
+  const handleDelete = async () => {
+    if (!deleteItemId) {
+      console.error("Error: Document ID is undefined or invalid");
+      return;
+    }
+
+    try {
+      await deleteDoc(doc(db, "items", deleteItemId));
+      setItemsData((prevItems) => prevItems.filter(item => item.id !== deleteItemId));
+      setDisplayedItems((prevItems) => prevItems.filter(item => item.id !== deleteItemId));
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    } finally {
+      setDeleteItemId(null);
+    }
+  };
+
+  const handleCloseDeleteModal = () => {
+    setDeleteItemId(null);
+  };
+
   return (
     <div className="admin-panel-container">
       {addItemClicked && (
         <NewItemModal close={handleCloseModal} confirm={handleConfirm} />
+      )}
+
+      {deleteItemId && (
+        <DeleteItemModal
+          itemName={itemsData.find(item => item.id === deleteItemId)?.name || ""}
+          onConfirm={handleDelete}
+          onCancel={handleCloseDeleteModal}
+        />
       )}
 
       <div className="shop-header-container">
@@ -140,25 +179,27 @@ export default function AdminPanel() {
         </div>
       </div>
 
-      <div className="item-card-wrapper">
-        <div className="add-item-card" onClick={handleAddItemClick}>
-          <AddCircleIcon className="add-icon" sx={{ fontSize: 80 }} />
-        </div>
-        {isLoading ? (
+      {isLoading ? (
+        <div className="loader-container">
           <MoonLoader color="#1cff00" />
-        ) : (
-          displayedItems.map((item) => (
+        </div>
+      ) : (
+        <div className="item-card-wrapper">
+          <div className="add-item-card" onClick={handleAddItemClick}>
+            <AddCircleIcon className="add-icon" sx={{ fontSize: 80 }} />
+          </div>
+          {displayedItems.map((item) => (
             <ItemCardAdmin
               key={item.id}
-              id={item.id!} 
+              id={item.id!}
               image={item.image}
               name={item.name}
               price={item.price}
-              onItemDeleted={fetchData}
+              onDeleteRequest={handleDeleteRequest}
             />
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

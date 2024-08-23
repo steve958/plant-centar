@@ -16,6 +16,14 @@
     max-width: 1140px;
     min-height: 500px;
   }
+
+  .loader-container{
+ min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+  }
   
   .item-card-wrapper {
     display: grid;
@@ -29,7 +37,7 @@
     border: 1px solid #54c143;
     border-radius: 10px;
     width: 200px;
-    height: 250px;
+    height: 300px;
     position: relative;
     transition: transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

@@ -16,6 +16,15 @@
   padding: 30px;
   min-height: 500px;
   justify-content: center;
+
+}
+
+.loader-container{
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
 }
 
 .shop-header-container {
@@ -31,6 +40,7 @@
 .filter-cart-icon-wrapper {
   display: flex;
   gap: 30px;
+
 }
 
 .search-container {
@@ -38,6 +48,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .search-wrapper {
@@ -74,17 +85,25 @@
   border: 1px solid #54c143;
   background-color: #dbddde;
   text-align: center;
+  cursor: pointer;
+
 }
 
 .cart-icon-container{
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .cart-item-count{
   display: flex;
   align-items: center;
   color: #54c143;
+}
+
+.filter-icon-container{
+  cursor: pointer;
+
 }
 
 

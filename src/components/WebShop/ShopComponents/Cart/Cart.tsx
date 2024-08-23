@@ -4,11 +4,15 @@ import "./Cart.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useNavigate } from "react-router-dom";
 
 const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<
     Map<string, { item: Item; quantity: number }>
   >(new Map());
+
+  const [shippingPrice] = useState<string>("300");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
@@ -32,13 +36,25 @@ const Cart: React.FC = () => {
     }
   }, []);
 
-  const updateLocalStorage = (
-    itemMap: Map<string, { item: Item; quantity: number }>
-  ) => {
-    const allItems = Array.from(itemMap.values()).flatMap(
-      ({ item, quantity }) => Array(quantity).fill(item)
-    );
-    localStorage.setItem("cartItems", JSON.stringify(allItems));
+  useEffect(() => {
+    updateLocalStorage();
+  }, [cartItems]);
+
+  const updateLocalStorage = () => {
+    if (cartItems.size === 0) {
+      localStorage.removeItem("cartItems");
+      localStorage.setItem("cartItemCount", "0"); // Update count to 0
+      localStorage.setItem("totalPrice", "0.00"); // Update total price to 0
+    } else {
+      const allItems = Array.from(cartItems.values()).flatMap(
+        ({ item, quantity }) => Array(quantity).fill(item)
+      );
+      localStorage.setItem("cartItems", JSON.stringify(allItems));
+      localStorage.setItem("cartItemCount", JSON.stringify(allItems.length)); // Update count
+      
+      const total = calculateTotalPrice();
+      localStorage.setItem("totalPrice", total.toFixed(2)); // Update total price
+    }
   };
 
   const handleIncreaseQuantity = (name: string) => {
@@ -49,7 +65,6 @@ const Cart: React.FC = () => {
       itemEntry.quantity += 1;
       updatedCartItems.set(name, itemEntry);
       setCartItems(updatedCartItems);
-      updateLocalStorage(updatedCartItems);
     }
   };
 
@@ -65,7 +80,6 @@ const Cart: React.FC = () => {
         updatedCartItems.delete(name);
       }
       setCartItems(updatedCartItems);
-      updateLocalStorage(updatedCartItems);
     }
   };
 
@@ -73,10 +87,17 @@ const Cart: React.FC = () => {
     const updatedCartItems = new Map(cartItems);
     updatedCartItems.delete(name);
     setCartItems(updatedCartItems);
-    updateLocalStorage(updatedCartItems);
   };
 
-  // Function to format the price
+  const calculateTotalPrice = () => {
+    let total = 0;
+    let shipping = parseFloat(shippingPrice);
+    cartItems.forEach(({ item, quantity }) => {
+      total += parseFloat(item.price) * quantity;
+    });
+    return total + shipping;
+  };
+
   const formatPrice = (price: string) => {
     const numberPrice = parseFloat(price);
     return new Intl.NumberFormat("en-US", {
@@ -85,6 +106,11 @@ const Cart: React.FC = () => {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(numberPrice);
+  };
+
+  const handleNext = () => {
+    localStorage.setItem("totalPrice", calculateTotalPrice().toFixed(2));
+    navigate("/checkout");
   };
 
   return (
@@ -133,6 +159,27 @@ const Cart: React.FC = () => {
           ))
         )}
       </div>
+      {cartItems.size > 0 ? (
+        <div className="shipping-price-container">
+          <span>Usluge dostave:</span>{" "}
+          <strong>
+            <span>{formatPrice(shippingPrice)}</span>
+          </strong>
+        </div>
+      ) : null}
+      {cartItems.size > 0 ? (
+        <div className="total-price-container">
+          <span>Ukupno za plaćanje:</span>{" "}
+          <strong>
+            <span>{formatPrice(calculateTotalPrice().toString())}</span>
+          </strong>
+        </div>
+      ) : null}
+       {cartItems.size > 0 ? (
+      <div className="next-button-container">
+        <button className="next-button" onClick={handleNext}>Nastavi...</button>
+      </div>
+       ) : null}
     </div>
   );
 };

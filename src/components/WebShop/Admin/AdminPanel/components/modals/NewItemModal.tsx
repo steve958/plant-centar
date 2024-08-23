@@ -80,7 +80,7 @@ export default function NewItemModal(props: NewItemProps) {
                 <div className="new-form-group">
                     <label>Količina:</label>
                     <input
-                        type="number"
+                        type="text"
                         value={quantity_in_stock}
                         onChange={(e) => setQuantity_in_stock(e.target.value)}
                     />
@@ -96,7 +96,7 @@ export default function NewItemModal(props: NewItemProps) {
                 <div className="new-form-group">
                     <label>Cena:</label>
                     <input
-                        type="number"
+                        type="text"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                     />

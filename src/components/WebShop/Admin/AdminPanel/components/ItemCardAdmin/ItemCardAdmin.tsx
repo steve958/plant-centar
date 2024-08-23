@@ -1,50 +1,29 @@
-import { useState } from "react";
+
 import { Tooltip } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { doc, deleteDoc } from "firebase/firestore";
 import "./ItemCardAdmin.css";
-import { db } from "../../../../../firebase";
-import DeleteItemModal from "../modals/DeleteItemModal";
 
-interface ItemCardProps {
+interface ItemCardAdminProps {
   id: string;
   name: string;
   image: string;
   price: string;
-  onItemDeleted: () => void;
+  onDeleteRequest: (id: string) => void; // Callback to request deletion
 }
 
-export default function ItemCardAdmin(props: ItemCardProps) {
-  const { id, name, image, price, onItemDeleted } = props;
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+export default function ItemCardAdmin({
+  id,
+  name,
+  image,
+  price,
+  onDeleteRequest
+}: ItemCardAdminProps) {
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "RSD",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(Number(price));
-
-  const handleDelete = async () => {
-    console.log("Document ID:", id); // Debugging line
-
-    if (!id) {
-      console.error("Error: Document ID is undefined or invalid");
-      return;
-    }
-
-    try {
-      await deleteDoc(doc(db, "items", id));
-      onItemDeleted();
-    } catch (error) {
-      console.error("Error deleting document: ", error);
-    } finally {
-      setIsModalOpen(false);
-    }
-  };
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="admin-item-card-container">
@@ -72,20 +51,12 @@ export default function ItemCardAdmin(props: ItemCardProps) {
 
           <div className="price-icon-wrapper">
             <div className="item-price">{formattedPrice}</div>
-            <div className="delete-icon-wrapper" onClick={openModal}>
+            <div className="delete-icon-wrapper" onClick={() => onDeleteRequest(id)}>
               <DeleteIcon />
             </div>
           </div>
         </div>
       </div>
-
-      {isModalOpen && (
-        <DeleteItemModal
-          itemName={name}
-          onConfirm={handleDelete}
-          onCancel={closeModal}
-        />
-      )}
     </div>
   );
 }
