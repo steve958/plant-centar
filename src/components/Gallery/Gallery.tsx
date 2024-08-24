@@ -1,6 +1,6 @@
 import './Gallery.css';
 import fruits from '../../assets/fruits/borovnica7.jfif';
-import company from '../../assets/firma/firma1.jpg';
+import company from '../../assets/firma/firma2.jpeg';
 import vegetables from '../../assets/vegetables/zasad1.jpg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

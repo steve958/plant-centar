@@ -1,6 +1,6 @@
 import './Company.css';
 import img1 from '../../../assets/firma/firma1.jpg';
-import img2 from '../../../assets/firma/firma2.jpg';
+import img2 from '../../../assets/firma/firma2.jpeg';
 import img3 from '../../../assets/firma/firma3.jfif';
 import img4 from '../../../assets/firma/firma4.jfif';
 import img5 from '../../../assets/firma/radnja1.jfif';
