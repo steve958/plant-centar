@@ -83,20 +83,33 @@ export default function WebShop() {
 
   const handleAddToCart = (name: string, price: string, image: string) => {
     console.log("Adding to cart:", { name, price, image });
-    const newItem: Item = {
-      id: Date.now().toString(),
-      name,
-      price,
-      image,
-    };
 
     setCartItems((prevCartItems) => {
-      const updatedCartItems = [...prevCartItems, newItem];
-      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-      localStorage.setItem(
-        "cartItemCount",
-        JSON.stringify(updatedCartItems.length)
+      const itemIndex = prevCartItems.findIndex(
+        item => item.name === name && item.price === price && item.image === image
       );
+
+      let updatedCartItems;
+      if (itemIndex !== -1) {
+        updatedCartItems = prevCartItems.map((item, index) =>
+          index === itemIndex
+            ? { ...item, quantity: (item.quantity || 0) + 1 }
+            : item
+        );
+      } else {
+        const newItem: Item = {
+          id: Date.now().toString(),
+          name,
+          price,
+          image,
+          quantity: 1
+        };
+
+        updatedCartItems = [...prevCartItems, newItem];
+      }
+
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+      localStorage.setItem("cartItemCount", JSON.stringify(updatedCartItems.reduce((total, item) => total + (item.quantity || 0), 0)));
       return updatedCartItems;
     });
   };
@@ -139,7 +152,7 @@ export default function WebShop() {
             <ShoppingCartIcon sx={{ fontSize: 40 }} />
             {cartItems.length > 0 && (
               <div className="cart-item-count">
-                <strong>{cartItems.length}</strong>
+                <strong>{cartItems.reduce((total, item) => total + (item.quantity || 0), 0)}</strong>
               </div>
             )}
           </div>

@@ -6,4 +6,5 @@ export interface Item{
     category?: string;
     quantity_in_stock?: string;
     price: string;
+    quantity?:number;
 }

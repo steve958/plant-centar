@@ -7,143 +7,105 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { useNavigate } from "react-router-dom";
 
 const Cart: React.FC = () => {
-  const [cartItems, setCartItems] = useState<
-    Map<string, { item: Item; quantity: number }>
-  >(new Map());
-
-  const [shippingPrice] = useState<string>("300");
+  const [cartItems, setCartItems] = useState<Item[]>([]);
+  const [shippingPrice] = useState<number>(300);
   const navigate = useNavigate();
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
-      const items = JSON.parse(storedCartItems) as Item[];
-      const itemMap = new Map<string, { item: Item; quantity: number }>();
-
-      items.forEach((item: Item) => {
-        if (itemMap.has(item.name)) {
-          const existing = itemMap.get(item.name);
-          if (existing) {
-            existing.quantity += 1;
-            itemMap.set(item.name, existing);
-          }
-        } else {
-          itemMap.set(item.name, { item, quantity: 1 });
-        }
-      });
-
-      setCartItems(itemMap);
+      setCartItems(JSON.parse(storedCartItems));
     }
   }, []);
 
-  useEffect(() => {
-    updateLocalStorage();
-  }, [cartItems]);
+  const updateLocalStorage = (updatedCartItems: Item[]) => {
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    localStorage.setItem("cartItemCount", JSON.stringify(updatedCartItems.reduce((total, item) => total + (item.quantity || 0), 0)));
+  };
 
-  const updateLocalStorage = () => {
-    if (cartItems.size === 0) {
-      localStorage.removeItem("cartItems");
-      localStorage.setItem("cartItemCount", "0"); // Update count to 0
-      localStorage.setItem("totalPrice", "0.00"); // Update total price to 0
-    } else {
-      const allItems = Array.from(cartItems.values()).flatMap(
-        ({ item, quantity }) => Array(quantity).fill(item)
+  const handleRemoveItem = (itemId: string | undefined) => {
+    if (itemId) {
+      const updatedItems = cartItems.map(item =>
+        item.id === itemId && item.quantity && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      ).filter(item => item.quantity && item.quantity > 0);
+
+      setCartItems(updatedItems);
+      updateLocalStorage(updatedItems);
+    }
+  };
+
+  const handleAddItem = (itemId: string | undefined) => {
+    if (itemId) {
+      const updatedItems = cartItems.map(item =>
+        item.id === itemId
+          ? { ...item, quantity: (item.quantity || 0) + 1 }
+          : item
       );
-      localStorage.setItem("cartItems", JSON.stringify(allItems));
-      localStorage.setItem("cartItemCount", JSON.stringify(allItems.length)); // Update count
-      
-      const total = calculateTotalPrice();
-      localStorage.setItem("totalPrice", total.toFixed(2)); // Update total price
+
+      setCartItems(updatedItems);
+      updateLocalStorage(updatedItems);
     }
   };
 
-  const handleIncreaseQuantity = (name: string) => {
-    const updatedCartItems = new Map(cartItems);
-    const itemEntry = updatedCartItems.get(name);
-
-    if (itemEntry) {
-      itemEntry.quantity += 1;
-      updatedCartItems.set(name, itemEntry);
-      setCartItems(updatedCartItems);
+  const handleDeleteItem = (itemId: string | undefined) => {
+    if (itemId) {
+      const updatedItems = cartItems.filter(item => item.id !== itemId);
+      setCartItems(updatedItems);
+      updateLocalStorage(updatedItems);
     }
-  };
-
-  const handleDecreaseQuantity = (name: string) => {
-    const updatedCartItems = new Map(cartItems);
-    const itemEntry = updatedCartItems.get(name);
-
-    if (itemEntry) {
-      if (itemEntry.quantity > 1) {
-        itemEntry.quantity -= 1;
-        updatedCartItems.set(name, itemEntry);
-      } else {
-        updatedCartItems.delete(name);
-      }
-      setCartItems(updatedCartItems);
-    }
-  };
-
-  const handleDeleteItem = (name: string) => {
-    const updatedCartItems = new Map(cartItems);
-    updatedCartItems.delete(name);
-    setCartItems(updatedCartItems);
   };
 
   const calculateTotalPrice = () => {
     let total = 0;
-    let shipping = parseFloat(shippingPrice);
-    cartItems.forEach(({ item, quantity }) => {
-      total += parseFloat(item.price) * quantity;
+    cartItems.forEach(({ price, quantity = 1 }) => {
+      total += Number(price) * quantity;
     });
-    return total + shipping;
+    return total + shippingPrice;
   };
 
-  const formatPrice = (price: string) => {
-    const numberPrice = parseFloat(price);
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "RSD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(numberPrice);
+  const totalPrice = calculateTotalPrice();
+
+  const handleNextClick = () => {
+    navigate("/checkout", { state: { cartItems, totalPrice } });
   };
 
-  const handleNext = () => {
-    localStorage.setItem("totalPrice", calculateTotalPrice().toFixed(2));
-    navigate("/checkout");
+  const formatPrice = (price: number | string) => {
+    return `RSD ${Number(price).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   };
 
   return (
     <div className="cart-items-container">
       <div className="cart-items-wrapper">
-        {cartItems.size === 0 ? (
+        {cartItems.length === 0 ? (
           <div className="empty-cart-message">Vaša korpa je prazna</div>
         ) : (
-          Array.from(cartItems.values()).map(({ item, quantity }) => (
-            <div key={item.id} className="cart-item">
+          cartItems.map(({ id, image, name, price, quantity = 1 }) => (
+            <div key={id} className="cart-item">
               <img
-                src={item.image}
-                alt={item.name}
+                src={image}
+                alt={name}
                 className="cart-item-image"
               />
               <div className="cart-item-details">
                 <div className="item-name-price-wrapper">
-                  <div className="cart-item-name">{item.name}</div>
+                  <div className="cart-item-name">{name}</div>
                   <div className="cart-item-price">
-                    <strong>{formatPrice(item.price)}</strong>
+                    <strong>{formatPrice(price)}</strong>
                   </div>
                 </div>
                 <div className="cart-item-quantity">
                   <button
                     className="quantity-button"
-                    onClick={() => handleDecreaseQuantity(item.name)}
+                    onClick={() => handleRemoveItem(id)}
                   >
                     <RemoveIcon />
                   </button>
                   <span className="quantity">{quantity}</span>
                   <button
                     className="quantity-button"
-                    onClick={() => handleIncreaseQuantity(item.name)}
+                    onClick={() => handleAddItem(id)}
                   >
                     <AddIcon />
                   </button>
@@ -151,7 +113,7 @@ const Cart: React.FC = () => {
               </div>
               <div
                 className="delete-icon-container"
-                onClick={() => handleDeleteItem(item.name)}
+                onClick={() => handleDeleteItem(id)}
               >
                 <DeleteIcon />
               </div>
@@ -159,27 +121,27 @@ const Cart: React.FC = () => {
           ))
         )}
       </div>
-      {cartItems.size > 0 ? (
+      {cartItems.length > 0 && (
         <div className="shipping-price-container">
           <span>Usluge dostave:</span>{" "}
           <strong>
             <span>{formatPrice(shippingPrice)}</span>
           </strong>
         </div>
-      ) : null}
-      {cartItems.size > 0 ? (
+      )}
+      {cartItems.length > 0 && (
         <div className="total-price-container">
           <span>Ukupno za plaćanje:</span>{" "}
           <strong>
-            <span>{formatPrice(calculateTotalPrice().toString())}</span>
+            <span>{formatPrice(totalPrice)}</span>
           </strong>
         </div>
-      ) : null}
-       {cartItems.size > 0 ? (
-      <div className="next-button-container">
-        <button className="next-button" onClick={handleNext}>Nastavi...</button>
-      </div>
-       ) : null}
+      )}
+      {cartItems.length > 0 && (
+        <div className="next-button-container">
+          <button className="next-button" onClick={handleNextClick}>Nastavi...</button>
+        </div>
+      )}
     </div>
   );
 };
