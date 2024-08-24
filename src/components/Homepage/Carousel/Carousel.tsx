@@ -38,7 +38,7 @@ export default function Carousel() {
       />
       {showText && (
         <div className="carousel-item">
-          <p className="carousel-heading">Neki naslov o ovome</p>
+          <p className="carousel-heading">{selectedItem === 'blueberry' ? 'Sredstva za ishranu bilja' : 'Sredstva za zaštitu bilja'}</p>
           <Button variant="contained" className="carousel-button">
             Više informacija
           </Button>

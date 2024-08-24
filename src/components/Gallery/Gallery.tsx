@@ -1,7 +1,7 @@
 import './Gallery.css';
-import fruits from '../../assets/jagode/zasad1.jpg';
+import fruits from '../../assets/fruits/borovnica7.jfif';
 import company from '../../assets/firma/firma1.jpg';
-import vegetables from '../../assets/povrce/zasad1.jpg';
+import vegetables from '../../assets/vegetables/zasad1.jpg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,23 +30,25 @@ export default function Gallery() {
           onMouseLeave={hoverEnd}
           onClick={() => navigate('/galerija/kompanija')}
         >
-          <img src={company} alt="" />
-          {categoryHover === 'company' && <p>naša kompanija</p>}
+          <img src={company} alt="ups" />
+          {categoryHover === 'company' && <p>prodajni objekti</p>}
         </div>
         <div
           className="gallery-category"
           onMouseEnter={() => categoryHovered('fruits')}
           onMouseLeave={hoverEnd}
+          onClick={() => navigate('/galerija/voće')}
         >
-          <img src={fruits} alt="" />
+          <img src={fruits} alt="ups" />
           {categoryHover === 'fruits' && <p>voće</p>}
         </div>
         <div
           className="gallery-category"
           onMouseEnter={() => categoryHovered('vegetables')}
           onMouseLeave={hoverEnd}
+          onClick={() => navigate('/galerija/povrće')}
         >
-          <img src={vegetables} alt="" />
+          <img src={vegetables} alt="ups" />
           {categoryHover === 'vegetables' && <p>povrće</p>}
         </div>
       </div>

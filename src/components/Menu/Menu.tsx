@@ -43,10 +43,12 @@ export default function Menu() {
           <KeyboardArrowDownIcon />
           {categoriesHover && (
             <div className="categories-container">
-              <div className="category">bla</div>
-              <div className="category">bla</div>
-              <div className="category">bla</div>
-              <div className="category">bla</div>
+              <div className="category">Sredstva za zaštitu bilja</div>
+              <div className="category">Sredstva za ishranu bilja</div>
+              <div className="category">Semenska roba</div>
+              <div className="category">Hrana za domaće životinje</div>
+              <div className="category">Hrana i oprema za kućne ljubimce</div>
+              <div className="category">Alati i oprema</div>
             </div>
           )}
         </div>

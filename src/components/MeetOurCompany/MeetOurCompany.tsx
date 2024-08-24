@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import "./MeetOurCompany.css";
-import meetUsImg from "../../assets/meetUs.jpg";
+import meetUsImg from "../../assets/logo.jpg";
 import { useRef } from "react";
 
 

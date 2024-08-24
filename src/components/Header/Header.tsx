@@ -16,7 +16,6 @@ export default function Header() {
         }
     }, [showMap]);
 
-
     return (
         <div className="header-container">
             <div className="header-wrapper">

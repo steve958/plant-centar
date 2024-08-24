@@ -7,16 +7,17 @@
   justify-content: center;
 }
 
-.company-container > img {
+.company-container>img {
   width: 450px;
-  height: auto;
+  height: 450px;
+  object-fit: cover;
   margin: 20px;
   border: 1px solid #54c143;
   filter: drop-shadow(0 0 0.75rem #54c143);
 }
 
 @media screen and (max-width: 550px) {
-  .company-container > img {
+  .company-container>img {
     width: 80%;
   }
 }
