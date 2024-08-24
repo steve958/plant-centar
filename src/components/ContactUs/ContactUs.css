@@ -8,6 +8,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 53vh;
   margin-bottom: 8px;
+  animation: appear 1s 1;
 }
 
 h2 {

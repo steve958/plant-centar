@@ -6,6 +6,7 @@
   min-height: 50vh;
   border-top: 4px double #54c143;
   border-bottom: 4px double #54c143;
+  animation: appear 1s 1;
 }
 
 h2 {

@@ -4,6 +4,7 @@
     justify-content: center;
     z-index: 200;
     height: 52vh;
+    animation: appear 1s 1;
 }
 
 .loader-circle {

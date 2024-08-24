@@ -53,7 +53,7 @@ export default function WebShop() {
   };
 
   const filterAndSortItems = () => {
-    let filteredItems = itemsData.filter((item) =>
+    const filteredItems = itemsData.filter((item) =>
       item.name.toLowerCase().includes(searchInput.toLowerCase())
     );
 

@@ -5,6 +5,7 @@
   margin-bottom: 35px;
   border-top: 4px double #54c143;
   border-bottom: 4px double #54c143;
+  animation: appear 1s 1;
 }
 
 .about-us-description-wrapper {
@@ -23,7 +24,7 @@
   position: relative;
 }
 
-.about-us-img-wrapper > img {
+.about-us-img-wrapper>img {
   width: 500px;
   height: auto;
   border-radius: 10px;
@@ -31,7 +32,7 @@
   filter: drop-shadow(0 0 0.75rem #54c143);
 }
 
-.about-us-description-wrapper > p {
+.about-us-description-wrapper>p {
   text-align: left;
   margin-left: 20%;
   font-size: 18px;
@@ -66,17 +67,17 @@
     width: 100%;
   }
 
-  .about-us-description-wrapper > p {
+  .about-us-description-wrapper>p {
     margin-left: 50px;
   }
 }
 
 @media screen and (max-width: 650px) {
-  .about-us-description-wrapper > p {
+  .about-us-description-wrapper>p {
     margin-left: 20px;
   }
 
-  .about-us-img-wrapper > img {
+  .about-us-img-wrapper>img {
     width: 80%;
     height: auto;
   }
