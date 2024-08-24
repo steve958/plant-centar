@@ -57,7 +57,7 @@ h2 {
 
 @media screen and (max-width: 550px) {
   .gallery-category {
-    width: 80%;
+    width: 95%;
   }
 
   h2 {
@@ -65,8 +65,9 @@ h2 {
   }
 
   .gallery-category>img {
-    width: 70vw;
+    width: 100%;
     height: auto;
+    object-fit: cover;
   }
 
   .gallery-category>p {
