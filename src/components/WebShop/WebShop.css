@@ -13,7 +13,7 @@
 .item-card-wrapper {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 10px;
   padding: 30px;
   min-height: 500px;
   justify-content: center;
@@ -114,7 +114,6 @@
 
   .item-card-wrapper {
     grid-template-columns: repeat(4, 1fr);
-    min-height: 900px;
   }
 
   .shop-header-container {
