@@ -64,6 +64,7 @@ export default function Checkout() {
         <h2 className="title">Unesite vaše informacije</h2>
         <label>Ime:</label>
         <input
+          className="input-info"
           type="text"
           name="name"
           value={userInfo.name}
@@ -71,6 +72,7 @@ export default function Checkout() {
         />
         <label>Prezime:</label>
         <input
+          className="input-info"
           type="text"
           name="surname"
           value={userInfo.surname}
@@ -78,6 +80,7 @@ export default function Checkout() {
         />
         <label>Grad:</label>
         <input
+          className="input-info"
           type="text"
           name="city"
           value={userInfo.city}
@@ -85,6 +88,7 @@ export default function Checkout() {
         />
         <label>Poštanski broj:</label>
         <input
+          className="input-info"
           type="text"
           name="postalCode"
           value={userInfo.postalCode}
@@ -92,6 +96,7 @@ export default function Checkout() {
         />
         <label>Broj telefona:</label>
         <input
+          className="input-info"
           type="text"
           name="phone"
           value={userInfo.phone}
@@ -99,6 +104,7 @@ export default function Checkout() {
         />
         <label>Ulica:</label>
         <input
+          className="input-info"
           type="text"
           name="street"
           value={userInfo.street}
@@ -106,6 +112,7 @@ export default function Checkout() {
         />
         <label>Broj:</label>
         <input
+          className="input-info"
           type="text"
           name="number"
           value={userInfo.number}
@@ -116,8 +123,12 @@ export default function Checkout() {
         </div>
       </div>
       <div className="order-button-wrapper">
-        <button className="back-button" onClick={handleBack}>Nazad</button>
-        <button onClick={handleOrder}>Poruči</button>
+        <button className="back-button" onClick={handleBack}>
+          Nazad
+        </button>
+        <button className="order-button" onClick={handleOrder}>
+          Poruči
+        </button>
       </div>
     </div>
   );

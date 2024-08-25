@@ -115,7 +115,7 @@ export default function WebShop() {
   };
 
   const handleCartIconClick = () => {
-    navigate("/cart", { state: { cartItems } });
+    navigate("/korpa", { state: { cartItems } });
   };
 
   return (

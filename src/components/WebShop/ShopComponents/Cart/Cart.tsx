@@ -68,7 +68,7 @@ const Cart: React.FC = () => {
   const totalPrice = calculateTotalPrice();
 
   const handleNextClick = () => {
-    navigate("/checkout", { state: { cartItems, totalPrice } });
+    navigate("/naplata", { state: { cartItems, totalPrice } });
   };
 
   const formatPrice = (price: number | string) => {
@@ -140,6 +140,7 @@ const Cart: React.FC = () => {
       {cartItems.length > 0 && (
         <div className="next-button-container">
           <button className="next-button" onClick={handleNextClick}>Nastavi...</button>
+          
         </div>
       )}
     </div>

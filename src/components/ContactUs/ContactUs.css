@@ -39,7 +39,7 @@ textarea {
   height: 150px;
 }
 
-button {
+.submit-button{
   background-color: #54c143;
   color: #fff;
   padding: 10px 15px;
@@ -48,7 +48,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.submit-button :hover {
   background-color: #54c143;
 }
 

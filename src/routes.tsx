@@ -56,11 +56,11 @@ export const router = createHashRouter([
         element: <AdminLogIn />,
       },
       {
-        path: '/cart',
+        path: '/korpa',
         element: <Cart />,
       },
       {
-        path: '/checkout',
+        path: '/naplata',
         element: <Checkout />
       },
       {
