@@ -8,7 +8,8 @@ import { Item } from "../../ShopComponents/models/item";
 import ItemCardAdmin from "./components/ItemCardAdmin/ItemCardAdmin";
 import NewItemModal from "./components/modals/NewItemModal";
 import DeleteItemModal from "./components/modals/DeleteItemModal";
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import EditItemModal from "./components/modals/EditItemModal";
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { MoonLoader } from "react-spinners";
 
@@ -18,6 +19,7 @@ export default function AdminPanel() {
   const [sortOrder, setSortOrder] = useState<string>("priceDesc");
   const [searchInput, setSearchInput] = useState<string>("");
   const [addItemClicked, setAddItemClicked] = useState<boolean>(false);
+  const [editItemClicked, setEditItemClicked] = useState<Item | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [deleteItemId, setDeleteItemId] = useState<string | null>(null);
 
@@ -33,10 +35,13 @@ export default function AdminPanel() {
     setIsLoading(true);
     try {
       const querySnapshot = await getDocs(collection(db, "items"));
-      const data: Item[] = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...(doc.data() as Item),
-      }));
+      const data: Item[] = querySnapshot.docs.map((doc) => {
+        const itemData = doc.data() as Omit<Item, 'id'>;
+        return {
+          id: doc.id,
+          ...itemData,
+        };
+      });
       setItemsData(data);
       setDisplayedItems(data);
     } catch (error) {
@@ -83,6 +88,10 @@ export default function AdminPanel() {
     setAddItemClicked(false);
   };
 
+  const handleCloseEditModal = () => {
+    setEditItemClicked(null);
+  };
+
   const handleConfirm = async (newItem: Item) => {
     try {
       const itemsCollection = collection(db, "items");
@@ -104,6 +113,33 @@ export default function AdminPanel() {
 
   const handleAddItemClick = () => {
     setAddItemClicked(true);
+  };
+
+  const handleEditItemClick = (item: Item) => {
+    setEditItemClicked(item);
+  };
+
+  const handleEditConfirm = async (updatedItem: Item) => {
+    if (!updatedItem.id) return;
+
+    try {
+      const itemDoc = doc(db, "items", updatedItem.id);
+      await updateDoc(itemDoc, updatedItem as any); // Type assertion
+
+      setItemsData((prevItems) =>
+        prevItems.map((item) =>
+          item.id === updatedItem.id ? updatedItem : item
+        )
+      );
+      setDisplayedItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === updatedItem.id ? updatedItem : item
+        )
+      );
+      handleCloseEditModal();
+    } catch (error) {
+      console.error("Error updating document: ", error);
+    }
   };
 
   const handleDeleteRequest = (id: string) => {
@@ -135,6 +171,20 @@ export default function AdminPanel() {
     <div className="admin-panel-container">
       {addItemClicked && (
         <NewItemModal close={handleCloseModal} confirm={handleConfirm} />
+      )}
+
+      {editItemClicked && editItemClicked.id && (
+        <EditItemModal
+          close={handleCloseEditModal}
+          confirm={handleEditConfirm}
+          id={editItemClicked.id}
+          image={editItemClicked.image}
+          name={editItemClicked.name}
+          description={editItemClicked.description}
+          category={editItemClicked.category}
+          quantity_in_stock={editItemClicked.quantity_in_stock}
+          price={editItemClicked.price}
+        />
       )}
 
       {deleteItemId && (
@@ -196,6 +246,7 @@ export default function AdminPanel() {
               name={item.name}
               price={item.price}
               onDeleteRequest={handleDeleteRequest}
+              onEditClick={() => handleEditItemClick(item)}
             />
           ))}
         </div>

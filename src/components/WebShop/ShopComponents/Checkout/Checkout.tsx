@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Item } from "../models/item";
+import { toast } from 'react-toastify';
 import "./Checkout.css";
 
 export default function Checkout() {
@@ -15,6 +16,7 @@ export default function Checkout() {
     number: "",
   });
   const [cartItems, setCartItems] = useState<Item[]>([]);
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -45,12 +47,28 @@ export default function Checkout() {
   };
 
   const handleOrder = () => {
+    const isEmptyField = Object.values(userInfo).some(value => value.trim() === "");
+    if (isEmptyField) {
+      if (!isButtonDisabled) {
+        setIsButtonDisabled(true);
+        toast.error("Sva polja moraju biti popunjena!", {
+          className: "toast-error",
+          icon: false,
+          autoClose: 1500,
+        });
+        setTimeout(() => setIsButtonDisabled(false), 1500); 
+      }
+      return;
+    }
+
     const orderDetails = {
       userInfo,
       cartItems,
       totalPrice,
     };
+    navigate("/poruka");
     console.log("Order details:", orderDetails);
+    localStorage.clear();
   };
 
   const handleBack = () => {
@@ -126,7 +144,11 @@ export default function Checkout() {
         <button className="back-button" onClick={handleBack}>
           Nazad
         </button>
-        <button className="order-button" onClick={handleOrder}>
+        <button
+          className="order-button"
+          onClick={handleOrder}
+          disabled={isButtonDisabled} 
+        >
           Poruči
         </button>
       </div>

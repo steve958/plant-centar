@@ -1,4 +1,3 @@
-
 import { Tooltip } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./ItemCardAdmin.css";
@@ -8,7 +7,8 @@ interface ItemCardAdminProps {
   name: string;
   image: string;
   price: string;
-  onDeleteRequest: (id: string) => void; // Callback to request deletion
+  onDeleteRequest: (id: string) => void; 
+  onEditClick: () => void;
 }
 
 export default function ItemCardAdmin({
@@ -16,7 +16,8 @@ export default function ItemCardAdmin({
   name,
   image,
   price,
-  onDeleteRequest
+  onDeleteRequest,
+  onEditClick
 }: ItemCardAdminProps) {
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -25,10 +26,15 @@ export default function ItemCardAdmin({
     maximumFractionDigits: 2,
   }).format(Number(price));
 
+  const handleDeleteClick = (event: React.MouseEvent) => {
+    event.stopPropagation(); // Prevents triggering onEditClick when clicking delete icon
+    onDeleteRequest(id);
+  };
+
   return (
     <div className="admin-item-card-container">
-      <div className="admin-item-card-content">
-        <img className="item-image" src={image} alt="slika proizvoda" />
+      <div className="admin-item-card-content" onClick={onEditClick}>
+        <img className="item-image" src={image} alt="Product" />
         <div className="item-details">
           <Tooltip
             title={name}
@@ -51,7 +57,7 @@ export default function ItemCardAdmin({
 
           <div className="price-icon-wrapper">
             <div className="item-price">{formattedPrice}</div>
-            <div className="delete-icon-wrapper" onClick={() => onDeleteRequest(id)}>
+            <div className="delete-icon-wrapper" onClick={handleDeleteClick}>
               <DeleteIcon />
             </div>
           </div>

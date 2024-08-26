@@ -20,16 +20,26 @@ const Cart: React.FC = () => {
 
   const updateLocalStorage = (updatedCartItems: Item[]) => {
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-    localStorage.setItem("cartItemCount", JSON.stringify(updatedCartItems.reduce((total, item) => total + (item.quantity || 0), 0)));
+    localStorage.setItem(
+      "cartItemCount",
+      JSON.stringify(
+        updatedCartItems.reduce(
+          (total, item) => total + (item.quantity || 0),
+          0
+        )
+      )
+    );
   };
 
   const handleRemoveItem = (itemId: string | undefined) => {
     if (itemId) {
-      const updatedItems = cartItems.map(item =>
-        item.id === itemId && item.quantity && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      ).filter(item => item.quantity && item.quantity > 0);
+      const updatedItems = cartItems
+        .map((item) =>
+          item.id === itemId && item.quantity && item.quantity > 1
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity && item.quantity > 0);
 
       setCartItems(updatedItems);
       updateLocalStorage(updatedItems);
@@ -38,7 +48,7 @@ const Cart: React.FC = () => {
 
   const handleAddItem = (itemId: string | undefined) => {
     if (itemId) {
-      const updatedItems = cartItems.map(item =>
+      const updatedItems = cartItems.map((item) =>
         item.id === itemId
           ? { ...item, quantity: (item.quantity || 0) + 1 }
           : item
@@ -51,7 +61,7 @@ const Cart: React.FC = () => {
 
   const handleDeleteItem = (itemId: string | undefined) => {
     if (itemId) {
-      const updatedItems = cartItems.filter(item => item.id !== itemId);
+      const updatedItems = cartItems.filter((item) => item.id !== itemId);
       setCartItems(updatedItems);
       updateLocalStorage(updatedItems);
     }
@@ -72,7 +82,14 @@ const Cart: React.FC = () => {
   };
 
   const formatPrice = (price: number | string) => {
-    return `RSD ${Number(price).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    return `RSD ${Number(price).toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}`;
+  };
+
+  const handleBack = () => {
+    navigate(-1);
   };
 
   return (
@@ -83,11 +100,7 @@ const Cart: React.FC = () => {
         ) : (
           cartItems.map(({ id, image, name, price, quantity = 1 }) => (
             <div key={id} className="cart-item">
-              <img
-                src={image}
-                alt={name}
-                className="cart-item-image"
-              />
+              <img src={image} alt={name} className="cart-item-image" />
               <div className="cart-item-details">
                 <div className="item-name-price-wrapper">
                   <div className="cart-item-name">{name}</div>
@@ -138,9 +151,13 @@ const Cart: React.FC = () => {
         </div>
       )}
       {cartItems.length > 0 && (
-        <div className="next-button-container">
-          <button className="next-button" onClick={handleNextClick}>Nastavi...</button>
-          
+        <div className="cart-button-wrapper">
+          <button className="back-to-shop-button" onClick={handleBack}>
+            Nazad
+          </button>
+          <button className="next-button" onClick={handleNextClick}>
+            Nastavi...
+          </button>
         </div>
       )}
     </div>

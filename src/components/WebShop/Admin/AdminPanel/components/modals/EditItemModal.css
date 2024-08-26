@@ -1,0 +1,133 @@
+.edit-item-modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+  }
+  
+  .edit-item-modal-heading {
+    background-color: #d9d9d9;
+    width: 100%;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 2px solid #54c143;
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .edit-item-modal-content {
+    width: 400px;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: white;
+    gap: 10px;
+    border-radius: 20px;
+    border: 2px solid #54c143;
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .edit-item-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    width: 250px;
+  }
+  
+  .image-input {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #def8da;
+  }
+  
+  .image-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .edit-form-group input {
+    width: 250px;
+    background-color: #def8da;
+    font-size: 16px !important;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 30px;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  .edit-form-group textarea {
+    width: 250px;
+    background-color: #def8da;
+    font-size: 16px !important;
+    box-sizing: border-box;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  .edit-form-group label {
+    font-size: 16px !important;
+    text-align: left;
+    margin: 0;
+  }
+  
+  .edit-form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .save-edit-button {
+    background-color: #54c143;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-edit-button:hover {
+    background-color: #429a32;
+  }
+  
+  .close-edit-button {
+    background-color: white;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid #54c143;
+    color: #54c143;
+  }
+  
+  .close-edit-button:hover {
+    background-color: #54c143;
+    color: white;
+  }
+  

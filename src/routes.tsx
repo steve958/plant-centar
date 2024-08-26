@@ -13,6 +13,7 @@ import Cart from "./components/WebShop/ShopComponents/Cart/Cart";
 import Checkout from "./components/WebShop/ShopComponents/Checkout/Checkout";
 import Fruits from "./components/Gallery/Fruits/Fruits";
 import Vegetables from "./components/Gallery/Vegetables/Vegetables";
+import Message from "./components/WebShop/ShopComponents/Message/Message";
 
 export const router = createHashRouter([
   {
@@ -62,6 +63,10 @@ export const router = createHashRouter([
       {
         path: '/naplata',
         element: <Checkout />
+      },
+      {
+        path: '/poruka',
+        element: <Message />
       },
       {
         path: '/admin/panel',
