@@ -12,9 +12,9 @@
 
 .item-details-header {
     display: flex;
-    width: 95%;
+    width: 100%;
     justify-content: space-between;
-    flex-wrap: wrap; 
+
 }
 
 .cart-icon-container {
