@@ -16,6 +16,11 @@ import Vegetables from "./components/Gallery/Vegetables/Vegetables";
 import Message from "./components/WebShop/ShopComponents/Message/Message";
 import ItemDetails from "./components/WebShop/ShopComponents/ItemDetails/ItemDetails";
 import CropProtection from "./components/Categories/CropProtection/CropProtection";
+import CropNutrition from "./components/Categories/CropNutrition/CropNutrition";
+import Seeds from "./components/Categories/Seeds/Seeds";
+import DomesticAnimals from "./components/Categories/DomesticAnimals/DomesticAnimals";
+import PetFood from "./components/Categories/PetFood/PetFood";
+import Tools from "./components/Categories/Tools/Tools";
 
 export const router = createHashRouter([
   {
@@ -41,6 +46,26 @@ export const router = createHashRouter([
       {
         path: '/sredstva-za-zastitu-bilja',
         element: <CropProtection />,
+      },
+      {
+        path: '/sredstva-za-ishranu-bilja',
+        element: <CropNutrition />,
+      },
+      {
+        path: '/hrana-za-domaće-životinje',
+        element: <DomesticAnimals />,
+      },
+      {
+        path: '/hrana-za-kućne-ljubimce',
+        element: <PetFood />,
+      },
+      {
+        path: '/semenska-roba',
+        element: <Seeds />,
+      },
+      {
+        path: '/alati-i-oprema',
+        element: <Tools />,
       },
       {
         path: '/galerija/voće',

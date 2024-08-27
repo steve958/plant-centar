@@ -36,8 +36,4 @@
         width: 80% !important;
     }
 
-    .partners-wrapper {
-        display: flex;
-        flex-direction: column;
-    }
 }

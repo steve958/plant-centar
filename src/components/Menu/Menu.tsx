@@ -49,11 +49,31 @@ export default function Menu() {
               >
                 Sredstva za zaštitu bilja
               </div>
-              <div className="category">Sredstva za ishranu bilja</div>
-              <div className="category">Semenska roba</div>
-              <div className="category">Hrana za domaće životinje</div>
-              <div className="category">Hrana i oprema za kućne ljubimce</div>
-              <div className="category">Alati i oprema</div>
+              <div
+                className="category"
+                onClick={() => navigate("sredstva-za-ishranu-bilja")}
+              >
+                Sredstva za ishranu bilja
+              </div>
+              <div
+                className="category"
+                onClick={() => navigate("semenska-roba")}
+              >
+                Semenska roba
+              </div>
+              <div
+                className="category"
+                onClick={() => navigate("hrana-za-domaće-životinje")}
+              >
+                Hrana za domaće životinje
+              </div>
+              <div
+                className="category"
+                onClick={() => navigate("hrana-za-kućne-ljubimce")}
+              >
+                Hrana i oprema za kućne ljubimce
+              </div>
+              <div className="category" onClick={() => navigate("alati-i-oprema")}>Alati i oprema</div>
             </div>
           )}
         </div>
@@ -97,11 +117,31 @@ export default function Menu() {
                 >
                   Sredstva za zaštitu bilja
                 </div>
-                <div className="category">Sredstva za ishranu bilja</div>
-                <div className="category">Semenska roba</div>
-                <div className="category">Hrana za domaće životinje</div>
-                <div className="category">Hrana i oprema za kućne ljubimce</div>
-                <div className="category">Alati i oprema</div>
+                <div
+                  className="category"
+                  onClick={() => navigate("sredstva-za-ishranu-bilja")}
+                >
+                  Sredstva za ishranu bilja
+                </div>
+                <div
+                  className="category"
+                  onClick={() => navigate("semenska-roba")}
+                >
+                  Semenska roba
+                </div>
+                <div
+                  className="category"
+                  onClick={() => navigate("hrana-za-domaće-životinje")}
+                >
+                  Hrana za domaće životinje
+                </div>
+                <div
+                  className="category"
+                  onClick={() => navigate("hrana-za-kućne-ljubimce")}
+                >
+                  Hrana i oprema za kućne ljubimce
+                </div>
+                <div className="category" onClick={() => navigate("alati-i-oprema")}>Alati i oprema</div>
               </div>
             )}
           </div>
