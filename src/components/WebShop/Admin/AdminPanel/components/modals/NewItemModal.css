@@ -75,7 +75,7 @@
   box-sizing: border-box;
   height: auto;
   min-height: 30px;
-  border-radius: 15px;
+  border-radius: 10px;
   text-align: center;
 }
 
@@ -84,7 +84,7 @@
   background-color: #def8da;
   font-size: 16px !important;
   box-sizing: border-box;
-  border-radius: 15px;
+  border-radius: 10px;
   text-align: center;
 }
 

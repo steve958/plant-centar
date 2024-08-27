@@ -35,7 +35,7 @@ const Cart: React.FC = () => {
     if (itemId) {
       const updatedItems = cartItems
         .map((item) =>
-          item.id === itemId && item.quantity && item.quantity > 1
+          item.id === itemId && item.quantity && item.quantity >= 1
             ? { ...item, quantity: item.quantity - 1 }
             : item
         )

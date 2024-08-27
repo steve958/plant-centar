@@ -28,7 +28,7 @@
   
   .edit-item-modal-content {
     width: 400px;
-    max-height: 800px;
+    min-height: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,7 +75,7 @@
     box-sizing: border-box;
     height: auto;
     min-height: 30px;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
   }
   
@@ -84,7 +84,7 @@
     background-color: #def8da;
     font-size: 16px !important;
     box-sizing: border-box;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
   }
   
@@ -92,6 +92,7 @@
     font-size: 16px !important;
     text-align: left;
     margin: 0;
+    color: black;
   }
   
   .edit-form-group {
@@ -131,3 +132,46 @@
     color: white;
   }
   
+  .quantity-wrapper{
+    display: flex;
+    align-items: center;
+  }
+
+.quantity-input{
+  width: 90px;
+  text-align: center;
+  background-color: #def8da;
+  border-radius: 10px;
+}
+
+.edit-quantity-form-group{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.addition-quantity-button-wrapper button{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: #54c143;
+  border:1px solid white;
+  border-radius: 5px;
+}
+
+.addition-quantity-button-wrapper button:hover{
+  background-color: #429a32;
+}
+
+.substract-quantity-button-wrapper button{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: #54c143;
+  border:1px solid white;
+  border-radius: 5px;
+}
+
+.substract-quantity-button-wrapper button:hover{
+  background-color: #429a32;
+}

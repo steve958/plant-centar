@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Item } from "../models/item";
 import { toast } from 'react-toastify';
 import "./Checkout.css";
+import Loader from "../../../Loader/Loader";
 
 export default function Checkout() {
   const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -17,6 +18,7 @@ export default function Checkout() {
   });
   const [cartItems, setCartItems] = useState<Item[]>([]);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false); 
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -61,14 +63,19 @@ export default function Checkout() {
       return;
     }
 
-    const orderDetails = {
-      userInfo,
-      cartItems,
-      totalPrice,
-    };
-    navigate("/poruka");
-    console.log("Order details:", orderDetails);
-    localStorage.clear();
+    setIsLoading(true); 
+    setIsButtonDisabled(true);
+
+    setTimeout(() => {
+      const orderDetails = {
+        userInfo,
+        cartItems,
+        totalPrice,
+      };
+      navigate("/poruka");
+      console.log("Order details:", orderDetails);
+      localStorage.clear();
+    }, 2000); 
   };
 
   const handleBack = () => {
@@ -78,80 +85,86 @@ export default function Checkout() {
 
   return (
     <div className="checkout-container">
-      <div className="input-wrapper">
-        <h2 className="title">Unesite vaše informacije</h2>
-        <label>Ime:</label>
-        <input
-          className="input-info"
-          type="text"
-          name="name"
-          value={userInfo.name}
-          onChange={handleChange}
-        />
-        <label>Prezime:</label>
-        <input
-          className="input-info"
-          type="text"
-          name="surname"
-          value={userInfo.surname}
-          onChange={handleChange}
-        />
-        <label>Grad:</label>
-        <input
-          className="input-info"
-          type="text"
-          name="city"
-          value={userInfo.city}
-          onChange={handleChange}
-        />
-        <label>Poštanski broj:</label>
-        <input
-          className="input-info"
-          type="text"
-          name="postalCode"
-          value={userInfo.postalCode}
-          onChange={handleChange}
-        />
-        <label>Broj telefona:</label>
-        <input
-          className="input-info"
-          type="text"
-          name="phone"
-          value={userInfo.phone}
-          onChange={handleChange}
-        />
-        <label>Ulica:</label>
-        <input
-          className="input-info"
-          type="text"
-          name="street"
-          value={userInfo.street}
-          onChange={handleChange}
-        />
-        <label>Broj:</label>
-        <input
-          className="input-info"
-          type="text"
-          name="number"
-          value={userInfo.number}
-          onChange={handleChange}
-        />
-        <div className="total-price">
-          Ukupno za plaćanje: <strong>{totalPrice.toFixed(2)} RSD</strong>
-        </div>
-      </div>
-      <div className="order-button-wrapper">
-        <button className="back-button" onClick={handleBack}>
-          Nazad
-        </button>
-        <button
-          className="order-button"
-          onClick={handleOrder}
-          disabled={isButtonDisabled} 
-        >
-          Poruči
-        </button>
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="input-wrapper">
+            <h2 className="title">Unesite vaše informacije</h2>
+            <label>Ime:</label>
+            <input
+              className="input-info"
+              type="text"
+              name="name"
+              value={userInfo.name}
+              onChange={handleChange}
+            />
+            <label>Prezime:</label>
+            <input
+              className="input-info"
+              type="text"
+              name="surname"
+              value={userInfo.surname}
+              onChange={handleChange}
+            />
+            <label>Grad:</label>
+            <input
+              className="input-info"
+              type="text"
+              name="city"
+              value={userInfo.city}
+              onChange={handleChange}
+            />
+            <label>Poštanski broj:</label>
+            <input
+              className="input-info"
+              type="text"
+              name="postalCode"
+              value={userInfo.postalCode}
+              onChange={handleChange}
+            />
+            <label>Broj telefona:</label>
+            <input
+              className="input-info"
+              type="text"
+              name="phone"
+              value={userInfo.phone}
+              onChange={handleChange}
+            />
+            <label>Ulica:</label>
+            <input
+              className="input-info"
+              type="text"
+              name="street"
+              value={userInfo.street}
+              onChange={handleChange}
+            />
+            <label>Broj:</label>
+            <input
+              className="input-info"
+              type="text"
+              name="number"
+              value={userInfo.number}
+              onChange={handleChange}
+            />
+            <div className="total-price">
+              Ukupno za plaćanje: <strong>{totalPrice.toFixed(2)} RSD</strong>
+            </div>
+          </div>
+          <div className="order-button-wrapper">
+            <button className="back-button" onClick={handleBack}>
+              Nazad
+            </button>
+            <button
+              className="order-button"
+              onClick={handleOrder}
+              disabled={isButtonDisabled} 
+            >
+              Poruči
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

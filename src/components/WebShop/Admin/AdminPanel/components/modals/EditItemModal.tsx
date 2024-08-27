@@ -66,11 +66,16 @@ export default function EditItemModal(props: EditItemProps) {
     try {
       await confirm(updatedItem);
     } catch (error) {
-      toast.error("Doslo je do greške pri čuvanju", {autoClose: 1500})
+      toast.error("Doslo je do greške pri čuvanju", { autoClose: 1500 });
     } finally {
       setIsSaving(false);
-      toast.success("Uspešno sačuvano", {autoClose: 1500})
+      toast.success("Uspešno sačuvano", { autoClose: 1500 });
     }
+  };
+
+  const handleQuantityChange = (change: number) => {
+    const updatedQuantity = (parseInt(currentQuantity) || 0) + change;
+    setCurrentQuantity(updatedQuantity.toString());
   };
 
   return (
@@ -109,7 +114,7 @@ export default function EditItemModal(props: EditItemProps) {
           <textarea
             value={currentDescription}
             onChange={(e) => setCurrentDescription(e.target.value)}
-            placeholder="Description"
+            placeholder=""
           />
         </div>
         <div className="edit-form-group">
@@ -118,17 +123,28 @@ export default function EditItemModal(props: EditItemProps) {
             type="text"
             value={currentCategory}
             onChange={(e) => setCurrentCategory(e.target.value)}
-            placeholder="Category"
+            placeholder=""
           />
         </div>
-        <div className="edit-form-group">
+        <div className="edit-quantity-form-group">
           <label>Količina:</label>
+          <div className="quantity-wrapper" >
+          <div className="substract-quantity-button-wrapper">
+          <button onClick={() => handleQuantityChange(-10)}>-10</button>
+          <button onClick={() => handleQuantityChange(-1)}>-1</button>
+          </div>
           <input
             type="text"
             value={currentQuantity}
             onChange={(e) => setCurrentQuantity(e.target.value)}
-            placeholder="Quantity in Stock"
+            placeholder=""
+            className="quantity-input"
           />
+          <div className="addition-quantity-button-wrapper">
+            <button onClick={() => handleQuantityChange(+1)}>+1</button>
+            <button onClick={() => handleQuantityChange(+10)}>+10</button>
+          </div>
+          </div>
         </div>
         <div className="edit-form-group">
           <label>Cena:</label>
@@ -136,7 +152,7 @@ export default function EditItemModal(props: EditItemProps) {
             type="text"
             value={currentPrice}
             onChange={(e) => setCurrentPrice(e.target.value)}
-            placeholder="Price"
+            placeholder=""
           />
         </div>
         <div className="edit-item-button-wrapper">
