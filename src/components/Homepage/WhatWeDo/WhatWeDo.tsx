@@ -5,7 +5,7 @@ export default function WhatWeDo() {
         <div className="what-we-do-container">
             <div className="what-we-do-wrapper">
                 <div className="what-we-do-heading">
-                    <h2>Čime se mi bavimo</h2>
+                    <h2>Čime se bavimo</h2>
                 </div>
                 <div className="heading-border"></div>
                 <div className="what-we-do-content">

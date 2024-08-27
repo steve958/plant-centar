@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import './Menu.css';
-import MenuIcon from '@mui/icons-material/Menu';
-import logoMain from '../../assets/PlantCLogo.jpg';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import "./Menu.css";
+import MenuIcon from "@mui/icons-material/Menu";
+import logoMain from "../../assets/PlantCLogo.jpg";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useNavigate } from "react-router-dom";
 
 export default function Menu() {
   const navigate = useNavigate();
@@ -28,10 +28,10 @@ export default function Menu() {
   return (
     <div className="menu-container">
       <div className="menu-wrapper">
-        <div className="menu-item" onClick={() => navigate('/početna')}>
+        <div className="menu-item" onClick={() => navigate("/početna")}>
           Početna
         </div>
-        <div className="menu-item" onClick={() => navigate('/o-nama')}>
+        <div className="menu-item" onClick={() => navigate("/o-nama")}>
           O nama
         </div>
         <div
@@ -39,11 +39,16 @@ export default function Menu() {
           onMouseEnter={hoverIn}
           onMouseLeave={hoverOut}
         >
-          Naš asortiman
+          Asortiman
           <KeyboardArrowDownIcon />
           {categoriesHover && (
             <div className="categories-container">
-              <div className="category">Sredstva za zaštitu bilja</div>
+              <div
+                className="category"
+                onClick={() => navigate("sredstva-za-zastitu-bilja")}
+              >
+                Sredstva za zaštitu bilja
+              </div>
               <div className="category">Sredstva za ishranu bilja</div>
               <div className="category">Semenska roba</div>
               <div className="category">Hrana za domaće životinje</div>
@@ -52,13 +57,13 @@ export default function Menu() {
             </div>
           )}
         </div>
-        <div className="menu-item" onClick={() => navigate('/galerija')}>
+        <div className="menu-item" onClick={() => navigate("/galerija")}>
           Galerija
         </div>
-        <div className="menu-item" onClick={() => navigate('/kontakt')}>
+        <div className="menu-item" onClick={() => navigate("/kontakt")}>
           Kontakt
         </div>
-        <div className="menu-item" onClick={() => navigate('/prodavnica')}>
+        <div className="menu-item" onClick={() => navigate("/prodavnica")}>
           Prodavnica
         </div>
       </div>
@@ -66,44 +71,53 @@ export default function Menu() {
         {!menuClicked ? (
           <MenuIcon />
         ) : (
-          <ArrowBackIcon id={menuClicked ? 'active' : 'inactive'} />
+          <ArrowBackIcon id={menuClicked ? "active" : "inactive"} />
         )}
         <img src={logoMain} alt="" />
       </span>
       {menuClicked && (
         <div className="small-screen-wrapper">
-          <div className="small-menu-item" onClick={() => navigate('/početna')}>
+          <div className="small-menu-item" onClick={() => navigate("/početna")}>
             Početna
           </div>
-          <div className="small-menu-item" onClick={() => navigate('/o-nama')}>
+          <div className="small-menu-item" onClick={() => navigate("/o-nama")}>
             O nama
           </div>
           <div
             className="small-menu-item"
-            onMouseEnter={hoverIn}
-            onMouseLeave={hoverOut}
+            onClick={() => setCategoriesHover((oldState) => !oldState)}
           >
-            Naš asortiman
+            Asortiman
             <KeyboardArrowDownIcon />
             {categoriesHover && (
               <div className="small-categories-container">
-                <div className="category">bla</div>
-                <div className="category">bla</div>
-                <div className="category">bla</div>
-                <div className="category">bla</div>
+                <div
+                  className="category"
+                  onClick={() => navigate("sredstva-za-zastitu-bilja")}
+                >
+                  Sredstva za zaštitu bilja
+                </div>
+                <div className="category">Sredstva za ishranu bilja</div>
+                <div className="category">Semenska roba</div>
+                <div className="category">Hrana za domaće životinje</div>
+                <div className="category">Hrana i oprema za kućne ljubimce</div>
+                <div className="category">Alati i oprema</div>
               </div>
             )}
           </div>
           <div
             className="small-menu-item"
-            onClick={() => navigate('/galerija')}
+            onClick={() => navigate("/galerija")}
           >
             Galerija
           </div>
-          <div className="small-menu-item" onClick={() => navigate('/kontakt')}>
+          <div className="small-menu-item" onClick={() => navigate("/kontakt")}>
             Kontakt
           </div>
-          <div className="small-menu-item" onClick={() => navigate('/prodavnica')}>
+          <div
+            className="small-menu-item"
+            onClick={() => navigate("/prodavnica")}
+          >
             Prodavnica
           </div>
         </div>

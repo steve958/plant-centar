@@ -15,6 +15,7 @@ import Fruits from "./components/Gallery/Fruits/Fruits";
 import Vegetables from "./components/Gallery/Vegetables/Vegetables";
 import Message from "./components/WebShop/ShopComponents/Message/Message";
 import ItemDetails from "./components/WebShop/ShopComponents/ItemDetails/ItemDetails";
+import CropProtection from "./components/Categories/CropProtection/CropProtection";
 
 export const router = createHashRouter([
   {
@@ -36,6 +37,10 @@ export const router = createHashRouter([
       {
         path: '/galerija/kompanija',
         element: <Company />,
+      },
+      {
+        path: '/sredstva-za-zastitu-bilja',
+        element: <CropProtection />,
       },
       {
         path: '/galerija/voće',

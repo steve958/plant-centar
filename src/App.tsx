@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-
+    setLoader(true)
     setTimeout(() => setLoader(false), 1500)
   }, [window.location.href])
 
