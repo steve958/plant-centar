@@ -8,7 +8,7 @@ export default function AdminLogIn() {
 
   const handleLogin = () => {
     // Proveri ispravnost lozinke
-    if (password === "stefanRetard") {
+    if (password === "bojanacnijesisljar") {
       // Postavi stanje autentifikacije
       localStorage.setItem("isAdminLoggedIn", "true");
       // Preusmeri na Admin Panel
