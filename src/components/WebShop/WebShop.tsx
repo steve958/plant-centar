@@ -81,41 +81,28 @@ export default function WebShop() {
     setSearchInput(event.target.value);
   };
 
-  const handleAddToCart = (name: string, price: string, image: string) => {
-    console.log("Adding to cart:", { name, price, image });
+  const handleAddToCart = (item: Item) => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
-    setCartItems((prevCartItems) => {
-      const itemIndex = prevCartItems.findIndex(
-        item => item.name === name && item.price === price && item.image === image
-      );
+    const itemIndex = cartItems.findIndex((cartItem: any) => cartItem.id === item.id);
 
-      let updatedCartItems;
-      if (itemIndex !== -1) {
-        updatedCartItems = prevCartItems.map((item, index) =>
-          index === itemIndex
-            ? { ...item, quantity: (item.quantity || 0) + 1 }
-            : item
-        );
-      } else {
-        const newItem: Item = {
-          id: Date.now().toString(),
-          name,
-          price,
-          image,
-          quantity: 1
-        };
+    if (itemIndex !== -1) {
+      cartItems[itemIndex].quantity += 1;
+    } else {
+      const newItem = {
+        ...item,
+        quantity: 1
+      };
+      cartItems.push(newItem);
+    }
 
-        updatedCartItems = [...prevCartItems, newItem];
-      }
-
-      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-      localStorage.setItem("cartItemCount", JSON.stringify(updatedCartItems.reduce((total, item) => total + (item.quantity || 0), 0)));
-      return updatedCartItems;
-    });
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("cartItemCount", JSON.stringify(cartItems.reduce((total: number, item: any) => total + item.quantity, 0)));
+    setCartItems(cartItems); 
   };
 
   const handleCartIconClick = () => {
-    navigate("/korpa", { state: { cartItems } });
+    navigate("/korpa");
   };
 
   return (
@@ -152,7 +139,7 @@ export default function WebShop() {
             <ShoppingCartIcon sx={{ fontSize: 40 }} />
             {cartItems.length > 0 && (
               <div className="cart-item-count">
-                <strong>{cartItems.reduce((total, item) => total + (item.quantity || 0), 0)}</strong>
+                <strong>{cartItems.reduce((total: number, item: any) => total + item.quantity, 0)}</strong>
               </div>
             )}
           </div>
@@ -168,10 +155,11 @@ export default function WebShop() {
           {displayedItems.map((item) => (
             <ItemCard
               key={item.id}
+              id={item.id!}
               image={item.image}
               name={item.name}
               price={item.price}
-              onAddToCart={handleAddToCart}
+              onAddToCart={() => handleAddToCart(item)}
             />
           ))}
         </div>

@@ -100,11 +100,29 @@
   display: flex;
   align-items: center;
   color: #54c143;
+  margin-top: 5px;
 }
 
 .filter-icon-container{
   cursor: pointer;
 
+}
+
+.cart-item-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -10px;
+  right: -13px;
+  background-color: #54c143;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 
@@ -225,3 +243,5 @@
     width: 200px;
   }
 }
+
+

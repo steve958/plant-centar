@@ -1,8 +1,11 @@
+import React from "react";
 import { Tooltip } from "@mui/material";
-import "./ItemCard.css";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useNavigate } from "react-router-dom";
+import "./ItemCard.css";
 
 interface ItemCardProps {
+  id: string;
   name: string;
   image: string;
   price: string;
@@ -10,7 +13,8 @@ interface ItemCardProps {
 }
 
 export default function ItemCard(props: ItemCardProps) {
-  const { name, image, price, onAddToCart } = props;
+  const { id, name, image, price, onAddToCart } = props;
+  const navigate = useNavigate();
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -19,14 +23,19 @@ export default function ItemCard(props: ItemCardProps) {
     maximumFractionDigits: 2,
   }).format(Number(price));
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
     onAddToCart(name, price, image);
   };
 
+  const handleItemClick = () => {
+    navigate(`/item/${id}`);
+  };
+
   return (
-    <div className="item-card-container">
+    <div className="item-card-container" onClick={handleItemClick}>
       <div className="item-card-content">
-        <img className="item-image" src={image} alt="Product" />
+        <img className="item-image" src={image} alt={name} />
         <div className="item-details">
           <Tooltip
             title={name}
@@ -35,11 +44,11 @@ export default function ItemCard(props: ItemCardProps) {
             componentsProps={{
               tooltip: {
                 sx: {
-                  fontSize: '0.75rem', 
-                  bgcolor: '#fff', 
-                  color: 'black', 
-                  p: 1, 
-                  border: '1px solid #54C143'
+                  fontSize: '0.75rem',
+                  bgcolor: '#fff',
+                  color: 'black',
+                  p: 1,
+                  border: '1px solid #54C143',
                 },
               },
             }}

@@ -14,6 +14,7 @@ import Checkout from "./components/WebShop/ShopComponents/Checkout/Checkout";
 import Fruits from "./components/Gallery/Fruits/Fruits";
 import Vegetables from "./components/Gallery/Vegetables/Vegetables";
 import Message from "./components/WebShop/ShopComponents/Message/Message";
+import ItemDetails from "./components/WebShop/ShopComponents/ItemDetails/ItemDetails";
 
 export const router = createHashRouter([
   {
@@ -67,6 +68,10 @@ export const router = createHashRouter([
       {
         path: '/poruka',
         element: <Message />
+      },
+      {
+        path: '/item/:id',
+        element: <ItemDetails />
       },
       {
         path: '/admin/panel',
