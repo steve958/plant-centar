@@ -1,27 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './ContactUs.css'; // Import your CSS file
 import emailjs from "@emailjs/browser"
 
 const ContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+ 
 
-  const handleChange = (e: any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const form = useRef<any>(null);
+
+ 
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(formData);
+    console.log(form.current);
     emailjs
         .sendForm(
             "service_7o97wws",
             "template_nypmfo7",
-            formData.name,
+            form.current,
             "5fNu_yD0ALmsTRjiS"
         )
         .then(
@@ -33,24 +29,19 @@ const ContactUs = () => {
                 console.error(error);
             }
         );
-        
-        setFormData({ name: '',
-          email: '',
-          message: '',})
+
 };
 
   return (
     <div className="contact-us-form">
       <h2>Kontaktirajte nas</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={form}>
         <div className="form-group">
           <label htmlFor="name">Ime:</label>
           <input
             type="text"
             id="name"
             name="name"
-            value={formData.name}
-            onChange={handleChange}
             required
           />
         </div>
@@ -60,8 +51,6 @@ const ContactUs = () => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
             required
           />
         </div>
@@ -70,12 +59,10 @@ const ContactUs = () => {
           <textarea
             id="message"
             name="message"
-            value={formData.message}
-            onChange={handleChange}
             required
           ></textarea>
         </div>
-        <button className='submit-button' onClick={(e) => handleSubmit(e)}>Pošalji</button>
+        <button className='submit-button' type='submit'>Pošalji</button>
       </form>
     </div>
   );
