@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import './ContactUs.css'; // Import your CSS file
+import emailjs from "@emailjs/browser"
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -15,9 +16,24 @@ const ContactUs = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // Add your logic to handle the form submission here
-    console.log('Form submitted:', formData);
-  };
+    emailjs
+        .sendForm(
+            "service_7o97wws",
+            "template_nypmfo7",
+            formData.name,
+            "5fNu_yD0ALmsTRjiS"
+        )
+        .then(
+            (result) => {
+                console.log(result.text);
+                alert('Poruka poslata')
+            },
+            (error) => {
+                console.log(error.text);
+            }
+        );
+    e.target.reset();
+};
 
   return (
     <div className="contact-us-form">
