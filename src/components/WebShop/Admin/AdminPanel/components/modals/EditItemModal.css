@@ -27,12 +27,12 @@
   }
   
   .edit-item-modal-content {
-    width: 400px;
+    width: 800px;
     min-height: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     background-color: white;
     gap: 10px;
     border-radius: 20px;
@@ -52,7 +52,7 @@
   }
   
   .image-input {
-    width: 250px;
+    width: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +69,7 @@
   }
   
   .edit-form-group input {
-    width: 250px;
+    width: 500px;
     background-color: #def8da;
     font-size: 16px !important;
     box-sizing: border-box;
@@ -80,7 +80,7 @@
   }
   
   .edit-form-group textarea {
-    width: 250px;
+    width: 500px;
     background-color: #def8da;
     font-size: 16px !important;
     box-sizing: border-box;
@@ -150,6 +150,12 @@
   justify-content: center;
 }
 
+.addition-quantity-button-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .addition-quantity-button-wrapper button{
   width: 40px;
   height: 40px;
@@ -163,6 +169,12 @@
   background-color: #429a32;
 }
 
+.substract-quantity-button-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .substract-quantity-button-wrapper button{
   width: 40px;
   height: 40px;
@@ -174,4 +186,70 @@
 
 .substract-quantity-button-wrapper button:hover{
   background-color: #429a32;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .edit-item-modal-content {
+    width: 95%;
+    min-height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edit-item-button-wrapper {
+    width: 80%;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .quantity-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-input,
+  .edit-form-group input,
+  .edit-form-group textarea,
+  .edit-form-group,
+  .quantity-input {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .edit-item-modal-heading {
+    font-size: 14px;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .save-edit-button,
+  .close-edit-button {
+    padding: 8px 12px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .addition-quantity-button-wrapper,
+  .substract-quantity-button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .edit-form-group label {
+    margin: 0 0 0 3%;
+  }
+  .addition-quantity-button-wrapper button,
+  .substract-quantity-button-wrapper button {
+    width: 35px;
+    height: 35px;
+  }
 }

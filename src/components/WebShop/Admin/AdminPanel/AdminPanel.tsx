@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./AdminPanel.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import TuneIcon from "@mui/icons-material/Tune";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Item } from "../../ShopComponents/models/item";
 import ItemCardAdmin from "./components/ItemCardAdmin/ItemCardAdmin";
@@ -222,9 +221,6 @@ export default function AdminPanel() {
         <div className="filter-cart-icon-wrapper">
           <div className="filter-icon-container">
             <TuneIcon sx={{ fontSize: 40 }} />
-          </div>
-          <div className="cart-icon-container">
-            <ShoppingCartIcon sx={{ fontSize: 40 }} />
           </div>
         </div>
       </div>

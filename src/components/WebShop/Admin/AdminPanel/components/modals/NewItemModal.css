@@ -27,7 +27,7 @@
 }
 
 .new-item-modal-content {
-  width: 400px;
+  width: 800px;
   max-height: 800px;
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@
 }
 
 .image-input {
-  width: 250px;
+  width: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,7 +69,7 @@
 }
 
 .new-form-group input {
-  width: 250px;
+  width: 500px;
   background-color: #def8da;
   font-size: 16px !important;
   box-sizing: border-box;
@@ -80,7 +80,7 @@
 }
 
 .new-form-group textarea {
-  width: 250px;
+ width: 500px;
   background-color: #def8da;
   font-size: 16px !important;
   box-sizing: border-box;
@@ -129,4 +129,46 @@
 .close-button:hover {
   background-color: #54c143;
   color: white;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+  .new-item-modal-content {
+    width: 95%;
+    max-width: 600px;
+    padding: 20px;
+    padding-top: 50px;
+  }
+
+  .image-input,
+  .new-form-group input,
+  .new-form-group textarea {
+    width: 100%;
+  }
+
+  .new-item-button-wrapper {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .new-item-modal-content {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    padding-top: 40px;
+  }
+
+  .image-input,
+  .new-form-group input,
+  .new-form-group textarea {
+    width: 100%;
+  }
+
+  .new-item-button-wrapper {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
 }
