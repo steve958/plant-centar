@@ -9,6 +9,10 @@
   margin-bottom: 35px;
 }
 
+.checkout-form{
+  width: 45%;
+}
+
 .title {
   margin: 0;
   color: black;
@@ -19,7 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 45%;
+  width: 100%;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
   border-radius: 20px;
@@ -97,23 +101,45 @@
 
 /* Media Queries */
 @media screen and (max-width: 1200px) {
-  .input-wrapper,
+  
+  .checkout-form{
+    width: 60%;
+  }
+  
+  .input-wrapper{
+    width: 100%;
+  }
+
   .order-button-wrapper {
     width: 60%;
   }
 }
 
 @media screen and (max-width: 992px) {
-  .input-wrapper,
+  .checkout-form{
+    width: 60%;
+  }
+  
+  .input-wrapper{
+    width: 100%;
+  }
+
   .order-button-wrapper {
-    width: 70%;
+    width: 60%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .input-wrapper,
+  .checkout-form{
+    width: 60%;
+  }
+  
+  .input-wrapper{
+    width: 100%;
+  }
+
   .order-button-wrapper {
-    width: 80%;
+    width: 60%;
   }
 
   .order-button-wrapper {
@@ -124,7 +150,15 @@
 }
 
 @media screen and (max-width: 480px) {
-  .input-wrapper,
+  .checkout-form{
+    width: 90%;
+    margin: 10px;
+  }
+  
+  .input-wrapper{
+    width: 100%;
+  }
+
   .order-button-wrapper {
     width: 90%;
   }

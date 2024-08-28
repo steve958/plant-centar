@@ -1,26 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Item } from "../models/item";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import emailjs from "emailjs-com";
 import "./Checkout.css";
 import Loader from "../../../Loader/Loader";
 
 export default function Checkout() {
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-    surname: "",
-    city: "",
-    postalCode: "",
-    phone: "",
-    street: "",
-    number: "",
-  });
   const [cartItems, setCartItems] = useState<Item[]>([]);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false); 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const form = useRef<HTMLFormElement | null>(null);
 
   useEffect(() => {
     const state = location.state as { cartItems: Item[]; totalPrice: number };
@@ -30,7 +23,6 @@ export default function Checkout() {
     } else {
       const storedTotalPrice = localStorage.getItem("totalPrice");
       const storedCartItems = localStorage.getItem("cartItems");
-
       if (storedTotalPrice) {
         setTotalPrice(parseFloat(storedTotalPrice));
       }
@@ -41,45 +33,62 @@ export default function Checkout() {
     }
   }, [location]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInfo({
-      ...userInfo,
-      [e.target.name]: e.target.value,
-    });
-  };
+  useEffect(() => {
+    console.log(cartItems);
+    
+  },[cartItems])
 
-  const handleOrder = () => {
-    const isEmptyField = Object.values(userInfo).some(value => value.trim() === "");
-    if (isEmptyField) {
-      if (!isButtonDisabled) {
-        setIsButtonDisabled(true);
-        toast.error("Sva polja moraju biti popunjena!", {
-          className: "toast-error",
-          icon: false,
-          autoClose: 1500,
-        });
-        setTimeout(() => setIsButtonDisabled(false), 1500); 
-      }
-      return;
-    }
 
-    setIsLoading(true); 
+  const handleOrder = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
     setIsButtonDisabled(true);
 
-    setTimeout(() => {
-      const orderDetails = {
-        userInfo,
-        cartItems,
-        totalPrice,
-      };
+    try {
+     const formObject = {...form.current} as any
+
+     cartItems.forEach((item:Item, index:number) => {
+        formObject[index].name = item.name;
+        formObject[index].quantity = item!.quantity;
+        formObject[index].price = item!.price;
+    });
+
+    console.log(formObject);
+    
+    return
+
+      // Log the form data object for debugging
+      console.log("Form Data Object:", formObject);
+
+      // Send email using EmailJS
+      await emailjs.send(
+        "service_vy94t1n", // Replace with your service ID
+        "template_c5t4mce", // Replace with your template ID
+        formObject,
+        "5fNu_yD0ALmsTRjiS" // Replace with your user ID
+      );
+
+      toast.success("Porudžbina uspešno poslata!", {
+        className: "toast-success",
+        icon: false,
+        autoClose: 1500,
+      });
       navigate("/poruka");
-      console.log("Order details:", orderDetails);
+    } catch (error) {
+      toast.error("Došlo je do greške pri slanju porudžbine.", {
+        className: "toast-error",
+        icon: false,
+        autoClose: 1500,
+      });
+      console.error("Error sending email:", error);
+    } finally {
+      setIsLoading(false);
+      setIsButtonDisabled(false);
       localStorage.clear();
-    }, 2000); 
+    }
   };
 
   const handleBack = () => {
-    localStorage.setItem("userInfo", JSON.stringify(userInfo));
     navigate(-1);
   };
 
@@ -88,82 +97,45 @@ export default function Checkout() {
       {isLoading ? (
         <Loader />
       ) : (
-        <>
+        <form className="checkout-form" ref={form} onSubmit={handleOrder}>
           <div className="input-wrapper">
             <h2 className="title">Unesite vaše informacije</h2>
             <label>Ime:</label>
-            <input
-              className="input-info"
-              type="text"
-              name="name"
-              value={userInfo.name}
-              onChange={handleChange}
-            />
+            <input className="input-info" type="text" name="name" required />
             <label>Prezime:</label>
-            <input
-              className="input-info"
-              type="text"
-              name="surname"
-              value={userInfo.surname}
-              onChange={handleChange}
-            />
+            <input className="input-info" type="text" name="surname" required />
             <label>Grad:</label>
-            <input
-              className="input-info"
-              type="text"
-              name="city"
-              value={userInfo.city}
-              onChange={handleChange}
-            />
+            <input className="input-info" type="text" name="city" required />
             <label>Poštanski broj:</label>
             <input
               className="input-info"
               type="text"
               name="postalCode"
-              value={userInfo.postalCode}
-              onChange={handleChange}
+              required
             />
             <label>Broj telefona:</label>
-            <input
-              className="input-info"
-              type="text"
-              name="phone"
-              value={userInfo.phone}
-              onChange={handleChange}
-            />
+            <input className="input-info" type="text" name="phone" required />
             <label>Ulica:</label>
-            <input
-              className="input-info"
-              type="text"
-              name="street"
-              value={userInfo.street}
-              onChange={handleChange}
-            />
+            <input className="input-info" type="text" name="street" required />
             <label>Broj:</label>
-            <input
-              className="input-info"
-              type="text"
-              name="number"
-              value={userInfo.number}
-              onChange={handleChange}
-            />
+            <input className="input-info" type="text" name="number" required />
             <div className="total-price">
               Ukupno za plaćanje: <strong>{totalPrice.toFixed(2)} RSD</strong>
             </div>
           </div>
           <div className="order-button-wrapper">
-            <button className="back-button" onClick={handleBack}>
+            <button className="back-button" type="button" onClick={handleBack}>
               Nazad
             </button>
             <button
               className="order-button"
-              onClick={handleOrder}
-              disabled={isButtonDisabled} 
+              type="submit"
+              disabled={isButtonDisabled}
             >
               Poruči
             </button>
           </div>
-        </>
+        </form>
       )}
     </div>
   );

@@ -69,7 +69,7 @@ const Cart: React.FC = () => {
 
   const calculateTotalPrice = () => {
     let total = 0;
-    cartItems.forEach(({ price, quantity = 1 }) => {
+    cartItems.forEach(({ price = 0, quantity = 1 }) => {
       total += Number(price) * quantity;
     });
     return total + shippingPrice;
@@ -112,6 +112,7 @@ const Cart: React.FC = () => {
                   <button
                     className="quantity-button"
                     onClick={() => handleRemoveItem(id)}
+                    aria-label="Decrease quantity"
                   >
                     <RemoveIcon />
                   </button>
@@ -119,6 +120,7 @@ const Cart: React.FC = () => {
                   <button
                     className="quantity-button"
                     onClick={() => handleAddItem(id)}
+                    aria-label="Increase quantity"
                   >
                     <AddIcon />
                   </button>
@@ -127,6 +129,7 @@ const Cart: React.FC = () => {
               <div
                 className="delete-icon-container"
                 onClick={() => handleDeleteItem(id)}
+                aria-label="Delete item"
               >
                 <DeleteIcon />
               </div>
