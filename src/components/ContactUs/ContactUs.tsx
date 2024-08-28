@@ -30,7 +30,7 @@ const ContactUs = () => {
                 alert('Poruka poslata')
             },
             (error) => {
-                console.error(error.text);
+                console.error(error);
             }
         );
         
