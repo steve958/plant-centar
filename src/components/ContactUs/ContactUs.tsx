@@ -33,7 +33,10 @@ const ContactUs = () => {
                 console.error(error.text);
             }
         );
-    e.target.reset();
+        
+        setFormData({ name: '',
+          email: '',
+          message: '',})
 };
 
   return (
