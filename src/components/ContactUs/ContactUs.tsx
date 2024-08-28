@@ -16,6 +16,7 @@ const ContactUs = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    console.log(formData);
     emailjs
         .sendForm(
             "service_7o97wws",
@@ -29,7 +30,7 @@ const ContactUs = () => {
                 alert('Poruka poslata')
             },
             (error) => {
-                console.log(error.text);
+                console.error(error.text);
             }
         );
     e.target.reset();
@@ -71,7 +72,7 @@ const ContactUs = () => {
             required
           ></textarea>
         </div>
-        <button className='submit-button' type="submit">Pošalji</button>
+        <button className='submit-button' onClick={(e) => handleSubmit(e)}>Pošalji</button>
       </form>
     </div>
   );
