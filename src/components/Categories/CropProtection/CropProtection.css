@@ -8,8 +8,6 @@
     padding-top: 20px;
     width: 100%;
     display: flex;
-    min-height: 48vh;
-    margin-bottom: 35px;
     border-top: 4px double #54c143;
     border-bottom: 4px double #54c143;
     animation: appear 1s 1;
@@ -22,14 +20,24 @@
     width: 50%;
 }
 
-.description-wrapper>p {
-    text-align: left;
+.partners-wrapper {
+    display: flex;
+    gap: 100px;
 }
+
+.partners-wrapper>img {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 
 @media screen and (max-width: 580px) {
 
     .category-container {
         width: 100%;
+        margin-bottom: 0px !important;
     }
 
     .description-wrapper {
@@ -39,5 +47,6 @@
     .partners-wrapper {
         display: flex;
         flex-direction: column;
+        gap: 10px;
     }
 }

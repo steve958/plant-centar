@@ -1,9 +1,10 @@
 import "./Tools.css";
-// import logo1 from "../../../assets/partneri/basf.png";
-// import logo2 from "../../../assets/partneri/bayer.png";
-// import logo3 from "../../../assets/partneri/syngenta.svg";
-// import logo4 from "../../../assets/partneri/galenika.png";
-// import logo5 from "../../../assets/partneri/agromarket.jpeg";
+import logo1 from "../../../assets/partneri/villager.png";
+import logo2 from "../../../assets/partneri/dolomite.jpg";
+import logo3 from "../../../assets/partneri/fiskars.png";
+import logo4 from "../../../assets/partneri/gerovit.png";
+import logo5 from "../../../assets/partneri/eurodrip.jpg";
+import logo6 from "../../../assets/partneri/toro.jpg";
 
 export default function Tools() {
     return (
@@ -17,11 +18,12 @@ export default function Tools() {
                 </p>
             </div>
             <div className="partners-wrapper">
-                {/* <img src={logo1} alt="" />
+                <img src={logo1} alt="" />
                 <img src={logo2} alt="" />
                 <img src={logo3} alt="" />
                 <img src={logo4} alt="" />
-                <img src={logo5} alt="" /> */}
+                <img src={logo5} alt="" />
+                <img src={logo6} alt="" />
             </div>
             <div></div>
         </div>

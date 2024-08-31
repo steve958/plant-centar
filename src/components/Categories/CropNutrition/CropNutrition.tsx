@@ -1,9 +1,10 @@
 import "./CropNutrition.css";
-// import logo1 from "../../../assets/partneri/basf.png";
-// import logo2 from "../../../assets/partneri/bayer.png";
-// import logo3 from "../../../assets/partneri/syngenta.svg";
-// import logo4 from "../../../assets/partneri/galenika.png";
-// import logo5 from "../../../assets/partneri/agromarket.jpeg";
+import logo1 from "../../../assets/partneri/yara.png";
+import logo2 from "../../../assets/partneri/timac.png";
+import logo3 from "../../../assets/partneri/sea-energy.png";
+import logo4 from "../../../assets/partneri/elixir.png";
+import logo5 from "../../../assets/partneri/agriitalia.jfif";
+import logo6 from "../../../assets/partneri/fitofert.png";
 
 export default function CropNutrition() {
     return (
@@ -20,11 +21,12 @@ export default function CropNutrition() {
                 </p>
             </div>
             <div className="partners-wrapper">
-                {/* <img src={logo1} alt="" />
+                <img src={logo1} alt="" />
                 <img src={logo2} alt="" />
                 <img src={logo3} alt="" />
                 <img src={logo4} alt="" />
-                <img src={logo5} alt="" /> */}
+                <img src={logo5} alt="" />
+                <img src={logo6} alt="" />
             </div>
             <div></div>
         </div>

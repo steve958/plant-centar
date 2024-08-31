@@ -4,7 +4,7 @@
   padding: 20px;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); */
   height: 53vh;
   margin-bottom: 8px;
   animation: appear 1s 1;
@@ -39,7 +39,7 @@ textarea {
   height: 150px;
 }
 
-.submit-button{
+.submit-button {
   background-color: #54c143;
   color: #fff;
   padding: 10px 15px;

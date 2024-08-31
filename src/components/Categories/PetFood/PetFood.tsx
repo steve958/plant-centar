@@ -1,9 +1,6 @@
 import "./PetFood.css";
-// import logo1 from "../../../assets/partneri/basf.png";
-// import logo2 from "../../../assets/partneri/bayer.png";
-// import logo3 from "../../../assets/partneri/syngenta.svg";
-// import logo4 from "../../../assets/partneri/galenika.png";
-// import logo5 from "../../../assets/partneri/agromarket.jpeg";
+import logo1 from "../../../assets/partneri/premil.png";
+import logo2 from "../../../assets/partneri/frendy.jfif";
 
 export default function PetFood() {
     return (
@@ -17,11 +14,8 @@ export default function PetFood() {
                 </p>
             </div>
             <div className="partners-wrapper">
-                {/* <img src={logo1} alt="" />
+                <img src={logo1} alt="" />
                 <img src={logo2} alt="" />
-                <img src={logo3} alt="" />
-                <img src={logo4} alt="" />
-                <img src={logo5} alt="" /> */}
             </div>
             <div></div>
         </div>

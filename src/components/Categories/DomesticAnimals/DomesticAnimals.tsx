@@ -1,9 +1,5 @@
 import "./DomesticAnimals.css";
-// import logo1 from "../../../assets/partneri/basf.png";
-// import logo2 from "../../../assets/partneri/bayer.png";
-// import logo3 from "../../../assets/partneri/syngenta.svg";
-// import logo4 from "../../../assets/partneri/galenika.png";
-// import logo5 from "../../../assets/partneri/agromarket.jpeg";
+import logo1 from "../../../assets/partneri/gebi.svg";
 
 export default function DomesticAnimals() {
     return (
@@ -18,11 +14,7 @@ export default function DomesticAnimals() {
                 </p>
             </div>
             <div className="partners-wrapper">
-                {/* <img src={logo1} alt="" />
-                <img src={logo2} alt="" />
-                <img src={logo3} alt="" />
-                <img src={logo4} alt="" />
-                <img src={logo5} alt="" /> */}
+                <img src={logo1} alt="" />
             </div>
             <div></div>
         </div>
