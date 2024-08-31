@@ -1,4 +1,4 @@
-.message-container{
+.message-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,24 +10,23 @@
     gap: 30px;
 }
 
-.message-wrapper{
+.message-wrapper {
     color: #54c143;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    width: 80%;
     height: 500px;
-    box-shadow: 0 4px 8px #54C143;
     gap: 70px;
     border-radius: 20px;
 }
 
-.message-p{
+.message-p {
     color: black;
 }
 
-.back-to-home-button{
+.back-to-home-button {
     background-color: #54c143;
     color: #fff;
     padding: 10px 15px;
@@ -37,6 +36,6 @@
     transition: background-color 0.3s ease;
 }
 
-.back-to-home-button:hover{
+.back-to-home-button:hover {
     background-color: #429a32;
 }

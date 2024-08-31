@@ -9,8 +9,12 @@
   margin-bottom: 35px;
 }
 
-.checkout-form{
+.checkout-form {
   width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -31,7 +35,7 @@
 }
 
 .order-button-wrapper {
-  width: 45%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,20 +97,25 @@
   padding: 1rem;
   background-color: #d9d9d9;
 }
+
 .toast-error {
   border: 2px solid red;
   background-color: white !important;
   color: red !important;
 }
 
+.hidden-wrapper {
+  display: none;
+}
+
 /* Media Queries */
 @media screen and (max-width: 1200px) {
-  
-  .checkout-form{
+
+  .checkout-form {
     width: 60%;
   }
-  
-  .input-wrapper{
+
+  .input-wrapper {
     width: 100%;
   }
 
@@ -116,11 +125,11 @@
 }
 
 @media screen and (max-width: 992px) {
-  .checkout-form{
+  .checkout-form {
     width: 60%;
   }
-  
-  .input-wrapper{
+
+  .input-wrapper {
     width: 100%;
   }
 
@@ -130,11 +139,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  .checkout-form{
+  .checkout-form {
     width: 60%;
   }
-  
-  .input-wrapper{
+
+  .input-wrapper {
     width: 100%;
   }
 
@@ -150,12 +159,12 @@
 }
 
 @media screen and (max-width: 480px) {
-  .checkout-form{
+  .checkout-form {
     width: 90%;
     margin: 10px;
   }
-  
-  .input-wrapper{
+
+  .input-wrapper {
     width: 100%;
   }
 

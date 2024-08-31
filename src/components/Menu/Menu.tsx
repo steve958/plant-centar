@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function Menu() {
   const navigate = useNavigate();
 
+  const [selected, setSelected] = useState<string>("pocetna");
   const [menuClicked, setMenuClicked] = useState<boolean>(false);
   const [categoriesHover, setCategoriesHover] = useState<boolean>(false);
 
@@ -28,14 +29,33 @@ export default function Menu() {
   return (
     <div className="menu-container">
       <div className="menu-wrapper">
-        <div className="menu-item" onClick={() => navigate("/početna")}>
+        <div
+          className="menu-item"
+          id={selected === "pocetna" ? "selected" : ""}
+          onClick={() => {
+            navigate("/početna");
+            setSelected("pocetna");
+          }}
+        >
           Početna
         </div>
-        <div className="menu-item" onClick={() => navigate("/o-nama")}>
+        <div
+          className="menu-item"
+          id={selected === "o-nama" ? "selected" : ""}
+          onClick={() => {
+            navigate("/o-nama");
+            setSelected("o-nama");
+          }}
+        >
           O nama
         </div>
         <div
           className="menu-item"
+          id={selected === "asortiman" ? "selected" : ""}
+          onClick={() => {
+            navigate("asortiman");
+            setSelected("asortiman");
+          }}
           onMouseEnter={hoverIn}
           onMouseLeave={hoverOut}
         >
@@ -73,17 +93,43 @@ export default function Menu() {
               >
                 Hrana i oprema za kućne ljubimce
               </div>
-              <div className="category" onClick={() => navigate("alati-i-oprema")}>Alati i oprema</div>
+              <div
+                className="category"
+                onClick={() => navigate("alati-i-oprema")}
+              >
+                Alati i oprema
+              </div>
             </div>
           )}
         </div>
-        <div className="menu-item" onClick={() => navigate("/galerija")}>
+        <div
+          className="menu-item"
+          id={selected === "galerija" ? "selected" : ""}
+          onClick={() => {
+            navigate("/galerija");
+            setSelected("galerija");
+          }}
+        >
           Galerija
         </div>
-        <div className="menu-item" onClick={() => navigate("/kontakt")}>
+        <div
+          className="menu-item"
+          id={selected === "kontakt" ? "selected" : ""}
+          onClick={() => {
+            navigate("/kontakt");
+            setSelected("kontakt");
+          }}
+        >
           Kontakt
         </div>
-        <div className="menu-item" onClick={() => navigate("/prodavnica")}>
+        <div
+          className="menu-item"
+          id={selected === "prodavnica" ? "selected" : ""}
+          onClick={() => {
+            navigate("/prodavnica");
+            setSelected("prodavnica");
+          }}
+        >
           Prodavnica
         </div>
       </div>
@@ -97,15 +143,34 @@ export default function Menu() {
       </span>
       {menuClicked && (
         <div className="small-screen-wrapper">
-          <div className="small-menu-item" onClick={() => navigate("/početna")}>
+          <div
+            className="small-menu-item"
+            id={selected === "pocetna" ? "selected" : ""}
+            onClick={() => {
+              navigate("/početna");
+              setSelected("pocetna");
+            }}
+          >
             Početna
           </div>
-          <div className="small-menu-item" onClick={() => navigate("/o-nama")}>
+          <div
+            className="small-menu-item"
+            id={selected === "o-nama" ? "selected" : ""}
+            onClick={() => {
+              navigate("/o-nama");
+              setSelected("o-nama");
+            }}
+          >
             O nama
           </div>
           <div
             className="small-menu-item"
-            onClick={() => setCategoriesHover((oldState) => !oldState)}
+            id={selected === "asortiman" ? "selected" : ""}
+            onClick={() => {
+              navigate("asortiman");
+              setSelected("asortiman");
+              setCategoriesHover((oldState) => !oldState);
+            }}
           >
             Asortiman
             <KeyboardArrowDownIcon />
@@ -141,22 +206,42 @@ export default function Menu() {
                 >
                   Hrana i oprema za kućne ljubimce
                 </div>
-                <div className="category" onClick={() => navigate("alati-i-oprema")}>Alati i oprema</div>
+                <div
+                  className="category"
+                  onClick={() => navigate("alati-i-oprema")}
+                >
+                  Alati i oprema
+                </div>
               </div>
             )}
           </div>
           <div
             className="small-menu-item"
-            onClick={() => navigate("/galerija")}
+            id={selected === "galerija" ? "selected" : ""}
+            onClick={() => {
+              navigate("/galerija");
+              setSelected("galerija");
+            }}
           >
             Galerija
           </div>
-          <div className="small-menu-item" onClick={() => navigate("/kontakt")}>
+          <div
+            className="small-menu-item"
+            id={selected === "kontakt" ? "selected" : ""}
+            onClick={() => {
+              navigate("/kontakt");
+              setSelected("kontakt");
+            }}
+          >
             Kontakt
           </div>
           <div
             className="small-menu-item"
-            onClick={() => navigate("/prodavnica")}
+            id={selected === "prodavnica" ? "selected" : ""}
+            onClick={() => {
+              navigate("/prodavnica");
+              setSelected("prodavnica");
+            }}
           >
             Prodavnica
           </div>

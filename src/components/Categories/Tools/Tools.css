@@ -25,6 +25,10 @@
     text-align: left;
 }
 
+.partners-wrapper {
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 580px) {
 
     .category-container {

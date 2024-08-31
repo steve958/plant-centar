@@ -85,6 +85,10 @@
   text-transform: none !important;
 }
 
+#selected {
+  color: #54c143 !important;
+}
+
 .category:hover {
   background-color: white;
   color: #54c143;

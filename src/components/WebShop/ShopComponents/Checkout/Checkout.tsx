@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Item } from "../models/item";
@@ -35,8 +36,8 @@ export default function Checkout() {
 
   useEffect(() => {
     console.log(cartItems);
-    
-  },[cartItems])
+
+  }, [cartItems])
 
 
   const handleOrder = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -45,26 +46,12 @@ export default function Checkout() {
     setIsButtonDisabled(true);
 
     try {
-     const formObject = {...form.current} as any
-
-     cartItems.forEach((item:Item, index:number) => {
-        formObject[index].name = item.name;
-        formObject[index].quantity = item!.quantity;
-        formObject[index].price = item!.price;
-    });
-
-    console.log(formObject);
-    
-    return
-
-      // Log the form data object for debugging
-      console.log("Form Data Object:", formObject);
 
       // Send email using EmailJS
-      await emailjs.send(
+      await emailjs.sendForm(
         "service_vy94t1n", // Replace with your service ID
         "template_c5t4mce", // Replace with your template ID
-        formObject,
+        form.current!,
         "5fNu_yD0ALmsTRjiS" // Replace with your user ID
       );
 
@@ -122,6 +109,16 @@ export default function Checkout() {
             <div className="total-price">
               Ukupno za plaćanje: <strong>{totalPrice.toFixed(2)} RSD</strong>
             </div>
+            {cartItems.length && cartItems.map((item: Item) =>
+              <div className="hidden-wrapper">
+                <label>Ime artikla:</label>
+                <input className="input-info" type="text" name="item-name" value={item.name} />
+                <label>Kolicina:</label>
+                <input className="input-info" type="text" name="item-qty" value={item.quantity} />
+                <label>Cena:</label>
+                <input className="input-info" type="text" name="item-price" value={item.price} />
+              </div>
+            )}
           </div>
           <div className="order-button-wrapper">
             <button className="back-button" type="button" onClick={handleBack}>
