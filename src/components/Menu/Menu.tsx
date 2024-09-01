@@ -165,7 +165,10 @@ export default function Menu() {
           >
             O nama
           </div>
-          <div className="small-menu-item">
+          <div
+            className="small-menu-item"
+            onClick={() => setCategoriesHover((oldState) => !oldState)}
+          >
             Asortiman
             <KeyboardArrowDownIcon />
             {categoriesHover && (
