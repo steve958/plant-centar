@@ -15,25 +15,20 @@ export default function MeetOurCompany(props: any) {
         <div className="meet-us-content">
           <div className="meet-us-description">
             <p>
-              U srcu naseg poslovanja je posvećenost prirodi i održivosti poljoprivredne
-              poizvodnje.
+              <b>Plant Centar</b> doo Šabac je preduzeće osnovano sa strašću za podsticanje
+              održive poljoprivredne proizvodnje i osiguranje snabdevanja kvalitetnim
+              repromaterijalima, sa ciljem dobijanja kvalitetne i zdravstveno ispravne
+              hrane, uz obavezno posvećivanje pažnje zaštiti životne sredine.
             </p>
             <p>
-              Blisko sarađujemo sa poljoprivrednim proizvođačima i dobavljačima,
-              promovišući praksu poštene trgovine i strucne podrške, trudeći se da naši
-              proizvodi i usluge ispunjavaju najstrožije standarde kvaliteta.
+              Naš tim čine iskusni, diplomirani agronomi, koji se bave kreiranjem
+              personalizovane podrške poljoprivrednim proizvođačima, kao i izradom
+              kvalitetnih programa zaštite i ishrane bilja, uz obavezno terensko prisustvo.
             </p>
             <p>
-              Naš tim izdvaja pružanje personalizovane podrške poljoprivrednicima, nudeći im
-              vredne savete, novosti sa tržišta i pristup najsavremenijim tehnologijama za
-              povećanje produktivnosti u samoj poljoprivrednoj proizvodnji.
-            </p>
-            <p>
-              Osnovan sa strašću za podsticanje održive poljoprivrede i osiguravanje
-              snabdevanja kvalitetnim repromaterijalima, <b>Plant Centar</b> je posvećen podršci
-              poljoprivrednim proizvođačima u proizvodnji kvalitetne i zdravstveno ispravne
-              hrane, strogo vodeći računa o zaštiti životne sredine i umanjenju dejstva
-              klimatskih promena.
+              Ono što nas dodatno izdvaja je i dobro poznavanje hidroponskog uzgoja
+              kako voćarskih, tako i povrtarskih kultura, što predstvlja iskorak u
+              budućnost gajenje bilja.
             </p>
           </div>
           <div className="meet-us-img">
