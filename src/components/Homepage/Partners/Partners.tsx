@@ -18,7 +18,7 @@ export default function Partners() {
         <a href="https://savacoop.rs/">
           <img src={img2} alt="logo partnera" />
         </a>
-        <a href="https://www.gebi.rs/">
+        <a href="https://www.gebi.rs/" style={{ scale: '0.7' }}>
           <img src={img3} alt="logo partnera" />
         </a>
         <a href="https://www.arum.rs/">
