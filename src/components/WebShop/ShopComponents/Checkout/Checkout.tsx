@@ -54,11 +54,11 @@ export default function Checkout() {
         form.current!,
         "5fNu_yD0ALmsTRjiS" // Replace with your user ID
       );
-
       toast.success("Porudžbina uspešno poslata!", {
         className: "toast-success",
         icon: false,
-        autoClose: 1500,
+        autoClose: 2000,
+        position: 'top-center'
       });
       navigate("/poruka");
     } catch (error) {
@@ -66,6 +66,7 @@ export default function Checkout() {
         className: "toast-error",
         icon: false,
         autoClose: 1500,
+        position: 'top-center'
       });
       console.error("Error sending email:", error);
     } finally {
