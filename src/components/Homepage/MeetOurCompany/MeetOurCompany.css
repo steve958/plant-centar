@@ -21,19 +21,13 @@
   color: #54c143;
 }
 
-.heading-border {
-  width: 200px;
-  height: 30px;
-  border-bottom: 5px solid #54c143;
-}
-
 .meet-us-content {
   display: flex;
 }
 
 .meet-us-description {
   font-size: 18px;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .meet-us-description p {
@@ -53,10 +47,6 @@
 
   .meet-us-wrapper {
     width: 100% !important;
-  }
-
-  .meet-us-heading {
-    padding-top: 20px !important;
   }
 
   .meet-us-content {

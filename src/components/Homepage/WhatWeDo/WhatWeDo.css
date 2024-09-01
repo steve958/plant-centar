@@ -1,15 +1,14 @@
 .what-we-do-container {
     width: 100%;
-    min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #E1E1E1;
     animation: appear 1s 1;
+    margin-bottom: 20px;
 }
 
 .what-we-do-wrapper {
-    width: 70%;
+    width: 90%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -26,29 +25,59 @@
 .heading-border {
     width: 200px;
     height: 30px;
-    border-bottom: 5px solid #54C143;
 }
 
 .what-we-do-content {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 10px;
     justify-content: center;
     padding-top: 30px;
 }
 
 .what-we-do-card {
-    width: 350px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 20px;
+    border: 2px solid #54C143;
+    border-radius: 50%;
+    background-color: #54C143;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 }
 
+.what-we-do-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: rotate(45deg) translate(-100%, 0);
+    transition: all 0.8s ease-in-out;
+}
 
+.what-we-do-card:hover::before {
+    transform: rotate(45deg) translate(100%, 0);
+}
+
+.what-we-do-card:hover {
+    transform: scale(1.05);
+}
+
+.what-we-do-card>h3 {
+    width: 100%;
+    padding-bottom: 5px;
+    color: white;
+}
 
 .what-we-do-card h3,
 p {
@@ -63,22 +92,5 @@ p {
 
     .what-we-do-wrapper {
         width: 100%;
-    }
-
-    .what-we-do-card {
-        border: 2px solid #54C143;
-        border-radius: 5px;
-        height: fit-content !important;
-    }
-
-    .what-we-do-card>p {
-        padding: 10px;
-    }
-
-    .what-we-do-card>h3 {
-        background-color: #54C143;
-        width: 100%;
-        padding-bottom: 5px;
-        color: white;
     }
 }

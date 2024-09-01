@@ -1,6 +1,5 @@
 .partners-container {
   width: 100%;
-  background-color: #e1e1e1;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -8,7 +7,7 @@
   animation: appear 1s 1;
 }
 
-.partners-container > span {
+.partners-container>span {
   min-height: 30vh;
   flex-wrap: wrap;
   width: 100%;
@@ -21,7 +20,7 @@
   height: 150px;
   object-fit: contain;
   background-color: white;
-  border: 2px solid #54c143;
+  /* border: 2px solid #54c143; */
   margin: 30px;
   border-radius: 10px;
   cursor: pointer;

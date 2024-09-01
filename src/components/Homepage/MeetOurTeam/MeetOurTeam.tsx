@@ -17,6 +17,10 @@ export default function MeetOurTeam() {
             <img src="" alt="slika" />
             <h3>Ime i prezime</h3>
           </div>
+          <div className="meet-our-team-card">
+            <img src="" alt="slika" />
+            <h3>Ime i prezime</h3>
+          </div>
         </div>
       </div>
     </div>

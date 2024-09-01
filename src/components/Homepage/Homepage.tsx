@@ -8,9 +8,13 @@ export default function Homepage() {
   return (
     <>
       <Carousel></Carousel>
+      <div className='divider'></div>
       <MeetOurCompany></MeetOurCompany>
+      <div className='divider'></div>
       <WhatWeDo></WhatWeDo>
+      <div className='divider'></div>
       <MeetOurTeam></MeetOurTeam>
+      <div className='divider'></div>
       <Partners></Partners>
     </>
   );

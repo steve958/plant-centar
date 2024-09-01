@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Menu.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import logoMain from "../../assets/PlantCLogo.jpg";
@@ -12,6 +12,13 @@ export default function Menu() {
   const [selected, setSelected] = useState<string>("pocetna");
   const [menuClicked, setMenuClicked] = useState<boolean>(false);
   const [categoriesHover, setCategoriesHover] = useState<boolean>(false);
+
+  useEffect(() => {
+    const href = window.location.href.slice(window.location.href.indexOf("#"));
+    if (href.length > 20) {
+      setSelected("");
+    }
+  }, [window.location.href]);
 
   function toggleMenu() {
     const oldState = menuClicked;
@@ -90,7 +97,7 @@ export default function Menu() {
               </div>
               <div
                 className="category"
-                onClick={() => navigate("alati-i-oprema")}
+                onClick={() => navigate("alati-i-oprema-za-navodnjavanje")}
               >
                 Alati i oprema
               </div>
@@ -158,9 +165,7 @@ export default function Menu() {
           >
             O nama
           </div>
-          <div
-            className="small-menu-item"
-          >
+          <div className="small-menu-item">
             Asortiman
             <KeyboardArrowDownIcon />
             {categoriesHover && (
@@ -197,7 +202,7 @@ export default function Menu() {
                 </div>
                 <div
                   className="category"
-                  onClick={() => navigate("alati-i-oprema")}
+                  onClick={() => navigate("alati-i-oprema-za-navodnjavanje")}
                 >
                   Alati i oprema
                 </div>

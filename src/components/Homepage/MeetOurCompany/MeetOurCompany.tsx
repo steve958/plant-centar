@@ -12,7 +12,6 @@ export default function MeetOurCompany(props: any) {
         <div className="meet-us-heading">
           <h2>Upoznajte našu kompaniju</h2>
         </div>
-        <div className="heading-border"></div>
         <div className="meet-us-content">
           <div className="meet-us-description">
             <p>

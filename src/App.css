@@ -20,6 +20,22 @@
   animation: appear 1s 1;
 }
 
+.divider {
+  position: relative;
+  margin-bottom: 20px;
+  height: 1px;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  height: 2px;
+  background-image: linear-gradient(to right, transparent, #54C143, transparent);
+}
 
 ::-webkit-scrollbar {
   width: 10px;
