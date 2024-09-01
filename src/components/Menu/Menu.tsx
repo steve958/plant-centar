@@ -51,11 +51,6 @@ export default function Menu() {
         </div>
         <div
           className="menu-item"
-          id={selected === "asortiman" ? "selected" : ""}
-          onClick={() => {
-            navigate("asortiman");
-            setSelected("asortiman");
-          }}
           onMouseEnter={hoverIn}
           onMouseLeave={hoverOut}
         >
@@ -165,12 +160,6 @@ export default function Menu() {
           </div>
           <div
             className="small-menu-item"
-            id={selected === "asortiman" ? "selected" : ""}
-            onClick={() => {
-              navigate("asortiman");
-              setSelected("asortiman");
-              setCategoriesHover((oldState) => !oldState);
-            }}
           >
             Asortiman
             <KeyboardArrowDownIcon />
