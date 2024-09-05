@@ -18,33 +18,33 @@ export default function Carousel() {
     { image: dogs, heading: 'Briga, ishrana i oprema za životinje' }
   ];
 
-  const [selectedItem, setSelectedItem] = useState(0);
-  const [showText, setShowText] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<number>(0);
+  const [showText, setShowText] = useState<boolean>(false);
 
   useEffect(() => {
     const interval = startCarousel();
-    return () => clearInterval(interval); // Clean up interval on unmount
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowText(true);
     }, 2000);
-    return () => clearTimeout(timeout); // Clean up timeout on change
+    return () => clearTimeout(timeout);
   }, [selectedItem]);
 
-  function startCarousel() {
+  const startCarousel = () => {
     return setInterval(() => {
-      changeSelectedItem(1)
-      setShowText(false)
-    }, 10000);
-  }
+      changeSelectedItem(1); // Move to next item
+      setShowText(false);
+    }, 10000); // Change every 10 seconds
+  };
 
-  function changeSelectedItem(direction: number) {
+  const changeSelectedItem = (direction: number) => {
     setSelectedItem((prevSelectedItem) =>
       (prevSelectedItem + direction + carousel.length) % carousel.length
     );
-  }
+  };
 
   return (
     <div className="carousel-container">
