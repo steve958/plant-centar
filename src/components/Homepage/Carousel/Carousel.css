@@ -12,7 +12,7 @@
     height: 70vh;
     width: 100vw;
     object-fit: cover;
-    animation: opacity 1s 1;
+    animation: opacity 10s infinite;
 }
 
 .carousel-item {
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
+    top: 40%;
     color: white;
     font-size: 70px;
     user-select: none;
@@ -52,9 +52,18 @@
     opacity: 0.7;
 }
 
+.carousel-heading {
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    animation: disapear 8s 1;
+}
+
+
 .carousel-button {
     margin-top: 30px !important;
     background-color: #54C143 !important;
+    animation: disapear 8s 1;
 }
 
 @media screen and (max-width: 800px) {
@@ -83,6 +92,11 @@
         font-size: 30px;
     }
 
+    .carousel-heading {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
 }
 
 @keyframes opacity {
@@ -90,7 +104,28 @@
         opacity: 0;
     }
 
+    50% {
+        opacity: 1;
+    }
+
     100% {
         opacity: 1;
+    }
+
+
+}
+
+@keyframes disapear {
+    0% {
+        opacity: 1;
+    }
+
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }

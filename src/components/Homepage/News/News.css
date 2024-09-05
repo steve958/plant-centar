@@ -1,0 +1,22 @@
+.news-container {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    animation: appear 1s 1;
+}
+
+.news-wrapper {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news-heading {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    color: #54c143;
+}
