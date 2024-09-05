@@ -9,6 +9,10 @@
     z-index: 1;
 }
 
+.inactive {
+    display: none;
+}
+
 .carousel-container img {
     height: 70vh;
     width: 100vw;
@@ -108,7 +112,7 @@
         opacity: 0;
     }
 
-    50% {
+    40% {
         opacity: 1;
     }
 

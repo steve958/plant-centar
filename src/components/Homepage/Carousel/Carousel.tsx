@@ -53,7 +53,7 @@ export default function Carousel() {
           key={index}
           src={item.image}
           alt={item.heading}
-          className={index === selectedItem ? 'active' : ''}
+          className={index === selectedItem ? 'active' : 'inactive'}
         />
       ))}
       <ArrowBackIosNewIcon
