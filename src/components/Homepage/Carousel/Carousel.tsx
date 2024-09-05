@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import crops from '../../../assets/crops.jpg';
 import blueberry from '../../../assets/blueberry.jpg';
@@ -19,47 +18,51 @@ export default function Carousel() {
     { image: dogs, heading: 'Briga, ishrana i oprema za životinje' }
   ];
 
-  const [showText, setShowText] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<number>(0);
+  const [selectedItem, setSelectedItem] = useState(0);
+  const [showText, setShowText] = useState(false);
 
   useEffect(() => {
     const interval = startCarousel();
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Clean up interval on unmount
   }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowText(true);
-      console.log(selectedItem);
     }, 2000);
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(timeout); // Clean up timeout on change
   }, [selectedItem]);
 
   function startCarousel() {
     return setInterval(() => {
-      setSelectedItem((prevSelectedItem) =>
-        prevSelectedItem === carousel.length - 1 ? 0 : prevSelectedItem + 1
-      );
-      setShowText(false);
+      changeSelectedItem(1)
+      setShowText(false)
     }, 10000);
   }
 
-  function changeSelectedItem() {
+  function changeSelectedItem(direction: number) {
     setSelectedItem((prevSelectedItem) =>
-      prevSelectedItem === carousel.length - 1 ? 0 : prevSelectedItem + 1
+      (prevSelectedItem + direction + carousel.length) % carousel.length
     );
   }
 
   return (
     <div className="carousel-container">
-      <img src={carousel[selectedItem].image} alt="" />
+      {carousel.map((item, index) => (
+        <img
+          key={index}
+          src={item.image}
+          alt={item.heading}
+          className={index === selectedItem ? 'active' : ''}
+        />
+      ))}
       <ArrowBackIosNewIcon
         className="carousel-arrow-left"
-        onClick={() => changeSelectedItem()}
+        onClick={() => changeSelectedItem(-1)}
       />
       <ArrowForwardIosIcon
         className="carousel-arrow-right"
-        onClick={() => changeSelectedItem()}
+        onClick={() => changeSelectedItem(1)}
       />
       {showText && (
         <div className="carousel-item">
