@@ -23,6 +23,7 @@
     top: 0;
     left: 0;
     animation: opacity 10s 1;
+    border-radius: 15px;
 }
 
 .carousel-container img.active {
