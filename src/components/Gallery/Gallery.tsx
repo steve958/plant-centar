@@ -1,6 +1,6 @@
 import './Gallery.css';
 import fruits from '../../assets/fruits/borovnica7.jfif';
-import company from '../../assets/firma/firma2.jpeg';
+import company from '../../assets/store.jpg';
 import vegetables from '../../assets/vegetables/zasad1.jpg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +30,7 @@ export default function Gallery() {
           onMouseLeave={hoverEnd}
           onClick={() => navigate('/galerija/kompanija')}
         >
-          <img src={company} alt="ups" />
+          <img src={company} alt="ups" style={{ objectFit: 'contain' }} />
           {categoryHover === 'company' && <p>prodajni objekti</p>}
         </div>
         <div

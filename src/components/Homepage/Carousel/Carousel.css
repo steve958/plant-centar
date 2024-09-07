@@ -24,6 +24,9 @@
     left: 0;
     animation: opacity 10s 1;
     border-radius: 15px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-right: 10px;
 }
 
 .carousel-container img.active {

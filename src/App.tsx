@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     setLoader(true)
-    setTimeout(() => setLoader(false), 1000)
+    setTimeout(() => setLoader(false), 700)
   }, [window.location.href])
 
   return (

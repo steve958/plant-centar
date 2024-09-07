@@ -106,6 +106,16 @@ export default function Menu() {
         </div>
         <div
           className="menu-item"
+          id={selected === "prodavnica" ? "selected" : ""}
+          onClick={() => {
+            navigate("/prodavnica");
+            setSelected("prodavnica");
+          }}
+        >
+          Prodavnica
+        </div>
+        <div
+          className="menu-item"
           id={selected === "galerija" ? "selected" : ""}
           onClick={() => {
             navigate("/galerija");
@@ -124,16 +134,7 @@ export default function Menu() {
         >
           Kontakt
         </div>
-        <div
-          className="menu-item"
-          id={selected === "prodavnica" ? "selected" : ""}
-          onClick={() => {
-            navigate("/prodavnica");
-            setSelected("prodavnica");
-          }}
-        >
-          Prodavnica
-        </div>
+
       </div>
       <span onClick={toggleMenu} className="menu-icon">
         {!menuClicked ? (
@@ -214,6 +215,16 @@ export default function Menu() {
           </div>
           <div
             className="small-menu-item"
+            id={selected === "prodavnica" ? "selected" : ""}
+            onClick={() => {
+              navigate("/prodavnica");
+              setSelected("prodavnica");
+            }}
+          >
+            Prodavnica
+          </div>
+          <div
+            className="small-menu-item"
             id={selected === "galerija" ? "selected" : ""}
             onClick={() => {
               navigate("/galerija");
@@ -232,16 +243,7 @@ export default function Menu() {
           >
             Kontakt
           </div>
-          <div
-            className="small-menu-item"
-            id={selected === "prodavnica" ? "selected" : ""}
-            onClick={() => {
-              navigate("/prodavnica");
-              setSelected("prodavnica");
-            }}
-          >
-            Prodavnica
-          </div>
+
         </div>
       )}
     </div>

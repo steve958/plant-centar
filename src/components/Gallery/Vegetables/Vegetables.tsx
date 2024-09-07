@@ -1,6 +1,5 @@
 import './Vegetables.css';
 import img1 from '../../../assets/vegetables/paprika1.jfif';
-import img2 from '../../../assets/vegetables/paprika2.jfif';
 import img3 from '../../../assets/vegetables/paprika3.jfif';
 import img4 from '../../../assets/vegetables/paprika4.jfif';
 import img5 from '../../../assets/vegetables/paradjaz1.jfif';
@@ -15,7 +14,6 @@ export default function Vegetables() {
     return (
         <div className="vegetables-container">
             <img src={img1} alt="" />
-            <img src={img2} alt="" />
             <img src={img3} alt="" />
             <img src={img4} alt="" />
             <img src={img5} alt="" />

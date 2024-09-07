@@ -46,7 +46,7 @@ export default function WhatWeDo() {
                         className="what-we-do-card"
                         onClick={() => navigate("/alati-i-oprema")}
                     >
-                        <h3>Alati i oprema za navodnjavanje</h3>
+                        <h3>Alati i oprema</h3>
                     </div>
                 </div>
             </div>
