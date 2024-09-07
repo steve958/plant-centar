@@ -46,34 +46,25 @@ export default function Carousel() {
   const [moreInfoClicked, setMoreInfoClicked] = useState<boolean>(false);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (!moreInfoClicked) intervalRef.current = startCarousel();
+    if (!moreInfoClicked) {
+      startCarousel();
+    }
     return () => terminateInterval();
   }, [moreInfoClicked]);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      !showText && setShowText(true);
-    }, 2000);
-
-    return () => clearTimeout(timeout);
+    showTextTimeout();
+    return () => clearShowTextTimeout();
   }, [selectedItem]);
 
   const startCarousel = () => {
-    return setInterval(() => {
+    intervalRef.current = setInterval(() => {
       changeSelectedItem(1);
       setShowText(false);
     }, 10000);
-  };
-
-  const moreInfo = () => {
-    setMoreInfoClicked(true);
-    setShowText(false)
-    terminateInterval();
-    setTimeout(() => {
-      setMoreInfoClicked(false);
-    }, 15000);
   };
 
   const terminateInterval = () => {
@@ -83,10 +74,34 @@ export default function Carousel() {
     }
   };
 
+  const showTextTimeout = () => {
+    timeoutRef.current = setTimeout(() => {
+      setShowText(true);
+    }, 2000);
+  };
+
+  const clearShowTextTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
+
+  const moreInfo = () => {
+    setMoreInfoClicked(true);
+    setShowText(false);
+    terminateInterval();
+
+    // Reset moreInfoClicked after 15 seconds
+    setTimeout(() => {
+      setMoreInfoClicked(false);
+      startCarousel(); // Restart carousel after 15 seconds
+    }, 15000);
+  };
+
   const changeSelectedItem = (direction: number) => {
     setSelectedItem(
-      (prevSelectedItem) =>
-        (prevSelectedItem + direction + carousel.length) % carousel.length
+      (prevSelectedItem) => (prevSelectedItem + direction + carousel.length) % carousel.length
     );
   };
 
@@ -108,22 +123,12 @@ export default function Carousel() {
         className="carousel-arrow-right"
         onClick={() => changeSelectedItem(1)}
       />
-      {showText && (
+      {showText && !moreInfoClicked && (
         <div className="carousel-item">
-          {!moreInfoClicked && (
-            <>
-              <p className="carousel-heading">
-                {carousel[selectedItem].heading}
-              </p>
-              <Button
-                variant="contained"
-                className="carousel-button"
-                onClick={moreInfo}
-              >
-                Više informacija
-              </Button>
-            </>
-          )}
+          <p className="carousel-heading">{carousel[selectedItem].heading}</p>
+          <Button variant="contained" className="carousel-button" onClick={moreInfo}>
+            Više informacija
+          </Button>
         </div>
       )}
       {moreInfoClicked && (
