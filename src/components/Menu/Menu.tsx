@@ -152,6 +152,7 @@ export default function Menu({ onNavigate }: MenuProps) {
             onClick={() => {
               onNavigate("/početna");  // Invoke navigation with loader
               setSelected("pocetna");
+              setMenuClicked(false)
             }}
           >
             Početna
@@ -162,6 +163,7 @@ export default function Menu({ onNavigate }: MenuProps) {
             onClick={() => {
               onNavigate("/o-nama");  // Invoke navigation with loader
               setSelected("o-nama");
+              setMenuClicked(false)
             }}
           >
             O nama
@@ -176,37 +178,55 @@ export default function Menu({ onNavigate }: MenuProps) {
               <div className="small-categories-container">
                 <div
                   className="category"
-                  onClick={() => onNavigate("sredstva-za-zastitu-bilja")}  // Invoke navigation with loader
+                  onClick={() => {
+                    onNavigate("sredstva-za-zastitu-bilja")
+                    setMenuClicked(false)
+                  }}  // Invoke navigation with loader
                 >
                   Sredstva za zaštitu bilja
                 </div>
                 <div
                   className="category"
-                  onClick={() => onNavigate("sredstva-za-ishranu-bilja")}  // Invoke navigation with loader
+                  onClick={() => {
+                    onNavigate("sredstva-za-ishranu-bilja")
+                    setMenuClicked(false)
+                  }}  // Invoke navigation with loader
                 >
                   Sredstva za ishranu bilja
                 </div>
                 <div
                   className="category"
-                  onClick={() => onNavigate("semenska-roba")}  // Invoke navigation with loader
+                  onClick={() => {
+                    onNavigate("semenska-roba")
+                    setMenuClicked(false)
+                  }}  // Invoke navigation with loader
                 >
                   Semenska roba
                 </div>
                 <div
                   className="category"
-                  onClick={() => onNavigate("hrana-za-domaće-životinje")}  // Invoke navigation with loader
+                  onClick={() => {
+                    onNavigate("hrana-za-domaće-životinje")
+                    setMenuClicked(false)
+                  }}  // Invoke navigation with loader
                 >
                   Hrana za domaće životinje
                 </div>
                 <div
                   className="category"
-                  onClick={() => onNavigate("hrana-za-kućne-ljubimce")}  // Invoke navigation with loader
+                  onClick={() => {
+                    onNavigate("hrana-za-kućne-ljubimce")
+                    setMenuClicked(false)
+                  }}  // Invoke navigation with loader
                 >
                   Hrana i oprema za kućne ljubimce
                 </div>
                 <div
                   className="category"
-                  onClick={() => onNavigate("alati-i-oprema")}  // Invoke navigation with loader
+                  onClick={() => {
+                    onNavigate("alati-i-oprema")
+                    setMenuClicked(false)
+                  }}  // Invoke navigation with loader
                 >
                   Alati i oprema
                 </div>
@@ -219,6 +239,7 @@ export default function Menu({ onNavigate }: MenuProps) {
             onClick={() => {
               onNavigate("/prodavnica");  // Invoke navigation with loader
               setSelected("prodavnica");
+              setMenuClicked(false)
             }}
           >
             Prodavnica
@@ -229,6 +250,7 @@ export default function Menu({ onNavigate }: MenuProps) {
             onClick={() => {
               onNavigate("/galerija");  // Invoke navigation with loader
               setSelected("galerija");
+              setMenuClicked(false)
             }}
           >
             Galerija
@@ -239,6 +261,7 @@ export default function Menu({ onNavigate }: MenuProps) {
             onClick={() => {
               onNavigate("/kontakt");  // Invoke navigation with loader
               setSelected("kontakt");
+              setMenuClicked(false)
             }}
           >
             Kontakt

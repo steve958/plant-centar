@@ -29,6 +29,7 @@
   border-radius: 10px;
   border: 1px solid #54c143;
   filter: drop-shadow(0 0 0.75rem #54c143);
+  margin-bottom: 15px;
 }
 
 .about-us-description-wrapper>p {
