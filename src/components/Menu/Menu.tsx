@@ -97,7 +97,7 @@ export default function Menu() {
               </div>
               <div
                 className="category"
-                onClick={() => navigate("alati-i-oprema-za-navodnjavanje")}
+                onClick={() => navigate("alati-i-oprema")}
               >
                 Alati i oprema
               </div>
@@ -206,7 +206,7 @@ export default function Menu() {
                 </div>
                 <div
                   className="category"
-                  onClick={() => navigate("alati-i-oprema-za-navodnjavanje")}
+                  onClick={() => navigate("alati-i-oprema")}
                 >
                   Alati i oprema
                 </div>
