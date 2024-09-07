@@ -15,7 +15,7 @@ export default function Carousel() {
       image: crops,
       heading: "Priroda i zemljište",
       moreInfo:
-        "Priroda predstavlja biljni i životinjski svet koji nas okružuje, kao i nas same. Sam život ne bi bio moguć bez našeg najvrednijeg resursa a to je zemljište, koje je vekovima i milenijumima oblikuje naš živi svet.Poljoprivredna proizvodnja ne bi bila moguća bez kvalitetnih obradivih površina, samim tim manipulacija istim predstavlja ključnu tačku u održivosti poljoprivredne proizvodnje.",
+        "Priroda predstavlja biljni i životinjski svet koji nas okružuje, kao i nas same. Sam život ne bi bio moguć bez našeg najvrednijeg resursa a to je zemljište, koje je vekovima i milenijumima oblikuje naš živi svet. Poljoprivredna proizvodnja ne bi bila moguća bez kvalitetnih obradivih površina, samim tim manipulacija istim predstavlja ključnu tačku u održivosti poljoprivredne proizvodnje.",
     },
     {
       image: sustainable1,
@@ -27,17 +27,17 @@ export default function Carousel() {
       image: blueberry,
       heading: "Intezivni uzgoj voća",
       moreInfo:
-        "U našoj zemlji poslednih godina zastupljena je ekspanzija useva i zasada po najnovijim konrolisanim sistemima gajenja.Borovnica se pokazala kao pionir i kao kultura koja je postala naš svojevrsni brend, dok se u tom pravcu ide i u gajenju ostalih kultura poput jagode i maline, a takođe i raznih povrtarskih kultura.Poznavanje fiziologije i potreba u gajenju ovih kultura predstavlja iskorak u budućnost poljoprivrede i oblast gde se mi kao kompanija uspešno pronalazimo.",
+        "U našoj zemlji poslednih godina zastupljena je ekspanzija useva i zasada po najnovijim konrolisanim sistemima gajenja. Borovnica se pokazala kao pionir i kao kultura koja je postala naš svojevrsni brend, dok se u tom pravcu ide i u gajenju ostalih kultura poput jagode i maline, a takođe i raznih povrtarskih kultura. Poznavanje fiziologije i potreba u gajenju ovih kultura predstavlja iskorak u budućnost poljoprivrede i oblast gde se mi kao kompanija uspešno pronalazimo.",
     },
     {
       image: sustainable,
       heading: "Zaštita životne sredine",
-      moreInfo: "djoksa voli koksa",
+      moreInfo: "Svedoci smo sve izraženijih klimatskih promena prethodnu deceniju, što je svakao utiče na život gajenih biljaka, ostalog živog sveta a i nas samih. Promenom pristupa u svim oblastima života a naravno i u poljoprivredi možemo uticati na smanjenje štetnih uticaja. Upotrebom ekoloških preparata, doziranom primenom pesticida i đubriva kao i zbrinjavanjem prazne ambalaže trudimo se da doprinesemo ublažavanju ovog globalnog problema, na kom je potrebno još više i udruženo raditi.",
     },
     {
       image: dogs,
       heading: "Briga, ishrana i oprema za životinje",
-      moreInfo: "djoksa voli koksa",
+      moreInfo: "Gajenje životinja i prilagođavanje raznoraznim potrebama zastupljeno je od samog nastanka civilizacije, a takođe i briga o njima. Kvalitetna hrana i oprema, danas predstavljaju glavne preduslove za održavanje životinja zdravim i srećnim bez obzira da li ih gajili za profesionalnu potrebu ili lično zadovoljstvo u druženju sa njima.",
     },
   ];
 
