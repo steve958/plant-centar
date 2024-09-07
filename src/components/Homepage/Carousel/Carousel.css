@@ -86,6 +86,25 @@
     animation: disapear 8s 1;
 }
 
+.more-info-text {
+    position: absolute;
+    background-color: rgba(128, 128, 128, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more-info-text>p {
+    font-size: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    animation: disapear 15s 1;
+}
+
 @media screen and (max-width: 800px) {
     .carousel-item {
         font-size: 40px;
@@ -109,6 +128,16 @@
         padding-left: 50px;
         padding-right: 50px;
     }
+
+    .carousel-container img {
+        border-radius: 15px !important;
+        padding-right: 0px !important;
+    }
+
+    .more-info-text>p {
+        font-size: 18px;
+    }
+
 }
 
 @keyframes opacity {
