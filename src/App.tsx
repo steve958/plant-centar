@@ -12,36 +12,38 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const navigate = useNavigate();
-  const location = useLocation();  // Use useLocation to track the current path
+  const location = useLocation(); // Track current location
 
   const [loader, setLoader] = useState<boolean>(false);
 
-  // Navigate to the initial route
-  useEffect(() => {
-    navigate("/početna");
-  }, [navigate]);
+  // Function to navigate with loader invoked before URL change
+  const handleNavigation = (path: string) => {
+    setLoader(true);  // Show loader before navigating
+    setTimeout(() => {
+      navigate(path);  // Navigate after the loader is shown
+    }, 200);  // Slight delay to ensure smooth transition
+  };
 
-  // Handle loader visibility based on location changes
+  // Trigger loader on route change by listening to location changes
   useEffect(() => {
-    setLoader(true);
+    setLoader(true);  // Show loader as soon as location changes
     const timer = setTimeout(() => {
-      setLoader(false);
+      setLoader(false);  // Hide loader after a short delay
     }, 700);
 
-    return () => clearTimeout(timer);  // Cleanup the timer on unmount or location change
-  }, [location.pathname]);  // Depend on the pathname to trigger loader
+    return () => clearTimeout(timer);  // Cleanup timer on component unmount or location change
+  }, [location.pathname]);  // Depend on the current path
 
   return (
     <div className="container-fluid">
       <Header />
       <Logo />
-      <Menu />
-      {loader ? <Loader /> : <Outlet />}
+      <Menu onNavigate={handleNavigation} />  {/* Pass navigation handler to Menu */}
+      {loader ? <Loader /> : <Outlet />}  {/* Show loader conditionally */}
       <Footer />
       <ToastContainer limit={1} />
     </div>
   );
 }
-
 
 export default App;

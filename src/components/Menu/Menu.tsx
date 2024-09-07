@@ -4,11 +4,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import logoMain from "../../assets/PlantCLogo.jpg";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { useNavigate } from "react-router-dom";
 
-export default function Menu() {
-  const navigate = useNavigate();
+interface MenuProps {
+  onNavigate: (path: string) => void;  // Pass the handleNavigation function from App
+}
 
+export default function Menu({ onNavigate }: MenuProps) {
   const [selected, setSelected] = useState<string>("pocetna");
   const [menuClicked, setMenuClicked] = useState<boolean>(false);
   const [categoriesHover, setCategoriesHover] = useState<boolean>(false);
@@ -40,7 +41,7 @@ export default function Menu() {
           className="menu-item"
           id={selected === "pocetna" ? "selected" : ""}
           onClick={() => {
-            navigate("/početna");
+            onNavigate("/početna");  // Invoke navigation with loader
             setSelected("pocetna");
           }}
         >
@@ -50,7 +51,7 @@ export default function Menu() {
           className="menu-item"
           id={selected === "o-nama" ? "selected" : ""}
           onClick={() => {
-            navigate("/o-nama");
+            onNavigate("/o-nama");  // Invoke navigation with loader
             setSelected("o-nama");
           }}
         >
@@ -67,37 +68,37 @@ export default function Menu() {
             <div className="categories-container">
               <div
                 className="category"
-                onClick={() => navigate("sredstva-za-zastitu-bilja")}
+                onClick={() => onNavigate("sredstva-za-zastitu-bilja")}  // Invoke navigation with loader
               >
                 Sredstva za zaštitu bilja
               </div>
               <div
                 className="category"
-                onClick={() => navigate("sredstva-za-ishranu-bilja")}
+                onClick={() => onNavigate("sredstva-za-ishranu-bilja")}  // Invoke navigation with loader
               >
                 Sredstva za ishranu bilja
               </div>
               <div
                 className="category"
-                onClick={() => navigate("semenska-roba")}
+                onClick={() => onNavigate("semenska-roba")}  // Invoke navigation with loader
               >
                 Semenska roba
               </div>
               <div
                 className="category"
-                onClick={() => navigate("hrana-za-domaće-životinje")}
+                onClick={() => onNavigate("hrana-za-domaće-životinje")}  // Invoke navigation with loader
               >
                 Hrana za domaće životinje
               </div>
               <div
                 className="category"
-                onClick={() => navigate("hrana-za-kućne-ljubimce")}
+                onClick={() => onNavigate("hrana-za-kućne-ljubimce")}  // Invoke navigation with loader
               >
                 Hrana i oprema za kućne ljubimce
               </div>
               <div
                 className="category"
-                onClick={() => navigate("alati-i-oprema")}
+                onClick={() => onNavigate("alati-i-oprema")}  // Invoke navigation with loader
               >
                 Alati i oprema
               </div>
@@ -108,7 +109,7 @@ export default function Menu() {
           className="menu-item"
           id={selected === "prodavnica" ? "selected" : ""}
           onClick={() => {
-            navigate("/prodavnica");
+            onNavigate("/prodavnica");  // Invoke navigation with loader
             setSelected("prodavnica");
           }}
         >
@@ -118,7 +119,7 @@ export default function Menu() {
           className="menu-item"
           id={selected === "galerija" ? "selected" : ""}
           onClick={() => {
-            navigate("/galerija");
+            onNavigate("/galerija");  // Invoke navigation with loader
             setSelected("galerija");
           }}
         >
@@ -128,13 +129,12 @@ export default function Menu() {
           className="menu-item"
           id={selected === "kontakt" ? "selected" : ""}
           onClick={() => {
-            navigate("/kontakt");
+            onNavigate("/kontakt");  // Invoke navigation with loader
             setSelected("kontakt");
           }}
         >
           Kontakt
         </div>
-
       </div>
       <span onClick={toggleMenu} className="menu-icon">
         {!menuClicked ? (
@@ -150,7 +150,7 @@ export default function Menu() {
             className="small-menu-item"
             id={selected === "pocetna" ? "selected" : ""}
             onClick={() => {
-              navigate("/početna");
+              onNavigate("/početna");  // Invoke navigation with loader
               setSelected("pocetna");
             }}
           >
@@ -160,7 +160,7 @@ export default function Menu() {
             className="small-menu-item"
             id={selected === "o-nama" ? "selected" : ""}
             onClick={() => {
-              navigate("/o-nama");
+              onNavigate("/o-nama");  // Invoke navigation with loader
               setSelected("o-nama");
             }}
           >
@@ -176,37 +176,37 @@ export default function Menu() {
               <div className="small-categories-container">
                 <div
                   className="category"
-                  onClick={() => navigate("sredstva-za-zastitu-bilja")}
+                  onClick={() => onNavigate("sredstva-za-zastitu-bilja")}  // Invoke navigation with loader
                 >
                   Sredstva za zaštitu bilja
                 </div>
                 <div
                   className="category"
-                  onClick={() => navigate("sredstva-za-ishranu-bilja")}
+                  onClick={() => onNavigate("sredstva-za-ishranu-bilja")}  // Invoke navigation with loader
                 >
                   Sredstva za ishranu bilja
                 </div>
                 <div
                   className="category"
-                  onClick={() => navigate("semenska-roba")}
+                  onClick={() => onNavigate("semenska-roba")}  // Invoke navigation with loader
                 >
                   Semenska roba
                 </div>
                 <div
                   className="category"
-                  onClick={() => navigate("hrana-za-domaće-životinje")}
+                  onClick={() => onNavigate("hrana-za-domaće-životinje")}  // Invoke navigation with loader
                 >
                   Hrana za domaće životinje
                 </div>
                 <div
                   className="category"
-                  onClick={() => navigate("hrana-za-kućne-ljubimce")}
+                  onClick={() => onNavigate("hrana-za-kućne-ljubimce")}  // Invoke navigation with loader
                 >
                   Hrana i oprema za kućne ljubimce
                 </div>
                 <div
                   className="category"
-                  onClick={() => navigate("alati-i-oprema")}
+                  onClick={() => onNavigate("alati-i-oprema")}  // Invoke navigation with loader
                 >
                   Alati i oprema
                 </div>
@@ -217,7 +217,7 @@ export default function Menu() {
             className="small-menu-item"
             id={selected === "prodavnica" ? "selected" : ""}
             onClick={() => {
-              navigate("/prodavnica");
+              onNavigate("/prodavnica");  // Invoke navigation with loader
               setSelected("prodavnica");
             }}
           >
@@ -227,7 +227,7 @@ export default function Menu() {
             className="small-menu-item"
             id={selected === "galerija" ? "selected" : ""}
             onClick={() => {
-              navigate("/galerija");
+              onNavigate("/galerija");  // Invoke navigation with loader
               setSelected("galerija");
             }}
           >
@@ -237,13 +237,12 @@ export default function Menu() {
             className="small-menu-item"
             id={selected === "kontakt" ? "selected" : ""}
             onClick={() => {
-              navigate("/kontakt");
+              onNavigate("/kontakt");  // Invoke navigation with loader
               setSelected("kontakt");
             }}
           >
             Kontakt
           </div>
-
         </div>
       )}
     </div>
