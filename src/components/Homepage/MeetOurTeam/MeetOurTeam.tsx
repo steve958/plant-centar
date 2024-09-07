@@ -19,7 +19,7 @@ export default function MeetOurTeam() {
             <img src="" alt="slika" />
             <h3>Slađana Čačić</h3>
             <h4>dipl. inž. zaštite bilja</h4>
-            <h4>Agronom-stručni konulstant</h4>
+            <h4>Agronom-stručni konsultant</h4>
           </div>
           <div className="meet-our-team-card">
             <img src="" alt="slika" />
