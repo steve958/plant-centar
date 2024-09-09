@@ -27,6 +27,7 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     padding-right: 10px;
+    /* animation: videoEffect 10s ease-in-out infinite; */
 }
 
 .carousel-container img.active {
@@ -170,5 +171,49 @@
 
     100% {
         opacity: 0;
+    }
+}
+
+@keyframes videoEffect {
+    0% {
+        transform: scale(1);
+        filter: hue-rotate(0deg) blur(0px);
+        opacity: 1;
+    }
+
+    15% {
+        transform: scale(1.15);
+        filter: hue-rotate(45deg) blur(1px);
+        opacity: 0.9;
+    }
+
+    30% {
+        transform: scale(1.25);
+        filter: hue-rotate(90deg) blur(2px);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1);
+        filter: hue-rotate(180deg) blur(0px);
+        opacity: 1;
+    }
+
+    65% {
+        transform: scale(1.15);
+        filter: hue-rotate(225deg) blur(1px);
+        opacity: 0.9;
+    }
+
+    80% {
+        transform: scale(1.25);
+        filter: hue-rotate(270deg) blur(2px);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        filter: hue-rotate(360deg) blur(0px);
+        opacity: 1;
     }
 }

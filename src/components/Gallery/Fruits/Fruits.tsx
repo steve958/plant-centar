@@ -4,7 +4,6 @@ import img2 from '../../../assets/fruits/borovnica2.jfif';
 import img3 from '../../../assets/fruits/borovnica3.jfif';
 import img4 from '../../../assets/fruits/borovnica4.jfif';
 import img5 from '../../../assets/fruits/borovnica5.jfif';
-import img6 from '../../../assets/fruits/borovnica5.jfif';
 import img7 from '../../../assets/fruits/borovnica6.jfif';
 import img8 from '../../../assets/fruits/borovnica7.jfif';
 import img9 from '../../../assets/fruits/jabuka1.jfif';
@@ -20,6 +19,10 @@ import img18 from '../../../assets/fruits/malina1.jfif';
 import img19 from '../../../assets/fruits/malina2.jfif';
 import img20 from '../../../assets/fruits/malina3.jfif';
 import img21 from '../../../assets/fruits/malina4.jfif';
+import img22 from '../../../assets/fruits/jagoda9.jpeg';
+import img23 from '../../../assets/fruits/jagoda10.jpeg';
+import img24 from '../../../assets/fruits/jagoda11.jpeg';
+import img25 from '../../../assets/fruits/jagoda12.jfif';
 
 export default function Fruits() {
     return (
@@ -29,7 +32,6 @@ export default function Fruits() {
             <img src={img3} alt="" />
             <img src={img4} alt="" />
             <img src={img5} alt="" />
-            <img src={img6} alt="" />
             <img src={img7} alt="" />
             <img src={img8} alt="" />
             <img src={img9} alt="" />
@@ -41,6 +43,10 @@ export default function Fruits() {
             <img src={img15} alt="" />
             <img src={img16} alt="" />
             <img src={img17} alt="" />
+            <img src={img22} alt="" />
+            <img src={img23} alt="" />
+            <img src={img24} alt="" />
+            <img src={img25} alt="" />
             <img src={img18} alt="" />
             <img src={img19} alt="" />
             <img src={img20} alt="" />
