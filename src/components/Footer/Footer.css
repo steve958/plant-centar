@@ -1,5 +1,8 @@
 .footer-container {
-  background-color: #54c143;
+  background: rgb(182, 192, 191);
+  background: linear-gradient(260deg,
+      rgba(182, 192, 191, 1) 0%,
+      rgba(84, 193, 67, 1) 100%);
   padding: 20px;
 }
 

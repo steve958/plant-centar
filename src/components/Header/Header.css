@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     background-color: rgb(225, 225, 225);
-    color: rgb(112, 112, 112);
+    font-weight: 600;
     position: relative;
 }
 
@@ -19,10 +19,9 @@
 .moto {
     color: #54C143;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 18px;
+    letter-spacing: 5px;
+    font-size: 20px;
     white-space: nowrap;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .address-wrapper {

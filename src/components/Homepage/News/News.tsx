@@ -1,17 +1,156 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import './News.css';
-import { useRef } from 'react';
+import "./News.css";
+import { useRef, useState, useEffect } from "react";
+import { newsData } from "./newsData"; // Import your mock data
+import NewsCard from "./NewsCard";
+import { IconButton, Modal, Box, Typography } from "@mui/material";
+import { ArrowBackIos, ArrowForwardIos, Close } from "@mui/icons-material";
 
-export default function News(props: any) {
-    const ref = useRef(props.ref);
+export default function News() {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(
+        null
+    );
+
+    const cardWidth = 500;
+    const gap = 30; // gap defined in CSS
+    const cardsPerView = 2;
+    const totalCards = newsData.length;
+
+    // Calculate the scroll offset for two cards plus the gap between them
+    const scrollStep = cardWidth * cardsPerView + gap;
+    const steps = Math.ceil(totalCards / cardsPerView); // total steps to show all cards
+    const maxScrollLeft = (steps - 1) * scrollStep; // maximum scroll offset
+
+    useEffect(() => {
+        // Ensure the scroll position is set to initial view
+        if (scrollRef.current) {
+            scrollRef.current.scrollLeft = scrollPosition;
+        }
+    }, [scrollPosition]);
+
+    const handleScroll = (direction: "left" | "right") => {
+        if (!scrollRef.current) return;
+
+        let newScrollPosition = scrollPosition;
+
+        if (direction === "left") {
+            newScrollPosition = Math.max(scrollPosition - scrollStep, 0);
+        } else if (direction === "right") {
+            newScrollPosition = Math.min(scrollPosition + scrollStep, maxScrollLeft);
+        }
+
+        setScrollPosition(newScrollPosition);
+        scrollRef.current.scrollTo({
+            left: newScrollPosition,
+            behavior: "smooth",
+        });
+    };
+
+    // Opens the modal and sets the selected card index
+    const handleCardClick = (index: number) => {
+        setSelectedCardIndex(index);
+        setModalOpen(true);
+    };
+
+    // Closes the modal and resets the selected card
+    const handleClose = () => {
+        setModalOpen(false);
+        setSelectedCardIndex(null);
+    };
 
     return (
-        <div className="news-container" ref={ref}>
+        <div className="news-container">
             <div className="news-wrapper">
-                <div className="meet-us-heading">
-                    <h2>Aktuelnosti</h2>
+                <h2 className="news-heading">Aktuelnosti</h2>
+                <div className="card-container" ref={scrollRef}>
+                    {newsData.map((card, index) => (
+                        <div
+                            key={index}
+                            onClick={() => handleCardClick(index)}
+                            style={{ cursor: "pointer" }}
+                        >
+                            <NewsCard
+                                image={card.image}
+                                title={card.title}
+                                description={card.description}
+                            />
+                        </div>
+                    ))}
                 </div>
+                {newsData?.length > 1 && (
+                    <div className="navigation-arrows">
+                        <IconButton
+                            onClick={() => handleScroll("left")}
+                            disabled={scrollPosition === 0}
+                            aria-label="Scroll Left"
+                            style={{ color: "#54c143" }}
+                        >
+                            <ArrowBackIos />
+                        </IconButton>
+                        <IconButton
+                            onClick={() => handleScroll("right")}
+                            disabled={scrollPosition >= maxScrollLeft}
+                            aria-label="Scroll Right"
+                            style={{ color: "#54c143" }}
+                        >
+                            <ArrowForwardIos />
+                        </IconButton>
+                    </div>
+                )}
             </div>
+            <Modal
+                open={modalOpen}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                closeAfterTransition
+            >
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        maxWidth: 600,
+                        width: "90%",
+                        bgcolor: "background.paper",
+                        boxShadow: 24,
+                        p: 4,
+                        outline: "none",
+                        borderRadius: "8px",
+                    }}
+                >
+                    <IconButton
+                        aria-label="close"
+                        onClick={handleClose}
+                        sx={{
+                            position: "absolute",
+                            right: 8,
+                            top: 8,
+                            color: "grey.500",
+                        }}
+                    >
+                        <Close />
+                    </IconButton>
+                    {selectedCardIndex !== null && (
+                        <>
+                            <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
+                                {newsData[selectedCardIndex].title}
+                            </Typography>
+                            <img
+                                src={newsData[selectedCardIndex].image}
+                                alt={newsData[selectedCardIndex].title}
+                                style={{ width: "100%", height: "auto", marginBottom: "20px" }}
+                            />
+                            <Typography variant="body1" sx={{ mb: 2 }}>
+                                {newsData[selectedCardIndex].description}
+                            </Typography>
+                        </>
+                    )}
+                </Box>
+            </Modal>
         </div>
     );
 }

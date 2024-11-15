@@ -1,4 +1,4 @@
-import { createHashRouter } from "react-router-dom";
+import { createHashRouter, Navigate } from "react-router-dom";
 import App from "./App";
 import AboutUs from "./components/AboutUs/AboutUs";
 import ContactUs from "./components/ContactUs/ContactUs";
@@ -27,6 +27,10 @@ export const router = createHashRouter([
     path: "/",
     element: <App />,
     children: [
+      {
+        index: true, // Define the index route as the default child route for "/"
+        element: <Navigate to="/početna" />, // Redirect to "/početna"
+      },
       {
         path: '/početna',
         element: <Homepage />,
@@ -105,7 +109,7 @@ export const router = createHashRouter([
       },
       {
         path: '/admin/panel',
-        element: <PrivateRoute />, // Zaštiti /admin/panel koristeći PrivateRoute
+        element: <PrivateRoute />, // Protect /admin/panel using PrivateRoute
         children: [
           {
             path: '',

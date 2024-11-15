@@ -2,26 +2,61 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   animation: appear 1s 1;
+  overflow: hidden;
+  /* Hide overflow to create the carousel effect */
 }
 
-.partners-container>span {
-  min-height: 30vh;
-  flex-wrap: wrap;
+.partners-heading {
   width: 100%;
-  display: flex;
-  justify-content: space-around;
+  text-align: center;
+  font-size: 25px;
+  color: #54c143;
 }
 
-.partners-container img {
+.partner-logo {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.partner-logo-track {
+  display: flex;
+  width: calc(300px * 8 + 30px * 16);
+  /* Adjust based on the number of logos and margins */
+  animation: scroll 20s linear infinite;
+}
+
+.partner-logo-item {
+  flex: 0 0 auto;
   width: 300px;
+  margin: 0 15px;
+  /* Half of the original 30px margin to match total margin */
+}
+
+.partner-logo-item img {
+  width: 100%;
   height: 150px;
   object-fit: contain;
   background-color: white;
-  /* border: 2px solid #54c143; */
-  margin: 30px;
   border-radius: 10px;
   cursor: pointer;
+}
+
+/* Keyframes for infinite scrolling */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50%));
+    /* Scroll half of the track width */
+  }
+}
+
+/* Pause animation on hover over container */
+.partners-container:hover .partner-logo-track {
+  animation-play-state: paused;
 }

@@ -31,7 +31,10 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 18px;
-  background-color: #DEF8DA;
+  background: rgb(182, 192, 191);
+  background: linear-gradient(260deg,
+      rgba(182, 192, 191, 1) 0%,
+      rgba(84, 193, 67, 1) 100%);
 }
 
 textarea {
@@ -45,10 +48,6 @@ textarea {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.submit-button :hover {
-  background-color: #54c143;
 }
 
 @media screen and (max-width: 550px) {

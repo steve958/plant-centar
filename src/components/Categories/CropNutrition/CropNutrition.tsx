@@ -5,6 +5,7 @@ import logo3 from "../../../assets/partneri/sea-energy.png";
 import logo4 from "../../../assets/partneri/elixir.png";
 import logo5 from "../../../assets/partneri/agriitalia.jfif";
 import logo6 from "../../../assets/partneri/fitofert.png";
+import CategoryCard from "../CategoryCard/CategoryCard";
 
 export default function CropNutrition() {
     return (
@@ -13,12 +14,19 @@ export default function CropNutrition() {
                 <h3>Sredstva za ishranu bilja</h3>
                 <p>
                     Naš tim stručnjaka svakodnevnim obilascima terena I komunikacijom,
-                    izlazi u susret poljoprivrednim proizvođačima u prevazilaženju
-                    nedaća u svim oblastima poljorpivredne proizvodnje u cilju
-                    postizanja maksimalnih rezultata. Kvalitetni program ishrane I
-                    zaštite bilja, kao i dobro poznavanje hidroponskog uzgoja biljaka,
-                    predstavljaju jedan od naših aduta u saradnji sa klijentima.
+                    izlazi u susret poljoprivrednim proizvođačima u prevazilaženju nedaća
+                    u svim oblastima poljorpivredne proizvodnje u cilju postizanja
+                    maksimalnih rezultata. Kvalitetni program ishrane I zaštite bilja, kao
+                    i dobro poznavanje hidroponskog uzgoja biljaka, predstavljaju jedan od
+                    naših aduta u saradnji sa klijentima.
                 </p>
+            </div>
+            <div>
+                <CategoryCard
+                    image={logo6}
+                    heading="kategorija 1"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
             </div>
             <div className="partners-wrapper">
                 <img src={logo1} alt="" />
@@ -28,7 +36,6 @@ export default function CropNutrition() {
                 <img src={logo5} alt="" />
                 <img src={logo6} alt="" />
             </div>
-            <div></div>
         </div>
     );
 }

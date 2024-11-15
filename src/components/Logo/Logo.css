@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-img {
+.logo-container>img {
     height: 120px;
     width: auto;
 }

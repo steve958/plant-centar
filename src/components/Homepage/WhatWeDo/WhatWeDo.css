@@ -44,8 +44,8 @@
     align-items: center;
     justify-content: center;
     margin: 20px;
-    border: 2px solid #54C143;
-    border-radius: 50%;
+    /* border: 2px solid #54C143; */
+    border-radius: 10px;
     background-color: white;
     position: relative;
     overflow: hidden;
@@ -53,7 +53,7 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.what-we-do-card::before {
+/* .what-we-do-card::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -71,18 +71,24 @@
 
 .what-we-do-card:hover {
     transform: scale(1.05);
-}
+} */
 
 .what-we-do-card>h3 {
     width: 100%;
     padding-bottom: 5px;
     color: #707070;
+    animation: appear 0.8s;
 }
 
 .what-we-do-card h3,
 p {
     padding-top: 10px;
     text-align: center;
+}
+
+.icon-img {
+    width: 100%;
+    animation: appear 0.8s;
 }
 
 @media screen and (max-width: 1400px) {
