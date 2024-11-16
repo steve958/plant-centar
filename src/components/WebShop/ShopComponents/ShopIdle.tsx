@@ -7,7 +7,9 @@ export default function ShopIdle() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                fontSize: '25px'
+                fontSize: '25px',
+                padding: '30px',
+                textAlign: 'center'
             }}
         >
             Plant shop uskoro počinje sa radom.
