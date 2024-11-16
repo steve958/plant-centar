@@ -21,19 +21,19 @@ export default function Tools() {
             <div className="categories-wrapper">
                 <CategoryCard
                     heading="Mašine"
-                    link="https://a1.rs/mobilni-telefoni"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                 />
                 <CategoryCard
                     heading="Alati"
-                    link="https://a1.rs/mobilni-telefoni"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                 />
                 <CategoryCard
                     heading="Navodnjavanje"
-                    link="https://a1.rs/mobilni-telefoni"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                 />
                 <CategoryCard
                     heading="Folije i veziva"
-                    link="https://a1.rs/mobilni-telefoni"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                 />
             </div>
             <div className="partners-wrapper">

@@ -24,19 +24,19 @@ export default function CropNutrition() {
             <div className="categories-wrapper">
                 <CategoryCard
                     heading="Granulisana đubriva"
-                    link="https://a1.rs/mobilni-telefoni"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                 />
                 <CategoryCard
                     heading="Kristalna vodootopiva đubriva"
-                    link="https://a1.rs/mobilni-telefoni"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                 />
                 <CategoryCard
                     heading="Tečna đubriva i biostimulatori"
-                    link="https://a1.rs/mobilni-telefoni"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                 />
                 <CategoryCard
                     heading="Organska đubriva"
-                    link="https://a1.rs/mobilni-telefoni"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                 />
             </div>
             <div className="partners-wrapper">

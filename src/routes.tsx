@@ -21,6 +21,7 @@ import Seeds from "./components/Categories/Seeds/Seeds";
 import DomesticAnimals from "./components/Categories/DomesticAnimals/DomesticAnimals";
 import PetFood from "./components/Categories/PetFood/PetFood";
 import Tools from "./components/Categories/Tools/Tools";
+import ShopIdle from "./components/WebShop/ShopComponents/ShopIdle";
 
 export const router = createHashRouter([
   {
@@ -85,7 +86,8 @@ export const router = createHashRouter([
       },
       {
         path: '/prodavnica',
-        element: <WebShop />,
+        // element: <WebShop />,
+        element: <ShopIdle />
       },
       {
         path: '/admin',
