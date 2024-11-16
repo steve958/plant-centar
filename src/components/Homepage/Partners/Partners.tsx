@@ -20,6 +20,15 @@ export default function Partners() {
     { src: img7, href: 'https://www.corteva.rs/', alt: 'Corteva' },
     { src: img8, href: 'https://www.elixirgroup.rs/', alt: 'Elixir' },
     { src: img9, href: 'https://www.villager.rs/', alt: 'Villager' },
+    { src: img1, href: 'https://www.agromarketsrbija.rs/srb', alt: 'Agromarket' },
+    { src: img2, href: 'https://savacoop.rs/', alt: 'Savacoop' },
+    { src: img3, href: 'https://www.gebi.rs/', alt: 'Gebi', style: { transform: 'scale(0.7)' } },
+    { src: img4, href: 'https://www.arum.rs/', alt: 'Arum' },
+    { src: img5, href: 'https://agrosava.com/', alt: 'Agrosava' },
+    { src: img6, href: 'https://www.basf.com/rs/sr', alt: 'BASF' },
+    { src: img7, href: 'https://www.corteva.rs/', alt: 'Corteva' },
+    { src: img8, href: 'https://www.elixirgroup.rs/', alt: 'Elixir' },
+    { src: img9, href: 'https://www.villager.rs/', alt: 'Villager' },
   ];
 
   return (

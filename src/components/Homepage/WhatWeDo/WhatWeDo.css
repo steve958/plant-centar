@@ -53,26 +53,6 @@
     transition: transform 0.3s ease-in-out;
 }
 
-/* .what-we-do-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: rgba(84, 193, 67, 0.6);
-    transform: rotate(45deg) translate(-100%, 0);
-    transition: all 0.8s ease-in-out;
-}
-
-.what-we-do-card:hover::before {
-    transform: rotate(45deg) translate(100%, 0);
-}
-
-.what-we-do-card:hover {
-    transform: scale(1.05);
-} */
-
 .what-we-do-card>h3 {
     width: 100%;
     padding-bottom: 5px;
@@ -99,4 +79,11 @@ p {
     .what-we-do-wrapper {
         width: 100%;
     }
+}
+
+@media screen and (max-width: 600px) {
+    .icon-img {
+        scale: 0.8;
+    }
+
 }

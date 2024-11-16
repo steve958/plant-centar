@@ -41,8 +41,10 @@ export default function Menu({ onNavigate }: MenuProps) {
           className="menu-item"
           id={selected === "pocetna" ? "selected" : ""}
           onClick={() => {
-            onNavigate("/početna");  // Invoke navigation with loader
-            setSelected("pocetna");
+            if (selected !== "pocetna") {
+              onNavigate("/početna");  // Invoke navigation with loader
+              setSelected("pocetna");
+            }
           }}
         >
           Početna
@@ -51,8 +53,10 @@ export default function Menu({ onNavigate }: MenuProps) {
           className="menu-item"
           id={selected === "o-nama" ? "selected" : ""}
           onClick={() => {
-            onNavigate("/o-nama");  // Invoke navigation with loader
-            setSelected("o-nama");
+            if (selected !== "o-nama") {
+              onNavigate("/o-nama");  // Invoke navigation with loader
+              setSelected("o-nama");
+            }
           }}
         >
           O nama
@@ -109,18 +113,22 @@ export default function Menu({ onNavigate }: MenuProps) {
           className="menu-item"
           id={selected === "prodavnica" ? "selected" : ""}
           onClick={() => {
-            onNavigate("/prodavnica");  // Invoke navigation with loader
-            setSelected("prodavnica");
+            if (selected !== 'prodavnica') {
+              onNavigate("/prodavnica");  // Invoke navigation with loader
+              setSelected("prodavnica");
+            }
           }}
         >
-          Prodavnica
+          Plant shop
         </div>
         <div
           className="menu-item"
           id={selected === "galerija" ? "selected" : ""}
           onClick={() => {
-            onNavigate("/galerija");  // Invoke navigation with loader
-            setSelected("galerija");
+            if (selected !== 'galerija') {
+              onNavigate("/galerija");  // Invoke navigation with loader
+              setSelected("galerija");
+            }
           }}
         >
           Galerija
@@ -129,8 +137,10 @@ export default function Menu({ onNavigate }: MenuProps) {
           className="menu-item"
           id={selected === "kontakt" ? "selected" : ""}
           onClick={() => {
-            onNavigate("/kontakt");  // Invoke navigation with loader
-            setSelected("kontakt");
+            if (selected !== 'kontakt') {
+              onNavigate("/kontakt");  // Invoke navigation with loader
+              setSelected("kontakt");
+            }
           }}
         >
           Kontakt
@@ -150,8 +160,10 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "pocetna" ? "selected" : ""}
             onClick={() => {
-              onNavigate("/početna");  // Invoke navigation with loader
-              setSelected("pocetna");
+              if (selected !== 'pocetna') {
+                onNavigate("/početna");  // Invoke navigation with loader
+                setSelected("pocetna");
+              }
               setMenuClicked(false)
             }}
           >
@@ -161,8 +173,10 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "o-nama" ? "selected" : ""}
             onClick={() => {
-              onNavigate("/o-nama");  // Invoke navigation with loader
-              setSelected("o-nama");
+              if (selected !== 'o-nama') {
+                onNavigate("/o-nama");  // Invoke navigation with loader
+                setSelected("o-nama");
+              }
               setMenuClicked(false)
             }}
           >
@@ -237,19 +251,23 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "prodavnica" ? "selected" : ""}
             onClick={() => {
-              onNavigate("/prodavnica");  // Invoke navigation with loader
-              setSelected("prodavnica");
+              if (selected !== 'prodavnica') {
+                onNavigate("/prodavnica");  // Invoke navigation with loader
+                setSelected("prodavnica");
+              }
               setMenuClicked(false)
             }}
           >
-            Prodavnica
+            Plant shop
           </div>
           <div
             className="small-menu-item"
             id={selected === "galerija" ? "selected" : ""}
             onClick={() => {
-              onNavigate("/galerija");  // Invoke navigation with loader
-              setSelected("galerija");
+              if (selected !== 'galerija') {
+                onNavigate("/galerija");  // Invoke navigation with loader
+                setSelected("galerija");
+              }
               setMenuClicked(false)
             }}
           >
@@ -259,8 +277,10 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "kontakt" ? "selected" : ""}
             onClick={() => {
-              onNavigate("/kontakt");  // Invoke navigation with loader
-              setSelected("kontakt");
+              if (selected !== 'kontakt') {
+                onNavigate("/kontakt");  // Invoke navigation with loader
+                setSelected("kontakt");
+              }
               setMenuClicked(false)
             }}
           >

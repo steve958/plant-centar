@@ -4,33 +4,33 @@ import './ContactUs.css'; // Import your CSS file
 import emailjs from "@emailjs/browser"
 
 const ContactUs = () => {
- 
+
 
   const form = useRef<any>(null);
 
- 
+
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(form.current);
     emailjs
-        .sendForm(
-            "service_7o97wws",
-            "template_nypmfo7",
-            form.current,
-            "5fNu_yD0ALmsTRjiS"
-        )
-        .then(
-            (result) => {
-                console.log(result.text);
-                alert('Poruka poslata')
-            },
-            (error) => {
-                console.error(error);
-            }
-        );
+      .sendForm(
+        "service_i3ecqfb",
+        "template_ypgdrgq",
+        form.current,
+        'YzjcisuTMf4N1ViWq'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert('Poruka poslata')
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
 
-};
+  };
 
   return (
     <div className="contact-us-form">

@@ -23,9 +23,9 @@
 
 .partner-logo-track {
   display: flex;
-  width: calc(300px * 8 + 30px * 16);
+  width: calc(300px * 16 + 30px * 16);
   /* Adjust based on the number of logos and margins */
-  animation: scroll 20s linear infinite;
+  animation: scroll 35s linear infinite;
 }
 
 .partner-logo-item {
