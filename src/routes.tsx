@@ -5,7 +5,6 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import Company from "./components/Gallery/Company/Company";
 import Gallery from "./components/Gallery/Gallery";
 import Homepage from "./components/Homepage/Homepage";
-import WebShop from "./components/WebShop/WebShop";
 import AdminLogIn from "./components/WebShop/Admin/AdminLogIn/AdminLogIn";
 import AdminPanel from "./components/WebShop/Admin/AdminPanel/AdminPanel";
 import PrivateRoute from "./components/WebShop/Admin/PrivateRoute/PrivateRoute";
