@@ -4,6 +4,7 @@ import Carousel from './Carousel/Carousel';
 import NeedHelp from './NeedHelp/NeedHelp';
 import News from './News/News';
 import Partners from './Partners/Partners';
+import SpecialOffer from './SpecialOffer/SpecialOffer';
 import WhatWeDo from './WhatWeDo/WhatWeDo';
 
 export default function Homepage() {
@@ -18,8 +19,8 @@ export default function Homepage() {
       {/* <MeetOurCompany></MeetOurCompany> */}
       {/* <div className='divider'></div> */}
       <NeedHelp />
-      {/* <div className='divider'></div> */}
-      {/* <MeetOurTeam></MeetOurTeam> */}
+      <div className='divider'></div>
+      <SpecialOffer />
       <div className='divider'></div>
       <Partners></Partners>
     </>

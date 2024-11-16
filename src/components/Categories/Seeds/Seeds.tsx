@@ -5,6 +5,7 @@ import logo3 from "../../../assets/partneri/seminis.jpg";
 import logo4 from "../../../assets/partneri/bc.png";
 import logo5 from "../../../assets/partneri/kws.png";
 import logo6 from "../../../assets/partneri/bejo.png";
+import CategoryCard from "../CategoryCard/CategoryCard";
 
 export default function Seeds() {
     return (
@@ -17,6 +18,24 @@ export default function Seeds() {
                     širok izbor semena za ratarsku i povrtarsku proizvodnju, kao i sadnice
                     voćarskih kultura i ukrasnog bilja za uređenje pejzaža.
                 </p>
+            </div>
+            <div className="categories-wrapper">
+                <CategoryCard
+                    heading="Seme ratarskih kultura"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Seme povrtarskih kultura"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Sadnice ukrasnog bilja"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Sadnice voća"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
             </div>
             <div className="partners-wrapper">
                 <img src={logo1} alt="" />

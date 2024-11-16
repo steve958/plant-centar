@@ -7,6 +7,7 @@ import logo5 from "../../../assets/partneri/agromarket.jpeg";
 import logo6 from "../../../assets/partneri/savacoop.png";
 import logo7 from "../../../assets/partneri/agrosava.png";
 import logo8 from "../../../assets/partneri/corteva.png";
+import CategoryCard from "../CategoryCard/CategoryCard";
 
 
 export default function CropProtection() {
@@ -20,6 +21,24 @@ export default function CropProtection() {
                     takodje I preparata registrovanih za organsku proizvodnju, za koje
                     smatramo da predtavljaju buducnost u odrzivosti proizvodnje.
                 </p>
+            </div>
+            <div className="categories-wrapper">
+                <CategoryCard
+                    heading="Herbicidi"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Fungicidi"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Insekticidi"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Organski preparati"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
             </div>
             <div className="partners-wrapper">
                 <img src={logo1} alt="ups" className="logo1" />

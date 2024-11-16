@@ -21,10 +21,21 @@ export default function CropNutrition() {
                     naših aduta u saradnji sa klijentima.
                 </p>
             </div>
-            <div>
+            <div className="categories-wrapper">
                 <CategoryCard
-                    image={logo6}
-                    heading="kategorija 1"
+                    heading="Granulisana đubriva"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Kristalna vodootopiva đubriva"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Tečna đubriva i biostimulatori"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Organska đubriva"
                     link="https://a1.rs/mobilni-telefoni"
                 />
             </div>

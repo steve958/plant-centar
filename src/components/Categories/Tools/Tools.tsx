@@ -5,6 +5,7 @@ import logo3 from "../../../assets/partneri/fiskars.png";
 import logo4 from "../../../assets/partneri/gerovit.png";
 import logo5 from "../../../assets/partneri/eurodrip.jpg";
 import logo6 from "../../../assets/partneri/toro.jpg";
+import CategoryCard from "../CategoryCard/CategoryCard";
 
 export default function Tools() {
     return (
@@ -16,6 +17,24 @@ export default function Tools() {
                     Kod nas možete pronaći vodeće brendove opreme, mašina i alata, kao i
                     opremu za navodnjavanje.
                 </p>
+            </div>
+            <div className="categories-wrapper">
+                <CategoryCard
+                    heading="Mašine"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Alati"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Navodnjavanje"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
+                <CategoryCard
+                    heading="Folije i veziva"
+                    link="https://a1.rs/mobilni-telefoni"
+                />
             </div>
             <div className="partners-wrapper">
                 <img src={logo1} alt="" />

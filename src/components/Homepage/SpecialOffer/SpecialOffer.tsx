@@ -1,11 +1,11 @@
-import "./News.css";
+import "./SpecialOffer.css";
 import { useRef, useState, useEffect } from "react";
-import { newsData } from "./newsData"; // Import your mock data
-import NewsCard from "./NewsCard";
+import { offerData } from "./offerData"; // Import your mock data
+import NewsCard from "./OfferCard";
 import { IconButton, Modal, Box, Typography } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos, Close } from "@mui/icons-material";
 
-export default function News() {
+export default function SpecialOffer() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [modalOpen, setModalOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function News() {
     const cardWidth = 500;
     const gap = 30; // gap defined in CSS
     const cardsPerView = 2;
-    const totalCards = newsData.length;
+    const totalCards = offerData.length;
 
     // Calculate the scroll offset for two cards plus the gap between them
     const scrollStep = cardWidth * cardsPerView + gap;
@@ -61,11 +61,11 @@ export default function News() {
     };
 
     return (
-        <div className="news-container">
-            <div className="news-wrapper">
-                <h2 className="news-heading">Aktuelnosti</h2>
-                <div className="card-container" ref={scrollRef} style={{ justifyContent: 'center' }}>
-                    {newsData.map((card, index) => (
+        <div className="special-offer-container">
+            <div className="special-offer-wrapper">
+                <h2 className="special-offer-heading">Izdvajamo iz ponude</h2>
+                <div className="card-container" ref={scrollRef}>
+                    {offerData.map((card, index) => (
                         <div
                             key={index}
                             onClick={() => handleCardClick(index)}
@@ -79,7 +79,7 @@ export default function News() {
                         </div>
                     ))}
                 </div>
-                {newsData?.length > 1 && (
+                {offerData?.length > 1 && (
                     <div className="navigation-arrows">
                         <IconButton
                             onClick={() => handleScroll("left")}
@@ -137,15 +137,15 @@ export default function News() {
                     {selectedCardIndex !== null && (
                         <>
                             <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
-                                {newsData[selectedCardIndex].title}
+                                {offerData[selectedCardIndex].title}
                             </Typography>
                             <img
-                                src={newsData[selectedCardIndex].image}
-                                alt={newsData[selectedCardIndex].title}
+                                src={offerData[selectedCardIndex].image}
+                                alt={offerData[selectedCardIndex].title}
                                 style={{ width: "100%", height: "auto", marginBottom: "20px" }}
                             />
                             <Typography variant="body1" sx={{ mb: 2 }}>
-                                {newsData[selectedCardIndex].description}
+                                {offerData[selectedCardIndex].description}
                             </Typography>
                         </>
                     )}

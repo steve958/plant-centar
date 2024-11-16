@@ -32,6 +32,15 @@
     flex-shrink: 0;
 }
 
+.categories-wrapper {
+    margin-top: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
 @media screen and (max-width: 580px) {
 
