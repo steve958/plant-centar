@@ -115,9 +115,11 @@ export default function SpecialOffer() {
                         transform: "translate(-50%, -50%)",
                         maxWidth: 600,
                         width: "90%",
+                        maxHeight: "90vh",
+                        overflow: "auto",
                         bgcolor: "background.paper",
                         boxShadow: 24,
-                        p: 4,
+                        p: 1,
                         outline: "none",
                         borderRadius: "8px",
                     }}

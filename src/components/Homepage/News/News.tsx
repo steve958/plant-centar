@@ -38,7 +38,10 @@ export default function News() {
         if (direction === "left") {
             newScrollPosition = Math.max(scrollPosition - scrollStep, 0);
         } else if (direction === "right") {
-            newScrollPosition = Math.min(scrollPosition + scrollStep, maxScrollLeft);
+            newScrollPosition = Math.min(
+                scrollPosition + scrollStep,
+                maxScrollLeft
+            );
         }
 
         setScrollPosition(newScrollPosition);
@@ -64,7 +67,11 @@ export default function News() {
         <div className="news-container">
             <div className="news-wrapper">
                 <h2 className="news-heading">Aktuelnosti</h2>
-                <div className="card-container" ref={scrollRef} style={{ justifyContent: 'center' }}>
+                <div
+                    className="card-container"
+                    ref={scrollRef}
+                    style={{ justifyContent: "center" }}
+                >
                     {newsData.map((card, index) => (
                         <div
                             key={index}
@@ -115,9 +122,11 @@ export default function News() {
                         transform: "translate(-50%, -50%)",
                         maxWidth: 600,
                         width: "90%",
+                        maxHeight: "90vh",
+                        overflow: "auto",
                         bgcolor: "background.paper",
                         boxShadow: 24,
-                        p: 4,
+                        p: 1,
                         outline: "none",
                         borderRadius: "8px",
                     }}
@@ -142,10 +151,23 @@ export default function News() {
                             <img
                                 src={newsData[selectedCardIndex].image}
                                 alt={newsData[selectedCardIndex].title}
-                                style={{ width: "100%", height: "auto", marginBottom: "20px" }}
+                                style={{
+                                    width: "100%",
+                                    height: "auto",
+                                    marginBottom: "20px",
+                                }}
                             />
                             <Typography variant="body1" sx={{ mb: 2 }}>
                                 {newsData[selectedCardIndex].description}
+                            </Typography>
+                            <Typography variant="body1" sx={{ mb: 2 }}>
+                                {selectedCardIndex === 0 ? (
+                                    <a href="https://www.agromarketsrbija.rs/files/deals/Agrosvet_138_web.pdf">
+                                        kliknite ovde
+                                    </a>
+                                ) : (
+                                    newsData[selectedCardIndex].footer
+                                )}
                             </Typography>
                         </>
                     )}
