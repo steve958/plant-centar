@@ -35,6 +35,12 @@
     gap: 10px;
 }
 
+@media screen and (max-width:1400px) {
+    .category-container {
+        padding-bottom: 30px;
+    }
+}
+
 @media screen and (max-width: 580px) {
 
     .category-container {

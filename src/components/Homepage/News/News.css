@@ -6,6 +6,8 @@
     animation: appear 1s 1;
     overflow-x: hidden;
     position: relative;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
 
 .news-wrapper {
@@ -72,6 +74,10 @@
 }
 
 @media (max-width: 600px) {
+
+    .news-container {
+        padding-top: 0px !important;
+    }
 
     /* For mobile screens, display one card per view */
     .news-wrapper {

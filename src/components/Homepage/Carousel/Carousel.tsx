@@ -32,12 +32,14 @@ export default function Carousel() {
     {
       image: sustainable,
       heading: "Zaštita životne sredine",
-      moreInfo: "Svedoci smo sve izraženijih klimatskih promena prethodnu deceniju, što je svakao utiče na život gajenih biljaka, ostalog živog sveta a i nas samih. Promenom pristupa u svim oblastima života a naravno i u poljoprivredi možemo uticati na smanjenje štetnih uticaja. Upotrebom ekoloških preparata, doziranom primenom pesticida i đubriva kao i zbrinjavanjem prazne ambalaže trudimo se da doprinesemo ublažavanju ovog globalnog problema, na kom je potrebno još više i udruženo raditi.",
+      moreInfo:
+        "Svedoci smo sve izraženijih klimatskih promena prethodnu deceniju, što je svakao utiče na život gajenih biljaka, ostalog živog sveta a i nas samih. Promenom pristupa u svim oblastima života a naravno i u poljoprivredi možemo uticati na smanjenje štetnih uticaja. Upotrebom ekoloških preparata, doziranom primenom pesticida i đubriva kao i zbrinjavanjem prazne ambalaže trudimo se da doprinesemo ublažavanju ovog globalnog problema, na kom je potrebno još više i udruženo raditi.",
     },
     {
       image: dogs,
       heading: "Briga, ishrana i oprema za životinje",
-      moreInfo: "Gajenje životinja i prilagođavanje raznoraznim potrebama zastupljeno je od samog nastanka civilizacije, a takođe i briga o njima. Kvalitetna hrana i oprema, danas predstavljaju glavne preduslove za održavanje životinja zdravim i srećnim bez obzira da li ih gajili za profesionalnu potrebu ili lično zadovoljstvo u druženju sa njima.",
+      moreInfo:
+        "Gajenje životinja i prilagođavanje raznoraznim potrebama zastupljeno je od samog nastanka civilizacije, a takođe i briga o njima. Kvalitetna hrana i oprema, danas predstavljaju glavne preduslove za održavanje životinja zdravim i srećnim bez obzira da li ih gajili za profesionalnu potrebu ili lično zadovoljstvo u druženju sa njima.",
     },
   ];
 
@@ -101,8 +103,19 @@ export default function Carousel() {
 
   const changeSelectedItem = (direction: number) => {
     setSelectedItem(
-      (prevSelectedItem) => (prevSelectedItem + direction + carousel.length) % carousel.length
+      (prevSelectedItem) =>
+        (prevSelectedItem + direction + carousel.length) % carousel.length
     );
+  };
+
+  // New function to handle arrow clicks
+  const handleArrowClick = (direction: number) => {
+    terminateInterval(); // Clear existing interval
+    changeSelectedItem(direction); // Change selected item
+    setShowText(false); // Reset showText
+    if (!moreInfoClicked) {
+      startCarousel(); // Restart interval if moreInfoClicked is false
+    }
   };
 
   return (
@@ -117,11 +130,11 @@ export default function Carousel() {
       ))}
       <ArrowBackIosNewIcon
         className="carousel-arrow-left"
-        onClick={() => changeSelectedItem(-1)}
+        onClick={() => handleArrowClick(-1)}
       />
       <ArrowForwardIosIcon
         className="carousel-arrow-right"
-        onClick={() => changeSelectedItem(1)}
+        onClick={() => handleArrowClick(1)}
       />
       {showText && !moreInfoClicked && (
         <div className="carousel-item">

@@ -9,7 +9,6 @@ import Loader from "./components/Loader/Loader";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function App() {
   const navigate = useNavigate();
   const location = useLocation(); // Track current location
@@ -24,9 +23,16 @@ function App() {
     }, 200);  // Slight delay to ensure smooth transition
   };
 
-  // Trigger loader on route change by listening to location changes
+  // Trigger loader and scroll to top on route change by listening to location changes
   useEffect(() => {
     setLoader(true);  // Show loader as soon as location changes
+
+    // Scroll to top smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
     const timer = setTimeout(() => {
       setLoader(false);  // Hide loader after a short delay
     }, 700);

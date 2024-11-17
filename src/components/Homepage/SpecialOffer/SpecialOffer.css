@@ -6,6 +6,8 @@
     animation: appear 1s 1;
     overflow-x: hidden;
     position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .special-offer-wrapper {
@@ -19,13 +21,14 @@
     text-align: center;
     color: #54c143;
     margin: 20px 0;
+    padding-bottom: 20px;
     font-size: 37.5px;
 }
 
 .card-container {
     display: flex;
     flex-wrap: nowrap;
-    gap: 50px;
+    gap: 80px;
     overflow-x: auto;
     scroll-behavior: smooth;
     width: 100%;

@@ -37,7 +37,7 @@ export default function Gallery() {
           className="gallery-category"
           onMouseEnter={() => categoryHovered('fruits')}
           onMouseLeave={hoverEnd}
-          onClick={() => navigate('/galerija/voće')}
+          onClick={() => navigate('/galerija/voce')}
         >
           <img src={fruits} alt="ups" />
           {categoryHover === 'fruits' && <p>voće</p>}
@@ -46,7 +46,7 @@ export default function Gallery() {
           className="gallery-category"
           onMouseEnter={() => categoryHovered('vegetables')}
           onMouseLeave={hoverEnd}
-          onClick={() => navigate('/galerija/povrće')}
+          onClick={() => navigate('/galerija/povrce')}
         >
           <img src={vegetables} alt="ups" />
           {categoryHover === 'vegetables' && <p>povrće</p>}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Menu.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import logoMain from "../../assets/PlantCLogo.jpg";
@@ -13,13 +13,6 @@ export default function Menu({ onNavigate }: MenuProps) {
   const [selected, setSelected] = useState<string>("pocetna");
   const [menuClicked, setMenuClicked] = useState<boolean>(false);
   const [categoriesHover, setCategoriesHover] = useState<boolean>(false);
-
-  useEffect(() => {
-    const href = window.location.href.slice(window.location.href.indexOf("#"));
-    if (href.length > 20) {
-      setSelected("");
-    }
-  }, [window.location.href]);
 
   function toggleMenu() {
     const oldState = menuClicked;
@@ -42,7 +35,7 @@ export default function Menu({ onNavigate }: MenuProps) {
           id={selected === "pocetna" ? "selected" : ""}
           onClick={() => {
             if (selected !== "pocetna") {
-              onNavigate("/početna");  // Invoke navigation with loader
+              onNavigate("/pocetna");  // Invoke navigation with loader
               setSelected("pocetna");
             }
           }}
@@ -72,37 +65,67 @@ export default function Menu({ onNavigate }: MenuProps) {
             <div className="categories-container">
               <div
                 className="category"
-                onClick={() => onNavigate("sredstva-za-zastitu-bilja")}  // Invoke navigation with loader
+                onClick={() => {
+                  if (selected !== "sredstva-za-zastitu-bilja") {
+                    onNavigate("sredstva-za-zastitu-bilja")
+                    setSelected("sredstva-za-zastitu-bilja")
+                  }
+                }}  // Invoke navigation with loader
               >
                 Sredstva za zaštitu bilja
               </div>
               <div
                 className="category"
-                onClick={() => onNavigate("sredstva-za-ishranu-bilja")}  // Invoke navigation with loader
+                onClick={() => {
+                  if (selected !== "sredstva-za-ishranu-bilja") {
+                    onNavigate("sredstva-za-ishranu-bilja")
+                    setSelected("sredstva-za-ishranu-bilja")
+                  }
+                }}  // Invoke navigation with loader
               >
                 Sredstva za ishranu bilja
               </div>
               <div
                 className="category"
-                onClick={() => onNavigate("semenska-roba")}  // Invoke navigation with loader
+                onClick={() => {
+                  if (selected !== "semenska-roba") {
+                    onNavigate("semenska-roba")
+                    setSelected("semenska-roba")
+                  }
+                }}  // Invoke navigation with loader
               >
                 Semenska roba
               </div>
               <div
                 className="category"
-                onClick={() => onNavigate("hrana-za-domaće-životinje")}  // Invoke navigation with loader
+                onClick={() => {
+                  if (selected !== "hrana-za-domace-zivotinje") {
+                    onNavigate("hrana-za-domace-zivotinje")
+                    setSelected("hrana-za-domace-zivotinje")
+                  }
+                }}  // Invoke navigation with loader
               >
                 Hrana za domaće životinje
               </div>
               <div
                 className="category"
-                onClick={() => onNavigate("hrana-za-kućne-ljubimce")}  // Invoke navigation with loader
+                onClick={() => {
+                  if (selected !== "hrana-za-kucne-ljubimce") {
+                    onNavigate("hrana-za-kucne-ljubimce")
+                    setSelected("hrana-za-kucne-ljubimce")
+                  }
+                }}  // Invoke navigation with loader
               >
                 Hrana i oprema za kućne ljubimce
               </div>
               <div
                 className="category"
-                onClick={() => onNavigate("alati-i-oprema")}  // Invoke navigation with loader
+                onClick={() => {
+                  if (selected !== "alati-i-oprema") {
+                    onNavigate("alati-i-oprema")
+                    setSelected("alati-i-oprema")
+                  }
+                }}  // Invoke navigation with loader
               >
                 Alati i oprema
               </div>
@@ -161,7 +184,7 @@ export default function Menu({ onNavigate }: MenuProps) {
             id={selected === "pocetna" ? "selected" : ""}
             onClick={() => {
               if (selected !== 'pocetna') {
-                onNavigate("/početna");  // Invoke navigation with loader
+                onNavigate("/pocetna");  // Invoke navigation with loader
                 setSelected("pocetna");
               }
               setMenuClicked(false)
@@ -193,7 +216,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 <div
                   className="category"
                   onClick={() => {
-                    onNavigate("sredstva-za-zastitu-bilja")
+                    if (selected !== "sredstva-za-zastitu-bilja") {
+                      onNavigate("sredstva-za-zastitu-bilja")
+                      setSelected("sredstva-za-zastitu-bilja")
+                    }
                     setMenuClicked(false)
                   }}  // Invoke navigation with loader
                 >
@@ -202,7 +228,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 <div
                   className="category"
                   onClick={() => {
-                    onNavigate("sredstva-za-ishranu-bilja")
+                    if (selected !== "sredstva-za-ishranu-bilja") {
+                      onNavigate("sredstva-za-ishranu-bilja")
+                      setSelected("sredstva-za-ishranu-bilja")
+                    }
                     setMenuClicked(false)
                   }}  // Invoke navigation with loader
                 >
@@ -211,7 +240,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 <div
                   className="category"
                   onClick={() => {
-                    onNavigate("semenska-roba")
+                    if (selected !== "semenska-roba") {
+                      onNavigate("semenska-roba")
+                      setSelected("semenska-roba")
+                    }
                     setMenuClicked(false)
                   }}  // Invoke navigation with loader
                 >
@@ -220,7 +252,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 <div
                   className="category"
                   onClick={() => {
-                    onNavigate("hrana-za-domaće-životinje")
+                    if (selected !== "hrana-za-domace-zivotinje") {
+                      onNavigate("hrana-za-domace-zivotinje")
+                      setSelected("hrana-za-domace-zivotinje")
+                    }
                     setMenuClicked(false)
                   }}  // Invoke navigation with loader
                 >
@@ -229,7 +264,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 <div
                   className="category"
                   onClick={() => {
-                    onNavigate("hrana-za-kućne-ljubimce")
+                    if (selected !== "hrana-za-kucne-ljubimce") {
+                      onNavigate("hrana-za-kucne-ljubimce")
+                      setSelected("hrana-za-kucne-ljubimce")
+                    }
                     setMenuClicked(false)
                   }}  // Invoke navigation with loader
                 >
@@ -238,7 +276,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 <div
                   className="category"
                   onClick={() => {
-                    onNavigate("alati-i-oprema")
+                    if (selected !== "alati-i-oprema") {
+                      onNavigate("alati-i-oprema")
+                      setSelected("alati-i-oprema")
+                    }
                     setMenuClicked(false)
                   }}  // Invoke navigation with loader
                 >

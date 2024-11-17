@@ -29,10 +29,10 @@ export const router = createHashRouter([
     children: [
       {
         index: true, // Define the index route as the default child route for "/"
-        element: <Navigate to="/početna" />, // Redirect to "/početna"
+        element: <Navigate to="/pocetna" />, // Redirect to "/početna"
       },
       {
-        path: '/početna',
+        path: '/pocetna',
         element: <Homepage />,
       },
       {
@@ -56,11 +56,11 @@ export const router = createHashRouter([
         element: <CropNutrition />,
       },
       {
-        path: '/hrana-za-domaće-životinje',
+        path: '/hrana-za-domace-zivotinje',
         element: <DomesticAnimals />,
       },
       {
-        path: '/hrana-za-kućne-ljubimce',
+        path: '/hrana-za-kucne-ljubimce',
         element: <PetFood />,
       },
       {
@@ -72,11 +72,11 @@ export const router = createHashRouter([
         element: <Tools />,
       },
       {
-        path: '/galerija/voće',
+        path: '/galerija/voce',
         element: <Fruits />,
       },
       {
-        path: '/galerija/povrće',
+        path: '/galerija/povrce',
         element: <Vegetables />,
       },
       {
