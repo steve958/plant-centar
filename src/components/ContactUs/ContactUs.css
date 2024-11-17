@@ -31,6 +31,8 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 18px;
+  color: white;
+  font-weight: 600;
   background: rgb(182, 192, 191);
   background: linear-gradient(260deg,
       rgba(182, 192, 191, 1) 0%,

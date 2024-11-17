@@ -49,8 +49,8 @@ export default function WhatWeDo() {
                             onMouseLeave={clearHover}
                         >
                             {hover === "warehouse"
-                                ? "Distribucija sredstava za zaštitu i ishranu bilja"
-                                : "Distribucija"}
+                                ? "Prodaja sredstava za zaštitu i ishranu bilja"
+                                : "Prodaja"}
                         </h3>
                     </div>
                     <div
