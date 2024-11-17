@@ -47,6 +47,7 @@
     margin: 20px;
     border: 2px solid #54C143;
     padding: 10px;
+    background-color: white;
     padding-bottom: 0;
     padding-top: 25px;
     border-radius: 15px;
@@ -55,6 +56,7 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     position: relative;
+    filter: drop-shadow(0 0 0.75rem #54c143);
 }
 
 .what-we-do-card>h3 {
@@ -69,11 +71,11 @@
     align-items: center;
     justify-content: center;
     animation: appear 0.8s;
-    background: rgba(84, 193, 67, 0.58);
+    background: rgba(225, 225, 225, 0.53);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8.3px);
-    -webkit-backdrop-filter: blur(8.3px);
-    border: 1px solid rgba(84, 193, 67, 0.39);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(225, 225, 225, 0.3);
     transition: all 0.8s;
     text-align: center;
 }
