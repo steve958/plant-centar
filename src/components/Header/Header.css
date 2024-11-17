@@ -96,3 +96,15 @@
         display: none;
     }
 }
+
+
+@media screen and (max-width: 600px) {
+    .address-wrapper>.icon {
+        position: absolute;
+        left: 10px;
+    }
+
+    .moto {
+        padding-left: 20px;
+    }
+}
