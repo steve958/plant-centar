@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import dogs from "../../../assets/psi.jpg";
-import sustainable from "../../../assets/odrzivo.jpg";
+import sustainable from "../../../assets/sustain.jpg";
 import sustainable1 from "../../../assets/odrzivo2.jpg";
 
 export default function Carousel() {
