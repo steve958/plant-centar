@@ -122,6 +122,7 @@ export default function SpecialOffer() {
                         p: 1,
                         outline: "none",
                         borderRadius: "8px",
+                        textAlign: 'center'
                     }}
                 >
                     <IconButton
