@@ -49,7 +49,7 @@ export default function WhatWeDo() {
                             onMouseLeave={clearHover}
                         >
                             {hover === "warehouse"
-                                ? "Prodaja sredstava za zaštitu i ishranu bilja"
+                                ? "Distribucija sredstava za zaštitu i ishranu bilja"
                                 : "Prodaja"}
                         </h3>
                     </div>
@@ -73,7 +73,7 @@ export default function WhatWeDo() {
                     </div>
                     <div
                         className="what-we-do-card"
-                        onClick={() => navigate("/hrana-za-domaće-životinje")}
+                        onClick={() => navigate("/hrana-za-domace-zivotinje")}
                     >
                         <img src={farmAnimals} className="icon-img" />
                         <h3 onMouseEnter={() => setHover("farm")} onMouseLeave={clearHover}>
@@ -84,7 +84,7 @@ export default function WhatWeDo() {
                     </div>
                     <div
                         className="what-we-do-card"
-                        onClick={() => navigate("/hrana-za-kućne-ljubimce")}
+                        onClick={() => navigate("/hrana-za-kucne-ljubimce")}
                     >
                         <img src={pets} className="icon-img" style={{ scale: "1.5" }} />
                         <h3 onMouseEnter={() => setHover("pets")} onMouseLeave={clearHover}>
