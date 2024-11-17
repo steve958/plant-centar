@@ -12,16 +12,16 @@ import sustainable1 from "../../../assets/odrzivo2.jpg";
 export default function Carousel() {
   const carousel = [
     {
+      image: sustainable1,
+      heading: "Tehnologija gajenja bilja",
+      moreInfo:
+        "Savremena poljoprivreda zahteva i savremena tehnološka rešenja gajenja bilja. Novi hibridi i sorte prilagođeni savremenim vremenskim uticajima predstavljaju polaznu tačku, dok novija rešenja u oblastima zaštite i ishrane bilja nadopunjuju čitavu tehnologiju u cilju dobijanja maksimalnog potencijala gajenih biljaka.",
+    },
+    {
       image: crops,
       heading: "Priroda i zemljište",
       moreInfo:
         "Priroda predstavlja biljni i životinjski svet koji nas okružuje, kao i nas same. Sam život ne bi bio moguć bez našeg najvrednijeg resursa a to je zemljište, koje je vekovima i milenijumima oblikuje naš živi svet. Poljoprivredna proizvodnja ne bi bila moguća bez kvalitetnih obradivih površina, samim tim manipulacija istim predstavlja ključnu tačku u održivosti poljoprivredne proizvodnje.",
-    },
-    {
-      image: sustainable1,
-      heading: "Tehnologija gajenja",
-      moreInfo:
-        "Savremena poljoprivreda zahteva i savremena tehnološka rešenja gajenja bilja. Novi hibridi i sorte prilagođeni savremenim vremenskim uticajima predstavljaju polaznu tačku, dok novija rešenja u oblastima zaštite i ishrane bilja nadopunjuju čitavu tehnologiju u cilju dobijanja maksimalnog potencijala gajenih biljaka.",
     },
     {
       image: blueberry,
