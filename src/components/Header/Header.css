@@ -101,10 +101,11 @@
 @media screen and (max-width: 600px) {
     .address-wrapper>.icon {
         position: absolute;
-        left: 10px;
+        left: 8%;
     }
 
     .moto {
-        padding-left: 20px;
+        width: 100%;
+        padding-left: 10%;
     }
 }

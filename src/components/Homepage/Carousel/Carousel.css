@@ -76,6 +76,7 @@
 
 .carousel-heading {
     font-weight: 700;
+    text-align: center !important;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     animation: disapear 8s 1;
@@ -89,6 +90,7 @@
 
 .more-info-text {
     position: absolute;
+    text-align: center;
     background-color: rgba(128, 128, 128, 0.5);
     width: 100vw;
     height: 100vh;
