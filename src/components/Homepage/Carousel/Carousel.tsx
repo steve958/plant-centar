@@ -25,7 +25,7 @@ export default function Carousel() {
     },
     {
       image: blueberry,
-      heading: "Intezivni uzgoj voća",
+      heading: "Intenzivni uzgoj voća",
       moreInfo:
         "U našoj zemlji poslednih godina zastupljena je ekspanzija useva i zasada po najnovijim konrolisanim sistemima gajenja. Borovnica se pokazala kao pionir i kao kultura koja je postala naš svojevrsni brend, dok se u tom pravcu ide i u gajenju ostalih kultura poput jagode i maline, a takođe i raznih povrtarskih kultura. Poznavanje fiziologije i potreba u gajenju ovih kultura predstavlja iskorak u budućnost poljoprivrede i oblast gde se mi kao kompanija uspešno pronalazimo.",
     },

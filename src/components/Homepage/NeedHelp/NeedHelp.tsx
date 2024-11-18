@@ -17,7 +17,7 @@ export default function NeedHelp() {
             {/* Bottom section - Promo Banner */}
             <div className="promo-banner">
                 <div className="promo-text">
-                    <h2>Imte pitanja u vezi proizvodnje?</h2>
+                    <h2>Imate pitanja u vezi proizvodnje?</h2>
                 </div>
                 <Button onClick={navigateToContactPage} className="learn-more-btn">Kontaktirajte nas</Button>
             </div>
