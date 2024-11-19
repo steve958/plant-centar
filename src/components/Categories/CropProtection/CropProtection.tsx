@@ -16,10 +16,10 @@ export default function CropProtection() {
             <div className="description-wrapper">
                 <h3>Sredstva za zaštitu bilja</h3>
                 <p>
-                    Zahvaljujuci saradnji sa renomiranim proizvodjacima I distributerima, u
-                    nasoj ponudi nalazi se sirok portfolio sredstava za zastitu I ishranu bilja, a
-                    takodje I preparata registrovanih za organsku proizvodnju, za koje
-                    smatramo da predtavljaju buducnost u odrzivosti proizvodnje.
+                    Zahvaljujući saradnji sa renomiranim proizvođačima I distributerima, u
+                    našoj ponudi nalazi se širok portfolio sredstava za zaštitu I ishranu bilja, a
+                    takođe i preparata registrovanih za organsku proizvodnju, za koje
+                    smatramo da predstavljaju budućnost u održivosti proizvodnje.
                 </p>
             </div>
             <div className="categories-wrapper">

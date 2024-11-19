@@ -14,7 +14,7 @@ export default function Seeds() {
                 <h3>Semenska roba</h3>
                 <p>
                     Semenska roba kao i sadni material predstavljaju osnovu uzgoja većine
-                    poljoprivrednih kultura. Shodno tome, našim saradncima omogućili smo
+                    poljoprivrednih kultura. Shodno tome, našim saradnicima omogućili smo
                     širok izbor semena za ratarsku i povrtarsku proizvodnju, kao i sadnice
                     voćarskih kultura i ukrasnog bilja za uređenje pejzaža.
                 </p>

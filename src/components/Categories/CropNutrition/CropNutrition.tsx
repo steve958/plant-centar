@@ -15,7 +15,7 @@ export default function CropNutrition() {
                 <p>
                     Naš tim stručnjaka svakodnevnim obilascima terena I komunikacijom,
                     izlazi u susret poljoprivrednim proizvođačima u prevazilaženju nedaća
-                    u svim oblastima poljorpivredne proizvodnje u cilju postizanja
+                    u svim oblastima poljoprivredne proizvodnje u cilju postizanja
                     maksimalnih rezultata. Kvalitetni program ishrane I zaštite bilja, kao
                     i dobro poznavanje hidroponskog uzgoja biljaka, predstavljaju jedan od
                     naših aduta u saradnji sa klijentima.
