@@ -58,6 +58,10 @@
 }
 
 
+.description-wrapper>p {
+  margin-top: 20px;
+}
+
 
 @keyframes appear {
   0% {
