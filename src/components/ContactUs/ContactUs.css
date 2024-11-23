@@ -69,8 +69,13 @@ textarea {
 }
 
 @media screen and (max-width: 550px) {
-  .contact-us-form {
-    width: 80%;
+
+  .contact-us-description {
+    width: 95%;
+  }
+
+  form {
+    width: 95%;
   }
 
   textarea {
