@@ -8,6 +8,7 @@ import img6 from '../../../assets/partneri/basf.png';
 import img7 from '../../../assets/partneri/corteva.png';
 import img8 from '../../../assets/partneri/elixir.png';
 import img9 from '../../../assets/partneri/villager.png';
+import img10 from '../../../assets/partneri/konus.png';
 
 export default function Partners() {
   const logos = [
@@ -20,6 +21,7 @@ export default function Partners() {
     { src: img7, href: 'https://www.corteva.rs/', alt: 'Corteva' },
     { src: img8, href: 'https://www.elixirgroup.rs/', alt: 'Elixir' },
     { src: img9, href: 'https://www.villager.rs/', alt: 'Villager' },
+    { src: img10, href: 'https://www.konusglorija.rs/', alt: 'KonusGlorija' },
     { src: img1, href: 'https://www.agromarketsrbija.rs/srb', alt: 'Agromarket' },
     { src: img2, href: 'https://savacoop.rs/', alt: 'Savacoop' },
     { src: img3, href: 'https://www.gebi.rs/', alt: 'Gebi', style: { transform: 'scale(0.7)' } },

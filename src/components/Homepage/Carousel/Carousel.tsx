@@ -21,7 +21,7 @@ export default function Carousel() {
       image: crops,
       heading: "Priroda i zemljište",
       moreInfo:
-        "Priroda predstavlja biljni i životinjski svet koji nas okružuje, kao i nas same. Sam život ne bi bio moguć bez našeg najvrednijeg resursa a to je zemljište, koje je vekovima i milenijumima oblikuje naš živi svet. Poljoprivredna proizvodnja ne bi bila moguća bez kvalitetnih obradivih površina, samim tim manipulacija istim predstavlja ključnu tačku u održivosti poljoprivredne proizvodnje.",
+        "Priroda predstavlja biljni i životinjski svet koji nas okružuje, što ne bi bilo moguće bez zemljišta koje predstavlja naš najvredniji resurs. Pravilna manipulacija zemljištem je ključna u održivosti poljoprivrednih površina za naredne generacije i svakako oblast kojoj je potreban stručan pristup.",
     },
     {
       image: blueberry,
