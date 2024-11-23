@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Menu.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import logoMain from "../../assets/PlantCLogo.jpg";
@@ -13,6 +13,17 @@ export default function Menu({ onNavigate }: MenuProps) {
   const [selected, setSelected] = useState<string>("pocetna");
   const [menuClicked, setMenuClicked] = useState<boolean>(false);
   const [categoriesHover, setCategoriesHover] = useState<boolean>(false);
+
+
+  useEffect(() => {
+    trackUrl(location.hash)
+  }, [location.hash])
+
+  function trackUrl(hash: string) {
+    const start = hash.indexOf('/') + 1
+    const url = hash.slice(start)
+    setSelected(url)
+  }
 
   function toggleMenu() {
     const oldState = menuClicked;

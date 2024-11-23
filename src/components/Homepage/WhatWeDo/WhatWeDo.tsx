@@ -25,10 +25,7 @@ export default function WhatWeDo() {
                 </div>
                 <div className="heading-border"></div>
                 <div className="what-we-do-content">
-                    <div
-                        className="what-we-do-card"
-                        onClick={() => navigate("/sredstva-za-zastitu-bilja")}
-                    >
+                    <div className="what-we-do-card" onClick={() => navigate("/kontakt")}>
                         <img src={science} className="icon-img" style={{ scale: "0.9" }} />
                         <h3
                             onMouseEnter={() => setHover("science")}
@@ -39,18 +36,33 @@ export default function WhatWeDo() {
                                 : "Stručna podrška"}
                         </h3>
                     </div>
-                    <div
-                        className="what-we-do-card"
-                        onClick={() => navigate("/sredstva-za-ishranu-bilja")}
-                    >
+                    <div className="what-we-do-card">
                         <img src={warehouse} className="icon-img" />
                         <h3
                             onMouseEnter={() => setHover("warehouse")}
                             onMouseLeave={clearHover}
                         >
-                            {hover === "warehouse"
-                                ? "Distribucija sredstava za zaštitu i ishranu bilja"
-                                : "Prodaja"}
+                            {hover === "warehouse" ? (
+                                <span>
+                                    "Distribucija sredstava za{" "}
+                                    <p
+                                        onClick={() => navigate("/sredstva-za-zastitu-bilja")}
+                                        style={{ display: "inline", color: "green" }}
+                                    >
+                                        zaštitu
+                                    </p>{" "}
+                                    i{" "}
+                                    <p
+                                        onClick={() => navigate("/sredstva-za-ishranu-bilja")}
+                                        style={{ display: "inline", color: "green" }}
+                                    >
+                                        ishranu
+                                    </p>{" "}
+                                    bilja"
+                                </span>
+                            ) : (
+                                "Prodaja"
+                            )}
                         </h3>
                     </div>
                     <div

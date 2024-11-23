@@ -33,7 +33,7 @@ export default function Carousel() {
       image: sustainable,
       heading: "Zaštita životne sredine",
       moreInfo:
-        "Svedoci smo sve izraženijih klimatskih promena prethodnu deceniju, što je svakao utiče na život gajenih biljaka, ostalog živog sveta a i nas samih. Promenom pristupa u svim oblastima života a naravno i u poljoprivredi možemo uticati na smanjenje štetnih uticaja. Upotrebom ekoloških preparata, doziranom primenom pesticida i đubriva kao i zbrinjavanjem prazne ambalaže trudimo se da doprinesemo ublažavanju ovog globalnog problema, na kom je potrebno još više i udruženo raditi.",
+        "Svedoci smo sve izraženijih klimatskih promena prethodnu deceniju, što svakao utiče na život gajenih biljaka, kao i ostalog živog sveta. Promenom pristupa u svim oblastima života a naravno i u poljoprivrednoj proizvodnji možemo uticati na smanjenje štetnih uticaja. Upotrebom ekoloških preparata, doziranom primenom pesticida i đubriva kao i zbrinjavanjem prazne ambalaže trudimo se da doprinesemo ublažavanju ovog globalnog problema, na kom je potrebno još više i udruženo raditi.",
     },
     {
       image: dogs,

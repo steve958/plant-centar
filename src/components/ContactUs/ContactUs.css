@@ -1,12 +1,24 @@
 .contact-us-form {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   padding: 10px;
   border-radius: 8px;
   background-color: #fff;
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); */
   min-height: 52vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 4px double #54c143;
+  border-bottom: 4px double #54c143;
   animation: appear 1s 1;
+}
+
+.contact-us-description {
+  margin-top: 20px;
+  width: 50%;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -16,6 +28,10 @@ h2 {
 
 .form-group {
   margin-bottom: 10px;
+}
+
+form {
+  width: 50%;
 }
 
 label {
@@ -40,7 +56,7 @@ textarea {
 }
 
 textarea {
-  height: 150px;
+  height: 110px;
 }
 
 .submit-button {
