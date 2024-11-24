@@ -36,7 +36,7 @@ const ContactUs = () => {
     <div className="contact-us-form">
       <h2>Kontaktirajte nas</h2>
       <p className='contact-us-description'>
-        Naš tim čine diplomirani agnonomi sa dugogodišnjim iskustvom iz
+        Naš tim čine diplomirani agronomi sa dugogodišnjim iskustvom iz
         oblasti poljoprivredne proizvodnje. Na raspolaganju smo vam za sva
         pitanja i nedoumice, kako sa stručne, tako i sa komercijalne strane.
       </p>
