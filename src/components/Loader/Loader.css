@@ -14,7 +14,7 @@
     border: 5px solid #5BBC4A;
     /* Circle border color */
     border-radius: 50%;
-    animation: rotate-circle 1s linear infinite;
+    animation: rotate-circle 5s linear infinite;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,10 +51,16 @@
 
 @keyframes rotate-circle {
     0% {
-        transform: rotate(0deg);
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
     }
 
     100% {
-        transform: rotate(360deg);
+        transform: rotateY(360deg);
+        opacity: 0;
     }
 }
