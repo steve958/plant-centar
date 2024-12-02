@@ -35,7 +35,7 @@ function App() {
 
     const timer = setTimeout(() => {
       setLoader(false);  // Hide loader after a short delay
-    }, 700);
+    }, 500);
 
     return () => clearTimeout(timer);  // Cleanup timer on component unmount or location change
   }, [location.pathname]);  // Depend on the current path
