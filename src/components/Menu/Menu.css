@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 70px;
   user-select: none;
   z-index: 3;
   background-color: #E1E1E1;
@@ -147,6 +147,13 @@
     z-index: 5 !important;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .menu-container {
+    height: 100px;
+  }
+}
+
 
 @keyframes slideIn {
   0% {
