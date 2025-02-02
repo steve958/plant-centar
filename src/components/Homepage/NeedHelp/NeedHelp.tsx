@@ -19,6 +19,7 @@ export default function NeedHelp() {
                 <div className="promo-text">
                     <h2>Potrebna vam je stručna podrška?</h2>
                 </div>
+                <p style={{ marginBottom: '15px', textAlign: 'center' }}>Naš tim čine iskusni agronomi, spremni da odgovore na sve izazove.</p>
                 <Button onClick={navigateToContactPage} className="learn-more-btn">Kontaktirajte nas</Button>
             </div>
             <img src={help} alt="" className='help-img' />
