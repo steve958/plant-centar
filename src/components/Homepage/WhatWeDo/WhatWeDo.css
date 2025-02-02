@@ -28,37 +28,49 @@
 
 /***** Card Row for 6 Cards *****/
 .wwd-card-row {
+    /* Use a max-width plus auto margins so it centers nicely */
+    max-width: 1200px;
+    margin: 30px auto 0 auto;
     display: flex;
-    width: 60%;
     flex-wrap: wrap;
-    /* so they wrap on smaller screens */
     justify-content: center;
     gap: 20px;
-    /* spacing between cards */
-    margin-top: 30px;
+    /* space between cards */
+    /* Remove or reduce the 20% side paddings. 
+     We rely on max-width + auto margins for a centered layout. */
 }
 
 /***** Individual Card *****/
 .wwd-card {
-    width: 300px;
-    padding-top: 50px !important;
+    /* 
+    By default, let’s make the cards each take about 1/3
+    minus the gap. This will produce exactly 3 columns 
+    if there’s enough horizontal space. 
+  */
+    flex: 0 0 calc(33.333% - 20px);
+    box-sizing: border-box;
+
+    /* Or if you really want a strict 300px, do:
+     flex: 0 0 300px;
+     margin: 0 auto; (but then remove big side paddings) 
+  */
+
     min-height: 350px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 
-    /* Center all contents (icon, h3, p, arrow) if desired */
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    /* so the arrow can be positioned if needed */
-    padding: 20px;
+
+    padding: 50px 20px 20px 20px;
     cursor: pointer;
     transition: all 0.5s, color 0.3s;
 }
 
-/* Hover: card turns green, text becomes white */
+/* Hover effect */
 .wwd-card:hover {
     background: linear-gradient(260deg,
             rgba(182, 192, 191, 1) 0%,
@@ -66,13 +78,12 @@
     color: #fff;
 }
 
-/***** Icon Circle in the Center *****/
+/***** Icon Circle *****/
 .wwd-icon-circle {
     width: 70px;
     height: 70px;
     border-radius: 50%;
     background-color: #fff;
-    /* small shadow to make it pop */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
     display: flex;
@@ -82,15 +93,6 @@
 
     transition: background-color 0.3s;
 }
-
-/* By default, the icon circle remains white. If you want it to stay white even on hover, do nothing here.
-   If you want it to fade to green or invert on hover, uncomment below:
-*/
-/*
-.wwd-card:hover .wwd-icon-circle {
-  background-color: #ffffff88; // e.g. semi-transparent white
-}
-*/
 
 .wwd-icon-circle img {
     margin-top: 10px;
@@ -104,16 +106,16 @@
     margin-top: 80px;
     margin-bottom: 10px;
     font-size: 18px;
-    color: inherit;
     text-align: center;
-    /* ensures it toggles to white on hover */
+    color: inherit;
+    /* becomes white on hover */
 }
 
 .wwd-card p {
     font-size: 14px;
     line-height: 1.5;
     color: inherit;
-    /* ensures it toggles to white on hover */
+    /* becomes white on hover */
     text-align: center;
 }
 
@@ -128,31 +130,35 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    /* pinned near bottom-right, tweak as needed */
     bottom: -10px;
-    /* border: 1px solid #54c143; */
     right: 40%;
     transition: background-color 0.3s, color 0.3s;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-
-/* On card hover, optionally invert arrow circle or keep as is.
-   Here, we simply make the text inside white on hover.
-*/
 .wwd-card:hover .wwd-arrow-circle {
     background-color: #fff;
     color: #54c143;
 }
 
 /***** Responsive Adjustments *****/
-@media screen and (max-width: 768px) {
-    .wwd-card {
-        width: 90%;
-        margin-bottom: 20px;
-    }
+@media screen and (max-width: 992px) {
 
-    .wwd-card-row {
-        width: 100%;
+    /* 
+     On medium screens, let’s switch to 2 columns. 
+     The calculation ensures a 50% width minus the gap. 
+  */
+    .wwd-card {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    /* 
+    On small screens, just let it be 1 column.
+  */
+    .wwd-card {
+        flex: 0 0 100%;
     }
 }
