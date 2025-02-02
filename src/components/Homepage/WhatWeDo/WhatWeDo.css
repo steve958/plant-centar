@@ -1,27 +1,24 @@
+/***** Container & Wrapper *****/
 .what-we-do-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    animation: appear 1s 1;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .what-we-do-wrapper {
     width: 90%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
+/***** Heading *****/
 .what-we-do-heading {
     width: 100%;
     text-align: center;
-    font-size: 25px;
-    color: #54C143;
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 4px rgba(84, 193, 67, 0.6);
+    font-size: 28px;
+    color: #54c143;
 }
 
 .heading-border {
@@ -29,89 +26,133 @@
     height: 30px;
 }
 
-.what-we-do-content {
-    width: 70%;
+/***** Card Row for 6 Cards *****/
+.wwd-card-row {
     display: flex;
+    width: 60%;
     flex-wrap: wrap;
-    gap: 50px;
+    /* so they wrap on smaller screens */
     justify-content: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    gap: 20px;
+    /* spacing between cards */
+    margin-top: 30px;
 }
 
-.what-we-do-card {
-    width: 250px;
-    height: 250px;
+/***** Individual Card *****/
+.wwd-card {
+    width: 300px;
+    padding-top: 50px !important;
+    min-height: 350px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+
+    /* Center all contents (icon, h3, p, arrow) if desired */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: 20px;
-    border: 2px solid #54C143;
-    padding: 10px;
-    background-color: white;
-    padding-bottom: 0;
-    padding-top: 25px;
-    border-radius: 15px;
     position: relative;
-    overflow: hidden;
+    /* so the arrow can be positioned if needed */
+    padding: 20px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    filter: drop-shadow(0 0 0.75rem #54c143);
+    transition: all 0.5s, color 0.3s;
 }
 
-.what-we-do-card>h3 {
-    background-color: #54C143;
-    padding: 10px;
-    position: absolute;
-    top: 10px;
-    height: fit-content;
-    width: 100% !important;
-    height: 60px;
+/* Hover: card turns green, text becomes white */
+.wwd-card:hover {
+    background: linear-gradient(260deg,
+            rgba(182, 192, 191, 1) 0%,
+            rgba(84, 193, 67, 1) 100%);
+    color: #fff;
+}
+
+/***** Icon Circle in the Center *****/
+.wwd-icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fff;
+    /* small shadow to make it pop */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: appear 0.8s;
-    background: rgba(225, 225, 225, 0.53);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(225, 225, 225, 0.3);
-    transition: all 0.8s;
+    margin-bottom: 15px;
+
+    transition: background-color 0.3s;
+}
+
+/* By default, the icon circle remains white. If you want it to stay white even on hover, do nothing here.
+   If you want it to fade to green or invert on hover, uncomment below:
+*/
+/*
+.wwd-card:hover .wwd-icon-circle {
+  background-color: #ffffff88; // e.g. semi-transparent white
+}
+*/
+
+.wwd-icon-circle img {
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+/***** Card Text *****/
+.wwd-card h3 {
+    margin-top: 80px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: inherit;
+    text-align: center;
+    /* ensures it toggles to white on hover */
+}
+
+.wwd-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: inherit;
+    /* ensures it toggles to white on hover */
     text-align: center;
 }
 
-.what-we-do-card>h3:hover {
-    height: 170px;
-    transition: all 0.8s;
+/***** Arrow Circle *****/
+.wwd-arrow-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    color: #54c143;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    /* pinned near bottom-right, tweak as needed */
+    bottom: -10px;
+    /* border: 1px solid #54c143; */
+    right: 40%;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.icon-img {
-    width: 100%;
-    animation: appear 0.8s;
+
+/* On card hover, optionally invert arrow circle or keep as is.
+   Here, we simply make the text inside white on hover.
+*/
+.wwd-card:hover .wwd-arrow-circle {
+    background-color: #fff;
+    color: #54c143;
 }
 
-@media screen and (max-width: 1400px) {
-
-    .what-we-do-container {
-        height: fit-content !important;
+/***** Responsive Adjustments *****/
+@media screen and (max-width: 768px) {
+    .wwd-card {
+        width: 90%;
+        margin-bottom: 20px;
     }
 
-    .what-we-do-wrapper {
+    .wwd-card-row {
         width: 100%;
     }
-}
-
-@media screen and (max-width: 600px) {
-
-    .what-we-do-content {
-        gap: 10px;
-        padding: 0 !important;
-    }
-
-    .icon-img {
-        scale: 0.8;
-    }
-
 }

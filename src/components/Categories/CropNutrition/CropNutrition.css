@@ -9,8 +9,6 @@
     width: 100%;
     display: flex;
     min-height: calc(48vh + 3px);
-    border-top: 4px double #54c143;
-    border-bottom: 4px double #54c143;
     animation: appear 1s 1;
 }
 

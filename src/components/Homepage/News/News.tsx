@@ -82,6 +82,7 @@ export default function News() {
                                 image={card.image}
                                 title={card.title}
                                 description={card.description}
+                                date={card.date}
                             />
                         </div>
                     ))}
@@ -158,6 +159,9 @@ export default function News() {
                                     marginBottom: "20px",
                                 }}
                             />
+                            <Typography variant="body1" sx={{ mb: 2 }}>
+                                {newsData[selectedCardIndex].date}
+                            </Typography>
                             <Typography variant="body1" sx={{ mb: 2 }}>
                                 {newsData[selectedCardIndex].description}
                             </Typography>

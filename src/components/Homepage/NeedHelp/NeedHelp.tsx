@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import './NeedHelp.css';
 import Button from "@mui/material/Button";
-import help from "../../../assets/needhelp.jpeg"
+import help from "../../../assets/protect.jpg"
 
 
 export default function NeedHelp() {

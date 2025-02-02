@@ -3,7 +3,9 @@
     height: 50px;
     display: flex;
     justify-content: center;
-    background-color: rgb(225, 225, 225);
+    /* background-color: rgb(225, 225, 225); */
+    background-color: #54C143;
+    color: white;
     font-weight: 600;
     position: relative;
 }
@@ -17,7 +19,7 @@
 }
 
 .moto {
-    color: #54C143;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 20px;
@@ -38,7 +40,7 @@
 
 .icon {
     cursor: pointer;
-    color: #54C143 !important;
+    color: white !important;
     transition: all 0.3s !important;
 }
 

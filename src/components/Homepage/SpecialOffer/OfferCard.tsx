@@ -12,7 +12,7 @@ export default function OfferCard({
     description,
 }: OfferCardProps) {
     return (
-        <div style={{ filter: "drop-shadow(0 0 0.75rem #54c143)" }}>
+        <div style={{ filter: "drop-shadow(0.5rem 0.5rem 0.75rem #E1E1E1)" }}>
             <Card
                 sx={{
                     width: { xs: "100%", sm: 500 },
@@ -26,8 +26,8 @@ export default function OfferCard({
                     alt={title}
                     sx={{
                         width: "100%",
-                        height: { xs: "auto", sm: "75%" },
-                        objectFit: "cover",
+                        height: { xs: "auto", sm: "75%", lg: '75%' },
+                        objectFit: "contain",
                     }}
                 />
                 <CardContent>

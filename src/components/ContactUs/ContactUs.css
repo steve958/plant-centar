@@ -1,84 +1,162 @@
-.contact-us-form {
-  width: 100%;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #fff;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); */
-  min-height: 52vh;
+/* Main wrapper for the form + map layout */
+.contact-with-map__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  /* allows stacking on small screens */
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  /* if we have some content that might overflow in small screens */
+}
+
+/* ----------- FORM SECTION ----------- */
+.contact-with-map__form-section {
+  flex: 1 1 500px;
+  padding: 2rem;
+}
+
+.contact-with-map__heading {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.contact-with-map__subtext {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.contact-with-map__form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-top: 4px double #54c143;
-  border-bottom: 4px double #54c143;
-  animation: appear 1s 1;
+  gap: 1.25rem;
 }
 
-.contact-us-description {
-  margin-top: 20px;
-  width: 50%;
-  margin-bottom: 10px;
+/* Single field container */
+.contact-with-map__field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-h2 {
-  text-align: center;
-  color: black;
-}
-
-.form-group {
-  margin-bottom: 10px;
-}
-
-form {
-  width: 50%;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 8px;
+/* Inputs and Textareas */
+.contact-with-map__field input,
+.contact-with-map__field textarea {
+  font-size: 1rem;
+  padding: 0.75rem 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 18px;
-  color: white;
-  font-weight: 600;
-  background: rgb(182, 192, 191);
-  background: linear-gradient(260deg,
-      rgba(182, 192, 191, 1) 0%,
-      rgba(84, 193, 67, 1) 100%);
+  border-radius: 6px;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
-textarea {
-  height: 110px;
+/* Floating label effect */
+.contact-with-map__field label {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  color: #999;
+  padding: 0 0.25rem;
+  transition:
+    top 0.2s ease,
+    font-size 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+  pointer-events: none;
 }
 
-.submit-button {
+.contact-with-map__field input:focus,
+.contact-with-map__field textarea:focus {
+  border-color: #54c143;
+}
+
+.contact-with-map__field input:not(:placeholder-shown)+label,
+.contact-with-map__field textarea:not(:placeholder-shown)+label,
+.contact-with-map__field input:focus+label,
+.contact-with-map__field textarea:focus+label {
+  top: -0.6rem;
+  font-size: 0.8rem;
+  color: #54c143;
+  transform: translateY(0);
+}
+
+.contact-with-map__field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Button styling */
+.contact-with-map__submit-btn {
+  padding: 0.75rem;
+  font-size: 1rem;
   background-color: #54c143;
   color: #fff;
-  padding: 10px 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-@media screen and (max-width: 550px) {
+.contact-with-map__submit-btn:hover {
+  background-color: #46a334;
+}
 
-  .contact-us-description {
-    width: 95%;
+/* Status message */
+.contact-with-map__status {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  color: #333;
+}
+
+/* ---------- MAP SECTION ---------- */
+.contact-with-map__map-section {
+  flex: 1 1 500px;
+  position: relative;
+  min-height: 400px;
+  /* ensures enough height for the map */
+  background: #E1E1E1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Heading above the map */
+.contact-with-map__map-heading {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+/* The actual map container inside React Leaflet */
+.contact-with-map__map-container {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 900px) {
+  .contact-with-map__wrapper {
+    flex-direction: column;
   }
 
-  form {
-    width: 95%;
+  .contact-with-map__form-section,
+  .contact-with-map__map-section {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 
-  textarea {
-    height: 80px;
+  .contact-with-map__map-section {
+    margin-top: 1rem;
+    min-height: 300px;
   }
 }

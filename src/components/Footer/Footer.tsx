@@ -14,11 +14,17 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Pratite nas</h3>
           <span>
-            <a href="https://www.facebook.com/people/Plant-centar/61556143327941/?mibextid=ZbWKwL">
-              <FacebookIcon className="icon" />
+            <a
+              href="https://www.facebook.com/people/Plant-centar/61556143327941/?mibextid=ZbWKwL"
+              aria-label="Facebook"
+            >
+              <FacebookIcon />
             </a>
-            <a href="https://www.instagram.com/plant_centar/?utm_source=qr&igsh=MWRhZzM5Yzl3ZTlnaQ%3D%3D">
-              <InstagramIcon className="icon" />
+            <a
+              href="https://www.instagram.com/plant_centar/?utm_source=qr&igsh=MWRhZzM5Yzl3ZTlnaQ%3D%3D"
+              aria-label="Instagram"
+            >
+              <InstagramIcon />
             </a>
           </span>
         </div>

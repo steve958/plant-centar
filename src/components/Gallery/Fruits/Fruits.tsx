@@ -1,5 +1,5 @@
 import './Fruits.css';
-import img1 from '../../../assets/fruits/borovnica1.jfif';
+// import img1 from '../../../assets/fruits/borovnica1.jfif';
 import img2 from '../../../assets/fruits/borovnica2.jfif';
 import img3 from '../../../assets/fruits/borovnica3.jfif';
 import img4 from '../../../assets/fruits/borovnica4.jfif';
@@ -27,7 +27,7 @@ import img25 from '../../../assets/fruits/jagoda12.jfif';
 export default function Fruits() {
     return (
         <div className="fruits-container">
-            <img src={img1} alt="" />
+            {/* <img src={img1} alt="" /> */}
             <img src={img2} alt="" />
             <img src={img3} alt="" />
             <img src={img4} alt="" />

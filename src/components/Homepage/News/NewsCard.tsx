@@ -4,19 +4,21 @@ interface NewsCardProps {
     image: string;
     title: string;
     description: string;
+    date: string;
 }
 
 export default function NewsCard({
     image,
     title,
     description,
+    date
 }: NewsCardProps) {
     return (
-        <div style={{ filter: 'drop-shadow(0 0 0.75rem #54c143)' }}>
+        <div style={{ filter: 'drop-shadow(0.5rem 0.5rem 0.75rem #E1E1E1)' }}>
             <Card
                 sx={{
-                    width: { xs: '100%', sm: 500 },
-                    height: { xs: 'auto', sm: 500 },
+                    width: { xs: '100%', sm: 400, lg: 400 },
+                    height: { xs: 'auto', sm: 450, lg: 450 },
                     flexShrink: 0,
                 }}
             >
@@ -25,8 +27,10 @@ export default function NewsCard({
                     image={image}
                     alt={title}
                     sx={{
-                        width: '100%',
-                        height: { xs: 'auto', sm: '75%' },
+                        width: { lg: '120%', sm: '100%' },
+                        position: 'relative',
+                        right: { lg: "50px" },
+                        height: { xs: 'auto', sm: '55%' },
                         objectFit: 'cover',
                     }}
                 />
@@ -38,6 +42,14 @@ export default function NewsCard({
                         align="center"
                     >
                         {title}
+                    </Typography>
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        align="center"
+                        padding='10px'
+                    >
+                        {date}
                     </Typography>
                     <Typography
                         variant="body2"

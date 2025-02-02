@@ -20,7 +20,7 @@ export default function Header() {
         <div className="header-container">
             <div className="header-wrapper">
                 <p className="moto">
-                    <b>Posvećeni uspehu</b>
+                    <b>Zajedno do uspeha</b>
                 </p>
                 <span className="address-wrapper">
                     <FmdGoodIcon

@@ -22,8 +22,8 @@
     color: #54C143;
     margin: 20px 0;
     font-size: 37.5px;
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 4px rgba(84, 193, 67, 0.6);
+    /* letter-spacing: 3px; */
+    /* text-shadow: 2px 2px 4px rgba(84, 193, 67, 0.6); */
 }
 
 .card-container {
