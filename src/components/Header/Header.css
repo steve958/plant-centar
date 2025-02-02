@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     /* background-color: rgb(225, 225, 225); */
-    background-color: #54C143;
-    color: white;
+    /* background-color: #54C143; */
+    color: #54C143;
     font-weight: 600;
     position: relative;
 }
@@ -19,7 +19,7 @@
 }
 
 .moto {
-    color: white;
+    color: #54C143;
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 20px;
@@ -40,7 +40,7 @@
 
 .icon {
     cursor: pointer;
-    color: white !important;
+    color: #54C143 !important;
     transition: all 0.3s !important;
 }
 
@@ -104,6 +104,11 @@
     .address-wrapper>.icon {
         position: absolute;
         left: 8%;
+    }
+
+    .header-container {
+        background-color: rgb(225, 225, 225);
+
     }
 
     .moto {
