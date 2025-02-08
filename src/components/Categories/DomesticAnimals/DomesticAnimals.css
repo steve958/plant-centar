@@ -23,6 +23,15 @@
     text-align: left;
 }
 
+.partner-wrapper {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+
 @media screen and (max-width: 580px) {
 
     .category-container {

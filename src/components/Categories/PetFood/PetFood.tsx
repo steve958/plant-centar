@@ -8,7 +8,9 @@ import logo6 from "../../../assets/partneri/royalcanin.png";
 import petsIcon from "../../../assets/icons/white/Icons-V1.2.png";
 import CategoryCard from "../CategoryCard/CategoryCard";
 
+
 export default function PetFood() {
+
     return (
         <div className="category-container">
             <div className="description-wrapper">
@@ -16,7 +18,10 @@ export default function PetFood() {
                 <p>
                     Zbog značaja kućnih ljubimaca u našim životima i ljubavi prema njima,
                     iz tog razloga omogućili smo veliki izbor kvalitetne hrane vodećih
-                    brendova kao i raznovrsnu opremu.
+                    brendova kao i raznovrsnu opremu. Takodje usled uspedne saradnje sa
+                    kompanijom Gebi i njenin distributerom, u nasem programu mozete
+                    pronaci veliki izbor najkvalitetnije hrane za ishranu domacih
+                    zivotinja.
                 </p>
             </div>
 
@@ -28,7 +33,12 @@ export default function PetFood() {
                 />
                 <CategoryCard
                     heading="Oprema za kućne ljubimce"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/"
+                    iconUrl={petsIcon}
+                />
+                <CategoryCard
+                    heading="Hrana za domaće životinje"
+                    link="https://www.plantcentar.com/#/hrana-za-domace-zivotinje"
                     iconUrl={petsIcon}
                 />
             </div>

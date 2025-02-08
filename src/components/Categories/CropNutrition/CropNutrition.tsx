@@ -41,7 +41,7 @@ export default function CropNutrition() {
                     iconUrl={nutritionLogo}
                 />
                 <CategoryCard
-                    heading="Mikroelementarna đubriva"
+                    heading="Đubriva na bazi mikroelemenata"
                     link="https://plant-centar.vercel.app/#/prodavnica"
                     iconUrl={nutritionLogo}
                 />

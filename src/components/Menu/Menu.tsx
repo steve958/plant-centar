@@ -110,24 +110,13 @@ export default function Menu({ onNavigate }: MenuProps) {
               <div
                 className="category"
                 onClick={() => {
-                  if (selected !== "hrana-za-domace-zivotinje") {
-                    onNavigate("hrana-za-domace-zivotinje")
-                    setSelected("hrana-za-domace-zivotinje")
+                  if (selected !== "pet-program-i-hrana-za-životinje") {
+                    onNavigate("pet-program-i-hrana-za-životinje")
+                    setSelected("pet-program-i-hrana-za-životinje")
                   }
                 }}  // Invoke navigation with loader
               >
-                Hrana za domaće životinje
-              </div>
-              <div
-                className="category"
-                onClick={() => {
-                  if (selected !== "hrana-za-kucne-ljubimce") {
-                    onNavigate("hrana-za-kucne-ljubimce")
-                    setSelected("hrana-za-kucne-ljubimce")
-                  }
-                }}  // Invoke navigation with loader
-              >
-                Hrana i oprema za kućne ljubimce
+                Pet program i hrana za životinje
               </div>
               <div
                 className="category"
@@ -263,26 +252,14 @@ export default function Menu({ onNavigate }: MenuProps) {
                 <div
                   className="category"
                   onClick={() => {
-                    if (selected !== "hrana-za-domace-zivotinje") {
-                      onNavigate("hrana-za-domace-zivotinje")
-                      setSelected("hrana-za-domace-zivotinje")
+                    if (selected !== "pet-program-i-hrana-za-životinje") {
+                      onNavigate("pet-program-i-hrana-za-životinje")
+                      setSelected("pet-program-i-hrana-za-životinje")
                     }
                     setMenuClicked(false)
                   }}  // Invoke navigation with loader
                 >
-                  Hrana za domaće životinje
-                </div>
-                <div
-                  className="category"
-                  onClick={() => {
-                    if (selected !== "hrana-za-kucne-ljubimce") {
-                      onNavigate("hrana-za-kucne-ljubimce")
-                      setSelected("hrana-za-kucne-ljubimce")
-                    }
-                    setMenuClicked(false)
-                  }}  // Invoke navigation with loader
-                >
-                  Hrana i oprema za kućne ljubimce
+                  Pet program i hrana za životinje
                 </div>
                 <div
                   className="category"

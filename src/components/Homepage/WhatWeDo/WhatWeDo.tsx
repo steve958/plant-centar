@@ -108,7 +108,7 @@ export default function WhatWeDo() {
                         <div className="wwd-icon-circle">
                             <img src={farmAnimalsIcon} alt="hrana-za-kucne-ljubimce" />
                         </div>
-                        <h3>Pet Program</h3>
+                        <h3>Pet program i hrana za životinje</h3>
                         <p>Pet program, hrana i oprema za domaće životinje</p>
                         <div className="wwd-arrow-circle">&rarr;</div>
                     </div>

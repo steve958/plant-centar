@@ -13,7 +13,7 @@ export default function DomesticAnimals() {
                     programa ishrane životinja.
                 </p>
             </div>
-            <div className="partners-wrapper">
+            <div className="partner-wrapper" >
                 <img src={logo1} alt="" />
             </div>
             <div></div>

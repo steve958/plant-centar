@@ -60,7 +60,7 @@ export const router = createHashRouter([
         element: <DomesticAnimals />,
       },
       {
-        path: '/hrana-za-kucne-ljubimce',
+        path: '/pet-program-i-hrana-za-životinje',
         element: <PetFood />,
       },
       {
