@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./News.css";
 import { newsData } from "./newsData"; // Import your mock data
 import NewsCard from "./NewsCard";
