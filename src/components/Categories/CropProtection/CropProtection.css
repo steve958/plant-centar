@@ -1,16 +1,31 @@
+/* CropProtection.css */
+
+/* --- Container + Intro Animation (Optional) --- */
 .category-container {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     align-self: center;
     padding-top: 20px;
-    width: 100%;
-    display: flex;
     animation: appear 1s 1;
 }
 
+/* Sample "appear" keyframes (optional) */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Description (Text Block) --- */
 .description-wrapper {
     display: flex;
     flex-direction: column;
@@ -18,30 +33,63 @@
     width: 50%;
 }
 
-.partners-wrapper {
+/* --- Category Cards (Herbicidi, Fungicidi, etc.) --- */
+.categories-wrapper {
+    margin-top: 20px;
+    width: 50% !important;
     display: flex;
-    gap: 100px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start !important;
+    gap: 10px;
 }
 
-.partners-wrapper>img {
+/* --- Partners Carousel Container --- */
+.partners-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Hides scrolling overflow */
+    margin-top: 40px;
+    /* Optional margin; adjust if needed */
+}
+
+/* 
+   The "track" is the row of logos that actually
+   slides from right to left. We duplicate logos 
+   inside it for a continuous loop.
+*/
+.partners-track {
+    display: flex;
+    gap: 100px;
+    /* Space between each logo */
+    animation: scroll-left 20s linear infinite;
+}
+
+/* Logos themselves */
+.partners-track img {
     width: 150px;
     height: auto;
     object-fit: contain;
     flex-shrink: 0;
 }
 
-.categories-wrapper {
-    margin-top: 20px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+/* The keyframes for the horizontal sliding */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Adjust as needed; -50% typically works if the track is twice as wide 
+       (because you have repeated logos). If you have many logos,
+       you may need to shift -100% or some other distance. */
+        transform: translateX(-50%);
+    }
 }
 
+/* --- Responsive Rules --- */
 @media screen and (max-width: 580px) {
-
     .category-container {
         width: 100%;
         margin-bottom: 0px !important;
@@ -51,9 +99,16 @@
         width: 80% !important;
     }
 
-    .partners-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    /* Smaller gaps & logos on mobile */
+    .partners-track {
+        gap: 40px;
+    }
+
+    .partners-track img {
+        width: 120px;
+    }
+
+    .categories-wrapper {
+        width: 90% !important;
     }
 }

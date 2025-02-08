@@ -1,35 +1,73 @@
+import React, { useRef, useState, useEffect } from "react";
 import "./News.css";
-import { useRef, useState, useEffect } from "react";
 import { newsData } from "./newsData"; // Import your mock data
 import NewsCard from "./NewsCard";
-import { IconButton, Modal, Box, Typography } from "@mui/material";
-import { ArrowBackIos, ArrowForwardIos, Close } from "@mui/icons-material";
+import {
+    IconButton,
+    Modal,
+    Box,
+    Typography,
+    useMediaQuery,
+    useTheme,
+} from "@mui/material";
+import {
+    ArrowBackIos,
+    ArrowForwardIos,
+    Close
+} from "@mui/icons-material";
 
 export default function News() {
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(
-        null
-    );
 
-    const cardWidth = 500;
-    const gap = 30; // gap defined in CSS
-    const cardsPerView = 2;
+    // Track the current scroll position
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    // State for the modal
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+
+    // We want 3 by default (large screens), 
+    // but we’ll dynamically adjust below using breakpoints.
+    const [cardsPerView, setCardsPerView] = useState(3);
+
+    // Use MUI’s theme breakpoints or just window.innerWidth checks
+    const theme = useTheme();
+    const isXs = useMediaQuery(theme.breakpoints.down("sm"));     // <600px
+    const isMd = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600px-900px
+    const isLg = useMediaQuery(theme.breakpoints.between("md", "lg")); // 900px-1200px
+    // You can adjust these to suit your design more precisely
+
+    // Card dimension configuration
+    const cardWidth = 400;
+    const gap = 50; // Match the CSS gap
     const totalCards = newsData.length;
 
-    // Calculate the scroll offset for two cards plus the gap between them
-    const scrollStep = cardWidth * cardsPerView + gap;
-    const steps = Math.ceil(totalCards / cardsPerView); // total steps to show all cards
-    const maxScrollLeft = (steps - 1) * scrollStep; // maximum scroll offset
+    // Calculate scrolling distance based on # of cards per view
+    // If we have 3 cards in view, we have 2 internal gaps, so
+    // total = (cardsPerView * cardWidth) + (cardsPerView - 1) * gap
+    const scrollStep = cardsPerView * cardWidth + (cardsPerView - 1) * gap;
+    const steps = Math.ceil(totalCards / cardsPerView);
+    const maxScrollLeft = (steps - 1) * scrollStep;
 
+    // On resize, figure out how many cards to show
     useEffect(() => {
-        // Ensure the scroll position is set to initial view
+        if (isXs) {
+            setCardsPerView(1);
+        } else if (isMd) {
+            setCardsPerView(2);
+        } else {
+            setCardsPerView(3);
+        }
+    }, [isXs, isMd, isLg]);
+
+    // Make sure the scroll position is applied whenever it changes
+    useEffect(() => {
         if (scrollRef.current) {
             scrollRef.current.scrollLeft = scrollPosition;
         }
     }, [scrollPosition]);
 
+    // Scroll handler
     const handleScroll = (direction: "left" | "right") => {
         if (!scrollRef.current) return;
 
@@ -38,10 +76,7 @@ export default function News() {
         if (direction === "left") {
             newScrollPosition = Math.max(scrollPosition - scrollStep, 0);
         } else if (direction === "right") {
-            newScrollPosition = Math.min(
-                scrollPosition + scrollStep,
-                maxScrollLeft
-            );
+            newScrollPosition = Math.min(scrollPosition + scrollStep, maxScrollLeft);
         }
 
         setScrollPosition(newScrollPosition);
@@ -51,13 +86,12 @@ export default function News() {
         });
     };
 
-    // Opens the modal and sets the selected card index
+    // Modal handlers
     const handleCardClick = (index: number) => {
         setSelectedCardIndex(index);
         setModalOpen(true);
     };
 
-    // Closes the modal and resets the selected card
     const handleClose = () => {
         setModalOpen(false);
         setSelectedCardIndex(null);
@@ -67,16 +101,13 @@ export default function News() {
         <div className="news-container">
             <div className="news-wrapper">
                 <h2 className="news-heading">Aktuelnosti</h2>
-                <div
-                    className="card-container"
-                    ref={scrollRef}
-                    style={{ justifyContent: "center" }}
-                >
+
+                <div className="card-container" ref={scrollRef}>
                     {newsData.map((card, index) => (
                         <div
                             key={index}
+                            className="clickable-card-wrapper"
                             onClick={() => handleCardClick(index)}
-                            style={{ cursor: "pointer" }}
                         >
                             <NewsCard
                                 image={card.image}
@@ -87,13 +118,17 @@ export default function News() {
                         </div>
                     ))}
                 </div>
+
+                {/* Show arrows only if there’s more than one card
+            and we’re not on extra-small screens (we hide arrows in CSS below).
+        */}
                 {newsData?.length > 1 && (
                     <div className="navigation-arrows">
                         <IconButton
                             onClick={() => handleScroll("left")}
                             disabled={scrollPosition === 0}
                             aria-label="Scroll Left"
-                            style={{ color: "#54c143" }}
+                            color="success"
                         >
                             <ArrowBackIos />
                         </IconButton>
@@ -101,13 +136,15 @@ export default function News() {
                             onClick={() => handleScroll("right")}
                             disabled={scrollPosition >= maxScrollLeft}
                             aria-label="Scroll Right"
-                            style={{ color: "#54c143" }}
+                            color="success"
                         >
                             <ArrowForwardIos />
                         </IconButton>
                     </div>
                 )}
             </div>
+
+            {/* Modal */}
             <Modal
                 open={modalOpen}
                 onClose={handleClose}
@@ -129,8 +166,8 @@ export default function News() {
                         boxShadow: 24,
                         p: 1,
                         outline: "none",
-                        borderRadius: "8px",
-                        textAlign: 'center'
+                        borderRadius: 2,
+                        textAlign: 'center',
                     }}
                 >
                     <IconButton
@@ -166,8 +203,20 @@ export default function News() {
                                 {newsData[selectedCardIndex].description}
                             </Typography>
                             <Typography variant="body1" sx={{ mb: 2 }}>
-                                {selectedCardIndex === 0 ? (
-                                    <a href="https://www.agromarketsrbija.rs/files/deals/Agrosvet_138_web.pdf">
+                                {selectedCardIndex === 3 ? (
+                                    <a
+                                        href="https://www.agromarketsrbija.rs/files/deals/Agrosvet_138_web.pdf"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        kliknite ovde
+                                    </a>
+                                ) : selectedCardIndex === 1 ? (
+                                    <a
+                                        href="https://www.agromarketsrbija.rs/files/deals/Agrosvet_specijal_2025_web_.pdf"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
                                         kliknite ovde
                                     </a>
                                 ) : (

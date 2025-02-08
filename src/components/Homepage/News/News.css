@@ -1,13 +1,14 @@
 .news-container {
-    width: 100%;
+    width: 82%;
     display: flex;
-    height: fit-content;
     justify-content: center;
-    animation: appear 1s 1;
-    overflow-x: hidden;
+    align-self: center;
     position: relative;
     padding-top: 20px;
     padding-bottom: 50px;
+    animation: appear 1s 1;
+    overflow: hidden;
+    /* hide horizontal scrollbar area */
 }
 
 .news-wrapper {
@@ -19,36 +20,40 @@
 
 .news-heading {
     text-align: center;
-    color: #54C143;
+    color: #54c143;
     margin: 20px 0;
-    font-size: 37.5px;
-    /* letter-spacing: 3px; */
-    /* text-shadow: 2px 2px 4px rgba(84, 193, 67, 0.6); */
+    font-size: 2.3rem;
 }
 
+/* Make the card container a horizontal scroll, no wrap */
 .card-container {
     display: flex;
     flex-wrap: nowrap;
     gap: 50px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
     width: 80%;
     padding: 20px;
     margin: 0 auto;
+    overflow-x: auto;
+    scroll-behavior: smooth;
     justify-content: center;
 }
 
-
+/* Hide the scrollbar for WebKit browsers */
 .card-container::-webkit-scrollbar {
     display: none;
-    /* Hide scrollbar for WebKit browsers */
+}
+
+.clickable-card-wrapper {
+    cursor: pointer;
+    /* optional shadow here or inline in NewsCard */
+    filter: drop-shadow(0.5rem 0.5rem 0.75rem #e1e1e1);
 }
 
 .navigation-arrows {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
+/* Simple fade in */
 @keyframes appear {
     from {
         opacity: 0;
@@ -61,40 +66,29 @@
     }
 }
 
-/* Responsiveness for different screens */
-@media (max-width: 1450px) {
+/* RESPONSIVENESS */
 
-    /* For tablet screens, adjust container width */
-    .card-container {
-        width: 100%;
-        gap: 20px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-}
-
+/* 
+  At <600px, we generally show 1 card via our JS breakpoints.
+  We also hide arrows if desired.
+*/
 @media (max-width: 600px) {
-
     .news-container {
-        padding-top: 0px !important;
+        width: 100%;
+        padding-top: 0 !important;
     }
 
-    /* For mobile screens, display one card per view */
     .news-wrapper {
         width: 100%;
     }
 
     .card-container {
-        display: flex;
-        justify-content: center;
-        overflow-x: scroll;
         width: 100%;
         gap: 20px;
     }
 
     .navigation-arrows {
         display: none;
+        /* Hide arrows on mobile */
     }
 }

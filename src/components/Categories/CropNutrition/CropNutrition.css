@@ -1,15 +1,26 @@
 .category-container {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     align-self: center;
     padding-top: 20px;
-    width: 100%;
-    display: flex;
     min-height: calc(48vh + 3px);
     animation: appear 1s 1;
+}
+
+/* Optional "appear" animation */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .description-wrapper {
@@ -17,18 +28,6 @@
     flex-direction: column;
     text-align: left;
     width: 50%;
-}
-
-.partners-wrapper {
-    display: flex;
-    gap: 100px;
-}
-
-.partners-wrapper>img {
-    width: 150px;
-    height: auto;
-    object-fit: contain;
-    flex-shrink: 0;
 }
 
 .categories-wrapper {
@@ -41,9 +40,43 @@
     gap: 10px;
 }
 
+/* INFINITE SCROLLING CAROUSEL */
+.partners-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40px;
+    /* adjust as needed */
+}
 
+.partners-track {
+    display: flex;
+    gap: 100px;
+    /* space between logos */
+    animation: scroll-left 20s linear infinite;
+}
+
+.partners-track img {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Keyframes for horizontal looping */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Adjust if needed, depending on the total width */
+        transform: translateX(-50%);
+    }
+}
+
+/* Media query adjustments */
 @media screen and (max-width: 580px) {
-
     .category-container {
         width: 100%;
         margin-bottom: 0px !important;
@@ -53,9 +86,11 @@
         width: 80% !important;
     }
 
-    .partners-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    .partners-track {
+        gap: 40px;
+    }
+
+    .partners-track img {
+        width: 120px;
     }
 }

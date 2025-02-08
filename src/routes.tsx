@@ -68,7 +68,7 @@ export const router = createHashRouter([
         element: <Seeds />,
       },
       {
-        path: '/alati-i-oprema',
+        path: '/garden-program',
         element: <Tools />,
       },
       {

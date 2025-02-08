@@ -132,13 +132,13 @@ export default function Menu({ onNavigate }: MenuProps) {
               <div
                 className="category"
                 onClick={() => {
-                  if (selected !== "alati-i-oprema") {
-                    onNavigate("alati-i-oprema")
-                    setSelected("alati-i-oprema")
+                  if (selected !== "garden-program") {
+                    onNavigate("garden-program")
+                    setSelected("garden-program")
                   }
                 }}  // Invoke navigation with loader
               >
-                Alati i oprema
+                Garden program
               </div>
             </div>
           )}
@@ -287,14 +287,14 @@ export default function Menu({ onNavigate }: MenuProps) {
                 <div
                   className="category"
                   onClick={() => {
-                    if (selected !== "alati-i-oprema") {
-                      onNavigate("alati-i-oprema")
-                      setSelected("alati-i-oprema")
+                    if (selected !== "garden-program") {
+                      onNavigate("garden-program")
+                      setSelected("garden-program")
                     }
                     setMenuClicked(false)
                   }}  // Invoke navigation with loader
                 >
-                  Alati i oprema
+                  Garden program
                 </div>
               </div>
             )}

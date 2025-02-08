@@ -5,6 +5,7 @@ import logo3 from "../../../assets/partneri/seminis.jpg";
 import logo4 from "../../../assets/partneri/bc.png";
 import logo5 from "../../../assets/partneri/kws.png";
 import logo6 from "../../../assets/partneri/bejo.png";
+import seedIcon from "../../../assets/icons/white/Icons-PSD-V2.17.png";
 import CategoryCard from "../CategoryCard/CategoryCard";
 
 export default function Seeds() {
@@ -13,39 +14,56 @@ export default function Seeds() {
             <div className="description-wrapper">
                 <h3>Semenska roba</h3>
                 <p>
-                    Semenska roba kao i sadni material predstavljaju osnovu uzgoja većine
+                    Semenska roba kao i sadni materijal predstavljaju osnovu uzgoja većine
                     poljoprivrednih kultura. Shodno tome, našim saradnicima omogućili smo
                     širok izbor semena za ratarsku i povrtarsku proizvodnju, kao i sadnice
                     voćarskih kultura i ukrasnog bilja za uređenje pejzaža.
                 </p>
             </div>
+
             <div className="categories-wrapper">
                 <CategoryCard
                     heading="Seme ratarskih kultura"
                     link="https://plant-centar.vercel.app/#/prodavnica"
+                    iconUrl={seedIcon}
                 />
                 <CategoryCard
                     heading="Seme povrtarskih kultura"
                     link="https://plant-centar.vercel.app/#/prodavnica"
+                    iconUrl={seedIcon}
                 />
                 <CategoryCard
                     heading="Sadnice ukrasnog bilja"
                     link="https://plant-centar.vercel.app/#/prodavnica"
+                    iconUrl={seedIcon}
                 />
                 <CategoryCard
                     heading="Sadnice voća"
                     link="https://plant-centar.vercel.app/#/prodavnica"
+                    iconUrl={seedIcon}
                 />
             </div>
+
+            {/* Infinite Scrolling Carousel */}
             <div className="partners-wrapper">
-                <img src={logo1} alt="" />
-                <img src={logo2} alt="" />
-                <img src={logo3} alt="" />
-                <img src={logo4} alt="" />
-                <img src={logo5} alt="" />
-                <img src={logo6} alt="" />
+                <div className="partners-track">
+                    {/* First set of logos */}
+                    <img src={logo1} alt="" />
+                    <img src={logo2} alt="" />
+                    <img src={logo3} alt="" />
+                    <img src={logo4} alt="" />
+                    <img src={logo5} alt="" />
+                    <img src={logo6} alt="" />
+
+                    {/* Second set of the same logos */}
+                    <img src={logo1} alt="" />
+                    <img src={logo2} alt="" />
+                    <img src={logo3} alt="" />
+                    <img src={logo4} alt="" />
+                    <img src={logo5} alt="" />
+                    <img src={logo6} alt="" />
+                </div>
             </div>
-            <div></div>
         </div>
     );
 }

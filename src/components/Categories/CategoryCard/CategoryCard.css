@@ -1,29 +1,70 @@
-.card {
-    text-decoration: none;
-    width: 250px;
-    height: 80px;
+/* Overall card styling */
+.category-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: inherit;
+    /* Split layout: icon left, text right */
+    width: 100%;
+    max-width: 400px;
+    /* Adjust or remove to fit your layout */
+    min-height: 140px;
+    /* Ensures some vertical space */
     border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    /* Good contrast on white */
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    background: rgb(182, 192, 191);
-    background: linear-gradient(260deg,
-            rgba(182, 192, 191, 1) 0%,
-            rgba(84, 193, 67, 1) 100%);
+    /* Properly rounds corners */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Left half: Icon container with accent background */
+.category-card__icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    /* Takes half the card width */
+    background-color: #54c143;
+    /* Accent color */
+}
 
-.card-heading {
-    margin: 16px;
-    font-size: 1.2rem;
+/* Icon (PNG) styling */
+.category-card__icon {
+    width: 60px;
+    /* Adjust icon size as needed */
+    height: 60px;
+    object-fit: contain;
+    /* Keeps aspect ratio of the PNG */
+}
+
+/* Right half: Text content */
+.category-card__text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    /* Takes the remaining half */
+    padding: 16px;
+}
+
+/* Heading styling */
+.category-card__heading {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
     font-weight: 600;
-    text-align: center;
+    color: #333;
+}
+
+/* Description styling (optional) */
+.category-card__description {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4;
 }
