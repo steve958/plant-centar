@@ -38,7 +38,7 @@ export default function NewsCard({
                 <Typography variant="body2" color="text.secondary" align="center" sx={{ mb: 1 }}>
                     {date}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" align="left">
+                <Typography variant="body2" color="text.secondary" align="center">
                     {description.length > 120
                         ? description.slice(0, 120).concat("...")
                         : description}

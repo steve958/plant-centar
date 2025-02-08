@@ -34,7 +34,7 @@ export default function OfferCard({
                     <Typography gutterBottom variant="h5" component="div" align="center">
                         {title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" align="left">
+                    <Typography variant="body2" color="text.secondary" align="center">
                         {description.length > 120
                             ? description.slice(0, 120).concat("...")
                             : description}
