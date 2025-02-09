@@ -1,4 +1,4 @@
-import { createHashRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "./App";
 import AboutUs from "./components/AboutUs/AboutUs";
 import ContactUs from "./components/ContactUs/ContactUs";
@@ -22,7 +22,7 @@ import PetFood from "./components/Categories/PetFood/PetFood";
 import Tools from "./components/Categories/Tools/Tools";
 import ShopIdle from "./components/WebShop/ShopComponents/ShopIdle";
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
