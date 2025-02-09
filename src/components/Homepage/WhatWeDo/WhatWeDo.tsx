@@ -64,7 +64,7 @@ export default function WhatWeDo() {
                         <div className="wwd-icon-circle">
                             <img src={warehouseIcon} alt="Prodaja" />
                         </div>
-                        <h3>Zaštita biljaka</h3>
+                        <h3>Zaštita bilja</h3>
                         <p>Distribucija sredstava za zaštitu bilja</p>
                         <div className="wwd-arrow-circle">&rarr;</div>
                     </div>
@@ -78,7 +78,7 @@ export default function WhatWeDo() {
                         <div className="wwd-icon-circle">
                             <img src={fertilizersIcon} alt="Prodaja" />
                         </div>
-                        <h3>Ishrana biljaka</h3>
+                        <h3>Ishrana bilja</h3>
                         <p>Distribucija sredstava za ishranu bilja</p>
                         <div className="wwd-arrow-circle">&rarr;</div>
                     </div>
