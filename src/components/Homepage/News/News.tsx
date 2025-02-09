@@ -9,6 +9,7 @@ import {
     Typography,
     useMediaQuery,
     useTheme,
+    Button,
 } from "@mui/material";
 import {
     ArrowBackIos,
@@ -25,6 +26,7 @@ export default function News() {
     // State for the modal
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+    const [loadMoreClicked, setLoadMoreClicked] = useState<boolean>(false)
 
     // We want 3 by default (large screens), 
     // but we’ll dynamically adjust below using breakpoints.
@@ -108,6 +110,7 @@ export default function News() {
                             key={index}
                             className="clickable-card-wrapper"
                             onClick={() => handleCardClick(index)}
+                            id={isXs && !loadMoreClicked && index > 1 ? 'hidden' : ""}
                         >
                             <NewsCard
                                 image={card.image}
@@ -142,6 +145,9 @@ export default function News() {
                         </IconButton>
                     </div>
                 )}
+                {isXs && !loadMoreClicked && <Button variant="contained" className="carousel-button" onClick={() => setLoadMoreClicked(true)}>
+                    Više informacija
+                </Button>}
             </div>
 
             {/* Modal */}

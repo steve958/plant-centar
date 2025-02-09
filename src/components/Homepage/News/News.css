@@ -92,3 +92,8 @@
         /* Hide arrows on mobile */
     }
 }
+
+
+#hidden {
+    display: none;
+}
