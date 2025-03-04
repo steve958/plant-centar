@@ -23,37 +23,37 @@ export default function Tools() {
             <div className="categories-wrapper">
                 <CategoryCard
                     heading="Mašine"
-                    link="https://plant-centar.com/#/prodavnica"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                     iconUrl={gardenIcon}
                 />
                 <CategoryCard
                     heading="Alati"
-                    link="https://plant-centar.com/#/prodavnica"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                     iconUrl={gardenIcon}
                 />
                 <CategoryCard
                     heading="Oprema za navodnjavanje"
-                    link="https://plant-centar.com/#/prodavnica"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                     iconUrl={gardenIcon}
                 />
                 <CategoryCard
                     heading="Folije i veziva"
-                    link="https://plant-centar.com/#/prodavnica"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                     iconUrl={gardenIcon}
                 />
                 <CategoryCard
                     heading="Supstrati, malčevi i zemlja za cveće"
-                    link="https://plant-centar.com/#/prodavnica"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                     iconUrl={gardenIcon}
                 />
                 <CategoryCard
                     heading="Saksije i žardinjere"
-                    link="https://plant-centar.com/#/prodavnica"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                     iconUrl={gardenIcon}
                 />
                 <CategoryCard
                     heading="Baštenski nameštaj"
-                    link="https://plant-centar.com/#/prodavnica"
+                    link="https://plant-centar.vercel.app/#/prodavnica"
                     iconUrl={gardenIcon}
                 />
             </div>
