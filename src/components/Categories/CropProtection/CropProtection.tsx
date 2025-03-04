@@ -26,22 +26,22 @@ export default function CropProtection() {
             <div className="categories-wrapper">
                 <CategoryCard
                     heading="Herbicidi"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/#/prodavnica"
                     iconUrl={protectionLogo}
                 />
                 <CategoryCard
                     heading="Fungicidi"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/#/prodavnica"
                     iconUrl={protectionLogo}
                 />
                 <CategoryCard
                     heading="Insekticidi"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/#/prodavnica"
                     iconUrl={protectionLogo}
                 />
                 <CategoryCard
                     heading="Organski preparati"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/#/prodavnica"
                     iconUrl={protectionLogo}
                 />
             </div>

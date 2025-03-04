@@ -24,22 +24,22 @@ export default function Seeds() {
             <div className="categories-wrapper">
                 <CategoryCard
                     heading="Seme ratarskih kultura"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/#/prodavnica"
                     iconUrl={seedIcon}
                 />
                 <CategoryCard
                     heading="Seme povrtarskih kultura"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/#/prodavnica"
                     iconUrl={seedIcon}
                 />
                 <CategoryCard
                     heading="Sadnice ukrasnog bilja"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/#/prodavnica"
                     iconUrl={seedIcon}
                 />
                 <CategoryCard
                     heading="Sadnice voća"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.com/#/prodavnica"
                     iconUrl={seedIcon}
                 />
             </div>
