@@ -27,32 +27,32 @@ export default function CropNutrition() {
             <div className="categories-wrapper">
                 <CategoryCard
                     heading="Osnovna granulisana đubriva"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.vercel.app/prodavnica"
                     iconUrl={nutritionLogo}
                 />
                 <CategoryCard
                     heading="Kristalna vodootopiva đubriva"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.vercel.app/prodavnica"
                     iconUrl={nutritionLogo}
                 />
                 <CategoryCard
                     heading="Tečna đubriva i biostimulatori"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.vercel.app/prodavnica"
                     iconUrl={nutritionLogo}
                 />
                 <CategoryCard
                     heading="Đubriva na bazi mikroelemenata"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.vercel.app/prodavnica"
                     iconUrl={nutritionLogo}
                 />
                 <CategoryCard
                     heading="Organska đubriva i poboljšivači zemljišta"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.vercel.app/prodavnica"
                     iconUrl={nutritionLogo}
                 />
                 <CategoryCard
                     heading="Mikrobiološka đubriva"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.vercel.app/prodavnica"
                     iconUrl={nutritionLogo}
                 />
             </div>

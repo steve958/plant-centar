@@ -28,12 +28,12 @@ export default function PetFood() {
             <div className="categories-wrapper">
                 <CategoryCard
                     heading="Hrana za kućne ljubimce"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.vercel.app/prodavnica"
                     iconUrl={petsIcon}
                 />
                 <CategoryCard
                     heading="Oprema za kućne ljubimce"
-                    link="https://plant-centar.vercel.app/#/prodavnica"
+                    link="https://plant-centar.vercel.app/prodavnica"
                     iconUrl={petsIcon}
                 />
                 <CategoryCard
