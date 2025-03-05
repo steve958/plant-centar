@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./Menu.css";
 import MenuIcon from "@mui/icons-material/Menu";
-import logoMain from "../../assets/PlantCLogo.jpg";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import logoMain from "../../assets/PlantCLogo.jpg";
 
 interface MenuProps {
-  onNavigate: (path: string) => void;  // Pass the handleNavigation function from App
+  onNavigate: (path: string) => void; // Pass the handleNavigation function from App
 }
 
 export default function Menu({ onNavigate }: MenuProps) {
@@ -14,20 +15,17 @@ export default function Menu({ onNavigate }: MenuProps) {
   const [menuClicked, setMenuClicked] = useState<boolean>(false);
   const [categoriesHover, setCategoriesHover] = useState<boolean>(false);
 
+  // Grab the current location object from React Router
+  const location = useLocation();
 
   useEffect(() => {
-    trackUrl(location.hash)
-  }, [location.hash])
-
-  function trackUrl(hash: string) {
-    const start = hash.indexOf('/') + 1
-    const url = hash.slice(start)
-    setSelected(url)
-  }
+    // Whenever the pathname changes, parse it and update 'selected'
+    const newPath = location.pathname.replace(/^\/+/, ""); // remove leading slash(es)
+    setSelected(newPath || "pocetna"); // if it's empty (i.e. just "/"), default to "pocetna"
+  }, [location.pathname]);
 
   function toggleMenu() {
-    const oldState = menuClicked;
-    setMenuClicked(!oldState);
+    setMenuClicked((oldState) => !oldState);
   }
 
   function hoverIn() {
@@ -41,12 +39,13 @@ export default function Menu({ onNavigate }: MenuProps) {
   return (
     <div className="menu-container">
       <div className="menu-wrapper">
+        {/* ---- Desktop Menu Items ---- */}
         <div
           className="menu-item"
           id={selected === "pocetna" ? "selected" : ""}
           onClick={() => {
             if (selected !== "pocetna") {
-              onNavigate("/pocetna");  // Invoke navigation with loader
+              onNavigate("/pocetna");
               setSelected("pocetna");
             }
           }}
@@ -58,7 +57,7 @@ export default function Menu({ onNavigate }: MenuProps) {
           id={selected === "o-nama" ? "selected" : ""}
           onClick={() => {
             if (selected !== "o-nama") {
-              onNavigate("/o-nama");  // Invoke navigation with loader
+              onNavigate("/o-nama");
               setSelected("o-nama");
             }
           }}
@@ -78,10 +77,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 className="category"
                 onClick={() => {
                   if (selected !== "sredstva-za-zastitu-bilja") {
-                    onNavigate("sredstva-za-zastitu-bilja")
-                    setSelected("sredstva-za-zastitu-bilja")
+                    onNavigate("/sredstva-za-zastitu-bilja");
+                    setSelected("sredstva-za-zastitu-bilja");
                   }
-                }}  // Invoke navigation with loader
+                }}
               >
                 Sredstva za zaštitu bilja
               </div>
@@ -89,10 +88,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 className="category"
                 onClick={() => {
                   if (selected !== "sredstva-za-ishranu-bilja") {
-                    onNavigate("sredstva-za-ishranu-bilja")
-                    setSelected("sredstva-za-ishranu-bilja")
+                    onNavigate("/sredstva-za-ishranu-bilja");
+                    setSelected("sredstva-za-ishranu-bilja");
                   }
-                }}  // Invoke navigation with loader
+                }}
               >
                 Sredstva za ishranu bilja
               </div>
@@ -100,10 +99,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 className="category"
                 onClick={() => {
                   if (selected !== "semenska-roba") {
-                    onNavigate("semenska-roba")
-                    setSelected("semenska-roba")
+                    onNavigate("/semenska-roba");
+                    setSelected("semenska-roba");
                   }
-                }}  // Invoke navigation with loader
+                }}
               >
                 Semenska roba
               </div>
@@ -111,10 +110,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 className="category"
                 onClick={() => {
                   if (selected !== "pet-program-i-hrana-za-životinje") {
-                    onNavigate("pet-program-i-hrana-za-životinje")
-                    setSelected("pet-program-i-hrana-za-životinje")
+                    onNavigate("/pet-program-i-hrana-za-životinje");
+                    setSelected("pet-program-i-hrana-za-životinje");
                   }
-                }}  // Invoke navigation with loader
+                }}
               >
                 Pet program i hrana za životinje
               </div>
@@ -122,10 +121,10 @@ export default function Menu({ onNavigate }: MenuProps) {
                 className="category"
                 onClick={() => {
                   if (selected !== "garden-program") {
-                    onNavigate("garden-program")
-                    setSelected("garden-program")
+                    onNavigate("/garden-program");
+                    setSelected("garden-program");
                   }
-                }}  // Invoke navigation with loader
+                }}
               >
                 Garden program
               </div>
@@ -136,8 +135,8 @@ export default function Menu({ onNavigate }: MenuProps) {
           className="menu-item"
           id={selected === "prodavnica" ? "selected" : ""}
           onClick={() => {
-            if (selected !== 'prodavnica') {
-              onNavigate("/prodavnica");  // Invoke navigation with loader
+            if (selected !== "prodavnica") {
+              onNavigate("/prodavnica");
               setSelected("prodavnica");
             }
           }}
@@ -148,8 +147,8 @@ export default function Menu({ onNavigate }: MenuProps) {
           className="menu-item"
           id={selected === "galerija" ? "selected" : ""}
           onClick={() => {
-            if (selected !== 'galerija') {
-              onNavigate("/galerija");  // Invoke navigation with loader
+            if (selected !== "galerija") {
+              onNavigate("/galerija");
               setSelected("galerija");
             }
           }}
@@ -160,8 +159,8 @@ export default function Menu({ onNavigate }: MenuProps) {
           className="menu-item"
           id={selected === "kontakt" ? "selected" : ""}
           onClick={() => {
-            if (selected !== 'kontakt') {
-              onNavigate("/kontakt");  // Invoke navigation with loader
+            if (selected !== "kontakt") {
+              onNavigate("/kontakt");
               setSelected("kontakt");
             }
           }}
@@ -169,25 +168,29 @@ export default function Menu({ onNavigate }: MenuProps) {
           Kontakt
         </div>
       </div>
+
+      {/* ---- Mobile Menu Icon ---- */}
       <span onClick={toggleMenu} className="menu-icon">
         {!menuClicked ? (
           <MenuIcon />
         ) : (
           <ArrowBackIcon id={menuClicked ? "active" : "inactive"} />
         )}
-        <img src={logoMain} alt="" />
+        <img src={logoMain} alt="Logo" />
       </span>
+
+      {/* ---- Mobile Menu Drawer ---- */}
       {menuClicked && (
         <div className="small-screen-wrapper">
           <div
             className="small-menu-item"
             id={selected === "pocetna" ? "selected" : ""}
             onClick={() => {
-              if (selected !== 'pocetna') {
-                onNavigate("/pocetna");  // Invoke navigation with loader
+              if (selected !== "pocetna") {
+                onNavigate("/pocetna");
                 setSelected("pocetna");
               }
-              setMenuClicked(false)
+              setMenuClicked(false);
             }}
           >
             Početna
@@ -196,18 +199,18 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "o-nama" ? "selected" : ""}
             onClick={() => {
-              if (selected !== 'o-nama') {
-                onNavigate("/o-nama");  // Invoke navigation with loader
+              if (selected !== "o-nama") {
+                onNavigate("/o-nama");
                 setSelected("o-nama");
               }
-              setMenuClicked(false)
+              setMenuClicked(false);
             }}
           >
             O nama
           </div>
           <div
             className="small-menu-item"
-            onClick={() => setCategoriesHover((oldState) => !oldState)}
+            onClick={() => setCategoriesHover((old) => !old)}
           >
             Asortiman
             <KeyboardArrowDownIcon />
@@ -217,11 +220,11 @@ export default function Menu({ onNavigate }: MenuProps) {
                   className="category"
                   onClick={() => {
                     if (selected !== "sredstva-za-zastitu-bilja") {
-                      onNavigate("sredstva-za-zastitu-bilja")
-                      setSelected("sredstva-za-zastitu-bilja")
+                      onNavigate("/sredstva-za-zastitu-bilja");
+                      setSelected("sredstva-za-zastitu-bilja");
                     }
-                    setMenuClicked(false)
-                  }}  // Invoke navigation with loader
+                    setMenuClicked(false);
+                  }}
                 >
                   Sredstva za zaštitu bilja
                 </div>
@@ -229,11 +232,11 @@ export default function Menu({ onNavigate }: MenuProps) {
                   className="category"
                   onClick={() => {
                     if (selected !== "sredstva-za-ishranu-bilja") {
-                      onNavigate("sredstva-za-ishranu-bilja")
-                      setSelected("sredstva-za-ishranu-bilja")
+                      onNavigate("/sredstva-za-ishranu-bilja");
+                      setSelected("sredstva-za-ishranu-bilja");
                     }
-                    setMenuClicked(false)
-                  }}  // Invoke navigation with loader
+                    setMenuClicked(false);
+                  }}
                 >
                   Sredstva za ishranu bilja
                 </div>
@@ -241,11 +244,11 @@ export default function Menu({ onNavigate }: MenuProps) {
                   className="category"
                   onClick={() => {
                     if (selected !== "semenska-roba") {
-                      onNavigate("semenska-roba")
-                      setSelected("semenska-roba")
+                      onNavigate("/semenska-roba");
+                      setSelected("semenska-roba");
                     }
-                    setMenuClicked(false)
-                  }}  // Invoke navigation with loader
+                    setMenuClicked(false);
+                  }}
                 >
                   Semenska roba
                 </div>
@@ -253,11 +256,11 @@ export default function Menu({ onNavigate }: MenuProps) {
                   className="category"
                   onClick={() => {
                     if (selected !== "pet-program-i-hrana-za-životinje") {
-                      onNavigate("pet-program-i-hrana-za-životinje")
-                      setSelected("pet-program-i-hrana-za-životinje")
+                      onNavigate("/pet-program-i-hrana-za-životinje");
+                      setSelected("pet-program-i-hrana-za-životinje");
                     }
-                    setMenuClicked(false)
-                  }}  // Invoke navigation with loader
+                    setMenuClicked(false);
+                  }}
                 >
                   Pet program i hrana za životinje
                 </div>
@@ -265,11 +268,11 @@ export default function Menu({ onNavigate }: MenuProps) {
                   className="category"
                   onClick={() => {
                     if (selected !== "garden-program") {
-                      onNavigate("garden-program")
-                      setSelected("garden-program")
+                      onNavigate("/garden-program");
+                      setSelected("garden-program");
                     }
-                    setMenuClicked(false)
-                  }}  // Invoke navigation with loader
+                    setMenuClicked(false);
+                  }}
                 >
                   Garden program
                 </div>
@@ -280,11 +283,11 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "prodavnica" ? "selected" : ""}
             onClick={() => {
-              if (selected !== 'prodavnica') {
-                onNavigate("/prodavnica");  // Invoke navigation with loader
+              if (selected !== "prodavnica") {
+                onNavigate("/prodavnica");
                 setSelected("prodavnica");
               }
-              setMenuClicked(false)
+              setMenuClicked(false);
             }}
           >
             Plant shop
@@ -293,11 +296,11 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "galerija" ? "selected" : ""}
             onClick={() => {
-              if (selected !== 'galerija') {
-                onNavigate("/galerija");  // Invoke navigation with loader
+              if (selected !== "galerija") {
+                onNavigate("/galerija");
                 setSelected("galerija");
               }
-              setMenuClicked(false)
+              setMenuClicked(false);
             }}
           >
             Galerija
@@ -306,11 +309,11 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "kontakt" ? "selected" : ""}
             onClick={() => {
-              if (selected !== 'kontakt') {
-                onNavigate("/kontakt");  // Invoke navigation with loader
+              if (selected !== "kontakt") {
+                onNavigate("/kontakt");
                 setSelected("kontakt");
               }
-              setMenuClicked(false)
+              setMenuClicked(false);
             }}
           >
             Kontakt
