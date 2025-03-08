@@ -5,8 +5,13 @@ import logo3 from "../../../assets/partneri/josera.png";
 import logo4 from "../../../assets/partneri/happydog.png";
 import logo5 from "../../../assets/partneri/whiskars.png";
 import logo6 from "../../../assets/partneri/royalcanin.png";
-import petsIcon from "../../../assets/icons/white/Icons-V1.2.png";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import petsLogo from '../../../assets/categories/pet/kucni-White.png'
+import petsLogoHovered from '../../../assets/categories/pet/kucni-Green.png'
+import equipmentLogo from '../../../assets/categories/pet/oprema-White.png'
+import equipmentLogoHovered from '../../../assets/categories/pet/oprema-Green.png'
+import livestockLogo from '../../../assets/categories/pet/domace-White.png'
+import livestockLogoHovered from '../../../assets/categories/pet/domace-Green.png'
 
 
 export default function PetFood() {
@@ -29,17 +34,20 @@ export default function PetFood() {
                 <CategoryCard
                     heading="Hrana za kućne ljubimce"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={petsIcon}
+                    iconUrl={petsLogo}
+                    hoveredIconUrl={petsLogoHovered}
                 />
                 <CategoryCard
                     heading="Oprema za kućne ljubimce"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={petsIcon}
+                    iconUrl={equipmentLogo}
+                    hoveredIconUrl={equipmentLogoHovered}
                 />
                 <CategoryCard
                     heading="Hrana za domaće životinje"
                     link="https://www.plantcentar.com/hrana-za-domace-zivotinje"
-                    iconUrl={petsIcon}
+                    iconUrl={livestockLogo}
+                    hoveredIconUrl={livestockLogoHovered}
                 />
             </div>
 
