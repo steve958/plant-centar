@@ -38,7 +38,7 @@ export default function PetFood() {
                 />
                 <CategoryCard
                     heading="Hrana za domaće životinje"
-                    link="https://www.plantcentar.com/#/hrana-za-domace-zivotinje"
+                    link="https://www.plantcentar.com/hrana-za-domace-zivotinje"
                     iconUrl={petsIcon}
                 />
             </div>

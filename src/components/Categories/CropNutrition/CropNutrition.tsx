@@ -6,7 +6,18 @@ import logo4 from "../../../assets/partneri/elixir.png";
 import logo5 from "../../../assets/partneri/agriitalia.jfif";
 import logo6 from "../../../assets/partneri/fitofert.png";
 import logo7 from "../../../assets/partneri/cosmocel.png";
-import nutritionLogo from "../../../assets/icons/white/Icons-PSD-V2.18.png";
+import basicLogo from '../../../assets/categories/ishrana/osnovna-White.png'
+import basicLogoHovered from '../../../assets/categories/ishrana/osnovna-Green.png'
+import cristalLogo from '../../../assets/categories/ishrana/kristalna-White.png'
+import cristalLogoHovered from '../../../assets/categories/ishrana/kristalna-Green.png'
+import liquidLogo from '../../../assets/categories/ishrana/tecna-White.png'
+import liquidLogoHovered from '../../../assets/categories/ishrana/tecna-Green.png'
+import microLogo from '../../../assets/categories/ishrana/mikroelementi-White.png'
+import microLogoHovered from '../../../assets/categories/ishrana/mikroelementi-Green.png'
+import organicLogo from '../../../assets/categories/ishrana/organska-White.png'
+import organicLogoHovered from '../../../assets/categories/ishrana/organska-Green.png'
+import bioLogo from '../../../assets/categories/ishrana/mikrobioloska-White.png'
+import bioLogoHovered from '../../../assets/categories/ishrana/mikrobioloska-Green.png'
 import CategoryCard from "../CategoryCard/CategoryCard";
 
 export default function CropNutrition() {
@@ -28,32 +39,38 @@ export default function CropNutrition() {
                 <CategoryCard
                     heading="Osnovna granulisana đubriva"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={nutritionLogo}
+                    iconUrl={basicLogo}
+                    hoveredIconUrl={basicLogoHovered}
                 />
                 <CategoryCard
                     heading="Kristalna vodootopiva đubriva"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={nutritionLogo}
+                    iconUrl={cristalLogo}
+                    hoveredIconUrl={cristalLogoHovered}
                 />
                 <CategoryCard
                     heading="Tečna đubriva i biostimulatori"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={nutritionLogo}
+                    iconUrl={liquidLogo}
+                    hoveredIconUrl={liquidLogoHovered}
                 />
                 <CategoryCard
                     heading="Đubriva na bazi mikroelemenata"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={nutritionLogo}
+                    iconUrl={microLogo}
+                    hoveredIconUrl={microLogoHovered}
                 />
                 <CategoryCard
                     heading="Organska đubriva i poboljšivači zemljišta"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={nutritionLogo}
+                    iconUrl={organicLogo}
+                    hoveredIconUrl={organicLogoHovered}
                 />
                 <CategoryCard
                     heading="Mikrobiološka đubriva"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={nutritionLogo}
+                    iconUrl={bioLogo}
+                    hoveredIconUrl={bioLogoHovered}
                 />
             </div>
 

@@ -7,7 +7,14 @@ import logo5 from "../../../assets/partneri/agromarket.jpeg";
 import logo6 from "../../../assets/partneri/savacoop.png";
 import logo7 from "../../../assets/partneri/agrosava.png";
 import logo8 from "../../../assets/partneri/corteva.png";
-import protectionLogo from '../../../assets/icons/white/Icons-V1.3.png'
+import herbLogo from '../../../assets/categories/zastita/herbicidi-White.png'
+import herbLogoHovered from '../../../assets/categories/zastita/herbicidi-Green.png'
+import fungLogo from '../../../assets/categories/zastita/fungicidi-White.png'
+import fungLogoHovered from '../../../assets/categories/zastita/fungicidi-Green.png'
+import insectLogo from '../../../assets/categories/zastita/insekticidi-White.png'
+import insectLogoHovered from '../../../assets/categories/zastita/insekticidi-Green.png'
+import organicLogo from '../../../assets/categories/zastita/organski-White.png'
+import organicLogoHovered from '../../../assets/categories/zastita/organski-Green.png'
 import CategoryCard from "../CategoryCard/CategoryCard";
 
 
@@ -27,22 +34,26 @@ export default function CropProtection() {
                 <CategoryCard
                     heading="Herbicidi"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={protectionLogo}
+                    iconUrl={herbLogo}
+                    hoveredIconUrl={herbLogoHovered}
                 />
                 <CategoryCard
                     heading="Fungicidi"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={protectionLogo}
+                    iconUrl={fungLogo}
+                    hoveredIconUrl={fungLogoHovered}
                 />
                 <CategoryCard
                     heading="Insekticidi"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={protectionLogo}
+                    iconUrl={insectLogo}
+                    hoveredIconUrl={insectLogoHovered}
                 />
                 <CategoryCard
                     heading="Organski preparati"
                     link="https://plant-centar.vercel.app/prodavnica"
-                    iconUrl={protectionLogo}
+                    iconUrl={organicLogo}
+                    hoveredIconUrl={organicLogoHovered}
                 />
             </div>
             <div className="partners-wrapper">
