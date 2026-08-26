@@ -1,134 +1,118 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./WhatWeDo.css";
 
-// Green icons
-import scienceGreen from "../../../assets/icons/green/Icons-V1.1.png";
-import warehouseGreen from "../../../assets/icons/green/Icons-V1.3.png";
-import protectionGreen from "../../../assets/icons/green/Icons-PSD-V2.15.png";
-import farmAnimalsGreen from "../../../assets/icons/green/Icons-V1.2.png";
-import toolsGreen from "../../../assets/icons/green/Icons-V1.4.png";
-import fertilizersGreen from "../../../assets/icons/green/Icons-PSD-V2.16.png";
+import scienceActive from "../../../assets/icons/green/Icons-V1.1.png";
+import warehouseActive from "../../../assets/icons/green/Icons-V1.3.png";
+import protectionActive from "../../../assets/icons/green/Icons-PSD-V2.15.png";
+import farmAnimalsActive from "../../../assets/icons/green/Icons-V1.2.png";
+import toolsActive from "../../../assets/icons/green/Icons-V1.4.png";
+import fertilizersActive from "../../../assets/icons/green/Icons-PSD-V2.16.png";
 
-// White icons
-import scienceWhite from "../../../assets/icons/white/Icons-V1.1.png";
-import warehouseWhite from "../../../assets/icons/white/Icons-V1.3.png";
-import protectionWhite from "../../../assets/icons/white/Icons-PSD-V2.17.png";
-import farmAnimalsWhite from "../../../assets/icons/white/Icons-V1.2.png";
-import toolsWhite from "../../../assets/icons/white/Icons-V1.4.png";
-import fertilizersWhite from "../../../assets/icons/white/Icons-PSD-V2.18.png";
+import scienceDefault from "../../../assets/icons/white/Icons-V1.1.png";
+import warehouseDefault from "../../../assets/icons/white/Icons-V1.3.png";
+import protectionDefault from "../../../assets/icons/white/Icons-PSD-V2.17.png";
+import farmAnimalsDefault from "../../../assets/icons/white/Icons-V1.2.png";
+import toolsDefault from "../../../assets/icons/white/Icons-V1.4.png";
+import fertilizersDefault from "../../../assets/icons/white/Icons-PSD-V2.18.png";
+
+const services = [
+    {
+        title: "Stručna podrška",
+        description: "Stručni saveti prilagođeni ishrani i zaštiti vaših biljaka.",
+        path: "/kontakt",
+        iconDefault: scienceDefault,
+        iconActive: scienceActive,
+    },
+    {
+        title: "Zaštita bilja",
+        description: "Pouzdana sredstva i rešenja za efikasnu zaštitu useva.",
+        path: "/sredstva-za-zastitu-bilja",
+        iconDefault: warehouseDefault,
+        iconActive: warehouseActive,
+    },
+    {
+        title: "Ishrana bilja",
+        description: "Programi ishrane koji podržavaju zdrav razvoj i bolji prinos.",
+        path: "/sredstva-za-ishranu-bilja",
+        iconDefault: fertilizersDefault,
+        iconActive: fertilizersActive,
+    },
+    {
+        title: "Semenska roba i sadnice",
+        description: "Odabrano seme, sadnice voća i ukrasnog bilja.",
+        path: "/semenska-roba",
+        iconDefault: protectionDefault,
+        iconActive: protectionActive,
+    },
+    {
+        title: "Pet program i hrana za životinje",
+        description: "Hrana, oprema i proizvodi za kućne ljubimce i domaće životinje.",
+        path: "/pet-program-i-hrana-za-životinje",
+        iconDefault: farmAnimalsDefault,
+        iconActive: farmAnimalsActive,
+    },
+    {
+        title: "Garden oprema i alati",
+        description: "Oprema, alati i repromaterijal za uređen i negovan vrt.",
+        path: "/garden-program",
+        iconDefault: toolsDefault,
+        iconActive: toolsActive,
+    },
+];
 
 export default function WhatWeDo() {
     const navigate = useNavigate();
 
-    // State for each card's current icon. Each starts with the green icon.
-    const [scienceIcon, setScienceIcon] = useState(scienceGreen);
-    const [warehouseIcon, setWarehouseIcon] = useState(warehouseGreen);
-    const [protectionIcon, setProtectionIcon] = useState(protectionGreen);
-    const [farmAnimalsIcon, setFarmAnimalsIcon] = useState(farmAnimalsGreen);
-    const [toolsIcon, setToolsIcon] = useState(toolsGreen);
-    const [fertilizersIcon, setFertilizersIcon] = useState(fertilizersGreen);
-
     return (
-        <div className="what-we-do-container">
+        <section className="what-we-do-container" aria-labelledby="what-we-do-title">
             <div className="what-we-do-wrapper">
                 <div className="what-we-do-heading">
-                    <h2>Čime se bavimo</h2>
+                    <span>Naša ponuda</span>
+                    <h2 id="what-we-do-title">Čime se bavimo</h2>
+                    <p>
+                        Proizvodi, znanje i podrška za sigurniju i uspešniju poljoprivrednu proizvodnju.
+                    </p>
                 </div>
-                <div className="heading-border"></div>
 
-                {/* Card row container */}
-                <div className="wwd-card-row">
-                    {/* Card 1 */}
-                    <div
-                        className="wwd-card"
-                        onClick={() => navigate("/kontakt")}
-                        onMouseEnter={() => setScienceIcon(scienceWhite)}
-                        onMouseLeave={() => setScienceIcon(scienceGreen)}
-                    >
-                        <div className="wwd-icon-circle">
-                            <img src={scienceIcon} alt="Stručna podrška" />
-                        </div>
-                        <h3>Stručna podrška</h3>
-                        <p>Pružanje stručne podrške u ishrani i zaštiti bilja</p>
-                        <div className="wwd-arrow-circle">&rarr;</div>
-                    </div>
+                <div className="wwd-card-grid">
+                    {services.map((service, index) => (
+                        <button
+                            type="button"
+                            className="wwd-card"
+                            key={service.title}
+                            onClick={() => navigate(service.path)}
+                            aria-label={`${service.title}: ${service.description}`}
+                        >
+                            <div className="wwd-card-topline">
+                                <span className="wwd-icon-frame" aria-hidden="true">
+                                    <img
+                                        src={service.iconDefault}
+                                        alt=""
+                                        className="wwd-icon-default"
+                                    />
+                                    <img
+                                        src={service.iconActive}
+                                        alt=""
+                                        className="wwd-icon-active"
+                                    />
+                                </span>
+                                <span className="wwd-card-number">
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+                            </div>
 
-                    {/* Card 2 */}
-                    <div
-                        className="wwd-card"
-                        onClick={() => navigate("/sredstva-za-zastitu-bilja")}
-                        onMouseEnter={() => setWarehouseIcon(warehouseWhite)}
-                        onMouseLeave={() => setWarehouseIcon(warehouseGreen)}
-                    >
-                        <div className="wwd-icon-circle">
-                            <img src={warehouseIcon} alt="Prodaja" />
-                        </div>
-                        <h3>Zaštita bilja</h3>
-                        <p>Distribucija sredstava za zaštitu bilja</p>
-                        <div className="wwd-arrow-circle">&rarr;</div>
-                    </div>
-                    {/* Card 3 */}
-                    <div
-                        className="wwd-card"
-                        onClick={() => navigate("/sredstva-za-ishranu-bilja")}
-                        onMouseEnter={() => setFertilizersIcon(fertilizersWhite)}
-                        onMouseLeave={() => setFertilizersIcon(fertilizersGreen)}
-                    >
-                        <div className="wwd-icon-circle">
-                            <img src={fertilizersIcon} alt="Prodaja" />
-                        </div>
-                        <h3>Ishrana bilja</h3>
-                        <p>Distribucija sredstava za ishranu bilja</p>
-                        <div className="wwd-arrow-circle">&rarr;</div>
-                    </div>
+                            <div className="wwd-card-copy">
+                                <h3>{service.title}</h3>
+                                <p>{service.description}</p>
+                            </div>
 
-                    {/* Card 4 */}
-                    <div
-                        className="wwd-card"
-                        onClick={() => navigate("/semenska-roba")}
-                        onMouseEnter={() => setProtectionIcon(protectionWhite)}
-                        onMouseLeave={() => setProtectionIcon(protectionGreen)}
-                    >
-                        <div className="wwd-icon-circle">
-                            <img src={protectionIcon} alt="Semenska roba i sadnice" />
-                        </div>
-                        <h3>Semenska roba i sadnice</h3>
-                        <p>Semenska roba, sadnice voća i ukrasnog bilja</p>
-                        <div className="wwd-arrow-circle">&rarr;</div>
-                    </div>
-
-                    {/* Card 5 */}
-                    <div
-                        className="wwd-card"
-                        onClick={() => navigate("/hrana-za-kucne-ljubimce")}
-                        onMouseEnter={() => setFarmAnimalsIcon(farmAnimalsWhite)}
-                        onMouseLeave={() => setFarmAnimalsIcon(farmAnimalsGreen)}
-                    >
-                        <div className="wwd-icon-circle">
-                            <img src={farmAnimalsIcon} alt="hrana-za-kucne-ljubimce" />
-                        </div>
-                        <h3>Pet program i hrana za životinje</h3>
-                        <p>Pet program, hrana i oprema za domaće životinje</p>
-                        <div className="wwd-arrow-circle">&rarr;</div>
-                    </div>
-
-                    {/* Card 6 */}
-                    <div
-                        className="wwd-card"
-                        onClick={() => navigate("/garden-program")}
-                        onMouseEnter={() => setToolsIcon(toolsWhite)}
-                        onMouseLeave={() => setToolsIcon(toolsGreen)}
-                    >
-                        <div className="wwd-icon-circle">
-                            <img src={toolsIcon} alt="Alati i oprema" />
-                        </div>
-                        <h3>Garden oprema, alati i repromaterijal</h3>
-                        <p>Garden oprema, alati i repromaterijal</p>
-                        <div className="wwd-arrow-circle">&rarr;</div>
-                    </div>
+                            <span className="wwd-card-action">
+                                Saznajte više <span aria-hidden="true">→</span>
+                            </span>
+                        </button>
+                    ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

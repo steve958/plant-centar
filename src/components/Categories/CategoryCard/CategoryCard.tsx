@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import "./CategoryCard.css";
 
 interface CardProps {
@@ -19,16 +21,14 @@ const CategoryCard: React.FC<CardProps> = ({
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <a
-            href={link}
+        <Link
+            to={link}
             className="category-card"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* Left half: Icon / Graphic section */}
             <div
                 className="category-card__icon-container"
-                style={{ backgroundColor: isHovered ? "white" : "" }}
             >
                 {iconUrl && (
                     <img
@@ -39,14 +39,17 @@ const CategoryCard: React.FC<CardProps> = ({
                 )}
             </div>
 
-            {/* Right half: Text content */}
             <div className="category-card__text-content">
+                <span className="category-card__number">Plant Centar izbor</span>
                 <h3 className="category-card__heading">{heading}</h3>
                 {description && (
                     <p className="category-card__description">{description}</p>
                 )}
+                <span className="category-card__action">
+                    Pogledajte ponudu <ArrowForwardRoundedIcon aria-hidden="true" />
+                </span>
             </div>
-        </a>
+        </Link>
     );
 };
 

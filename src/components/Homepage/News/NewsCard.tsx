@@ -1,4 +1,4 @@
-import { Card, CardMedia, CardContent, Typography } from "@mui/material";
+import "./NewsCard.css";
 
 interface NewsCardProps {
     image: string;
@@ -14,36 +14,23 @@ export default function NewsCard({
     date
 }: NewsCardProps) {
     return (
-        <Card
-            sx={{
-                width: { xs: "100%", sm: 400 },
-                height: { xs: "auto", sm: 450 },
-                flexShrink: 0,
-            }}
-        >
-            <CardMedia
-                component="img"
-                image={image}
-                alt={title}
-                sx={{
-                    width: "100%",
-                    height: { xs: "auto", sm: "55%" },
-                    objectFit: "cover",
-                }}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" align="center">
-                    {title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" align="center" sx={{ mb: 1 }}>
-                    {date}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" align="center">
-                    {description.length > 120
-                        ? description.slice(0, 120).concat("...")
+        <article className="news-card">
+            <div className="news-card-image-wrapper">
+                <img src={image} alt={title} className="news-card-image" />
+                <span className="news-card-label">Aktuelno</span>
+            </div>
+            <div className="news-card-content">
+                <time className="news-card-date">{date}</time>
+                <h3>{title}</h3>
+                <p>
+                    {description.length > 135
+                        ? description.slice(0, 135).concat("...")
                         : description}
-                </Typography>
-            </CardContent>
-        </Card>
+                </p>
+                <span className="news-card-link">
+                    Pročitajte više <span aria-hidden="true">→</span>
+                </span>
+            </div>
+        </article>
     );
 }

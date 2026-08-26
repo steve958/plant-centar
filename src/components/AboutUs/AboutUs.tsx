@@ -1,165 +1,180 @@
-import { useState } from 'react';
-import './AboutUs.css';
-import {
-  Modal,
-  Box,
-  IconButton,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  Typography,
-} from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { useEffect, useState } from "react";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import { Link } from "react-router-dom";
+import avatar from "../../assets/avatar.png";
+import businessCard from "../../assets/vizitka.jpg";
+import sustainImage from "../../assets/sustain.jpg";
+import "./AboutUs.css";
 
-// Replace with your actual image imports/URLs:
-import ceoAvatar from '../../assets/avatar.png';
-import sales1Avatar from '../../assets/avatar.png';
-import sales2Avatar from '../../assets/avatar.png';
-import ceoModalImage from '../../assets/vizitka.jpg';
+const team = [
+  {
+    name: "Đorđe Arsenović",
+    education: "dipl. inž. zaštite bilja",
+    role: "Prodaja i stručna služba",
+    hasDetails: true,
+  },
+  {
+    name: "Jelena Marinković",
+    education: "dipl. inž. zaštite bilja",
+    role: "Agronom — stručni konsultant",
+  },
+  {
+    name: "Slađana Čačić",
+    education: "dipl. inž. zaštite bilja",
+    role: "Agronom — stručni konsultant",
+  },
+];
 
 export default function AboutUs() {
-  // State to control the modal open/close
-  const [open, setOpen] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
-  // Functions to handle modal visibility
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  useEffect(() => {
+    if (!showDetails) return;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setShowDetails(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [showDetails]);
 
   return (
-    <div className="about-us-container">
-      {/* Company Description */}
-      <div className="about-us-description-wrapper">
-        <p>
-          U srcu našeg poslovanja je posvećenost prirodi i održivosti poljoprivredne
-          proizvodnje.
-        </p>
-        <p>
-          Blisko sarađujemo sa poljoprivrednim proizvođačima i dobavljačima,
-          promovišući praksu poštene trgovine i stručne podrške, trudeći se da naši
-          proizvodi i usluge ispunjavaju najstrožije standarde kvaliteta.
-        </p>
-        <p>
-          Naš tim izdvaja pružanje personalizovane podrške poljoprivrednicima, nudeći im
-          vredne savete, novosti sa tržišta i pristup najsavremenijim tehnologijama za
-          povećanje produktivnosti u samoj poljoprivrednoj proizvodnji.
-        </p>
-        <p>
-          Osnovan sa strašću za podsticanje održive poljoprivrede i osiguravanje
-          snabdevanja kvalitetnim repromaterijalima, <b>Plant Centar</b> je posvećen
-          podršci poljoprivrednim proizvođačima u proizvodnji kvalitetne i zdravstveno
-          ispravne hrane, strogo vodeći računa o zaštiti životne sredine i umanjenju
-          dejstva klimatskih promena.
-        </p>
-      </div>
-
-      {/* Hierarchy (CEO and Sales Reps) */}
-      <div className="about-us-hierarchy-wrapper">
-        <div className="hierarchy-container">
-          {/* CEO Card */}
-          <Card className="rep-card">
-            {/* Clicking the card opens the modal */}
-            <CardActionArea onClick={handleOpen}>
-              <CardMedia
-                component="img"
-                image={ceoAvatar}
-                alt="CEO Avatar"
-                sx={{
-                  /* 
-                   * width/height ratio ensures height is double the width.
-                   * Adjust as needed for your design and breakpoints.
-                   */
-                  width: { xs: 80, md: 120 },
-                  height: { xs: 160, md: 240 },
-                  objectFit: 'cover',
-                  margin: '0 auto',
-                }}
-              />
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Đorđe Arsenović
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  dipl. inž. zaštite bilja
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Prodaja i stručna služba
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          {/* Sales Representative 1 */}
-          <Card className="rep-card">
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                image={sales1Avatar}
-                alt="Sales Rep 1"
-                sx={{
-                  width: { xs: 80, md: 120 },
-                  height: { xs: 160, md: 240 },
-                  objectFit: 'cover',
-                  margin: '0 auto',
-                }}
-              />
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Jelena Marinković
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  dipl. inž. zaštite bilja
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Agronom - stručni konsultant
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          {/* Sales Representative 2 */}
-          <Card className="rep-card">
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                image={sales2Avatar}
-                alt="Sales Rep 2"
-                sx={{
-                  width: { xs: 80, md: 120 },
-                  height: { xs: 160, md: 240 },
-                  objectFit: 'cover',
-                  margin: '0 auto',
-                }}
-              />
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Slađana Čačić
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  dipl. inž. zaštite bilja
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Agronom - stručni konsultant
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
+    <main className="about-page">
+      <section className="about-hero">
+        <div className="about-shell about-hero__grid">
+          <div className="about-hero__content">
+            <span className="about-kicker">O Plant Centru</span>
+            <h1>Partner proizvodnje koja traje.</h1>
+            <p>
+              Povezujemo znanje agronoma, proverene proizvode i neposrednu podršku
+              kako bi svaka odluka na terenu bila sigurnija.
+            </p>
+            <Link to="/kontakt">
+              Razgovarajte sa našim timom <ArrowForwardRoundedIcon aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="about-hero__image">
+            <img src={sustainImage} alt="Održiva poljoprivredna proizvodnja" />
+            <div className="about-hero__note">
+              <strong>Stručna podrška</strong>
+              <span>od izbora proizvoda do primene</span>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Modal for CEO Larger Image */}
-      <Modal open={open} onClose={handleClose} className="modal">
-        <Box className="modal-content">
-          <IconButton
-            onClick={handleClose}
-            className="modal-close-button"
-            aria-label="close"
-          >
-            <CloseIcon />
-          </IconButton>
-          <img src={ceoModalImage} alt="CEO" className="modal-image" />
-        </Box>
-      </Modal>
-    </div>
+      <section className="about-story">
+        <div className="about-shell">
+          <div className="about-section-heading">
+            <span className="about-kicker">Naš pristup</span>
+            <h2>Znanje koje se vidi u rezultatu</h2>
+          </div>
+          <div className="about-story__grid">
+            <article>
+              <span>01</span>
+              <h3>Blizu proizvođača</h3>
+              <p>
+                Sarađujemo neposredno sa poljoprivrednicima i prilagođavamo preporuke
+                stvarnim uslovima njihove proizvodnje.
+              </p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Proveren kvalitet</h3>
+              <p>
+                Biramo pouzdane dobavljače, savremene tehnologije i proizvode koji
+                zadovoljavaju visoke standarde kvaliteta.
+              </p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Odgovorna budućnost</h3>
+              <p>
+                Podržavamo održivu proizvodnju, racionalnu primenu sredstava i očuvanje
+                životne sredine.
+              </p>
+            </article>
+          </div>
+          <div className="about-manifesto">
+            <p>
+              Plant Centar je osnovan sa željom da kvalitetan repromaterijal prati
+              kvalitetan savet. Zato proizvođačima pružamo novosti sa tržišta, stručnu
+              podršku i pristup rešenjima koja povećavaju produktivnost uz odgovoran
+              odnos prema zemljištu i klimi.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-team" aria-labelledby="about-team-title">
+        <div className="about-shell">
+          <div className="about-section-heading about-section-heading--centered">
+            <span className="about-kicker">Ljudi Plant Centra</span>
+            <h2 id="about-team-title">Tim na koji možete da se oslonite</h2>
+            <p>Iskusni agronomi, dostupni za pitanja iz svakodnevne proizvodnje.</p>
+          </div>
+          <div className="about-team__grid">
+            {team.map((member) => {
+              const card = (
+                <>
+                  <div className="about-team__avatar">
+                    <img src={avatar} alt="" />
+                  </div>
+                  <span className="about-team__role">{member.role}</span>
+                  <h3>{member.name}</h3>
+                  <p>{member.education}</p>
+                  {member.hasDetails && (
+                    <span className="about-team__action">
+                      Kontakt podaci <ArrowForwardRoundedIcon aria-hidden="true" />
+                    </span>
+                  )}
+                </>
+              );
+
+              return member.hasDetails ? (
+                <button
+                  type="button"
+                  className="about-team__card"
+                  key={member.name}
+                  onClick={() => setShowDetails(true)}
+                >
+                  {card}
+                </button>
+              ) : (
+                <article className="about-team__card" key={member.name}>
+                  {card}
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {showDetails && (
+        <div
+          className="about-modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setShowDetails(false);
+          }}
+        >
+          <section className="about-modal" role="dialog" aria-modal="true" aria-label="Kontakt podaci">
+            <button
+              type="button"
+              onClick={() => setShowDetails(false)}
+              aria-label="Zatvori"
+            >
+              <CloseRoundedIcon />
+            </button>
+            <img src={businessCard} alt="Kontakt kartica Đorđa Arsenovića" />
+          </section>
+        </div>
+      )}
+    </main>
   );
 }

@@ -1,71 +1,116 @@
-/* Overall card styling */
 .category-card {
-    display: flex;
-    /* Split layout: icon left, text right */
-    width: 100%;
-    max-width: 400px;
-    /* Adjust or remove to fit your layout */
-    min-height: 140px;
-    /* Ensures some vertical space */
-    border-radius: 12px;
-    text-decoration: none;
-    color: #333;
-    /* Good contrast on white */
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    /* Properly rounds corners */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: grid;
+  grid-template-columns: 142px minmax(0, 1fr);
+  min-height: 190px;
+  overflow: hidden;
+  border: 1px solid rgba(25, 70, 49, 0.1);
+  border-radius: 22px;
+  background: #fff;
+  color: #173d2b;
+  text-decoration: none;
+  box-shadow: 0 12px 34px rgba(31, 63, 42, 0.065);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.category-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.category-card:hover,
+.category-card:focus-visible {
+  border-color: rgba(84, 193, 67, 0.38);
+  outline: none;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 42px rgba(31, 63, 42, 0.12);
 }
 
-/* Left half: Icon container with accent background */
 .category-card__icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    /* Takes half the card width */
-    background-color: #54c143;
-    /* Accent color */
-    transition: 0.5s all !important;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.25), transparent 38%),
+    #3c9f45;
+  transition: background 180ms ease;
 }
 
-/* Icon (PNG) styling */
+.category-card:hover .category-card__icon-container,
+.category-card:focus-visible .category-card__icon-container {
+  background: #f2f7ef;
+}
+
 .category-card__icon {
-    width: 80px;
-    /* Adjust icon size as needed */
-    height: 80px;
-    object-fit: contain;
-    /* Keeps aspect ratio of the PNG */
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
 }
 
-/* Right half: Text content */
 .category-card__text-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-    /* Takes the remaining half */
-    padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px 26px;
 }
 
-/* Heading styling */
+.category-card__number {
+  margin-bottom: 10px;
+  color: #51a745;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .category-card__heading {
-    margin: 0 0 8px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #333;
+  margin: 0;
+  color: #173d2b;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.28;
 }
 
-/* Description styling (optional) */
 .category-card__description {
-    margin: 0;
+  margin-top: 9px;
+  color: #737b74;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.category-card__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  color: #2d8538;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.category-card__action svg {
+  font-size: 1rem;
+  transition: transform 180ms ease;
+}
+
+.category-card:hover .category-card__action svg,
+.category-card:focus-visible .category-card__action svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 620px) {
+  .category-card {
+    grid-template-columns: 112px minmax(0, 1fr);
+    min-height: 168px;
+    border-radius: 18px;
+  }
+
+  .category-card__icon {
+    width: 68px;
+    height: 68px;
+  }
+
+  .category-card__text-content {
+    padding: 24px 20px;
+  }
+
+  .category-card__heading {
     font-size: 1rem;
-    color: #666;
-    line-height: 1.4;
+  }
 }

@@ -1,163 +1,246 @@
-/***** Container & Wrapper *****/
 .what-we-do-container {
     width: 100%;
+    padding: 84px 0 88px;
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.what-we-do-container::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    right: -260px;
+    top: 80px;
+    border-radius: 50%;
+    background-color: rgba(84, 193, 67, 0.055);
+    pointer-events: none;
 }
 
 .what-we-do-wrapper {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/***** Heading *****/
-.what-we-do-heading {
-    width: 100%;
-    text-align: center;
-    font-size: 28px;
-    color: #54c143;
-}
-
-.heading-border {
-    width: 200px;
-    height: 30px;
-}
-
-/***** Card Row for 6 Cards *****/
-.wwd-card-row {
-    /* Use a max-width plus auto margins so it centers nicely */
-    max-width: 1200px;
-    margin: 30px auto 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    /* space between cards */
-    /* Remove or reduce the 20% side paddings. 
-     We rely on max-width + auto margins for a centered layout. */
-}
-
-/***** Individual Card *****/
-.wwd-card {
-    /* 
-    By default, let’s make the cards each take about 1/3
-    minus the gap. This will produce exactly 3 columns 
-    if there’s enough horizontal space. 
-  */
-    flex: 0 0 calc(33.333% - 20px);
-    box-sizing: border-box;
-
-    /* Or if you really want a strict 300px, do:
-     flex: 0 0 300px;
-     margin: 0 auto; (but then remove big side paddings) 
-  */
-
-    min-height: 350px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: min(1120px, calc(100% - 64px));
     position: relative;
-
-    padding: 50px 20px 20px 20px;
-    cursor: pointer;
-    transition: all 0.5s, color 0.3s;
+    z-index: 1;
 }
 
-/* Hover effect */
-.wwd-card:hover {
-    background: linear-gradient(260deg,
-            rgba(182, 192, 191, 1) 0%,
-            rgba(84, 193, 67, 1) 100%);
-    color: #fff;
-}
-
-/***** Icon Circle *****/
-.wwd-icon-circle {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-    transition: background-color 0.3s;
-}
-
-.wwd-icon-circle img {
-    margin-top: 10px;
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    transition: all 0.5s;
-}
-
-/***** Card Text *****/
-.wwd-card h3 {
-    margin-top: 80px;
-    margin-bottom: 10px;
-    font-size: 18px;
+.what-we-do-heading {
+    max-width: 660px;
+    margin: 0 auto 42px;
     text-align: center;
-    color: inherit;
-    /* becomes white on hover */
+}
+
+.what-we-do-heading > span {
+    display: block;
+    margin-bottom: 8px;
+    color: #2d963f;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.what-we-do-heading h2 {
+    margin: 0 0 12px;
+    color: #1d3e2a;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-weight: 650;
+    line-height: 1.15;
+}
+
+.what-we-do-heading p {
+    margin: 0;
+    color: #6c786f;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.wwd-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.wwd-card {
+    min-height: 310px;
+    padding: 27px;
+    border: 1px solid rgba(38, 83, 50, 0.12);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    color: #263a2e;
+    background: linear-gradient(145deg, #ffffff, #fbfcf9);
+    box-shadow: 0 10px 30px rgba(25, 67, 39, 0.07);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.wwd-card-topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.wwd-icon-frame {
+    width: 78px;
+    height: 78px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    background-color: #f0f7ed;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.25s ease, border-radius 0.25s ease;
+}
+
+.wwd-icon-frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.25s ease, transform 0.35s ease;
+}
+
+.wwd-icon-active {
+    opacity: 0;
+}
+
+.wwd-card-number {
+    color: #d2ddd4;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.wwd-card-copy {
+    margin-top: 28px;
+}
+
+.wwd-card h3 {
+    margin: 0 0 11px;
+    color: #1d3e2a;
+    font-size: 19px;
+    font-weight: 650;
+    line-height: 1.35;
 }
 
 .wwd-card p {
-    font-size: 14px;
-    line-height: 1.5;
-    color: inherit;
-    /* becomes white on hover */
-    text-align: center;
+    margin: 0;
+    color: #6a766e;
+    font-size: 12px;
+    line-height: 1.7;
 }
 
-/***** Arrow Circle *****/
-.wwd-arrow-circle {
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    color: #54c143;
-    border-radius: 50%;
-    display: flex;
+.wwd-card-action {
+    margin-top: auto;
+    padding-top: 24px;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: -10px;
-    right: 45%;
-    transition: background-color 0.3s, color 0.3s;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    gap: 8px;
+    color: #2d963f;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
-.wwd-card:hover .wwd-arrow-circle {
-    background-color: #fff;
-    color: #54c143;
+.wwd-card-action span {
+    font-size: 17px;
+    line-height: 1;
+    transition: transform 0.2s ease;
 }
 
-/***** Responsive Adjustments *****/
-@media screen and (max-width: 992px) {
+.wwd-card:hover,
+.wwd-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(52, 151, 61, 0.26);
+    background: linear-gradient(145deg, #ffffff, #f5faf2);
+    box-shadow: 0 20px 48px rgba(25, 67, 39, 0.13);
+}
 
-    /* 
-     On medium screens, let’s switch to 2 columns. 
-     The calculation ensures a 50% width minus the gap. 
-  */
-    .wwd-card {
-        flex: 0 0 calc(50% - 20px);
+.wwd-card:focus-visible {
+    outline: 3px solid rgba(84, 193, 67, 0.38);
+    outline-offset: 4px;
+}
+
+.wwd-card:hover .wwd-icon-frame,
+.wwd-card:focus-visible .wwd-icon-frame {
+    transform: translateY(-2px);
+    border-radius: 24px;
+}
+
+.wwd-card:hover .wwd-icon-default,
+.wwd-card:focus-visible .wwd-icon-default {
+    opacity: 0;
+}
+
+.wwd-card:hover .wwd-icon-active,
+.wwd-card:focus-visible .wwd-icon-active {
+    opacity: 1;
+    transform: scale(1.035);
+}
+
+.wwd-card:hover .wwd-card-action span,
+.wwd-card:focus-visible .wwd-card-action span {
+    transform: translateX(4px);
+}
+
+@media (max-width: 1000px) {
+    .what-we-do-container {
+        padding: 70px 0 74px;
+    }
+
+    .what-we-do-wrapper {
+        width: min(100% - 48px, 920px);
+    }
+
+    .wwd-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media screen and (max-width: 576px) {
+@media (max-width: 600px) {
+    .what-we-do-container {
+        padding: 58px 0 60px;
+    }
 
-    /* 
-    On small screens, just let it be 1 column.
-  */
+    .what-we-do-wrapper {
+        width: calc(100% - 28px);
+    }
+
+    .what-we-do-heading {
+        margin-bottom: 30px;
+    }
+
+    .what-we-do-heading p {
+        padding: 0 8px;
+        font-size: 12px;
+    }
+
+    .wwd-card-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
     .wwd-card {
-        flex: 0 0 100%;
+        min-height: 275px;
+        padding: 24px;
+    }
+
+    .wwd-icon-frame {
+        width: 70px;
+        height: 70px;
+        border-radius: 18px;
+    }
+
+    .wwd-card-copy {
+        margin-top: 24px;
     }
 }

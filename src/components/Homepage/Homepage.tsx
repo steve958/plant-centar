@@ -19,7 +19,6 @@ export default function Homepage() {
       <NeedHelp />
       <div className="divider"></div>
       <SpecialOffer />
-      <div className="divider"></div>
       <Partners></Partners>
     </>
   );

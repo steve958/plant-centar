@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import "./MeetOurCompany.css";
-import meetUsImg from "../../assets/logo.jpg";
+import meetUsImg from "../../assets/plant-centar-znak.svg";
 import { useRef } from "react";
 
 
@@ -41,7 +41,7 @@ export default function MeetOurCompany(props: any) {
                         </p>
                     </div>
                     <div className="meet-us-img">
-                        <img src={meetUsImg} alt="" />
+                        <img src={meetUsImg} alt="Plant centar znak" />
                     </div>
                 </div>
             </div>

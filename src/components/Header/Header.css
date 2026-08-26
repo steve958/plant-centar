@@ -1,119 +1,285 @@
 .header-container {
-    width: 100vw;
-    height: 50px;
+    width: 100%;
+    height: 42px;
     display: flex;
     justify-content: center;
-    /* background-color: rgb(225, 225, 225); */
-    /* background-color: #54C143; */
-    color: #54C143;
-    font-weight: 600;
+    color: #536259;
+    background: linear-gradient(105deg, #fafbf7, #f2f5ee);
+    border-bottom: 1px solid rgba(37, 87, 53, 0.12);
     position: relative;
 }
 
 .header-wrapper {
-    width: 80%;
+    width: min(1120px, calc(100% - 64px));
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 28px;
 }
 
 .moto {
-    color: #54C143;
+    margin: 0;
+    color: #2f6b42;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 20px;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    font-weight: 700;
     white-space: nowrap;
 }
 
 .address-wrapper {
-    display: flex;
-    width: 70%;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.search-wrapper {
+    min-height: 34px;
+    padding: 0;
+    border: 0;
     display: flex;
     align-items: center;
-}
-
-.icon {
+    gap: 8px;
+    color: inherit;
+    background: transparent;
+    font-size: 12px;
     cursor: pointer;
-    color: #54C143 !important;
-    transition: all 0.3s !important;
+    transition: color 0.18s ease;
 }
 
-.icon:hover {
-    scale: 1.5;
+.address-wrapper:hover {
+    color: #1f5834;
 }
 
-.map-container {
-    position: absolute;
-    top: 40%;
-    left: 38%;
-    width: 500px;
-    height: 500px;
+.location-icon {
+    width: 17px !important;
+    height: 17px !important;
+    color: #65cb5d;
 }
 
-.leaflet-container {
-    width: 100%;
-    height: 100%;
-    z-index: 4;
-    border: 2px solid #006400;
+.map-label {
+    padding-left: 10px;
+    border-left: 1px solid rgba(37, 87, 53, 0.16);
+    color: #2d963f;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.map-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    padding: 24px;
+    display: grid;
+    place-items: center;
+    background-color: rgba(8, 27, 17, 0.62);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 100;
+}
+
+.map-dialog {
+    width: min(760px, 100%);
+    max-height: calc(100dvh - 48px);
+    display: grid;
+    grid-template-rows: auto minmax(280px, 440px) auto;
+    color: #253c2f;
+    background-color: white;
+    border: 1px solid rgba(31, 72, 47, 0.14);
+    border-radius: 20px;
+    box-shadow: 0 30px 90px rgba(5, 23, 13, 0.34);
+    overflow: hidden;
+}
+
+.map-dialog-header {
+    padding: 24px 26px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.map-dialog-kicker {
+    display: block;
+    margin-bottom: 5px;
+    color: #2d963f;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.map-dialog-header h2 {
+    margin: 0 0 5px;
+    color: #183b29;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.map-dialog-header p {
+    margin: 0;
+    color: #69766e;
+    font-size: 13px;
 }
 
 .close-map {
-    position: absolute;
-    font-size: 18px;
-    color: black;
-    top: 0px;
-    right: 0;
-    z-index: 5;
-    background-color: white;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    padding: 0;
+    border: 1px solid #dce5de;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: #34503f;
+    background-color: #f6f9f6;
     cursor: pointer;
-    padding: 10px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    transition: color 0.18s ease, background-color 0.18s ease;
 }
 
 .close-map:hover {
-    opacity: 0.7;
+    color: #277f37;
+    background-color: #ecf6ea;
 }
 
+.close-map svg {
+    width: 21px;
+    height: 21px;
+}
+
+.map-container {
+    width: 100%;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-container .leaflet-container {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    z-index: 1;
+}
+
+.map-container .leaflet-control-attribution {
+    font-size: 9px;
+}
+
+.map-dialog-footer {
+    min-height: 66px;
+    padding: 14px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    border-top: 1px solid #e4eae5;
+    color: #69766e;
+    font-size: 12px;
+}
+
+.map-dialog-footer span,
+.map-dialog-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.map-dialog-footer span svg {
+    width: 17px;
+    height: 17px;
+    color: #54c143;
+}
+
+.map-dialog-footer a {
+    min-height: 38px;
+    padding: 0 15px;
+    border-radius: 999px;
+    color: white;
+    background: linear-gradient(135deg, #4fbd44, #2d963f);
+    box-shadow: 0 7px 18px rgba(50, 153, 61, 0.2);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.map-dialog-footer a svg {
+    width: 16px;
+    height: 16px;
+}
+
+@media screen and (max-width: 1250px) {
+    .header-wrapper {
+        width: min(1080px, calc(100% - 48px));
+    }
+}
 
 @media screen and (max-width: 1000px) {
     .header-container {
-        margin-top: 100px;
-        align-items: center !important;
+        height: 40px;
+        margin-top: 76px;
     }
 
-    .map-container {
-        width: 300px !important;
-        height: 300px !important;
-        left: 50px !important;
+    .header-wrapper {
+        width: calc(100% - 48px);
     }
 
-    .address-wrapper>p {
+    .map-label {
         display: none;
     }
 }
 
-
 @media screen and (max-width: 600px) {
-    .address-wrapper>.icon {
-        position: absolute;
-        left: 8%;
+    .header-container {
+        height: 38px;
     }
 
-    .header-container {
-        background-color: rgb(225, 225, 225);
-
+    .header-wrapper {
+        width: calc(100% - 28px);
+        justify-content: center;
     }
 
     .moto {
+        display: none;
+    }
+
+    .address-wrapper {
         width: 100%;
-        padding-left: 10%;
-        font-size: 16px;
+        justify-content: center;
+        font-size: 11px;
+    }
+
+    .address-label::before {
+        content: "Lokacija: ";
+        color: #2f6b42;
+        font-weight: 700;
+    }
+
+    .map-modal-backdrop {
+        padding: 12px;
+        align-items: end;
+    }
+
+    .map-dialog {
+        width: 100%;
+        max-height: calc(100dvh - 24px);
+        grid-template-rows: auto minmax(300px, 52dvh) auto;
+        border-radius: 20px 20px 12px 12px;
+    }
+
+    .map-dialog-header {
+        padding: 20px 18px 16px;
+    }
+
+    .map-dialog-header h2 {
+        font-size: 21px;
+    }
+
+    .map-dialog-footer {
+        padding: 13px 18px;
+    }
+
+    .map-dialog-footer > span {
+        display: none;
+    }
+
+    .map-dialog-footer a {
+        width: 100%;
+        justify-content: center;
     }
 }

@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./News.css";
-import { newsData } from "./newsData"; // Import your mock data
+import { newsData } from "./newsData";
 import NewsCard from "./NewsCard";
 import {
     IconButton,
@@ -9,7 +9,6 @@ import {
     Typography,
     useMediaQuery,
     useTheme,
-    Button,
 } from "@mui/material";
 import {
     ArrowBackIos,
@@ -19,76 +18,56 @@ import {
 
 export default function News() {
     const scrollRef = useRef<HTMLDivElement>(null);
-
-    // Track the current scroll position
-    const [scrollPosition, setScrollPosition] = useState(0);
-
-    // State for the modal
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
-    const [loadMoreClicked, setLoadMoreClicked] = useState<boolean>(false)
+    const [loadMoreClicked, setLoadMoreClicked] = useState<boolean>(false);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
 
-    // We want 3 by default (large screens), 
-    // but we’ll dynamically adjust below using breakpoints.
-    const [cardsPerView, setCardsPerView] = useState(3);
-
-    // Use MUI’s theme breakpoints or just window.innerWidth checks
     const theme = useTheme();
-    const isXs = useMediaQuery(theme.breakpoints.down("sm"));     // <600px
-    const isMd = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600px-900px
-    const isLg = useMediaQuery(theme.breakpoints.between("md", "lg")); // 900px-1200px
-    // You can adjust these to suit your design more precisely
+    const isXs = useMediaQuery(theme.breakpoints.down("sm"));
 
-    // Card dimension configuration
-    const cardWidth = 400;
-    const gap = 50; // Match the CSS gap
-    const totalCards = newsData.length;
+    const updateScrollControls = () => {
+        const container = scrollRef.current;
+        if (!container) return;
 
-    // Calculate scrolling distance based on # of cards per view
-    // If we have 3 cards in view, we have 2 internal gaps, so
-    // total = (cardsPerView * cardWidth) + (cardsPerView - 1) * gap
-    const scrollStep = cardsPerView * cardWidth + (cardsPerView - 1) * gap;
-    const steps = Math.ceil(totalCards / cardsPerView);
-    const maxScrollLeft = (steps - 1) * scrollStep;
+        setCanScrollLeft(container.scrollLeft > 2);
+        setCanScrollRight(
+            container.scrollLeft + container.clientWidth < container.scrollWidth - 2
+        );
+    };
 
-    // On resize, figure out how many cards to show
     useEffect(() => {
-        if (isXs) {
-            setCardsPerView(1);
-        } else if (isMd) {
-            setCardsPerView(2);
-        } else {
-            setCardsPerView(3);
-        }
-    }, [isXs, isMd, isLg]);
+        const container = scrollRef.current;
+        if (!container) return;
 
-    // Make sure the scroll position is applied whenever it changes
-    useEffect(() => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollLeft = scrollPosition;
-        }
-    }, [scrollPosition]);
+        const handleResize = () => {
+            setCanScrollLeft(container.scrollLeft > 2);
+            setCanScrollRight(
+                container.scrollLeft + container.clientWidth < container.scrollWidth - 2
+            );
+        };
 
-    // Scroll handler
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [isXs]);
+
     const handleScroll = (direction: "left" | "right") => {
-        if (!scrollRef.current) return;
+        const container = scrollRef.current;
+        if (!container) return;
 
-        let newScrollPosition = scrollPosition;
+        const firstCard = container.querySelector(
+            ".clickable-card-wrapper"
+        ) as HTMLElement | null;
+        const scrollStep = (firstCard?.offsetWidth ?? container.clientWidth) + 24;
 
-        if (direction === "left") {
-            newScrollPosition = Math.max(scrollPosition - scrollStep, 0);
-        } else if (direction === "right") {
-            newScrollPosition = Math.min(scrollPosition + scrollStep, maxScrollLeft);
-        }
-
-        setScrollPosition(newScrollPosition);
-        scrollRef.current.scrollTo({
-            left: newScrollPosition,
+        container.scrollBy({
+            left: direction === "left" ? -scrollStep : scrollStep,
             behavior: "smooth",
         });
     };
 
-    // Modal handlers
     const handleCardClick = (index: number) => {
         setSelectedCardIndex(index);
         setModalOpen(true);
@@ -100,17 +79,30 @@ export default function News() {
     };
 
     return (
-        <div className="news-container">
+        <section className="news-container" aria-labelledby="news-heading">
             <div className="news-wrapper">
-                <h2 className="news-heading">Aktuelnosti</h2>
+                <div className="news-heading-group">
+                    <span className="news-kicker">Saveti i novosti</span>
+                    <h2 className="news-heading" id="news-heading">Aktuelnosti</h2>
+                    <p>Praktične informacije, stručni saveti i najnovije teme iz poljoprivrede.</p>
+                </div>
 
-                <div className="card-container" ref={scrollRef}>
+                <div
+                    className="news-card-container"
+                    ref={scrollRef}
+                    onScroll={updateScrollControls}
+                >
                     {newsData.map((card, index) => (
-                        <div
-                            key={index}
-                            className="clickable-card-wrapper"
+                        <button
+                            type="button"
+                            key={card.title + card.date}
+                            className={`clickable-card-wrapper ${
+                                isXs && !loadMoreClicked && index > 1
+                                    ? "news-card-hidden"
+                                    : ""
+                            }`}
                             onClick={() => handleCardClick(index)}
-                            id={isXs && !loadMoreClicked && index > 1 ? 'hidden' : ""}
+                            aria-label={`Otvori vest: ${card.title}`}
                         >
                             <NewsCard
                                 image={card.image}
@@ -118,39 +110,43 @@ export default function News() {
                                 description={card.description}
                                 date={card.date}
                             />
-                        </div>
+                        </button>
                     ))}
                 </div>
 
-                {/* Show arrows only if there’s more than one card
-            and we’re not on extra-small screens (we hide arrows in CSS below).
-        */}
-                {newsData?.length > 1 && (
-                    <div className="navigation-arrows">
+                {newsData.length > 3 && !isXs && (
+                    <div className="news-navigation" aria-label="Navigacija kroz aktuelnosti">
                         <IconButton
                             onClick={() => handleScroll("left")}
-                            disabled={scrollPosition === 0}
-                            aria-label="Scroll Left"
-                            color="success"
+                            disabled={!canScrollLeft}
+                            aria-label="Prethodna vest"
+                            className="news-arrow-button"
                         >
                             <ArrowBackIos />
                         </IconButton>
+                        <span>Pregledajte aktuelnosti</span>
                         <IconButton
                             onClick={() => handleScroll("right")}
-                            disabled={scrollPosition >= maxScrollLeft}
-                            aria-label="Scroll Right"
-                            color="success"
+                            disabled={!canScrollRight}
+                            aria-label="Sledeća vest"
+                            className="news-arrow-button"
                         >
                             <ArrowForwardIos />
                         </IconButton>
                     </div>
                 )}
-                {isXs && !loadMoreClicked && <Button variant="contained" className="carousel-button" onClick={() => setLoadMoreClicked(true)}>
-                    Više informacija
-                </Button>}
+
+                {isXs && !loadMoreClicked && (
+                    <button
+                        type="button"
+                        className="news-load-more"
+                        onClick={() => setLoadMoreClicked(true)}
+                    >
+                        Prikaži sve aktuelnosti
+                    </button>
+                )}
             </div>
 
-            {/* Modal */}
             <Modal
                 open={modalOpen}
                 onClose={handleClose}
@@ -173,7 +169,7 @@ export default function News() {
                         p: 1,
                         outline: "none",
                         borderRadius: 2,
-                        textAlign: 'center',
+                        textAlign: "center",
                     }}
                 >
                     <IconButton
@@ -233,6 +229,6 @@ export default function News() {
                     )}
                 </Box>
             </Modal>
-        </div>
+        </section>
     );
 }

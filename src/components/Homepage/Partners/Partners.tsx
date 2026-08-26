@@ -1,58 +1,90 @@
-import './Partners.css';
-import img1 from '../../../assets/partneri/agromarket.jpeg';
-import img2 from '../../../assets/partneri/savacoop.png';
-import img3 from '../../../assets/partneri/gebi.svg';
-import img4 from '../../../assets/partneri/arum.jpeg';
-import img5 from '../../../assets/partneri/agrosava.png';
-import img6 from '../../../assets/partneri/basf.png';
-import img7 from '../../../assets/partneri/corteva.png';
-import img8 from '../../../assets/partneri/elixir.png';
-import img9 from '../../../assets/partneri/villager.png';
-import img10 from '../../../assets/partneri/konus.png';
+import { useState, type CSSProperties } from "react";
+import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+import "./Partners.css";
+import agromarket from "../../../assets/partneri/agromarket.jpeg";
+import savacoop from "../../../assets/partneri/savacoop.png";
+import gebi from "../../../assets/partneri/gebi.svg";
+import arum from "../../../assets/partneri/arum.jpeg";
+import agrosava from "../../../assets/partneri/agrosava.png";
+import basf from "../../../assets/partneri/basf.png";
+import corteva from "../../../assets/partneri/corteva.png";
+import elixir from "../../../assets/partneri/elixir.png";
+import villager from "../../../assets/partneri/villager.png";
+import konus from "../../../assets/partneri/konus.png";
+
+const partners = [
+  { src: agromarket, href: "https://www.agromarketsrbija.rs/srb", name: "Agromarket" },
+  { src: savacoop, href: "https://savacoop.rs/", name: "Savacoop", scale: 1.12 },
+  { src: gebi, href: "https://www.gebi.rs/", name: "Gebi", scale: 0.72 },
+  { src: arum, href: "https://www.arum.rs/", name: "Arum" },
+  { src: agrosava, href: "https://agrosava.com/", name: "Agrosava", scale: 0.78 },
+  { src: basf, href: "https://www.basf.com/rs/sr", name: "BASF" },
+  { src: corteva, href: "https://www.corteva.rs/", name: "Corteva", scale: 1.08 },
+  { src: elixir, href: "https://www.elixirgroup.rs/", name: "Elixir" },
+  { src: villager, href: "https://www.villager.rs/", name: "Villager", scale: 0.78 },
+  { src: konus, href: "https://www.konusglorija.rs/", name: "Konus Glorija" },
+];
+
+function PartnerSet({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <div className="partners-logo-set" aria-hidden={hidden || undefined}>
+      {partners.map((partner) => (
+        <a
+          className="partners-logo-card"
+          href={partner.href}
+          key={`${hidden ? "copy" : "original"}-${partner.name}`}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={hidden ? undefined : `Posetite sajt partnera ${partner.name}`}
+          tabIndex={hidden ? -1 : undefined}
+        >
+          <img
+            src={partner.src}
+            alt={hidden ? "" : partner.name}
+            style={{ "--partner-scale": partner.scale ?? 1 } as CSSProperties}
+          />
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export default function Partners() {
-  const logos = [
-    { src: img1, href: 'https://www.agromarketsrbija.rs/srb', alt: 'Agromarket' },
-    { src: img2, href: 'https://savacoop.rs/', alt: 'Savacoop', style: { transform: 'scale(1.3)' } },
-    { src: img3, href: 'https://www.gebi.rs/', alt: 'Gebi', style: { transform: 'scale(0.6)' } },
-    { src: img4, href: 'https://www.arum.rs/', alt: 'Arum' },
-    { src: img5, href: 'https://agrosava.com/', alt: 'Agrosava', style: { transform: 'scale(0.7)' } },
-    { src: img6, href: 'https://www.basf.com/rs/sr', alt: 'BASF' },
-    { src: img7, href: 'https://www.corteva.rs/', alt: 'Corteva', style: { transform: 'scale(1.2)' } },
-    { src: img8, href: 'https://www.elixirgroup.rs/', alt: 'Elixir' },
-    { src: img9, href: 'https://www.villager.rs/', alt: 'Villager', style: { transform: 'scale(0.7)' } },
-    { src: img10, href: 'https://www.konusglorija.rs/', alt: 'KonusGlorija' },
-    { src: img1, href: 'https://www.agromarketsrbija.rs/srb', alt: 'Agromarket' },
-    { src: img2, href: 'https://savacoop.rs/', alt: 'Savacoop', style: { transform: 'scale(1.3)' } },
-    { src: img3, href: 'https://www.gebi.rs/', alt: 'Gebi', style: { transform: 'scale(0.6)' } },
-    { src: img4, href: 'https://www.arum.rs/', alt: 'Arum' },
-    { src: img5, href: 'https://agrosava.com/', alt: 'Agrosava', style: { transform: 'scale(0.7)' } },
-    { src: img6, href: 'https://www.basf.com/rs/sr', alt: 'BASF' },
-    { src: img7, href: 'https://www.corteva.rs/', alt: 'Corteva', style: { transform: 'scale(1.2)' } },
-    { src: img8, href: 'https://www.elixirgroup.rs/', alt: 'Elixir' },
-    { src: img9, href: 'https://www.villager.rs/', alt: 'Villager', style: { transform: 'scale(0.7)' } },
-  ];
+  const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <div className="partners-container">
-      <div className="partners-heading">
-        <h2>Naši partneri</h2>
-      </div>
-      <div className="heading-border"></div>
-      <div className="partner-logo">
-        <div className="partner-logo-track">
-          {logos.map((logo, index) => (
-            <a
-              key={index}
-              href={logo.href}
-              className="partner-logo-item"
-              style={logo.style}
-            >
-              <img src={logo.src} alt={logo.alt} />
-            </a>
-          ))}
+    <section className="partners-section" aria-labelledby="partners-title">
+      <div className="partners-shell">
+        <div className="partners-heading">
+          <div>
+            <span className="partners-kicker">Pouzdana saradnja</span>
+            <h2 id="partners-title">Brendovi kojima verujemo</h2>
+          </div>
+          <p>
+            Biramo proverene proizvođače kako biste na jednom mestu dobili
+            kvalitetna i pouzdana rešenja.
+          </p>
+        </div>
+
+        <div className="partners-carousel-row">
+          <div className="partners-carousel">
+            <div className={`partners-track${isPaused ? " is-paused" : ""}`}>
+              <PartnerSet />
+              <PartnerSet hidden />
+            </div>
+          </div>
+          <button
+            type="button"
+            className="partners-motion-toggle"
+            onClick={() => setIsPaused((paused) => !paused)}
+            aria-label={isPaused ? "Pokreni karusel partnera" : "Pauziraj karusel partnera"}
+            aria-pressed={isPaused}
+          >
+            {isPaused ? <PlayArrowRoundedIcon /> : <PauseRoundedIcon />}
+          </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

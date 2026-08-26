@@ -2,9 +2,17 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Menu.css";
 import MenuIcon from "@mui/icons-material/Menu";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import logoMain from "../../assets/PlantCLogo.jpg";
+import logoMain from "../../assets/plant-centar-logo-horizontalni.svg";
+
+const assortmentPaths = [
+  "sredstva-za-zastitu-bilja",
+  "sredstva-za-ishranu-bilja",
+  "semenska-roba",
+  "pet-program-i-hrana-za-životinje",
+  "garden-program",
+];
 
 interface MenuProps {
   onNavigate: (path: string) => void; // Pass the handleNavigation function from App
@@ -17,6 +25,7 @@ export default function Menu({ onNavigate }: MenuProps) {
 
   // Grab the current location object from React Router
   const location = useLocation();
+  const assortmentSelected = assortmentPaths.includes(selected);
 
   useEffect(() => {
     // Whenever the pathname changes, parse it and update 'selected'
@@ -65,9 +74,12 @@ export default function Menu({ onNavigate }: MenuProps) {
           O nama
         </div>
         <div
-          className="menu-item"
+          className="menu-item menu-item--assortment"
+          id={assortmentSelected ? "selected" : ""}
           onMouseEnter={hoverIn}
           onMouseLeave={hoverOut}
+          aria-haspopup="true"
+          aria-expanded={categoriesHover}
         >
           Asortiman
           <KeyboardArrowDownIcon />
@@ -132,7 +144,7 @@ export default function Menu({ onNavigate }: MenuProps) {
           )}
         </div>
         <div
-          className="menu-item"
+          className="menu-item menu-item--shop"
           id={selected === "prodavnica" ? "selected" : ""}
           onClick={() => {
             if (selected !== "prodavnica") {
@@ -170,18 +182,43 @@ export default function Menu({ onNavigate }: MenuProps) {
       </div>
 
       {/* ---- Mobile Menu Icon ---- */}
-      <span onClick={toggleMenu} className="menu-icon">
-        {!menuClicked ? (
-          <MenuIcon />
-        ) : (
-          <ArrowBackIcon id={menuClicked ? "active" : "inactive"} />
-        )}
-        <img src={logoMain} alt="Logo" />
-      </span>
+      <div className="menu-icon">
+        <button
+          type="button"
+          className="mobile-menu-toggle"
+          onClick={toggleMenu}
+          aria-label={menuClicked ? "Zatvori meni" : "Otvori meni"}
+          aria-expanded={menuClicked}
+        >
+          {!menuClicked ? <MenuIcon /> : <CloseIcon />}
+        </button>
+        <button
+          type="button"
+          className="mobile-logo-button"
+          aria-label="Plant centar početna"
+          onClick={() => {
+            if (selected !== "pocetna") {
+              onNavigate("/pocetna");
+              setSelected("pocetna");
+            }
+            setMenuClicked(false);
+          }}
+        >
+          <img src={logoMain} alt="Plant centar" />
+        </button>
+        <span className="mobile-menu-balance" aria-hidden="true" />
+      </div>
 
       {/* ---- Mobile Menu Drawer ---- */}
       {menuClicked && (
-        <div className="small-screen-wrapper">
+        <>
+          <button
+            type="button"
+            className="menu-backdrop"
+            aria-label="Zatvori meni"
+            onClick={() => setMenuClicked(false)}
+          />
+          <nav className="small-screen-wrapper" aria-label="Mobilna navigacija">
           <div
             className="small-menu-item"
             id={selected === "pocetna" ? "selected" : ""}
@@ -210,7 +247,9 @@ export default function Menu({ onNavigate }: MenuProps) {
           </div>
           <div
             className="small-menu-item"
+            id={assortmentSelected ? "selected" : ""}
             onClick={() => setCategoriesHover((old) => !old)}
+            aria-expanded={categoriesHover}
           >
             Asortiman
             <KeyboardArrowDownIcon />
@@ -318,7 +357,8 @@ export default function Menu({ onNavigate }: MenuProps) {
           >
             Kontakt
           </div>
-        </div>
+          </nav>
+        </>
       )}
     </div>
   );
