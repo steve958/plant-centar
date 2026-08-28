@@ -3,8 +3,19 @@ import november from "../../../assets/news/november.jpg";
 import january from "../../../assets/news/january.jpg";
 import blueberry from "../../../assets/news/rezidba-borovnice.jpeg";
 
-export const newsData = [
+export type NewsItem = {
+    id: string;
+    image: string;
+    title: string;
+    description: string;
+    footer: string;
+    date: string;
+    externalUrl?: string;
+};
+
+export const newsData: NewsItem[] = [
     {
+        id: "rezidba-borovnice-2025",
         image: blueberry,
         title: "Značaj pravilne rezidbe borovnice",
         description:
@@ -13,15 +24,18 @@ export const newsData = [
         date: "02.02.2025.",
     },
     {
+        id: "agrosvet-specijal-2025",
         image: january,
         title: "Agrosvet časopis",
         description:
             "Na ovom linku možete pogledati novo izdanje časopisa agrosvet.",
         footer:
             "https://www.agromarketsrbija.rs/files/deals/Agrosvet_specijal_2025_web_.pdf",
+        externalUrl: "https://www.agromarketsrbija.rs/files/deals/Agrosvet_specijal_2025_web_.pdf",
         date: "25.01.2025.",
     },
     {
+        id: "zastita-voca-pred-zimu",
         image: winter,
         title: "Zaštita voćnih kultura pred zimu",
         description:
@@ -30,11 +44,13 @@ export const newsData = [
         date: "24.10.2024.",
     },
     {
+        id: "agrosvet-138",
         image: november,
         title: "Agrosvet časopis",
         description:
             "Na ovom linku možete pogledati novo izdanje časopisa agrosvet",
         footer: "https://www.agromarketsrbija.rs/files/deals/Agrosvet_138_web.pdf",
+        externalUrl: "https://www.agromarketsrbija.rs/files/deals/Agrosvet_138_web.pdf",
         date: "08.09.2024.",
     },
 ];

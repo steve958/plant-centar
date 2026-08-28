@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Local design/source packages used as implementation references only
+/new assets/
+/Plant centar - paket/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -5,9 +5,6 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import Company from "./components/Gallery/Company/Company";
 import Gallery from "./components/Gallery/Gallery";
 import Homepage from "./components/Homepage/Homepage";
-import AdminLogIn from "./components/WebShop/Admin/AdminLogIn/AdminLogIn";
-import AdminPanel from "./components/WebShop/Admin/AdminPanel/AdminPanel";
-import PrivateRoute from "./components/WebShop/Admin/PrivateRoute/PrivateRoute";
 import Cart from "./components/WebShop/ShopComponents/Cart/Cart";
 import Checkout from "./components/WebShop/ShopComponents/Checkout/Checkout";
 import Fruits from "./components/Gallery/Fruits/Fruits";
@@ -95,7 +92,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/admin',
-        element: <AdminLogIn />,
+        element: <Navigate to="/pocetna" replace />,
       },
       {
         path: '/korpa',
@@ -115,13 +112,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/admin/panel',
-        element: <PrivateRoute />, // Protect /admin/panel using PrivateRoute
-        children: [
-          {
-            path: '',
-            element: <AdminPanel />,
-          },
-        ],
+        element: <Navigate to="/pocetna" replace />,
       },
     ],
   },
