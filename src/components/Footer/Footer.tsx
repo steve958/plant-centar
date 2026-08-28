@@ -61,6 +61,7 @@ const Footer = () => {
             <Link to="/pocetna">Početna</Link>
             <Link to="/o-nama">O nama</Link>
             <Link to="/prodavnica">Prodavnica</Link>
+            <Link to="/partneri">Partneri</Link>
             <Link to="/galerija">Galerija</Link>
             <Link to="/kontakt">Kontakt</Link>
           </nav>

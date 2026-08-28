@@ -149,52 +149,64 @@
   margin: 18px 0 24px;
   line-height: 1.58;
 }
-.poster-slide--plant { background: #fbfaf5; }
+.poster-slide--plant {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(84, 193, 67, 0.1), transparent 26%),
+    #fbfaf5;
+}
 
-.plant-poster-mosaic {
+.plant-poster-concept {
   position: relative;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr 1.05fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 8px;
-  padding: 10px 10px 10px 0;
-  background: #173d2b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px clamp(54px, 7vw, 120px) 74px 28px;
+  background:
+    radial-gradient(circle at 54% 44%, rgba(84, 193, 67, 0.08), transparent 33%),
+    linear-gradient(145deg, #fff 0%, #fbfaf5 68%, #f1f6eb 100%);
   overflow: hidden;
 }
 
-.plant-poster-image { position: relative; overflow: hidden; }
-.plant-poster-image::after {
+.plant-poster-concept::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 45%, rgba(7, 30, 19, 0.32));
+  right: -9%;
+  bottom: -160px;
+  width: 82%;
+  height: 190px;
+  border-radius: 50% 0 0 0;
+  background: linear-gradient(115deg, #58bf42, #24753b);
+  transform: rotate(-3deg);
 }
-.plant-poster-image img { width: 100%; height: 100%; object-fit: cover; }
-.plant-poster-image--1 { grid-row: 1 / 3; }
-.plant-poster-image--2 { grid-column: 2; grid-row: 1; }
-.plant-poster-image--3 { grid-column: 2; grid-row: 2; }
-.plant-poster-image--4 { grid-column: 3; grid-row: 1; }
-.plant-poster-image--5 { grid-column: 3; grid-row: 2; }
+
+.plant-poster-mark {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: min(38vw, 500px);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 24px 32px rgba(29, 79, 46, 0.13));
+}
 
 .plant-poster-statement {
-  position: absolute;
-  right: clamp(24px, 4vw, 64px);
-  bottom: clamp(28px, 6vw, 72px);
+  position: relative;
   z-index: 2;
-  max-width: 350px;
-  padding: 18px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 16px;
-  color: #fff;
-  background: rgba(17, 56, 37, 0.75);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 20px 50px rgba(3, 22, 12, 0.2);
+  margin-top: 16px;
+  color: #626c64;
+  text-align: center;
 }
 
 .plant-poster-statement span,
 .plant-poster-statement strong { display: block; }
-.plant-poster-statement span { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; }
-.plant-poster-statement strong { margin-top: 5px; font-size: 1.08rem; }
+.plant-poster-statement span { font-size: clamp(0.9rem, 1.25vw, 1.08rem); }
+.plant-poster-statement strong {
+  margin-top: 4px;
+  color: #4baa3f;
+  font-size: clamp(1.05rem, 1.55vw, 1.35rem);
+  letter-spacing: 0.01em;
+}
 
 .poster-slide--greengo {
   background:
@@ -336,17 +348,29 @@
 
 .carousel-progress button.is-active { width: 28px; background: #fff; }
 
+@media (min-width: 1051px) {
+  .poster-slide--plant {
+    grid-template-columns: minmax(540px, 0.98fr) minmax(0, 1.02fr);
+  }
+
+  .poster-slide--plant .poster-copy {
+    padding-right: clamp(48px, 4vw, 72px);
+    padding-left: clamp(72px, 5.5vw, 100px);
+  }
+
+  .poster-slide--plant .poster-copy h1 {
+    font-size: clamp(3.2rem, 3.7vw, 4.15rem);
+  }
+}
+
 @media (max-width: 1050px) {
   .carousel-container { min-height: 650px; }
   .poster-slide { grid-template-columns: minmax(330px, 0.9fr) 1.1fr; }
   .poster-copy { padding: 62px 50px; }
+  .poster-slide--plant .poster-copy { padding-left: 76px; }
   .poster-copy::before { left: 50px; }
-  .plant-poster-mosaic { grid-template-columns: 1fr 1fr; }
-  .plant-poster-image--1 { grid-row: 1 / 3; }
-  .plant-poster-image--2 { grid-column: 2; grid-row: 1; }
-  .plant-poster-image--3 { grid-column: 2; grid-row: 2; }
-  .plant-poster-image--4,
-  .plant-poster-image--5 { display: none; }
+  .plant-poster-concept { padding-right: 42px; padding-left: 16px; }
+  .plant-poster-mark { width: min(47vw, 450px); }
   .greengo-products img:nth-child(3) { display: none; }
   .greengo-products img:nth-child(1),
   .greengo-products img:nth-child(2) { width: 45%; }
@@ -356,6 +380,7 @@
   .carousel-container { min-height: 760px; }
   .poster-slide { grid-template-columns: 1fr; grid-template-rows: minmax(355px, auto) 1fr; }
   .poster-copy { justify-content: flex-start; padding: 58px 54px 40px; }
+  .poster-slide--plant .poster-copy { padding-left: 54px; }
   .poster-copy::before { top: 34px; left: 54px; }
   .poster-copy h1,
   .poster-copy h2 { max-width: 620px; font-size: clamp(2.25rem, 9vw, 3.65rem); }
@@ -363,14 +388,9 @@
   .poster-brand-logo { margin-bottom: 16px; }
   .poster-brand-logo--greengo { height: 58px; }
   .poster-brand-logo--fortis { height: 46px; }
-  .plant-poster-mosaic { padding: 0; grid-template-columns: 1.15fr 1fr 1fr; grid-template-rows: 1fr; }
-  .plant-poster-image--1,
-  .plant-poster-image--2,
-  .plant-poster-image--3 { display: block; grid-row: 1; }
-  .plant-poster-image--1 { grid-column: 1; }
-  .plant-poster-image--2 { grid-column: 2; }
-  .plant-poster-image--3 { grid-column: 3; }
-  .plant-poster-statement { right: 24px; bottom: 40px; }
+  .plant-poster-concept { min-height: 405px; padding: 24px 54px 54px; }
+  .plant-poster-mark { width: min(58vw, 350px); }
+  .plant-poster-statement { margin-top: 8px; }
   .greengo-products { padding: 12px 55px 38px; }
   .greengo-products img:nth-child(1),
   .greengo-products img:nth-child(2) { width: min(40%, 230px); height: 96%; }
@@ -382,7 +402,7 @@
 }
 
 @media (max-width: 520px) {
-  .carousel-container { min-height: 720px; }
+  .carousel-container { min-height: 770px; }
   .poster-slide { grid-template-rows: minmax(410px, auto) 1fr; }
   .poster-copy { padding: 52px 38px 34px; }
   .poster-copy::before { top: 28px; left: 38px; }
@@ -391,13 +411,18 @@
   .poster-copy p { font-size: 0.88rem; line-height: 1.58; }
   .poster-copy > a { padding: 11px 15px; font-size: 0.67rem; }
   .poster-brand-logo { max-width: 78%; }
-  .plant-poster-statement { display: none; }
+  .poster-slide--plant { grid-template-rows: minmax(410px, auto) 1fr; }
+  .plant-poster-concept { min-height: 360px; padding: 18px 34px 48px; }
+  .plant-poster-concept::after { bottom: -205px; height: 220px; }
+  .plant-poster-mark { width: min(62vw, 240px); }
+  .plant-poster-statement span { font-size: 0.82rem; }
+  .plant-poster-statement strong { font-size: 1rem; }
   .greengo-products { padding: 8px 34px 34px; }
   .greengo-products img:nth-child(1),
   .greengo-products img:nth-child(2) { width: 46%; height: 88%; border-radius: 14px; }
   .hansa-products { padding: 6px 34px 42px; }
   .hansa-products > div { height: 78%; }
-  .carousel-progress { bottom: 14px; }
+  .carousel-progress { right: 14px; bottom: 14px; left: auto; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

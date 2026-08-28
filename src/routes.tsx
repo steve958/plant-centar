@@ -21,6 +21,7 @@ import DomesticAnimals from "./components/Categories/DomesticAnimals/DomesticAni
 import PetFood from "./components/Categories/PetFood/PetFood";
 import Tools from "./components/Categories/Tools/Tools";
 import ShopIdle from "./components/WebShop/ShopComponents/ShopIdle";
+import TrustedPartners from "./components/TrustedPartners/TrustedPartners";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
         path: '/prodavnica',
         // element: <WebShop />,
         element: <ShopIdle />
+      },
+      {
+        path: '/partneri',
+        element: <TrustedPartners />,
       },
       {
         path: '/admin',

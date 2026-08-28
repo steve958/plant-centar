@@ -157,6 +157,18 @@ export default function Menu({ onNavigate }: MenuProps) {
         </div>
         <div
           className="menu-item"
+          id={selected === "partneri" ? "selected" : ""}
+          onClick={() => {
+            if (selected !== "partneri") {
+              onNavigate("/partneri");
+              setSelected("partneri");
+            }
+          }}
+        >
+          Partneri
+        </div>
+        <div
+          className="menu-item"
           id={selected === "galerija" ? "selected" : ""}
           onClick={() => {
             if (selected !== "galerija") {
@@ -330,6 +342,19 @@ export default function Menu({ onNavigate }: MenuProps) {
             }}
           >
             Prodavnica
+          </div>
+          <div
+            className="small-menu-item"
+            id={selected === "partneri" ? "selected" : ""}
+            onClick={() => {
+              if (selected !== "partneri") {
+                onNavigate("/partneri");
+                setSelected("partneri");
+              }
+              setMenuClicked(false);
+            }}
+          >
+            Partneri
           </div>
           <div
             className="small-menu-item"

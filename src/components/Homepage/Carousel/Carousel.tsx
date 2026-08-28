@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
-import crops from "../../../assets/crops.jpg";
 import blueberry from "../../../assets/blueberry.jpg";
-import dogs from "../../../assets/psi.jpg";
-import sustainable from "../../../assets/sustain.jpg";
-import sustainableField from "../../../assets/odrzivo2.jpg";
+import greenhouse from "../../../assets/vegetables/zasad1.jpg";
+import seedlings from "../../../assets/rasad.jpg";
 import greenGoLogo from "../../../assets/campaign/greengo-logo.png";
 import greenGoPrime from "../../../assets/campaign/greengo-prime.jpg";
 import greenGoPower from "../../../assets/campaign/greengo-power.jpg";
@@ -69,14 +67,54 @@ export default function Carousel() {
             Upoznajte Plant Centar <ArrowOutwardRoundedIcon aria-hidden="true" />
           </Link>
         </div>
-        <div className="plant-poster-mosaic" aria-hidden="true">
-          {[sustainableField, crops, blueberry, sustainable, dogs].map((image, index) => (
-            <div className={`plant-poster-image plant-poster-image--${index + 1}`} key={image}>
-              <img src={image} alt="" />
-            </div>
-          ))}
+        <div className="plant-poster-concept" aria-hidden="true">
+          <svg
+            className="plant-poster-mark"
+            viewBox="20 5 380 400"
+            xmlns="http://www.w3.org/2000/svg"
+            focusable="false"
+          >
+            <defs>
+              <clipPath id="poster-leaf-top" clipPathUnits="userSpaceOnUse">
+                <path d="M210 18C151 82 151 157 210 222C269 157 269 82 210 18Z" />
+              </clipPath>
+              <clipPath id="poster-leaf-left" clipPathUnits="userSpaceOnUse">
+                <path d="M35 178C47 281 110 350 203 389C211 288 155 211 35 178Z" />
+              </clipPath>
+              <clipPath id="poster-leaf-right" clipPathUnits="userSpaceOnUse">
+                <path d="M385 165C277 177 217 249 211 350C308 325 375 261 385 165Z" />
+              </clipPath>
+            </defs>
+            <image
+              href={seedlings}
+              x="145"
+              y="10"
+              width="130"
+              height="220"
+              preserveAspectRatio="xMidYMid slice"
+              clipPath="url(#poster-leaf-top)"
+            />
+            <image
+              href={greenhouse}
+              x="28"
+              y="170"
+              width="185"
+              height="225"
+              preserveAspectRatio="xMidYMid slice"
+              clipPath="url(#poster-leaf-left)"
+            />
+            <image
+              href={blueberry}
+              x="205"
+              y="155"
+              width="190"
+              height="205"
+              preserveAspectRatio="xMidYMid slice"
+              clipPath="url(#poster-leaf-right)"
+            />
+          </svg>
           <div className="plant-poster-statement">
-            <span>Partner u poljoprivredi.</span>
+            <span>Partner u poljoprivredi</span>
             <strong>Danas. Sutra. Zajedno.</strong>
           </div>
         </div>
