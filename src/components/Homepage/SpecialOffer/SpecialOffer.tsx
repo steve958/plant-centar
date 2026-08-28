@@ -11,6 +11,8 @@ export default function SpecialOffer() {
     const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
+    const interactionPausedRef = useRef(false);
+    const lastInteractionRef = useRef(0);
 
     const updateScrollControls = () => {
         const container = scrollRef.current;
@@ -38,14 +40,40 @@ export default function SpecialOffer() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    useEffect(() => {
+        const autoScroll = window.setInterval(() => {
+            const container = scrollRef.current;
+            if (
+                !container ||
+                modalOpen ||
+                interactionPausedRef.current ||
+                Date.now() - lastInteractionRef.current < 4500
+            ) return;
+
+            const firstCard = container.querySelector(
+                ".offer-card-button"
+            ) as HTMLElement | null;
+            const scrollStep = (firstCard?.offsetWidth ?? container.clientWidth) + 18;
+            const reachedEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 8;
+
+            container.scrollTo({
+                left: reachedEnd ? 0 : container.scrollLeft + scrollStep,
+                behavior: "smooth",
+            });
+        }, 5200);
+
+        return () => window.clearInterval(autoScroll);
+    }, [modalOpen]);
+
     const handleScroll = (direction: "left" | "right") => {
         const container = scrollRef.current;
         if (!container) return;
+        lastInteractionRef.current = Date.now();
 
         const firstCard = container.querySelector(
             ".offer-card-button"
         ) as HTMLElement | null;
-        const scrollStep = (firstCard?.offsetWidth ?? container.clientWidth) + 24;
+        const scrollStep = (firstCard?.offsetWidth ?? container.clientWidth) + 18;
 
         container.scrollBy({
             left: direction === "left" ? -scrollStep : scrollStep,
@@ -82,6 +110,14 @@ export default function SpecialOffer() {
                     className="offer-card-container"
                     ref={scrollRef}
                     onScroll={updateScrollControls}
+                    onMouseEnter={() => { interactionPausedRef.current = true; }}
+                    onMouseLeave={() => { interactionPausedRef.current = false; }}
+                    onFocus={() => { interactionPausedRef.current = true; }}
+                    onBlur={(event) => {
+                        if (!event.currentTarget.contains(event.relatedTarget)) {
+                            interactionPausedRef.current = false;
+                        }
+                    }}
                 >
                     {offerData.map((card, index) => (
                         <button
@@ -101,7 +137,7 @@ export default function SpecialOffer() {
                 </div>
 
                 <div className="offer-navigation" aria-label="Navigacija kroz proizvode">
-                    <span>Pregledajte preporuke</span>
+                    <span>Automatski pregled · zadržite pokazivač za pauzu</span>
                     <IconButton
                         onClick={() => handleScroll("left")}
                         disabled={!canScrollLeft}

@@ -32,7 +32,7 @@ export default function Header() {
     return (
         <div className="header-container">
             <div className="header-wrapper">
-                <p className="moto">Zajedno do uspeha</p>
+                <p className="moto">ZNANJE.POSVEĆENOST.USPEH</p>
                 <button
                     type="button"
                     className="address-wrapper"

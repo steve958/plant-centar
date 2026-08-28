@@ -12,6 +12,10 @@ import corteva from "../../../assets/partneri/corteva.png";
 import elixir from "../../../assets/partneri/elixir.png";
 import villager from "../../../assets/partneri/villager.png";
 import konus from "../../../assets/partneri/konus.png";
+import fertico from "../../../assets/campaign/fertico-logo.webp";
+import agriFortis from "../../../assets/campaign/agri-fortis-logo-white.svg";
+import agrimatco from "../../../assets/campaign/agrimatco-logo.svg";
+import galenika from "../../../assets/partneri/galenika.png";
 
 const partners = [
   { src: agromarket, href: "https://www.agromarketsrbija.rs/srb", name: "Agromarket" },
@@ -24,6 +28,10 @@ const partners = [
   { src: elixir, href: "https://www.elixirgroup.rs/", name: "Elixir" },
   { src: villager, href: "https://www.villager.rs/", name: "Villager", scale: 0.78 },
   { src: konus, href: "https://www.konusglorija.rs/", name: "Konus Glorija" },
+  { src: fertico, href: "https://fertico.rs/sr/", name: "Fertico", scale: 0.86 },
+  { src: agriFortis, href: "https://agrifortis.rs/", name: "Agri Fortis", scale: 0.82, theme: "dark" },
+  { src: agrimatco, href: "https://www.agrimatco.rs/", name: "Agrimatco", scale: 0.88 },
+  { src: galenika, href: "https://www.fitofarmacija.rs/", name: "Galenika Fitofarmacija", scale: 0.92 },
 ];
 
 function PartnerSet({ hidden = false }: { hidden?: boolean }) {
@@ -31,7 +39,7 @@ function PartnerSet({ hidden = false }: { hidden?: boolean }) {
     <div className="partners-logo-set" aria-hidden={hidden || undefined}>
       {partners.map((partner) => (
         <a
-          className="partners-logo-card"
+          className={`partners-logo-card${partner.theme === "dark" ? " partners-logo-card--dark" : ""}`}
           href={partner.href}
           key={`${hidden ? "copy" : "original"}-${partner.name}`}
           target="_blank"

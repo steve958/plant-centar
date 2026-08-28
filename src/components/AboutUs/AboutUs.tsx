@@ -4,7 +4,7 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Link } from "react-router-dom";
 import avatar from "../../assets/avatar.png";
 import businessCard from "../../assets/vizitka.jpg";
-import sustainImage from "../../assets/sustain.jpg";
+import storeImage from "../../assets/campaign/store-about.webp";
 import "./AboutUs.css";
 
 const team = [
@@ -15,12 +15,12 @@ const team = [
     hasDetails: true,
   },
   {
-    name: "Jelena Marinković",
+    name: "Slađana Čačić",
     education: "dipl. inž. zaštite bilja",
     role: "Agronom — stručni konsultant",
   },
   {
-    name: "Slađana Čačić",
+    name: "Đorđe Petrović",
     education: "dipl. inž. zaštite bilja",
     role: "Agronom — stručni konsultant",
   },
@@ -60,7 +60,7 @@ export default function AboutUs() {
             </Link>
           </div>
           <div className="about-hero__image">
-            <img src={sustainImage} alt="Održiva poljoprivredna proizvodnja" />
+            <img src={storeImage} alt="Prodajni centar kompanije Plant Centar" />
             <div className="about-hero__note">
               <strong>Stručna podrška</strong>
               <span>od izbora proizvoda do primene</span>

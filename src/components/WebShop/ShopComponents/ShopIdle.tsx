@@ -10,7 +10,7 @@ export default function ShopIdle() {
       <div className="shop-idle__shell">
         <div className="shop-idle__content">
           <span className="shop-idle__kicker">
-            <StorefrontOutlinedIcon aria-hidden="true" /> Plant shop
+            <StorefrontOutlinedIcon aria-hidden="true" /> Prodavnica
           </span>
           <h1>Online prodavnica uskoro stiže.</h1>
           <p>

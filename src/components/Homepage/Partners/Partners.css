@@ -114,6 +114,11 @@
   box-shadow: 0 16px 34px rgba(31, 63, 42, 0.12);
 }
 
+.partners-logo-card--dark {
+  border-color: rgba(84, 193, 67, 0.16);
+  background: linear-gradient(145deg, #153a29, #224e35);
+}
+
 .partners-logo-card img {
   display: block;
   width: auto;

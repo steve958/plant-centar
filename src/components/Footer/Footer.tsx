@@ -60,7 +60,7 @@ const Footer = () => {
             <h3>Navigacija</h3>
             <Link to="/pocetna">Početna</Link>
             <Link to="/o-nama">O nama</Link>
-            <Link to="/prodavnica">Plant shop</Link>
+            <Link to="/prodavnica">Prodavnica</Link>
             <Link to="/galerija">Galerija</Link>
             <Link to="/kontakt">Kontakt</Link>
           </nav>
@@ -88,7 +88,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>© {currentYear} Plant Centar. Sva prava zadržana.</p>
-          <span>Zajedno do uspeha.</span>
+          <span>Znanje. Posvećenost. Uspeh.</span>
         </div>
       </div>
     </footer>

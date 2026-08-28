@@ -153,7 +153,7 @@ export default function Menu({ onNavigate }: MenuProps) {
             }
           }}
         >
-          Plant shop
+          Prodavnica
         </div>
         <div
           className="menu-item"
@@ -329,7 +329,7 @@ export default function Menu({ onNavigate }: MenuProps) {
               setMenuClicked(false);
             }}
           >
-            Plant shop
+            Prodavnica
           </div>
           <div
             className="small-menu-item"

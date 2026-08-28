@@ -1,154 +1,161 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import crops from "../../../assets/crops.jpg";
 import blueberry from "../../../assets/blueberry.jpg";
-import "./Carousel.css";
-import Button from "@mui/material/Button";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import dogs from "../../../assets/psi.jpg";
 import sustainable from "../../../assets/sustain.jpg";
-import sustainable1 from "../../../assets/odrzivo2.jpg";
+import sustainableField from "../../../assets/odrzivo2.jpg";
+import greenGoLogo from "../../../assets/campaign/greengo-logo.png";
+import greenGoPrime from "../../../assets/campaign/greengo-prime.jpg";
+import greenGoPower from "../../../assets/campaign/greengo-power.jpg";
+import greenGoMegaField from "../../../assets/campaign/greengo-mega-field.jpg";
+import agriFortisLogo from "../../../assets/campaign/agri-fortis-logo-white.svg";
+import hansaForestry from "../../../assets/campaign/hansa-forestry.avif";
+import hansaHobby from "../../../assets/campaign/hansa-hobi.avif";
+import "./Carousel.css";
+
+const slideCount = 3;
 
 export default function Carousel() {
-  const carousel = [
-    {
-      image: sustainable1,
-      heading: "Tehnologija gajenja bilja",
-      moreInfo:
-        "Savremena poljoprivreda zahteva i savremena tehnološka rešenja gajenja bilja. Novi hibridi i sorte prilagođeni savremenim vremenskim uticajima predstavljaju polaznu tačku, dok novija rešenja u oblastima zaštite i ishrane bilja nadopunjuju čitavu tehnologiju u cilju dobijanja maksimalnog potencijala gajenih biljaka.",
-    },
-    {
-      image: crops,
-      heading: "Priroda i zemljište",
-      moreInfo:
-        "Priroda predstavlja biljni i životinjski svet koji nas okružuje, što ne bi bilo moguće bez zemljišta koje predstavlja naš najvredniji resurs. Pravilna manipulacija zemljištem je ključna u održivosti poljoprivrednih površina za naredne generacije i svakako oblast kojoj je potreban stručan pristup.",
-    },
-    {
-      image: blueberry,
-      heading: "Intenzivni uzgoj voća",
-      moreInfo:
-        "U našoj zemlji poslednih godina zastupljena je ekspanzija useva i zasada po najnovijim konrolisanim sistemima gajenja. Borovnica se pokazala kao pionir i kao kultura koja je postala naš svojevrsni brend, dok se u tom pravcu ide i u gajenju ostalih kultura poput jagode i maline, a takođe i raznih povrtarskih kultura. Poznavanje fiziologije i potreba u gajenju ovih kultura predstavlja iskorak u budućnost poljoprivrede i oblast gde se mi kao kompanija uspešno pronalazimo.",
-    },
-    {
-      image: sustainable,
-      heading: "Zaštita životne sredine",
-      moreInfo:
-        "Svedoci smo sve izraženijih klimatskih promena prethodnu deceniju, što svakao utiče na život gajenih biljaka, kao i ostalog živog sveta. Promenom pristupa u svim oblastima života a naravno i u poljoprivrednoj proizvodnji možemo uticati na smanjenje štetnih uticaja. Upotrebom ekoloških preparata, doziranom primenom pesticida i đubriva kao i zbrinjavanjem prazne ambalaže trudimo se da doprinesemo ublažavanju ovog globalnog problema, na kom je potrebno još više i udruženo raditi.",
-    },
-    {
-      image: dogs,
-      heading: "Briga, ishrana i oprema za životinje",
-      moreInfo:
-        "Gajenje životinja i prilagođavanje raznoraznim potrebama zastupljeno je od samog nastanka civilizacije, a takođe i briga o njima. Kvalitetna hrana i oprema, danas predstavljaju glavne preduslove za održavanje životinja zdravim i srećnim bez obzira da li ih gajili za profesionalnu potrebu ili lično zadovoljstvo u druženju sa njima.",
-    },
-  ];
-
-  const [selectedItem, setSelectedItem] = useState<number>(0);
-  const [showText, setShowText] = useState<boolean>(false);
-  const [moreInfoClicked, setMoreInfoClicked] = useState<boolean>(false);
-
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    if (!moreInfoClicked) {
-      startCarousel();
-    }
-    return () => terminateInterval();
-  }, [moreInfoClicked]);
-
-  useEffect(() => {
-    showTextTimeout();
-    return () => clearShowTextTimeout();
-  }, [selectedItem]);
-
-  const startCarousel = () => {
-    intervalRef.current = setInterval(() => {
-      changeSelectedItem(1);
-      setShowText(false);
-    }, 10000);
-  };
-
-  const terminateInterval = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
-  const showTextTimeout = () => {
-    timeoutRef.current = setTimeout(() => {
-      setShowText(true);
-    }, 2000);
-  };
-
-  const clearShowTextTimeout = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-  };
-
-  const moreInfo = () => {
-    setMoreInfoClicked(true);
-    setShowText(false);
-    terminateInterval();
-
-    // Reset moreInfoClicked after 15 seconds
-    setTimeout(() => {
-      setMoreInfoClicked(false);
-      startCarousel(); // Restart carousel after 15 seconds
-    }, 15000);
-  };
+  const [selectedItem, setSelectedItem] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const changeSelectedItem = (direction: number) => {
-    setSelectedItem(
-      (prevSelectedItem) =>
-        (prevSelectedItem + direction + carousel.length) % carousel.length
-    );
+    setSelectedItem((current) => (current + direction + slideCount) % slideCount);
   };
 
-  // New function to handle arrow clicks
-  const handleArrowClick = (direction: number) => {
-    terminateInterval(); // Clear existing interval
-    changeSelectedItem(direction); // Change selected item
-    setShowText(false); // Reset showText
-    if (!moreInfoClicked) {
-      startCarousel(); // Restart interval if moreInfoClicked is false
-    }
+  useEffect(() => {
+    if (isPaused) return;
+
+    intervalRef.current = setInterval(() => changeSelectedItem(1), 9000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused]);
+
+  const selectSlide = (index: number) => {
+    setSelectedItem(index);
+    if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
   return (
-    <div className="carousel-container">
-      {carousel.map((item, index) => (
-        <img
-          key={index}
-          src={item.image}
-          alt={item.heading}
-          className={index === selectedItem ? "active" : "inactive"}
-        />
-      ))}
-      <ArrowBackIosNewIcon
-        className="carousel-arrow-left"
-        onClick={() => handleArrowClick(-1)}
-      />
-      <ArrowForwardIosIcon
-        className="carousel-arrow-right"
-        onClick={() => handleArrowClick(1)}
-      />
-      {showText && !moreInfoClicked && (
-        <div className="carousel-item">
-          <p className="carousel-heading">{carousel[selectedItem].heading}</p>
-          <Button variant="contained" className="carousel-button" onClick={moreInfo}>
-            Više informacija
-          </Button>
+    <section
+      className="carousel-container"
+      aria-roledescription="karusel"
+      aria-label="Izdvajamo iz Plant Centra"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false);
+      }}
+    >
+      <article
+        className={`poster-slide poster-slide--plant${selectedItem === 0 ? " is-active" : ""}`}
+        aria-hidden={selectedItem !== 0}
+      >
+        <div className="poster-copy poster-copy--dark">
+          <span className="poster-eyebrow">Sve što proizvodnja traži</span>
+          <h1>Znanje koje raste zajedno sa vašim usevima.</h1>
+          <p>
+            Ishrana i zaštita bilja, semenska roba, garden i pet program — uz
+            stručnu podršku na jednom mestu.
+          </p>
+          <Link to="/o-nama" tabIndex={selectedItem === 0 ? 0 : -1}>
+            Upoznajte Plant Centar <ArrowOutwardRoundedIcon aria-hidden="true" />
+          </Link>
         </div>
-      )}
-      {moreInfoClicked && (
-        <div className="more-info-text">
-          <p>{carousel[selectedItem].moreInfo}</p>
+        <div className="plant-poster-mosaic" aria-hidden="true">
+          {[sustainableField, crops, blueberry, sustainable, dogs].map((image, index) => (
+            <div className={`plant-poster-image plant-poster-image--${index + 1}`} key={image}>
+              <img src={image} alt="" />
+            </div>
+          ))}
+          <div className="plant-poster-statement">
+            <span>Partner u poljoprivredi.</span>
+            <strong>Danas. Sutra. Zajedno.</strong>
+          </div>
         </div>
-      )}
-    </div>
+      </article>
+
+      <article
+        className={`poster-slide poster-slide--greengo${selectedItem === 1 ? " is-active" : ""}`}
+        aria-hidden={selectedItem !== 1}
+      >
+        <div className="poster-copy poster-copy--light">
+          <img className="poster-brand-logo poster-brand-logo--greengo" src={greenGoLogo} alt="GreenGo" />
+          <span className="poster-eyebrow">Regionalni distributer</span>
+          <h2>Kompletan program ishrane bilja.</h2>
+          <p>
+            Kristalna, praškasta i tečna rešenja za snažan početak, stabilan
+            razvoj i kvalitetan završetak proizvodnje.
+          </p>
+          <Link to="/sredstva-za-ishranu-bilja" tabIndex={selectedItem === 1 ? 0 : -1}>
+            Istražite program <ArrowOutwardRoundedIcon aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="greengo-products" aria-label="GreenGo Prime, Power i Mega Field">
+          <img src={greenGoPrime} alt="GreenGo Prime" />
+          <img src={greenGoPower} alt="GreenGo Power" />
+          <img src={greenGoMegaField} alt="GreenGo Mega Field" />
+        </div>
+      </article>
+
+      <article
+        className={`poster-slide poster-slide--hansa${selectedItem === 2 ? " is-active" : ""}`}
+        aria-hidden={selectedItem !== 2}
+      >
+        <div className="poster-copy poster-copy--light">
+          <img className="poster-brand-logo poster-brand-logo--fortis" src={agriFortisLogo} alt="Agri Fortis" />
+          <span className="poster-eyebrow">Pouzdana distribucija</span>
+          <h2>Agri Fortis ishrana i Hansa Forestry supstrati.</h2>
+          <p>
+            Profesionalni supstrati za setvu i sadnju, uz praktična pakovanja za
+            hobi proizvođače i svakodnevnu negu biljaka.
+          </p>
+          <Link to="/garden-program" tabIndex={selectedItem === 2 ? 0 : -1}>
+            Pogledajte ponudu <ArrowOutwardRoundedIcon aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="hansa-products" aria-label="Hansa Forestry profesionalni i hobi supstrati">
+          <div><img src={hansaForestry} alt="Hansa Forestry profesionalni supstrati" /></div>
+          <div><img src={hansaHobby} alt="Fortis i Hansa hobi supstrati" /></div>
+        </div>
+      </article>
+
+      <button
+        type="button"
+        className="carousel-arrow carousel-arrow--left"
+        onClick={() => changeSelectedItem(-1)}
+        aria-label="Prethodni poster"
+      >
+        <ArrowBackRoundedIcon />
+      </button>
+      <button
+        type="button"
+        className="carousel-arrow carousel-arrow--right"
+        onClick={() => changeSelectedItem(1)}
+        aria-label="Sledeći poster"
+      >
+        <ArrowForwardRoundedIcon />
+      </button>
+
+      <div className="carousel-progress" aria-label="Izaberite poster">
+        {Array.from({ length: slideCount }, (_, index) => (
+          <button
+            type="button"
+            className={selectedItem === index ? "is-active" : ""}
+            onClick={() => selectSlide(index)}
+            aria-label={`Poster ${index + 1}`}
+            aria-current={selectedItem === index ? "true" : undefined}
+            key={index}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
