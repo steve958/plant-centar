@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import './News.css';
 import { newsData, NewsItem } from './newsData';
@@ -46,7 +46,9 @@ export default function News() {
                         sortDate: date,
                     };
                 }).sort((first, second) => second.sortDate.getTime() - first.sortDate.getTime());
-                setCards(remoteNews.map(({ sortDate: _sortDate, ...item }) => item));
+                setCards(remoteNews.map(({ id, image, title, description, footer, externalUrl, date }) => ({
+                    id, image, title, description, footer, externalUrl, date,
+                })));
             } catch (error) {
                 console.info('Shared news is not available yet; preserved local news remains visible.', error);
             }
@@ -55,19 +57,29 @@ export default function News() {
         return () => { active = false; };
     }, []);
 
-    const updateScrollControls = () => {
+    const updateScrollControls = useCallback(() => {
         const container = scrollRef.current;
         if (!container) return;
-        setCanScrollLeft(container.scrollLeft > 2);
+        setCanScrollLeft(container.scrollLeft > 8);
         setCanScrollRight(container.scrollLeft + container.clientWidth < container.scrollWidth - 2);
-    };
+    }, []);
+
+    useLayoutEffect(() => {
+        const container = scrollRef.current;
+        if (!container || isXs) return;
+
+        container.scrollTo({ left: 0, behavior: 'auto' });
+        setCanScrollLeft(false);
+        const frame = window.requestAnimationFrame(updateScrollControls);
+        return () => window.cancelAnimationFrame(frame);
+    }, [cards, isXs, updateScrollControls]);
 
     useEffect(() => {
         const handleResize = () => updateScrollControls();
         handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    }, [isXs, cards]);
+    }, [isXs, cards, updateScrollControls]);
 
     const handleScroll = (direction: 'left' | 'right') => {
         const container = scrollRef.current;
