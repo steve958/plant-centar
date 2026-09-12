@@ -4,16 +4,49 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Logo from "./components/Logo/Logo";
 import Menu from "./components/Menu/Menu";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Loader from "./components/Loader/Loader";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import homepageBanner from "./assets/1788104161408-transparent.png";
+
+const minimumLoaderDuration = 500;
+const maximumImageWait = 5000;
+
+function preloadImage(src: string) {
+  return new Promise<void>((resolve) => {
+    const image = new Image();
+    let isSettled = false;
+
+    const finish = () => {
+      if (isSettled) return;
+      isSettled = true;
+      window.clearTimeout(timeout);
+      resolve();
+    };
+
+    const decode = () => {
+      if (typeof image.decode === "function") {
+        image.decode().catch(() => undefined).finally(finish);
+        return;
+      }
+      finish();
+    };
+
+    const timeout = window.setTimeout(finish, maximumImageWait);
+    image.onload = decode;
+    image.onerror = finish;
+    image.src = src;
+
+    if (image.complete) decode();
+  });
+}
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation(); // Track current location
 
-  const [loader, setLoader] = useState<boolean>(false);
+  const [loader, setLoader] = useState<boolean>(true);
 
   // Function to navigate with loader invoked before URL change
   const handleNavigation = (path: string) => {
@@ -23,9 +56,10 @@ function App() {
     }, 200);  // Slight delay to ensure smooth transition
   };
 
-  // Trigger loader and scroll to top on route change by listening to location changes
-  useEffect(() => {
-    setLoader(true);  // Show loader as soon as location changes
+  // Start before paint and wait for the homepage hero to decode before revealing it.
+  useLayoutEffect(() => {
+    let isCancelled = false;
+    setLoader(true);
 
     // Scroll to top smoothly
     window.scrollTo({
@@ -33,12 +67,21 @@ function App() {
       behavior: 'smooth',
     });
 
-    const timer = setTimeout(() => {
-      setLoader(false);  // Hide loader after a short delay
-    }, 500);
+    const minimumDelay = new Promise<void>((resolve) => {
+      window.setTimeout(resolve, minimumLoaderDuration);
+    });
+    const routeAssetsReady = location.pathname === "/pocetna"
+      ? preloadImage(homepageBanner)
+      : Promise.resolve();
 
-    return () => clearTimeout(timer);  // Cleanup timer on component unmount or location change
-  }, [location.pathname]);  // Depend on the current path
+    Promise.all([minimumDelay, routeAssetsReady]).then(() => {
+      if (!isCancelled) setLoader(false);
+    });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [location.pathname]);
 
   return (
     <div className="container-fluid">
