@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
-import blueberry from "../../../assets/blueberry.jpg";
-import greenhouse from "../../../assets/vegetables/zasad1.jpg";
-import seedlings from "../../../assets/rasad.jpg";
+import mainBanner from "../../../assets/1788104161408.jpg";
 import greenGoLogo from "../../../assets/campaign/greengo-logo.png";
-import greenGoPrime from "../../../assets/campaign/greengo-prime.jpg";
-import greenGoPower from "../../../assets/campaign/greengo-power.jpg";
-import greenGoMegaField from "../../../assets/campaign/greengo-mega-field.jpg";
+import greenGoBuild from "../../../assets/green/GreenGo-BUILD-web.jpg";
+import greenGoForm from "../../../assets/green/GreenGo-FORM jpg-web.jpg";
+import greenGoMegaField from "../../../assets/green/GreenGo-MEGA-FIELD-5l-frontal-web.jpg";
+import greenGoMicroOneLiter from "../../../assets/green/GreenGo-MICRO-2026-1L jpg-web.jpg";
+import greenGoMicroFiveLiter from "../../../assets/green/GreenGo-MICRO-5l-frontal-web.jpg";
 import agriFortisLogo from "../../../assets/campaign/agri-fortis-logo-white.svg";
 import hansaForestry from "../../../assets/campaign/hansa-forestry.avif";
 import hansaHobby from "../../../assets/campaign/hansa-hobi.avif";
@@ -67,56 +67,12 @@ export default function Carousel() {
             Upoznajte Plant Centar <ArrowOutwardRoundedIcon aria-hidden="true" />
           </Link>
         </div>
-        <div className="plant-poster-concept" aria-hidden="true">
-          <svg
-            className="plant-poster-mark"
-            viewBox="20 5 380 400"
-            xmlns="http://www.w3.org/2000/svg"
-            focusable="false"
-          >
-            <defs>
-              <clipPath id="poster-leaf-top" clipPathUnits="userSpaceOnUse">
-                <path d="M210 18C151 82 151 157 210 222C269 157 269 82 210 18Z" />
-              </clipPath>
-              <clipPath id="poster-leaf-left" clipPathUnits="userSpaceOnUse">
-                <path d="M35 178C47 281 110 350 203 389C211 288 155 211 35 178Z" />
-              </clipPath>
-              <clipPath id="poster-leaf-right" clipPathUnits="userSpaceOnUse">
-                <path d="M385 165C277 177 217 249 211 350C308 325 375 261 385 165Z" />
-              </clipPath>
-            </defs>
-            <image
-              href={seedlings}
-              x="145"
-              y="10"
-              width="130"
-              height="220"
-              preserveAspectRatio="xMidYMid slice"
-              clipPath="url(#poster-leaf-top)"
-            />
-            <image
-              href={greenhouse}
-              x="28"
-              y="170"
-              width="185"
-              height="225"
-              preserveAspectRatio="xMidYMid slice"
-              clipPath="url(#poster-leaf-left)"
-            />
-            <image
-              href={blueberry}
-              x="205"
-              y="155"
-              width="190"
-              height="205"
-              preserveAspectRatio="xMidYMid slice"
-              clipPath="url(#poster-leaf-right)"
-            />
-          </svg>
-          <div className="plant-poster-statement">
-            <span>Partner u poljoprivredi</span>
-            <strong>Danas. Sutra. Zajedno.</strong>
-          </div>
+        <div className="plant-poster-concept">
+          <img
+            className="plant-poster-image"
+            src={mainBanner}
+            alt="Plant Centar znak sa prizorima lista, useva i borovnica"
+          />
         </div>
       </article>
 
@@ -136,10 +92,12 @@ export default function Carousel() {
             Istražite program <ArrowOutwardRoundedIcon aria-hidden="true" />
           </Link>
         </div>
-        <div className="greengo-products" aria-label="GreenGo Prime, Power i Mega Field">
-          <img src={greenGoPrime} alt="GreenGo Prime" />
-          <img src={greenGoPower} alt="GreenGo Power" />
-          <img src={greenGoMegaField} alt="GreenGo Mega Field" />
+        <div className="greengo-products" aria-label="GreenGo program ishrane bilja">
+          <img src={greenGoBuild} alt="GreenGo Build, pakovanje od jednog kilograma" />
+          <img src={greenGoForm} alt="GreenGo Form, pakovanje od jednog kilograma" />
+          <img src={greenGoMegaField} alt="GreenGo Mega Field, pakovanje od pet litara" />
+          <img src={greenGoMicroOneLiter} alt="GreenGo Micro, pakovanje od jednog litra" />
+          <img src={greenGoMicroFiveLiter} alt="GreenGo Micro, pakovanje od pet litara" />
         </div>
       </article>
 

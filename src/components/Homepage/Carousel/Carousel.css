@@ -157,55 +157,16 @@
 
 .plant-poster-concept {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 50px clamp(54px, 7vw, 120px) 74px 28px;
-  background:
-    radial-gradient(circle at 54% 44%, rgba(84, 193, 67, 0.08), transparent 33%),
-    linear-gradient(145deg, #fff 0%, #fbfaf5 68%, #f1f6eb 100%);
+  background: #fff;
   overflow: hidden;
 }
 
-.plant-poster-concept::after {
-  content: "";
-  position: absolute;
-  right: -9%;
-  bottom: -160px;
-  width: 82%;
-  height: 190px;
-  border-radius: 50% 0 0 0;
-  background: linear-gradient(115deg, #58bf42, #24753b);
-  transform: rotate(-3deg);
-}
-
-.plant-poster-mark {
-  position: relative;
-  z-index: 2;
+.plant-poster-image {
   display: block;
-  width: min(38vw, 500px);
-  height: auto;
-  overflow: visible;
-  filter: drop-shadow(0 24px 32px rgba(29, 79, 46, 0.13));
-}
-
-.plant-poster-statement {
-  position: relative;
-  z-index: 2;
-  margin-top: 16px;
-  color: #626c64;
-  text-align: center;
-}
-
-.plant-poster-statement span,
-.plant-poster-statement strong { display: block; }
-.plant-poster-statement span { font-size: clamp(0.9rem, 1.25vw, 1.08rem); }
-.plant-poster-statement strong {
-  margin-top: 4px;
-  color: #4baa3f;
-  font-size: clamp(1.05rem, 1.55vw, 1.35rem);
-  letter-spacing: 0.01em;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .poster-slide--greengo {
@@ -229,10 +190,10 @@
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  gap: clamp(8px, 1.4vw, 24px);
-  padding: 60px 5vw 32px 0;
+  gap: clamp(7px, 1vw, 18px);
+  padding: 58px clamp(38px, 4vw, 72px) 42px 8px;
   overflow: hidden;
 }
 
@@ -251,16 +212,23 @@
 .greengo-products img {
   position: relative;
   z-index: 1;
-  width: min(29%, 290px);
-  height: 78%;
-  border-radius: 20px;
-  object-fit: cover;
+  box-sizing: border-box;
+  width: min(18%, 205px);
+  height: 64%;
+  padding: clamp(7px, 0.8vw, 13px);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  object-fit: contain;
   object-position: center;
   box-shadow: 0 26px 60px rgba(4, 18, 25, 0.36);
 }
 
-.greengo-products img:nth-child(2) { height: 88%; transform: translateY(-5%); }
-.greengo-products img:nth-child(3) { height: 72%; }
+.greengo-products img:nth-child(1) { height: 72%; transform: translateY(4%); }
+.greengo-products img:nth-child(2) { height: 78%; transform: translateY(-3%); }
+.greengo-products img:nth-child(3) { height: 68%; transform: translateY(5%); }
+.greengo-products img:nth-child(4) { height: 76%; transform: translateY(-4%); }
+.greengo-products img:nth-child(5) { height: 65%; transform: translateY(6%); }
 
 .poster-slide--hansa {
   background:
@@ -369,11 +337,8 @@
   .poster-copy { padding: 62px 50px; }
   .poster-slide--plant .poster-copy { padding-left: 76px; }
   .poster-copy::before { left: 50px; }
-  .plant-poster-concept { padding-right: 42px; padding-left: 16px; }
-  .plant-poster-mark { width: min(47vw, 450px); }
-  .greengo-products img:nth-child(3) { display: none; }
-  .greengo-products img:nth-child(1),
-  .greengo-products img:nth-child(2) { width: 45%; }
+  .greengo-products { gap: 8px; padding-right: 38px; }
+  .greengo-products img { width: 19%; padding: 8px; }
 }
 
 @media (max-width: 760px) {
@@ -388,12 +353,14 @@
   .poster-brand-logo { margin-bottom: 16px; }
   .poster-brand-logo--greengo { height: 58px; }
   .poster-brand-logo--fortis { height: 46px; }
-  .plant-poster-concept { min-height: 405px; padding: 24px 54px 54px; }
-  .plant-poster-mark { width: min(58vw, 350px); }
-  .plant-poster-statement { margin-top: 8px; }
-  .greengo-products { padding: 12px 55px 38px; }
-  .greengo-products img:nth-child(1),
-  .greengo-products img:nth-child(2) { width: min(40%, 230px); height: 96%; }
+  .plant-poster-concept { min-height: 405px; }
+  .greengo-products { gap: 8px; padding: 12px 55px 42px; }
+  .greengo-products img { width: 18.5%; height: 74%; padding: 7px; border-radius: 14px; }
+  .greengo-products img:nth-child(1) { height: 80%; }
+  .greengo-products img:nth-child(2) { height: 88%; }
+  .greengo-products img:nth-child(3) { height: 74%; }
+  .greengo-products img:nth-child(4) { height: 85%; }
+  .greengo-products img:nth-child(5) { height: 72%; }
   .hansa-products { gap: 14px; padding: 10px 55px 42px; }
   .hansa-products > div { height: 92%; padding: 10px; border-radius: 17px; }
   .carousel-arrow { width: 40px; height: 40px; }
@@ -412,14 +379,9 @@
   .poster-copy > a { padding: 11px 15px; font-size: 0.67rem; }
   .poster-brand-logo { max-width: 78%; }
   .poster-slide--plant { grid-template-rows: minmax(410px, auto) 1fr; }
-  .plant-poster-concept { min-height: 360px; padding: 18px 34px 48px; }
-  .plant-poster-concept::after { bottom: -205px; height: 220px; }
-  .plant-poster-mark { width: min(62vw, 240px); }
-  .plant-poster-statement span { font-size: 0.82rem; }
-  .plant-poster-statement strong { font-size: 1rem; }
-  .greengo-products { padding: 8px 34px 34px; }
-  .greengo-products img:nth-child(1),
-  .greengo-products img:nth-child(2) { width: 46%; height: 88%; border-radius: 14px; }
+  .plant-poster-concept { min-height: 360px; }
+  .greengo-products { gap: 5px; padding: 8px 34px 38px; }
+  .greengo-products img { width: 19%; padding: 5px; border-radius: 11px; }
   .hansa-products { padding: 6px 34px 42px; }
   .hansa-products > div { height: 78%; }
   .carousel-progress { right: 14px; bottom: 14px; left: auto; transform: none; }
