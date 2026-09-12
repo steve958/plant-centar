@@ -157,16 +157,63 @@
 
 .plant-poster-concept {
   position: relative;
-  background: #fff;
+  display: grid;
+  place-items: center;
+  background: transparent;
   overflow: hidden;
 }
 
-.plant-poster-image {
+.plant-poster-leaves {
+  position: relative;
+  width: auto;
+  max-width: 76%;
+  height: 92%;
+  max-height: 680px;
+  aspect-ratio: 1086 / 1449;
+  filter: drop-shadow(0 25px 28px rgba(27, 74, 43, 0.16));
+}
+
+.plant-poster-leaf {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.plant-poster-leaf--top { clip-path: inset(0 20% 40% 20%); }
+.plant-poster-leaf--left { clip-path: inset(38% 45% 0 0); }
+.plant-poster-leaf--right { clip-path: inset(38% 0 0 48%); }
+
+.poster-slide--plant.is-active .plant-poster-leaf--top {
+  animation: plant-leaf-top-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms both;
+}
+
+.poster-slide--plant.is-active .plant-poster-leaf--left {
+  animation: plant-leaf-left-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 300ms both;
+}
+
+.poster-slide--plant.is-active .plant-poster-leaf--right {
+  animation: plant-leaf-right-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 480ms both;
+}
+
+@keyframes plant-leaf-top-in {
+  from { opacity: 0; transform: translateY(-28px) scale(0.92) rotate(-3deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+
+@keyframes plant-leaf-left-in {
+  from { opacity: 0; transform: translate(-30px, 22px) scale(0.92) rotate(-4deg); }
+  to { opacity: 1; transform: translate(0) scale(1) rotate(0); }
+}
+
+@keyframes plant-leaf-right-in {
+  from { opacity: 0; transform: translate(30px, 22px) scale(0.92) rotate(4deg); }
+  to { opacity: 1; transform: translate(0) scale(1) rotate(0); }
 }
 
 .poster-slide--greengo {
@@ -215,13 +262,9 @@
   box-sizing: border-box;
   width: min(18%, 205px);
   height: 64%;
-  padding: clamp(7px, 0.8vw, 13px);
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.96);
   object-fit: contain;
   object-position: center;
-  box-shadow: 0 26px 60px rgba(4, 18, 25, 0.36);
+  filter: drop-shadow(0 24px 24px rgba(4, 18, 25, 0.34));
 }
 
 .greengo-products img:nth-child(1) { height: 72%; transform: translateY(4%); }
@@ -338,7 +381,7 @@
   .poster-slide--plant .poster-copy { padding-left: 76px; }
   .poster-copy::before { left: 50px; }
   .greengo-products { gap: 8px; padding-right: 38px; }
-  .greengo-products img { width: 19%; padding: 8px; }
+  .greengo-products img { width: 19%; }
 }
 
 @media (max-width: 760px) {
@@ -355,7 +398,7 @@
   .poster-brand-logo--fortis { height: 46px; }
   .plant-poster-concept { min-height: 405px; }
   .greengo-products { gap: 8px; padding: 12px 55px 42px; }
-  .greengo-products img { width: 18.5%; height: 74%; padding: 7px; border-radius: 14px; }
+  .greengo-products img { width: 18.5%; height: 74%; }
   .greengo-products img:nth-child(1) { height: 80%; }
   .greengo-products img:nth-child(2) { height: 88%; }
   .greengo-products img:nth-child(3) { height: 74%; }
@@ -381,7 +424,7 @@
   .poster-slide--plant { grid-template-rows: minmax(410px, auto) 1fr; }
   .plant-poster-concept { min-height: 360px; }
   .greengo-products { gap: 5px; padding: 8px 34px 38px; }
-  .greengo-products img { width: 19%; padding: 5px; border-radius: 11px; }
+  .greengo-products img { width: 19%; }
   .hansa-products { padding: 6px 34px 42px; }
   .hansa-products > div { height: 78%; }
   .carousel-progress { right: 14px; bottom: 14px; left: auto; transform: none; }
@@ -389,4 +432,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .poster-slide { transition: opacity 180ms ease; transform: none; }
+  .plant-poster-leaf {
+    opacity: 1;
+    animation: none !important;
+    transform: none;
+  }
 }

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
-import mainBanner from "../../../assets/1788104161408.jpg";
+import mainBanner from "../../../assets/1788104161408-transparent.png";
 import greenGoLogo from "../../../assets/campaign/greengo-logo.png";
-import greenGoBuild from "../../../assets/green/GreenGo-BUILD-web.jpg";
-import greenGoForm from "../../../assets/green/GreenGo-FORM jpg-web.jpg";
-import greenGoMegaField from "../../../assets/green/GreenGo-MEGA-FIELD-5l-frontal-web.jpg";
-import greenGoMicroOneLiter from "../../../assets/green/GreenGo-MICRO-2026-1L jpg-web.jpg";
-import greenGoMicroFiveLiter from "../../../assets/green/GreenGo-MICRO-5l-frontal-web.jpg";
+import greenGoBuild from "../../../assets/green/GreenGo-BUILD-web.png";
+import greenGoForm from "../../../assets/green/GreenGo-FORM jpg-web.png";
+import greenGoMegaField from "../../../assets/green/GreenGo-MEGA-FIELD-5l-frontal-web.png";
+import greenGoMicroOneLiter from "../../../assets/green/GreenGo-MICRO-2026-1L-web.png";
+import greenGoMicroFiveLiter from "../../../assets/green/GreenGo-MICRO-5l-frontal-web.png";
 import agriFortisLogo from "../../../assets/campaign/agri-fortis-logo-white.svg";
 import hansaForestry from "../../../assets/campaign/hansa-forestry.avif";
 import hansaHobby from "../../../assets/campaign/hansa-hobi.avif";
@@ -67,12 +67,16 @@ export default function Carousel() {
             Upoznajte Plant Centar <ArrowOutwardRoundedIcon aria-hidden="true" />
           </Link>
         </div>
-        <div className="plant-poster-concept">
-          <img
-            className="plant-poster-image"
-            src={mainBanner}
-            alt="Plant Centar znak sa prizorima lista, useva i borovnica"
-          />
+        <div
+          className="plant-poster-concept"
+          role="img"
+          aria-label="Plant Centar znak sa prizorima lista, useva i borovnica"
+        >
+          <div className="plant-poster-leaves" aria-hidden="true">
+            <img className="plant-poster-leaf plant-poster-leaf--top" src={mainBanner} alt="" />
+            <img className="plant-poster-leaf plant-poster-leaf--left" src={mainBanner} alt="" />
+            <img className="plant-poster-leaf plant-poster-leaf--right" src={mainBanner} alt="" />
+          </div>
         </div>
       </article>
 
