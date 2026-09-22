@@ -4,7 +4,7 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Link } from "react-router-dom";
 import avatar from "../../assets/avatar.png";
 import businessCard from "../../assets/vizitka.jpg";
-import storeImage from "../../assets/campaign/store-about.webp";
+import brandImage from "../../assets/crops.jpg";
 import "./AboutUs.css";
 
 const team = [
@@ -60,7 +60,7 @@ export default function AboutUs() {
             </Link>
           </div>
           <div className="about-hero__image">
-            <img src={storeImage} alt="Prodajni centar kompanije Plant Centar" />
+            <img src={brandImage} alt="Usev u zlatnom svetlu — poljoprivredna proizvodnja" />
             <div className="about-hero__note">
               <strong>Stručna podrška</strong>
               <span>od izbora proizvoda do primene</span>

@@ -1,6 +1,6 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Link } from "react-router-dom";
-import company from "../../assets/store.jpg";
+import company from "../../assets/firma_nova_slika.jpg";
 import fruits from "../../assets/fruits/borovnica7.jfif";
 import vegetables from "../../assets/vegetables/zasad1.jpg";
 import "./Gallery.css";

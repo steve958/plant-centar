@@ -60,7 +60,7 @@ const Footer = () => {
             <h3>Navigacija</h3>
             <Link to="/pocetna">Početna</Link>
             <Link to="/o-nama">O nama</Link>
-            <Link to="/prodavnica">Prodavnica</Link>
+            <Link to="/prodavnica">Web shop</Link>
             <Link to="/partneri">Partneri</Link>
             <Link to="/galerija">Galerija</Link>
             <Link to="/kontakt">Kontakt</Link>
