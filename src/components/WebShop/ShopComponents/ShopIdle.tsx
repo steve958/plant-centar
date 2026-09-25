@@ -1,10 +1,17 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import brandMark from "../../../assets/plant-centar-znak.svg";
+import { SHOP_URL } from "../../../data/shop";
 import "./ShopIdle.css";
 
+/** Old /prodavnica links now forward to the live web shop. */
 export default function ShopIdle() {
+  useEffect(() => {
+    window.location.replace(SHOP_URL);
+  }, []);
+
   return (
     <main className="shop-idle">
       <div className="shop-idle__shell">
@@ -12,16 +19,15 @@ export default function ShopIdle() {
           <span className="shop-idle__kicker">
             <StorefrontOutlinedIcon aria-hidden="true" /> Prodavnica
           </span>
-          <h1>Online prodavnica uskoro stiže.</h1>
+          <h1>Preusmeravamo vas u online prodavnicu.</h1>
           <p>
-            Pripremamo jednostavniji način da pregledate naš asortiman i pronađete
-            proizvode za svoju proizvodnju. Do tada, naš tim je dostupan za preporuke
-            i informacije o ponudi.
+            Naš kompletan asortiman pronađite u Plant Centar web shopu. Ako se stranica
+            ne otvori automatski, kliknite na dugme ispod.
           </p>
           <div className="shop-idle__actions">
-            <Link to="/kontakt" className="shop-idle__primary">
-              Kontaktirajte nas <ArrowForwardRoundedIcon aria-hidden="true" />
-            </Link>
+            <a href={SHOP_URL} className="shop-idle__primary">
+              Otvorite web shop <ArrowForwardRoundedIcon aria-hidden="true" />
+            </a>
             <Link to="/pocetna" className="shop-idle__secondary">Nazad na početnu</Link>
           </div>
         </div>
@@ -31,7 +37,7 @@ export default function ShopIdle() {
           <div className="shop-idle__mark">
             <img src={brandMark} alt="" />
           </div>
-          <span>U pripremi</span>
+          <span>Web shop</span>
         </div>
       </div>
     </main>

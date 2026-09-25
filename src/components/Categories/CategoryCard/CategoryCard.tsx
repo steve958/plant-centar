@@ -19,14 +19,16 @@ const CategoryCard: React.FC<CardProps> = ({
     hoveredIconUrl,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const hoverProps = {
+        className: "category-card",
+        onMouseEnter: () => setIsHovered(true),
+        onMouseLeave: () => setIsHovered(false),
+    };
+    // Shop links point to another domain, so they need a plain anchor instead of a router Link.
+    const isExternal = /^https?:\/\//.test(link);
 
-    return (
-        <Link
-            to={link}
-            className="category-card"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
+    const content = (
+        <>
             <div
                 className="category-card__icon-container"
             >
@@ -49,7 +51,13 @@ const CategoryCard: React.FC<CardProps> = ({
                     Pogledajte ponudu <ArrowForwardRoundedIcon aria-hidden="true" />
                 </span>
             </div>
-        </Link>
+        </>
+    );
+
+    return isExternal ? (
+        <a href={link} {...hoverProps}>{content}</a>
+    ) : (
+        <Link to={link} {...hoverProps}>{content}</Link>
     );
 };
 

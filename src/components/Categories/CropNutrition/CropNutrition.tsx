@@ -29,8 +29,8 @@ export default function CropNutrition() {
         { heading: "Osnovna granulisana đubriva", iconUrl: basicLogo, hoveredIconUrl: basicLogoHovered },
         { heading: "Kristalna vodootopiva đubriva", iconUrl: cristalLogo, hoveredIconUrl: cristalLogoHovered },
         { heading: "Tečna đubriva i biostimulatori", iconUrl: liquidLogo, hoveredIconUrl: liquidLogoHovered },
-        { heading: "Đubriva sa mikroelementima", iconUrl: microLogo, hoveredIconUrl: microLogoHovered },
-        { heading: "Organska đubriva i poboljšivači", iconUrl: organicLogo, hoveredIconUrl: organicLogoHovered },
+        { heading: "Đubriva sa mikroelementima", shopSubcategory: "Đubriva na bazi mikroelemenata", iconUrl: microLogo, hoveredIconUrl: microLogoHovered },
+        { heading: "Organska đubriva i poboljšivači", shopSubcategory: "Organska đubriva i poboljšivači zemljišta", iconUrl: organicLogo, hoveredIconUrl: organicLogoHovered },
         { heading: "Mikrobiološka đubriva", iconUrl: bioLogo, hoveredIconUrl: bioLogoHovered },
       ]}
       partners={[

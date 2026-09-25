@@ -5,6 +5,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import logoMain from "../../assets/plant-centar-logo-horizontalni.svg";
+import { SHOP_URL } from "../../data/shop";
 
 const assortmentPaths = [
   "sredstva-za-zastitu-bilja",
@@ -146,12 +147,7 @@ export default function Menu({ onNavigate }: MenuProps) {
         <div
           className="menu-item menu-item--shop"
           id={selected === "prodavnica" ? "selected" : ""}
-          onClick={() => {
-            if (selected !== "prodavnica") {
-              onNavigate("/prodavnica");
-              setSelected("prodavnica");
-            }
-          }}
+          onClick={() => window.location.assign(SHOP_URL)}
         >
           Web shop
         </div>
@@ -334,11 +330,8 @@ export default function Menu({ onNavigate }: MenuProps) {
             className="small-menu-item"
             id={selected === "prodavnica" ? "selected" : ""}
             onClick={() => {
-              if (selected !== "prodavnica") {
-                onNavigate("/prodavnica");
-                setSelected("prodavnica");
-              }
               setMenuClicked(false);
+              window.location.assign(SHOP_URL);
             }}
           >
             Web shop

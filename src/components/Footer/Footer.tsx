@@ -6,6 +6,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import brandMark from "../../assets/plant-centar-znak.svg";
+import { SHOP_URL } from "../../data/shop";
 import "./Footer.css";
 
 const Footer = () => {
@@ -60,7 +61,7 @@ const Footer = () => {
             <h3>Navigacija</h3>
             <Link to="/pocetna">Početna</Link>
             <Link to="/o-nama">O nama</Link>
-            <Link to="/prodavnica">Web shop</Link>
+            <a href={SHOP_URL}>Web shop</a>
             <Link to="/partneri">Partneri</Link>
             <Link to="/galerija">Galerija</Link>
             <Link to="/kontakt">Kontakt</Link>

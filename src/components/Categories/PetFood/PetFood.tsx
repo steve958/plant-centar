@@ -21,12 +21,7 @@ export default function PetFood() {
       items={[
         { heading: "Hrana za kućne ljubimce", iconUrl: petsLogo, hoveredIconUrl: petsLogoHovered },
         { heading: "Oprema za kućne ljubimce", iconUrl: equipmentLogo, hoveredIconUrl: equipmentLogoHovered },
-        {
-          heading: "Hrana za domaće životinje",
-          link: "/hrana-za-domace-zivotinje",
-          iconUrl: livestockLogo,
-          hoveredIconUrl: livestockLogoHovered,
-        },
+        { heading: "Hrana za domaće životinje", iconUrl: livestockLogo, hoveredIconUrl: livestockLogoHovered },
       ]}
       partners={[
         { src: premil, name: "Premil" },

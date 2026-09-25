@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import { shopSubcategoryUrl } from "../../../data/shop";
 import "./CategoryPage.css";
 
 export interface CategoryItem {
   heading: string;
   description?: string;
   link?: string;
+  /** Shop subcategory name when it differs from the heading. */
+  shopSubcategory?: string;
   iconUrl?: string;
   hoveredIconUrl?: string;
 }
@@ -82,8 +85,8 @@ export default function CategoryPage({
               <p>{note ?? "Provereni proizvodi i podrška pri izboru pravog rešenja."}</p>
             </div>
             <div className="category-page__cards">
-              {items.map((item) => (
-                <CategoryCard key={item.heading} {...item} link={item.link ?? "/prodavnica"} />
+              {items.map(({ shopSubcategory, ...item }) => (
+                <CategoryCard key={item.heading} {...item} link={item.link ?? shopSubcategoryUrl(shopSubcategory ?? item.heading)} />
               ))}
             </div>
           </div>

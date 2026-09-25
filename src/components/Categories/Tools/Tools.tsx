@@ -17,6 +17,8 @@ import substrateLogo from "../../../assets/categories/garden/supstrati-White.png
 import substrateLogoHovered from "../../../assets/categories/garden/supstrati-Green.png";
 import potsLogo from "../../../assets/categories/garden/saksije-White.png";
 import potsLogoHovered from "../../../assets/categories/garden/saksije-Green.png";
+import gardenLogo from "../../../assets/categories/garden/namestaj-White.png";
+import gardenLogoHovered from "../../../assets/categories/garden/namestaj-Green.png";
 import workSuitsLogo from "../../../assets/categories/garden/htz-White.png";
 import workSuitsLogoHovered from "../../../assets/categories/garden/htz-Green.png";
 
@@ -31,9 +33,9 @@ export default function Tools() {
         { heading: "Alati", iconUrl: toolsLogo, hoveredIconUrl: toolsLogoHovered },
         { heading: "Oprema za navodnjavanje", iconUrl: irrigationLogo, hoveredIconUrl: irrigationLogoHovered },
         { heading: "Folije i veziva", iconUrl: foilsLogo, hoveredIconUrl: foilsLogoHovered },
-        { heading: "Supstrati, malčevi i zemlja", iconUrl: substrateLogo, hoveredIconUrl: substrateLogoHovered },
+        { heading: "Supstrati, malčevi i zemlja", shopSubcategory: "Supstrati malčevi i zemlja za cveće", iconUrl: substrateLogo, hoveredIconUrl: substrateLogoHovered },
         { heading: "Saksije i žardinjere", iconUrl: potsLogo, hoveredIconUrl: potsLogoHovered },
-        { heading: "Baštenski nameštaj", iconUrl: machinesLogo, hoveredIconUrl: machinesLogoHovered },
+        { heading: "Bašta i domaćinstvo", iconUrl: gardenLogo, hoveredIconUrl: gardenLogoHovered },
         { heading: "HTZ oprema", iconUrl: workSuitsLogo, hoveredIconUrl: workSuitsLogoHovered },
       ]}
       partners={[
