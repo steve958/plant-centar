@@ -90,7 +90,8 @@ function App() {
       <Logo />
       <Menu onNavigate={handleNavigation} />  {/* Pass navigation handler to Menu */}
       {loader ? <Loader /> : <Outlet />}  {/* Show loader conditionally */}
-      <Footer />
+      {/* The loader is shorter than the screen, so render the footer only once the page is in place. */}
+      {!loader && <Footer />}
       <ToastContainer limit={1} />
       <Analytics />
     </div>
