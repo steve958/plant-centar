@@ -7,6 +7,7 @@ import Menu from "./components/Menu/Menu";
 import { useLayoutEffect, useState } from "react";
 import Loader from "./components/Loader/Loader";
 import { ToastContainer } from "react-toastify";
+import { Analytics } from "@vercel/analytics/react";
 import 'react-toastify/dist/ReactToastify.css';
 import homepageBanner from "./assets/1788104161408-transparent.png";
 
@@ -91,6 +92,7 @@ function App() {
       {loader ? <Loader /> : <Outlet />}  {/* Show loader conditionally */}
       <Footer />
       <ToastContainer limit={1} />
+      <Analytics />
     </div>
   );
 }
