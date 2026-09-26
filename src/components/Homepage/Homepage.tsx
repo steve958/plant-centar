@@ -4,6 +4,7 @@ import Carousel from "./Carousel/Carousel";
 import NeedHelp from "./NeedHelp/NeedHelp";
 import News from "./News/News";
 import Partners from "./Partners/Partners";
+import ShopLaunch from "./ShopLaunch/ShopLaunch";
 import SpecialOffer from "./SpecialOffer/SpecialOffer";
 import WhatWeDo from "./WhatWeDo/WhatWeDo";
 
@@ -11,6 +12,7 @@ export default function Homepage() {
   return (
     <>
       <Carousel></Carousel>
+      <ShopLaunch />
       <div className="divider"></div>
       <News />
       <div className="divider"></div>
